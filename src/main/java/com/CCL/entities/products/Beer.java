@@ -1,4 +1,4 @@
-package com.CCL.entities;
+package com.CCL.entities.products;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

@@ -1,4 +1,6 @@
-package com.CCL.entities;
+package com.CCL.entities.products;
+
+import com.CCL.entities.products.Product;
 
 import javax.persistence.*;
 
@@ -7,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "wines")
-public class Wine extends Product{
+public class Wine extends Product {
 
     @Id
     @GeneratedValue
