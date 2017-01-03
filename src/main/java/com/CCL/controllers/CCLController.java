@@ -39,31 +39,7 @@ public class CCLController {
     public static String embeddedMapsApiKey;
 
     @Autowired
-    AccountRepo accounts;
-
-    @Autowired
-    BeerRepo beers;
-
-    @Autowired
-    DriverRepo drivers;
-
-    @Autowired
-    LiquorRepo liquours;
-
-    @Autowired
-    OfficeRepRepo officereps;
-
-    @Autowired
-    SalesRepRepo salesreps;
-
-    @Autowired
     UserRepo users;
-
-    @Autowired
-    WarehouseRepRepo warehousereps;
-
-    @Autowired
-    WineRepo wines;
 
     Server h2;
 
