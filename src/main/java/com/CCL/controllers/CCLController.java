@@ -1,6 +1,7 @@
 package com.CCL.controllers;
 
 import com.CCL.entities.User;
+import com.CCL.entities.products.Wine;
 import com.CCL.services.*;
 import com.CCL.utlities.PasswordStorage;
 import org.h2.tools.Server;
@@ -41,6 +42,9 @@ public class CCLController {
     @Autowired
     UserRepo users;
 
+    @Autowired
+    WineRepo wines;
+
     Server h2;
 
     @PostConstruct
@@ -59,6 +63,13 @@ public class CCLController {
             mapsJSApiKey = columns[4];
             embeddedMapsApiKey = columns[5];
         }
+
+        Wine wine = new Wine(2017, "Picpoul Blanc", "White", "Kysela Pere et Fils",
+                "Hughes Picpoul", "Picpoul", "kys-643", "France", 750,
+                9.99, 8.99, 7.99, 5.99, 3, 36,
+                12000, false, true, Wine.wineCaseSize.TWELVE_PACK);
+
+        wines.save(wine);
     }
 
     @PreDestroy

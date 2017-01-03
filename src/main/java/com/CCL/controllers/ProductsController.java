@@ -18,6 +18,6 @@ public class ProductsController {
     @Autowired
     LiquorRepo liquors;
 
-    @Autowired
-    WineRepo wines;
+//    @Autowired
+//    WineRepo wines;
 }

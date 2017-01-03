@@ -8,10 +8,10 @@ $(document).ready(function() {
           type: 'POST',
           contentType: 'application/json',
           data: JSON.stringify({
-            username:uName,
+            userName:uName,
             password:pass}),
           success: function(data){
-            window.location.href="/register.html";
+            window.location.href="/dashboard.html";
           },
           error: function() {
             console.log("Get fucked");
