@@ -1,5 +1,8 @@
 package com.CCL.entities;
 
+import com.CCL.controllers.CCLController;
+import com.CCL.utlities.PasswordStorage;
+
 import javax.persistence.*;
 
 /**
@@ -63,7 +66,20 @@ public class User {
         isAdmin = admin;
     }
 
-    public static boolean isValidUser(User user) {
-        return false;
+    public static boolean isValidUser(User user) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
+        if (user.getUserName() == null || user.getPassword() == null) {
+            return false;
+        }
+        User userFromDB = CCLController.users.findByUserName(user.getUserName());
+        if (userFromDB == null) {
+            return false;
+        }
+        if (!PasswordStorage.verifyPassword(user.getPassword(), userFromDB.getPassword())) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
+
 }
