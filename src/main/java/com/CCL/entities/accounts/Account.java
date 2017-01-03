@@ -67,6 +67,9 @@ public class Account {
     private long phoneNumber;
 
     @Column(nullable = false)
+    private long accountNumber;
+
+    @Column(nullable = false)
     private BigDecimal balance;
 
     @ManyToOne
@@ -78,7 +81,7 @@ public class Account {
     public Account(String name, String address, String city, String state, String owner, String receiver, String buyer,
                    String abcLicense, String businessLicense, boolean isOnPremise, boolean isClassBWholeSaler, boolean isPastDue,
                    boolean isSpecialEvent, Timestamp abcIssueDate, Timestamp abcExpiration, long zipCode, long phoneNumber,
-                   BigDecimal balance, SalesRep salesRep) {
+                   long accountNumber, BigDecimal balance, SalesRep salesRep) {
         this.name = name;
         this.address = address;
         this.city = city;
@@ -96,14 +99,14 @@ public class Account {
         this.abcExpiration = abcExpiration;
         this.zipCode = zipCode;
         this.phoneNumber = phoneNumber;
+        this.accountNumber = accountNumber;
         this.balance = balance;
         this.salesRep = salesRep;
     }
 
     public Account(String name, String address, String city, String state, String abcLicense, String businessLicense,
-                   boolean isOnPremise, boolean isClassBWholeSaler, boolean isPastDue, boolean isSpecialEvent,
-                   Timestamp abcIssueDate, Timestamp abcExpiration, long zipCode, long phoneNumber, BigDecimal balance,
-                   SalesRep salesRep) {
+                   boolean isOnPremise, boolean isClassBWholeSaler, boolean isPastDue, boolean isSpecialEvent, Timestamp abcIssueDate,
+                   Timestamp abcExpiration, long zipCode, long phoneNumber, long accountNumber, BigDecimal balance, SalesRep salesRep) {
         this.name = name;
         this.address = address;
         this.city = city;
@@ -118,6 +121,7 @@ public class Account {
         this.abcExpiration = abcExpiration;
         this.zipCode = zipCode;
         this.phoneNumber = phoneNumber;
+        this.accountNumber = accountNumber;
         this.balance = balance;
         this.salesRep = salesRep;
     }

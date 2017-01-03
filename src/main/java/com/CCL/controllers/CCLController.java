@@ -65,8 +65,6 @@ public class CCLController {
     @Autowired
     WineRepo wines;
 
-
-
     Server h2;
 
     @PostConstruct
