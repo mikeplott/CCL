@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.4.3.RELEASE'
+		springBootVersion = '1.4.2.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -32,6 +32,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-websocket')
 	runtime('org.springframework.boot:spring-boot-devtools')
 	compile('com.h2database:h2')
+	runtime('com.h2database:h2')
 	runtime('org.postgresql:postgresql')
 	compile('javax.mail:mail:1.4.7')
 	testCompile('org.springframework.boot:spring-boot-starter-test')

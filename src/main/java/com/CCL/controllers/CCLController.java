@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.SQLException;
 
 /**
@@ -23,7 +25,7 @@ import java.sql.SQLException;
 public class CCLController {
 
     @Autowired
-    public static UserRepo users;
+    UserRepo users;
 
     Server h2;
 
@@ -39,8 +41,8 @@ public class CCLController {
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public ResponseEntity<User> userLogin(HttpSession session, @RequestBody User user) throws PasswordStorage.CannotPerformOperationException, PasswordStorage.InvalidHashException {
-        if (User.userValidation(user)) {
-            User userFromDB = users.findByUserName(user.getUserName());
+        User userFromDB = users.findByUserName(user.getUserName());
+        if (User.userValidation(user, userFromDB)) {
             session.setAttribute("userName", user.getUserName());
             return new ResponseEntity<User>(userFromDB, HttpStatus.OK);
         }
@@ -50,22 +52,24 @@ public class CCLController {
     }
 
     @RequestMapping(path = "/signup", method = RequestMethod.POST)
-    public ResponseEntity<User> userSignUp(HttpSession session, @RequestBody User user) throws PasswordStorage.CannotPerformOperationException {
-        if (!User.isValidUser(user)) {
+    public ResponseEntity<User> userSignUp(HttpSession session, @RequestBody User user) throws PasswordStorage.CannotPerformOperationException, UnsupportedEncodingException {
+        User userForDB = User.isValidUser(user);
+        if (userForDB == null) {
             return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
         }
-        session.setAttribute("userName", user.getUserName());
+        session.setAttribute("userName", userForDB.getUserName());
         User.userEmailValidation(user);
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        return new ResponseEntity<User>(userForDB, HttpStatus.OK);
     }
 
     @RequestMapping(path = "validate", method = RequestMethod.GET)
-    public ResponseEntity<User> validUser(HttpSession session, String userName) {
+    public ResponseEntity<User> validUser(HttpSession session, String userName) throws UnsupportedEncodingException {
         if (userName == null) {
             return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
         }
         else {
-            User userFromDB = users.findByUserName(userName);
+            String theName = URLDecoder.decode(userName, "UTF-8");
+            User userFromDB = users.findByUserName(theName);
             if (userFromDB == null) {
                 return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
             }

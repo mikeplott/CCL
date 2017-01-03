@@ -9,10 +9,9 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.persistence.*;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Properties;
-
-import static com.CCL.controllers.CCLController.users;
-
 
 /**
  * Created by michaelplott on 1/3/17.
@@ -38,16 +37,28 @@ public class User {
     private boolean isAdmin;
 
     @Column(nullable = false)
+    private boolean isSalesRep;
+
+    @Column(nullable = false)
+    private boolean isDriver;
+
+    @Column(nullable = false)
+    private boolean isWarehouseWorker;
+
+    @Column(nullable = false)
     private boolean isValid;
 
     public User() {
     }
 
-    public User(String userName, String password, String email, boolean isAdmin, boolean isValid) {
+    public User(String userName, String password, String email, boolean isAdmin, boolean isSalesRep, boolean isDriver, boolean isWarehouseWorker, boolean isValid) {
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.isAdmin = isAdmin;
+        this.isSalesRep = isSalesRep;
+        this.isDriver = isDriver;
+        this.isWarehouseWorker = isWarehouseWorker;
         this.isValid = isValid;
     }
 
@@ -99,11 +110,13 @@ public class User {
         isValid = valid;
     }
 
-    public static boolean userValidation(User user) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
+    public static boolean userValidation(User user, User userFromDB) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
+        if (userFromDB == null) {
+            return false;
+        }
         if (user.getUserName() == null || user.getPassword() == null) {
             return false;
         }
-        User userFromDB = users.findByUserName(user.getUserName());
         if (userFromDB == null) {
             return false;
         }
@@ -115,21 +128,21 @@ public class User {
         }
     }
 
-    public static boolean isValidUser(User user) throws PasswordStorage.CannotPerformOperationException {
+    public static User isValidUser(User user) throws PasswordStorage.CannotPerformOperationException {
         if (user.getUserName() == null || user.getPassword() == null || user.getEmail() == null) {
-            return false;
+            return null;
         }
         if (!user.getEmail().contains("@")) {
-            return false;
+            return null;
         }
         else {
-            User userForDB = new User(user.getUserName(), PasswordStorage.createHash(user.getPassword()), user.getEmail(), false, true);
-            users.save(user);
-            return true;
+            User userForDB = new User(user.getUserName(), PasswordStorage.createHash(user.getPassword()), user.getEmail(),
+                    false, false, false, false, true);
+            return userForDB;
         }
     }
 
-    public static void userEmailValidation(User user) {
+    public static void userEmailValidation(User user) throws UnsupportedEncodingException {
         String to = user.getEmail();
         String from = "CCLmike88@gmail.com";
         String host = "localhost";
@@ -142,7 +155,8 @@ public class User {
             message.setFrom(new InternetAddress(from));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject("CCL User Validation");
-            message.setText("Please click this link below to activate your user account, http://localhost:8080/validate.html?userName=" + user.getUserName());
+            String userName = URLEncoder.encode(user.getUserName(), "UTF-8");
+            message.setText("Please click this link below to activate your user account, http://localhost:8080/validate.html?userName=" + userName);
             Transport.send(message);
         }
         catch (AddressException e) {
