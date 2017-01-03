@@ -40,12 +40,23 @@ public class CCLController {
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public ResponseEntity<User> userLogin(HttpSession session, @RequestBody User user) throws PasswordStorage.CannotPerformOperationException, PasswordStorage.InvalidHashException {
-        if (User.isValidUser(user)) {
+        if (User.userValidation(user)) {
             User userFromDB = users.findByUserName(user.getUserName());
+            session.setAttribute("userName", user.getUserName());
             return new ResponseEntity<User>(userFromDB, HttpStatus.OK);
         }
         else {
             return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
         }
+    }
+
+    @RequestMapping(path = "/signup", method = RequestMethod.POST)
+    public ResponseEntity<User> userSignUp(HttpSession session, @RequestBody User user) {
+        if (!User.isValidUser(user)) {
+            return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
+        }
+        session.setAttribute("userName", user.getUserName());
+        User.userEmailValidation(user);
+        return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 }
