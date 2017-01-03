@@ -13,7 +13,13 @@ public abstract class Product {
         SIX_PACK,
         NINE_PACK,
         TWELVE_PACK,
-        TWENTY_FOUR_PACK;
+        TWENTY_FOUR_PACK,
+        FIVE_SEVENTEEN_GAL_KEG,
+        SEVEN_SEVEN_FIVE_GAL_KEG,
+        FIFTEEN_FIVE_GAL_KEG,
+        TWENTY_LITRE_KEG,
+        FIFTY_LITRE_KEG,
+        FIRKIN;
     }
 
     @Column(nullable = false)
