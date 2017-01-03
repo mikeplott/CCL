@@ -1,9 +1,6 @@
 package com.CCL.entities;
 
-import com.CCL.controllers.CCLController;
 import com.CCL.utlities.PasswordStorage;
-import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -12,8 +9,6 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.persistence.*;
-import javax.servlet.http.HttpSession;
-
 import java.util.Properties;
 
 import static com.CCL.controllers.CCLController.users;
@@ -42,14 +37,18 @@ public class User {
     @Column(nullable = false)
     private boolean isAdmin;
 
+    @Column(nullable = false)
+    private boolean isValid;
+
     public User() {
     }
 
-    public User(String userName, String password, String email, boolean isAdmin) {
+    public User(String userName, String password, String email, boolean isAdmin, boolean isValid) {
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.isAdmin = isAdmin;
+        this.isValid = isValid;
     }
 
     public int getId() {
@@ -92,6 +91,14 @@ public class User {
         isAdmin = admin;
     }
 
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
+
     public static boolean userValidation(User user) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
         if (user.getUserName() == null || user.getPassword() == null) {
             return false;
@@ -108,7 +115,7 @@ public class User {
         }
     }
 
-    public static boolean isValidUser(User user) {
+    public static boolean isValidUser(User user) throws PasswordStorage.CannotPerformOperationException {
         if (user.getUserName() == null || user.getPassword() == null || user.getEmail() == null) {
             return false;
         }
@@ -116,6 +123,7 @@ public class User {
             return false;
         }
         else {
+            User userForDB = new User(user.getUserName(), PasswordStorage.createHash(user.getPassword()), user.getEmail(), false, true);
             users.save(user);
             return true;
         }
@@ -134,7 +142,7 @@ public class User {
             message.setFrom(new InternetAddress(from));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject("CCL User Validation");
-            message.setText("Please click this link below to activate your user account, http://localhost:8080/validate.html");
+            message.setText("Please click this link below to activate your user account, http://localhost:8080/validate.html?userName=" + user.getUserName());
             Transport.send(message);
         }
         catch (AddressException e) {

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
@@ -51,12 +50,26 @@ public class CCLController {
     }
 
     @RequestMapping(path = "/signup", method = RequestMethod.POST)
-    public ResponseEntity<User> userSignUp(HttpSession session, @RequestBody User user) {
+    public ResponseEntity<User> userSignUp(HttpSession session, @RequestBody User user) throws PasswordStorage.CannotPerformOperationException {
         if (!User.isValidUser(user)) {
             return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
         }
         session.setAttribute("userName", user.getUserName());
         User.userEmailValidation(user);
         return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "validate", method = RequestMethod.GET)
+    public ResponseEntity<User> validUser(HttpSession session, String userName) {
+        if (userName == null) {
+            return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
+        }
+        else {
+            User userFromDB = users.findByUserName(userName);
+            if (userFromDB == null) {
+                return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
+            }
+            return new ResponseEntity<User>(userFromDB, HttpStatus.OK);
+        }
     }
 }
