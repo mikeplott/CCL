@@ -30,6 +30,14 @@ public class CCLController {
 
     public static String auth;
 
+    public static String placesApiKey;
+
+    public static String distanceApiKey;
+
+    public static String mapsJSApiKey;
+
+    public static String embededMapsApiKey;
+
     @Autowired
     UserRepo users;
 
@@ -44,8 +52,12 @@ public class CCLController {
         while (fileReader.hasNext()) {
             String line = fileReader.nextLine();
             String[] columns = line.split(",");
-            CCLController.from = columns[0];
-            CCLController.auth = columns[1];
+            from = columns[0];
+            auth = columns[1];
+            placesApiKey = columns[2];
+            distanceApiKey = columns[3];
+            mapsJSApiKey = columns[4];
+            embededMapsApiKey = columns[5];
         }
     }
 
