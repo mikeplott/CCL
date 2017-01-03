@@ -10,8 +10,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "accounts")
-public abstract class Account {
-
+public class Account {
     @Id
     @GeneratedValue
     private int id;

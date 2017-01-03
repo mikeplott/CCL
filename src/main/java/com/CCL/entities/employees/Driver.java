@@ -49,7 +49,7 @@ public class Driver extends Employee {
     private Timestamp licenseExpirationDate;
 
     @Column(nullable = false)
-    private boolean cdlCertified;
+    private boolean isCdlCertified;
 
     public Driver() {
     }

@@ -1,7 +1,7 @@
 package com.CCL.controllers;
 
 import com.CCL.entities.User;
-import com.CCL.services.UserRepo;
+import com.CCL.services.*;
 import com.CCL.utlities.PasswordStorage;
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +36,36 @@ public class CCLController {
 
     public static String mapsJSApiKey;
 
-    public static String embededMapsApiKey;
+    public static String embeddedMapsApiKey;
+
+    @Autowired
+    AccountRepo accounts;
+
+    @Autowired
+    BeerRepo beers;
+
+    @Autowired
+    DriverRepo drivers;
+
+    @Autowired
+    LiquorRepo liquours;
+
+    @Autowired
+    OfficeRepRepo officereps;
+
+    @Autowired
+    SalesRepRepo salesreps;
 
     @Autowired
     UserRepo users;
+
+    @Autowired
+    WarehouseRepRepo warehousereps;
+
+    @Autowired
+    WineRepo wines;
+
+
 
     Server h2;
 
@@ -57,7 +83,7 @@ public class CCLController {
             placesApiKey = columns[2];
             distanceApiKey = columns[3];
             mapsJSApiKey = columns[4];
-            embededMapsApiKey = columns[5];
+            embeddedMapsApiKey = columns[5];
         }
     }
 
