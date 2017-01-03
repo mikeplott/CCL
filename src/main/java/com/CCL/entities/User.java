@@ -1,11 +1,8 @@
 package com.CCL.entities;
 
+import com.CCL.controllers.CCLController;
 import com.CCL.utlities.PasswordStorage;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.persistence.*;
@@ -111,9 +108,6 @@ public class User {
     }
 
     public static boolean userValidation(User user, User userFromDB) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
-        if (userFromDB == null) {
-            return false;
-        }
         if (user.getUserName() == null || user.getPassword() == null) {
             return false;
         }
@@ -142,29 +136,27 @@ public class User {
         }
     }
 
-    public static void userEmailValidation(User user) throws UnsupportedEncodingException {
+    public static void userEmailValidation(User user) throws UnsupportedEncodingException, MessagingException {
         String to = user.getEmail();
-        String from = "CCLmike88@gmail.com";
-        String host = "localhost";
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.smtp.host", host);
-        Session session = Session.getDefaultInstance(properties);
+        String theName = user.getUserName();
+        String userName = URLEncoder.encode(theName, "UTF-8");
 
-        try {
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject("CCL User Validation");
-            String userName = URLEncoder.encode(user.getUserName(), "UTF-8");
-            message.setText("Please click this link below to activate your user account, http://localhost:8080/validate.html?userName=" + userName);
-            Transport.send(message);
-        }
-        catch (AddressException e) {
-            e.printStackTrace();
-        }
-        catch (MessagingException e) {
-            e.printStackTrace();
-        }
+        Properties props = System.getProperties();
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getDefaultInstance(props, null);
+        MimeMessage message = new MimeMessage(session);
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+        message.setSubject("Account Validation");
+        message.setContent("Click the link below to validate" + " " + " " + "http://localhost:8080/validate?userName=" +
+                userName, "text/html");
+
+        Transport transport = session.getTransport("smtp");
+        transport.connect("smtp.gmail.com", CCLController.from, CCLController.auth);
+        transport.sendMessage(message, message.getAllRecipients());
+        transport.close();
     }
 
 }
