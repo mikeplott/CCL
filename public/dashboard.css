@@ -1,8 +1,391 @@
-#box {
-    width: 15%;
-    margin-left: 100px;
+.btn-primary {
+    margin-left: 62%;
+    width: 150px;
+    height: 50px;
 }
 
-.theLabel {
-    margin-left: 85px;
+#input17 {
+    width: 20px;
+    height: 20px;
+}
+
+#input18 {
+    width: 20px;
+    height: 20px;
+}
+
+#input19 {
+    width: 20px;
+    height: 20px;
+}
+
+#input20 {
+    width: 20px;
+    height: 20px;
+}
+
+#input21 {
+    width: 20px;
+    height: 20px;
+}
+
+#input22 {
+    width: 20px;
+    height: 20px;
+}
+
+#input23 {
+    width: 20px;
+    height: 20px;
+}
+
+#input24 {
+    width: 20px;
+    height: 20px;
+}
+
+#input25 {
+    width: 20px;
+    height: 20px;
+}
+
+#input26 {
+    width: 20px;
+    height: 20px;
+}
+
+#input27 {
+    width: 20px;
+    height: 20px;
+}
+
+#input28 {
+    width: 20px;
+    height: 20px;
+}
+
+#input29 {
+    width: 20px;
+    height: 20px;
+}
+
+#popup1 #popup1 {
+    visibility: hidden;
+}
+
+#parent:hover #popup1 {
+  visibility: visible;
+  width: 100%;
+  font-size: 14px;
+  padding-top: 5px;
+}
+
+#parent1 #popup2 {
+  visibility: hidden;;
+}
+
+#parent1:hover #popup2 {
+  visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+
+#parent2 #popup3 {
+  visibility: hidden;
+}
+
+#parent2:hover #popup3 {
+  visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+
+#parent3 #popup4 {
+  visibility: hidden;
+}
+
+#parent3:hover #popup4 {
+  visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+
+#parent4 #popup5 {
+  visibility: hidden;
+}
+
+#parent4:hover #popup5 {
+  visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+
+#parent5 #popup6 {
+  visibility: hidden;
+}
+
+#parent5:hover #popup6 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent6 #popup7 {
+    visibility: hidden;
+}
+
+#parent6:hover #popup7 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent7 #popup8 {
+  visibility: hidden;
+}
+
+#parent7:hover #popup8 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent8 #popup9 {
+  visibility: hidden;
+}
+
+#parent8:hover #popup9 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent9 #popup10 {
+  visibility: hidden;
+}
+
+#parent9:hover #popup10 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent10 #popup11 {
+  visibility: hidden;
+}
+
+#parent10:hover #popup11 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent11 #popup12 {
+  visibility: hidden;
+}
+
+#parent11:hover #popup12 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent12 #popup13 {
+  visibility: hidden;
+}
+
+#parent12:hover #popup13 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent13 #popup14 {
+  visibility: hidden;
+}
+
+#parent13:hover #popup14 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+#parent14 #popup15 {
+  visibility: hidden;
+}
+
+#parent14:hover #popup15 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+#parent15 #popup16 {
+  visibility: hidden;
+}
+
+#parent15:hover #popup16 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+#parent16 #popup17 {
+  visibility: hidden;
+}
+
+#parent16:hover #popup17 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+#parent17 #popup18 {
+    visibility: hidden;
+}
+
+#parent17:hover #popup18 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent18 #popup19 {
+  visibility: hidden;
+}
+
+#parent18:hover #popup19 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent19 #popup20 {
+  visibility: hidden;
+}
+
+#parent19:hover #popup20 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+#parent20 #popup21 {
+  visibility: hidden;
+}
+
+#parent20:hover #popup21 {
+    visibility: visible;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#parent21 #popup22 {
+  visibility: hidden;
+}
+
+#parent21:hover #popup22 {
+  visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+#parent22 #popup23 {
+  visibility: hidden;
+}
+
+#parent22:hover #popup23 {
+    visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+#parent23 #popup24 {
+  visibility: hidden;
+}
+
+#parent23:hover #popup24 {
+    visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+#parent24 #popup25 {
+  visibility: hidden;
+}
+
+#parent24:hover #popup25 {
+    visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+#parent25 #popup26 {
+  visibility: hidden;
+}
+
+#parent25:hover #popup26 {
+    visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+#parent26 #popup27 {
+  visibility: hidden;
+}
+
+#parent26:hover #popup27 {
+    visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+#parent27 #popup28 {
+  visibility: hidden;
+}
+
+#parent27:hover #popup28.hidden {
+    visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+#parent28 #popup29.hidden {
+  visibility: hidden;
+}
+
+#parent28:hover #popup29 {
+    visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+#parent29 #popup30 {
+  visibility: hidden;
+}
+
+#parent29:hover #popup30 {
+    visibility: visible;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 14px;
+}
+
+#theWineForm {
+    margin-left: 15%;
 }

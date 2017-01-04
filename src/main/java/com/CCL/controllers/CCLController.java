@@ -64,12 +64,14 @@ public class CCLController {
             embeddedMapsApiKey = columns[5];
         }
 
-        Wine wine = new Wine(2017, "Picpoul Blanc", "White", "Kysela Pere et Fils",
-                "Hughes Picpoul", "Picpoul", "kys-643", "France", 750,
-                9.99, 8.99, 7.99, 5.99, 3, 36,
-                12000, false, true, Wine.wineCaseSize.TWELVE_PACK);
+        if (wines.findAll().size() == 0) {
+            Wine wine = new Wine(2017, "Picpoul Blanc", "White", "Kysela Pere et Fils",
+                    "Hughes Picpoul", "Picpoul", "kys-643", "France", 750,
+                    9.99, 8.99, 7.99, 5.99, 3, 36,
+                    12000, false, true, Wine.wineCaseSize.TWELVE_PACK);
 
-        wines.save(wine);
+            wines.save(wine);
+        }
     }
 
     @PreDestroy
