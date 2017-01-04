@@ -3,270 +3,319 @@ function inventoryView(Event) {
     var row = $('#myContainer');
     row.empty();
 
+    var theNewDiv = $('#zeNav');
+
+    var newDiv = document.createElement('div');
+    newDiv.setAttribute('class', 'btn-group');
+    newDiv.setAttribute('data-toggle', 'buttons');
+
+    var dynNav = $('#theNav');
+
+    var wineLabel = document.createElement('label');
+    wineLabel.setAttribute('class', 'btn btn-primary selector');
+    wineLabel.innerHTML = "Wine";
+
+    var wineBtn = document.createElement('input');
+    wineBtn.setAttribute('type', 'radio');
+    wineBtn.setAttribute('name', 'options');
+    wineBtn.setAttribute('id', 'option1');
+    wineBtn.setAttribute('autocomplete', 'off');
+
+    var beerLabel = document.createElement('label');
+    beerLabel.setAttribute('class', 'btn btn-primary selector');
+    beerLabel.innerHTML = "Beer";
+
+    var beerBtn = document.createElement('input');
+    beerBtn.setAttribute('type', 'radio');
+    beerBtn.setAttribute('name', 'options');
+    beerBtn.setAttribute('id', 'option2');
+    beerBtn.setAttribute('autocomplete', 'off');
+
+    var liquorLabel = document.createElement('label');
+    liquorLabel.setAttribute('class', 'btn btn-primary selector');
+    liquorLabel.innerHTML = "Liquour";
+
+    var liquorBtn = document.createElement('input');
+    liquorBtn.setAttribute('type', 'radio');
+    liquorBtn.setAttribute('name', 'options');
+    liquorBtn.setAttribute('id', 'option3');
+    liquorBtn.setAttribute('autocomplete', 'off');
+
+    wineLabel.append(wineBtn);
+    beerLabel.append(beerBtn);
+    liquorLabel.append(liquorBtn);
+
+    newDiv.append(wineLabel);
+    newDiv.append(beerLabel);
+    newDiv.append(liquorLabel);
+
+    theNewDiv.append(newDiv);
+
     document.getElementById('myHeader').innerHTML = "Inventory Management";
 
     var theDiv1 = document.createElement('div');
-    theDiv1.setAttribute('class', 'col-md-4');
+    theDiv1.setAttribute('class', 'col-md-2');
     theDiv1.setAttribute('id', 'parent');
 
     var theDiv2 = document.createElement('div');
-    theDiv2.setAttribute('class', 'col-md-4');
+    theDiv2.setAttribute('class', 'col-md-2');
     theDiv2.setAttribute('id', 'parent1');
 
     var theDiv3 = document.createElement('div');
-    theDiv3.setAttribute('class', 'col-md-4');
+    theDiv3.setAttribute('class', 'col-md-2');
     theDiv3.setAttribute('id', 'parent2');
 
     var theDiv4 = document.createElement('div');
-    theDiv4.setAttribute('class', 'col-md-4');
+    theDiv4.setAttribute('class', 'col-md-2');
     theDiv4.setAttribute('id', 'parent3');
 
     var theDiv5 = document.createElement('div');
-    theDiv5.setAttribute('class', 'col-md-4');
+    theDiv5.setAttribute('class', 'col-md-2');
     theDiv5.setAttribute('id', 'parent4');
 
     var theDiv6 = document.createElement('div');
-    theDiv6.setAttribute('class', 'col-md-4');
+    theDiv6.setAttribute('class', 'col-md-2');
     theDiv6.setAttribute('id', 'parent5');
 
     var theDiv7 = document.createElement('div');
-    theDiv7.setAttribute('class', 'col-md-4');
+    theDiv7.setAttribute('class', 'col-md-2');
     theDiv7.setAttribute('id', 'parent6');
 
     var theDiv8 = document.createElement('div');
-    theDiv8.setAttribute('class', 'col-md-4');
+    theDiv8.setAttribute('class', 'col-md-2');
     theDiv8.setAttribute('id', 'parent7');
 
     var theDiv9 = document.createElement('div');
-    theDiv9.setAttribute('class', ' col-md-4');
+    theDiv9.setAttribute('class', ' col-md-2');
     theDiv9.setAttribute('id', 'parent8');
 
     var theDiv10 = document.createElement('div');
-    theDiv10.setAttribute('class', ' col-md-4');
+    theDiv10.setAttribute('class', ' col-md-2');
     theDiv10.setAttribute('id', 'parent9');
 
     var theDiv11 = document.createElement('div');
-    theDiv11.setAttribute('class', ' col-md-4');
+    theDiv11.setAttribute('class', ' col-md-2');
     theDiv11.setAttribute('id', 'parent10');
 
     var theDiv12 = document.createElement('div');
-    theDiv12.setAttribute('class', ' col-md-4');
+    theDiv12.setAttribute('class', ' col-md-2');
     theDiv12.setAttribute('id', 'parent11');
 
     var theDiv13 = document.createElement('div');
-    theDiv13.setAttribute('class', ' col-md-4');
+    theDiv13.setAttribute('class', ' col-md-2');
     theDiv13.setAttribute('id', 'parent12');
 
     var theDiv14 = document.createElement('div');
-    theDiv14.setAttribute('class', ' col-md-4');
+    theDiv14.setAttribute('class', ' col-md-2');
     theDiv14.setAttribute('id', 'parent13');
 
     var theDiv15 = document.createElement('div');
-    theDiv15.setAttribute('class', ' col-md-4');
+    theDiv15.setAttribute('class', ' col-md-2');
     theDiv15.setAttribute('id', 'parent14');
 
     var theDiv16 = document.createElement('div');
-    theDiv16.setAttribute('class', ' col-md-4');
+    theDiv16.setAttribute('class', ' col-md-2');
     theDiv16.setAttribute('id', 'parent15');
 
     var theDiv17 = document.createElement('div');
-    theDiv17.setAttribute('class', ' col-md-4');
+    theDiv17.setAttribute('class', ' col-md-2');
     theDiv17.setAttribute('id', 'parent16');
 
     var theDiv18 = document.createElement('div');
-    theDiv18.setAttribute('class', ' col-md-4');
+    theDiv18.setAttribute('class', ' col-md-2');
     theDiv18.setAttribute('id', 'parent17');
 
     var theDiv19 = document.createElement('div');
-    theDiv19.setAttribute('class', ' col-md-4');
+    theDiv19.setAttribute('class', ' col-md-2');
     theDiv19.setAttribute('id', 'parent18');
 
     var theDiv20 = document.createElement('div');
-    theDiv20.setAttribute('class', ' col-md-4');
+    theDiv20.setAttribute('class', ' col-md-2');
     theDiv20.setAttribute('id', 'parent19');
 
     var theDiv21 = document.createElement('div');
-    theDiv21.setAttribute('class', ' col-md-4');
+    theDiv21.setAttribute('class', ' col-md-2');
     theDiv21.setAttribute('id', 'parent20');
 
     var theDiv22 = document.createElement('div');
-    theDiv22.setAttribute('class', ' col-md-4');
+    theDiv22.setAttribute('class', ' col-md-2');
     theDiv22.setAttribute('id', 'parent21');
 
     var theDiv23 = document.createElement('div');
-    theDiv23.setAttribute('class', ' col-md-4');
+    theDiv23.setAttribute('class', ' col-md-2');
     theDiv23.setAttribute('id', 'parent22');
 
     var theDiv24 = document.createElement('div');
-    theDiv24.setAttribute('class', ' col-md-4');
+    theDiv24.setAttribute('class', ' col-md-2');
     theDiv24.setAttribute('id', 'parent23');
 
     var theDiv25 = document.createElement('div');
-    theDiv25.setAttribute('class', ' col-md-4');
+    theDiv25.setAttribute('class', ' col-md-2');
     theDiv25.setAttribute('id', 'parent24');
 
     var theDiv26 = document.createElement('div');
-    theDiv26.setAttribute('class', ' col-md-4');
+    theDiv26.setAttribute('class', ' col-md-2');
     theDiv26.setAttribute('id', 'parent25');
 
     var theDiv27 = document.createElement('div');
-    theDiv27.setAttribute('class', ' col-md-4');
+    theDiv27.setAttribute('class', ' col-md-2');
     theDiv27.setAttribute('id', 'parent26');
 
     var theDiv28 = document.createElement('div');
-    theDiv28.setAttribute('class', ' col-md-4');
+    theDiv28.setAttribute('class', ' col-md-2');
     theDiv28.setAttribute('id', 'parent27');
 
     var theDiv29 = document.createElement('div');
-    theDiv29.setAttribute('class', ' col-md-4');
+    theDiv29.setAttribute('class', ' col-md-2');
     theDiv29.setAttribute('id', 'parent28');
 
     var theDiv30 = document.createElement('div');
-    theDiv30.setAttribute('class', 'col-md-4');
+    theDiv30.setAttribute('class', 'col-md-1');
     theDiv30.setAttribute('id', 'popup1');
     theDiv30.innerHTML = 'Enter product vintage';
 
     var theDiv31 = document.createElement('div');
-    theDiv31.setAttribute('class', ' col-md-4');
+    theDiv31.setAttribute('class', ' col-md-1');
     theDiv31.setAttribute('id', 'popup2');
     theDiv31.innerHTML = 'Enter product varietal';
 
     var theDiv32 = document.createElement('div');
-    theDiv32.setAttribute('class', ' col-md-4');
+    theDiv32.setAttribute('class', ' col-md-1');
     theDiv32.setAttribute('id', 'popup3');
     theDiv32.innerHTML = 'Enter product color';
 
     var theDiv33 = document.createElement('div');
-    theDiv33.setAttribute('class', ' col-md-4');
+    theDiv33.setAttribute('class', ' col-md-1');
     theDiv33.setAttribute('id', 'popup4');
-    theDiv33.innerHTML = 'Enter product importer/producer';
+    theDiv33.innerHTML = 'Enter product importer';
 
     var theDiv34 = document.createElement('div');
-    theDiv34.setAttribute('class', ' col-md-4');
+    theDiv34.setAttribute('class', ' col-md-1');
     theDiv34.setAttribute('id', 'popup5');
     theDiv34.innerHTML = 'Enter product name';
 
     var theDiv35 = document.createElement('div');
-    theDiv35.setAttribute('class', ' col-md-4');
+    theDiv35.setAttribute('class', ' col-md-1');
     theDiv35.setAttribute('id', 'popup6');
     theDiv35.innerHTML = 'Enter product description';
 
     var theDiv36 = document.createElement('div');
-    theDiv36.setAttribute('class', ' col-md-4');
+    theDiv36.setAttribute('class', ' col-md-1');
     theDiv36.setAttribute('id', 'popup7');
     theDiv36.innerHTML = 'Enter product item code';
 
     var theDiv37 = document.createElement('div');
-    theDiv37.setAttribute('class', ' col-md-4');
+    theDiv37.setAttribute('class', ' col-md-1');
     theDiv37.setAttribute('id', 'popup8');
     theDiv37.innerHTML = 'Enter product origin';
 
     var theDiv38 = document.createElement('div');
-    theDiv38.setAttribute('class', ' col-md-4');
+    theDiv38.setAttribute('class', ' col-md-1');
     theDiv38.setAttribute('id', 'popup9');
     theDiv38.innerHTML = 'Enter product volume';
 
     var theDiv39 = document.createElement('div');
-    theDiv39.setAttribute('class', ' col-md-4');
+    theDiv39.setAttribute('class', ' col-md-1');
     theDiv39.setAttribute('id', 'popup10');
     theDiv39.innerHTML = 'Enter product front line price';
 
     var theDiv40 = document.createElement('div');
-    theDiv40.setAttribute('class', ' col-md-4');
+    theDiv40.setAttribute('class', ' col-md-1');
     theDiv40.setAttribute('id', 'popup11');
     theDiv40.innerHTML = 'Enter product 10 case price';
 
     var theDiv41 = document.createElement('div');
-    theDiv41.setAttribute('class', ' col-md-4');
+    theDiv41.setAttribute('class', ' col-md-1');
     theDiv41.setAttribute('id', 'popup12');
     theDiv41.innerHTML = 'Enter product 25 case price';
 
     var theDiv42 = document.createElement('div');
-    theDiv42.setAttribute('class', ' col-md-4');
+    theDiv42.setAttribute('class', ' col-md-1');
     theDiv42.setAttribute('id', 'popup13');
     theDiv42.innerHTML = 'Enter product cost';
 
     var theDiv43 = document.createElement('div');
-    theDiv43.setAttribute('class', ' col-md-4');
+    theDiv43.setAttribute('class', ' col-md-1');
     theDiv43.setAttribute('id', 'popup14');
     theDiv43.innerHTML = 'Enter product weight by bottle';
 
     var theDiv44 = document.createElement('div');
-    theDiv44.setAttribute('class', ' col-md-4');
+    theDiv44.setAttribute('class', ' col-md-1');
     theDiv44.setAttribute('id', 'popup15');
     theDiv44.innerHTML = 'Enter product weight by case';
 
     var theDiv45 = document.createElement('div');
-    theDiv45.setAttribute('class', ' col-md-4');
+    theDiv45.setAttribute('class', ' col-md-1');
     theDiv45.setAttribute('id', 'popup16');
     theDiv45.innerHTML = 'Enter product quantity';
 
     var theDiv46 = document.createElement('div');
-    theDiv46.setAttribute('class', ' col-md-4');
+    theDiv46.setAttribute('class', ' col-md-1');
     theDiv46.setAttribute('id', 'popup17');
     theDiv46.innerHTML = 'Check if product is promised to a customer';
 
     var theDiv47 = document.createElement('div');
-    theDiv47.setAttribute('class', ' col-md-4');
+    theDiv47.setAttribute('class', ' col-md-1');
     theDiv47.setAttribute('id', 'popup18');
     theDiv47.innerHTML = 'Check if product is able to be sold in both states';
 
     var theDiv48 = document.createElement('div');
-    theDiv48.setAttribute('class', ' col-md-4');
+    theDiv48.setAttribute('class', ' col-md-1');
     theDiv48.setAttribute('id', 'popup19');
     theDiv48.innerHTML = 'Check if product comes in 1 pack cases';
 
     var theDiv49 = document.createElement('div');
-    theDiv49.setAttribute('class', ' col-md-4');
+    theDiv49.setAttribute('class', ' col-md-1');
     theDiv49.setAttribute('id', 'popup20');
     theDiv49.innerHTML = 'Check if product comes in 3 pack cases';
 
     var theDiv50 = document.createElement('div');
-    theDiv50.setAttribute('class', ' col-md-4');
+    theDiv50.setAttribute('class', ' col-md-1');
     theDiv50.setAttribute('id', 'popup21');
     theDiv50.innerHTML = 'Check if product comes in 6 pack cases';
 
     var theDiv51 = document.createElement('div');
-    theDiv51.setAttribute('class', ' col-md-4');
+    theDiv51.setAttribute('class', ' col-md-1');
     theDiv51.setAttribute('id', 'popup22');
     theDiv51.innerHTML = 'Check if product comes in 9 pack cases';
 
     var theDiv52 = document.createElement('div');
-    theDiv52.setAttribute('class', ' col-md-4');
+    theDiv52.setAttribute('class', ' col-md-1');
     theDiv52.setAttribute('id', 'popup23');
     theDiv52.innerHTML = 'Check if product comes in 12 pack cases';
 
     var theDiv53 = document.createElement('div');
-    theDiv53.setAttribute('class', ' col-md-4');
+    theDiv53.setAttribute('class', ' col-md-1');
     theDiv53.setAttribute('id', 'popup24');
     theDiv53.innerHTML = 'Check if product comes in 24 pack cases';
 
     var theDiv54 = document.createElement('div');
-    theDiv54.setAttribute('class', ' col-md-4');
+    theDiv54.setAttribute('class', ' col-md-1');
     theDiv54.setAttribute('id', 'popup25');
     theDiv54.innerHTML = 'Check if product comes in 5.17 gallon kegs';
 
     var theDiv55 = document.createElement('div');
-    theDiv55.setAttribute('class', ' col-md-4');
+    theDiv55.setAttribute('class', ' col-md-1');
     theDiv55.setAttribute('id', 'popup26');
     theDiv55.innerHTML = 'Check if product comes in 7.75 gallon kegs';
 
     var theDiv56 = document.createElement('div');
-    theDiv56.setAttribute('class', ' col-md-4');
+    theDiv56.setAttribute('class', ' col-md-1');
     theDiv56.setAttribute('id', 'popup27');
     theDiv56.innerHTML = 'Check if product comes in 15.5 gallon kegs';
 
     var theDiv57 = document.createElement('div');
-    theDiv57.setAttribute('class', ' col-md-4');
+    theDiv57.setAttribute('class', ' col-md-1');
     theDiv57.setAttribute('id', 'popup28');
     theDiv57.innerHTML = 'Check if product comes in 20L kegs';
 
     var theDiv58 = document.createElement('div');
-    theDiv58.setAttribute('class', ' col-md-4');
+    theDiv58.setAttribute('class', ' col-md-1');
     theDiv58.setAttribute('id', 'popup29');
     theDiv58.innerHTML = 'Check if product comes in 50L kegs';
 
     var myForm = document.createElement('form');
+    //myForm.setAttribute('class', 'form-inline');
     myForm.setAttribute('name', 'wineForm');
     myForm.setAttribute('id', 'theWineForm');
 
@@ -497,7 +546,7 @@ function inventoryView(Event) {
     var input17 = document.createElement('input');
     input17.setAttribute('type', 'checkbox');
     input17.setAttribute('name', 'isExclusive');
-    input17.setAttribute('class', 'form-control');
+    input17.setAttribute('class', 'form-control box');
     input17.setAttribute('id', 'input17');
 
     var label17 = document.createElement('label');
@@ -511,7 +560,7 @@ function inventoryView(Event) {
     var input18 = document.createElement('input');
     input18.setAttribute('type', 'checkbox');
     input18.setAttribute('name', 'isDualState');
-    input18.setAttribute('class', 'form-control');
+    input18.setAttribute('class', 'form-control box');
     input18.setAttribute('id', 'input18');
 
     var label18 = document.createElement('label');
@@ -526,7 +575,7 @@ function inventoryView(Event) {
     input19.setAttribute('type', 'checkbox');
     input19.setAttribute('name', 'wineCaseSize');
     input19.setAttribute('value', 'ONE_PACK');
-    input19.setAttribute('class', 'form-control');
+    input19.setAttribute('class', 'form-control box');
     input19.setAttribute('id', 'input19');
 
     var label19 = document.createElement('label');
@@ -541,7 +590,7 @@ function inventoryView(Event) {
     input20.setAttribute('type', 'checkbox');
     input20.setAttribute('name', 'wineCaseSize');
     input20.setAttribute('value', 'THREE_PACK');
-    input20.setAttribute('class', 'form-control');
+    input20.setAttribute('class', 'form-control box');
     input20.setAttribute('id', 'input20');
 
     var label20 = document.createElement('label');
@@ -556,7 +605,7 @@ function inventoryView(Event) {
     input21.setAttribute('type', 'checkbox');
     input21.setAttribute('name', 'wineCaseSize');
     input21.setAttribute('value', 'SIX_PACK');
-    input21.setAttribute('class', 'form-control');
+    input21.setAttribute('class', 'form-control box');
     input21.setAttribute('id', 'input21');
 
     var label21 = document.createElement('label');
@@ -571,7 +620,7 @@ function inventoryView(Event) {
     input22.setAttribute('type', 'checkbox');
     input22.setAttribute('name', 'wineCaseSize');
     input22.setAttribute('value', 'NINE_PACK');
-    input22.setAttribute('class', 'form-control');
+    input22.setAttribute('class', 'form-control box');
     input22.setAttribute('id', 'input22');
 
     var label22 = document.createElement('label');
@@ -586,7 +635,7 @@ function inventoryView(Event) {
     input23.setAttribute('type', 'checkbox');
     input23.setAttribute('name', 'wineCaseSize');
     input23.setAttribute('value', 'TWELVE_PACK');
-    input23.setAttribute('class', 'form-control');
+    input23.setAttribute('class', 'form-control box');
     input23.setAttribute('id', 'input23');
 
     var label23 = document.createElement('label');
@@ -601,7 +650,7 @@ function inventoryView(Event) {
     input24.setAttribute('type', 'checkbox');
     input24.setAttribute('name', 'wineCaseSize');
     input24.setAttribute('value', 'TWENTY_FOUR_PACK');
-    input24.setAttribute('class', 'form-control');
+    input24.setAttribute('class', 'form-control box');
     input24.setAttribute('id', 'input24');
 
     var label24 = document.createElement('label');
@@ -616,7 +665,7 @@ function inventoryView(Event) {
     input25.setAttribute('type', 'checkbox');
     input25.setAttribute('name', 'wineCaseSize');
     input25.setAttribute('value', 'FIVE_SEVENTEEN_GAL_KEG');
-    input25.setAttribute('class', 'form-control');
+    input25.setAttribute('class', 'form-control box');
     input25.setAttribute('id', 'input25');
 
     var label25 = document.createElement('label');
@@ -631,7 +680,7 @@ function inventoryView(Event) {
     input26.setAttribute('type', 'checkbox');
     input26.setAttribute('name', 'wineCaseSize');
     input26.setAttribute('value', 'SEVEN_SEVEN_FIVE_GAL_KEG');
-    input26.setAttribute('class', 'form-control');
+    input26.setAttribute('class', 'form-control box');
     input26.setAttribute('id', 'input26');
 
     var label26 = document.createElement('label');
@@ -646,7 +695,7 @@ function inventoryView(Event) {
     input27.setAttribute('type', 'checkbox');
     input27.setAttribute('name', 'wineCaseSize');
     input27.setAttribute('value', 'FIFTEEN_FIVE_GAL_KEG');
-    input27.setAttribute('class', 'form-control');
+    input27.setAttribute('class', 'form-control box');
     input27.setAttribute('id', 'input27');
 
     var label27 = document.createElement('label');
@@ -661,7 +710,7 @@ function inventoryView(Event) {
     input28.setAttribute('type', 'checkbox');
     input28.setAttribute('name', 'wineCaseSize');
     input28.setAttribute('value', 'TWENTY_LITRE_KEG');
-    input28.setAttribute('class', 'form-control');
+    input28.setAttribute('class', 'form-control box');
     input28.setAttribute('id', 'input28');
 
     var label28 = document.createElement('label');
@@ -676,7 +725,7 @@ function inventoryView(Event) {
     input29.setAttribute('type', 'checkbox');
     input29.setAttribute('name', 'wineCaseSize');
     input29.setAttribute('value', 'FIFTY_LITRE_KEG');
-    input29.setAttribute('class', 'form-control');
+    input29.setAttribute('class', 'form-control box');
     input29.setAttribute('id', 'input29');
 
     var label29 = document.createElement('label');
@@ -721,19 +770,22 @@ function inventoryView(Event) {
     myForm.appendChild(theDiv27);
     myForm.appendChild(theDiv28);
     myForm.appendChild(theDiv29);
-    myForm.appendChild(wineButton);
+
+    var lastDiv = document.createElement('div');
+    lastDiv.setAttribute('class', 'col-md-2');
+    lastDiv.append(wineButton);
+
+    myForm.appendChild(lastDiv);
 
     for (var i = 0; i < 30; i++) {
         var divTarget = $('#parent' + i);
-        console.log(divTarget);
         divTarget.onmouseover = function() {
-            document.getElementById('popup' + i).style.visibility = 'visible';
+            document.getElementById('popup' + i).style.display = 'block';
         }
         divTarget.onmouseout = function() {
             document.getElementById('popup' + i).style.visibility = 'hidden';
         }
     }
 
-    myContainer.append(myForm);
-    //document.body.appendChild(myForm);
+    document.body.appendChild(myForm);
 }
