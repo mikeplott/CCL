@@ -404,3 +404,17 @@ label {
     border-style: solid;
     border-width: 0px 30px 310px 30px;
 }
+
+.createGroup {
+    margin-left: 52%;
+}
+
+#invSearch {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: -5%;
+}
+
+#searchLabel {
+
+}

@@ -1,3 +1,86 @@
+function inventoryDash(Event) {
+    event.preventDefault();
+
+    var row = $('#myContainer');
+    row.empty();
+
+    var rightDiv = $('#myButtons');
+
+    if (rightDiv != null) {
+        rightDiv.remove();
+    }
+
+    var searchForm = document.createElement('form');
+    searchForm.setAttribute('class', 'form-group');
+    searchForm.setAttribute('id', 'invSearch');
+
+    var searchBar = document.createElement('input');
+    searchBar.setAttribute('type', 'text');
+    searchBar.setAttribute('placeholder', 'Search...');
+    searchBar.setAttribute('name', 'invBar');
+    searchBar.setAttribute('id', 'invInput');
+
+    var searchLabel = document.createElement('label');
+    searchLabel.setAttribute('for', 'invInput');
+    searchLabel.setAttribute('id', 'searchLabel');
+    searchLabel.innerHTML = "Product lookup";
+
+    searchLabel.append(searchBar);
+    searchForm.append(searchLabel);
+    row.append(searchForm);
+
+    var createLabel = document.createElement('label');
+    createLabel.setAttribute('class', 'btn btn-primary selector');
+    createLabel.innerHTML = "Inventory Creation";
+
+    var createBtn = document.createElement('input');
+    createBtn.setAttribute('type', 'radio');
+    createBtn.setAttribute('name', 'createBtn');
+    createBtn.setAttribute('id', 'option4');
+    createBtn.setAttribute('autocomplete', 'off');
+    createBtn.setAttribute('onclick', 'inventoryView(event)');
+
+    var searchTitle = document.createElement('label');
+    searchTitle.setAttribute('class', 'btn btn-primary selector');
+    searchTitle.innerHTML = "Inventory Search";
+
+    var searchBtn = document.createElement('input');
+    searchBtn.setAttribute('type', 'radio');
+    searchBtn.setAttribute('name', 'searchBtn');
+    searchBtn.setAttribute('id', 'option5');
+    searchBtn.setAttribute('autocomplete', 'off');
+    searchBtn.setAttribute('checked', 'true');
+
+    var deleteBtn = document.createElement('input');
+    deleteBtn.setAttribute('type', 'radio');
+    deleteBtn.setAttribute('name', 'deleteBtn');
+    deleteBtn.setAttribute('id', 'option6');
+    deleteBtn.setAttribute('autocomplete', 'off');
+
+    var deleteLabel = document.createElement('label');
+    deleteLabel.setAttribute('class', 'btn btn-primary selector');
+    deleteLabel.innerHTML = "Inventory Deletion";
+
+    var zeContainer = $('#zeNav');
+
+    var newDiv = document.createElement('div');
+    newDiv.setAttribute('class', 'col-md-6 btn-group');
+    newDiv.setAttribute('data-toggle', 'buttons');
+    newDiv.setAttribute('id', 'myButtons');
+
+    searchTitle.append(searchBtn);
+    createLabel.append(createBtn);
+    deleteLabel.append(deleteBtn);
+
+
+
+    newDiv.append(createLabel);
+    newDiv.append(searchTitle);
+    newDiv.append(deleteLabel);
+
+    zeContainer.append(newDiv);
+}
+
 function inventoryView(Event) {
     event.preventDefault();
     var row = $('#myContainer');
@@ -5,9 +88,9 @@ function inventoryView(Event) {
 
     var theNewDiv = $('#zeNav');
 
-    var newDiv = document.createElement('div');
-    newDiv.setAttribute('class', 'col-md-6 btn-group');
-    newDiv.setAttribute('data-toggle', 'buttons');
+    var newDiv = $('#myButtons');
+
+    newDiv.empty();
 
     var dynNav = $('#theNav');
 
@@ -41,13 +124,28 @@ function inventoryView(Event) {
     liquorBtn.setAttribute('id', 'option3');
     liquorBtn.setAttribute('autocomplete', 'off');
 
+    var backLabel = document.createElement('label');
+    backLabel.setAttribute('class', 'btn btn-primary selector');
+    backLabel.innerHTML = "Inventory Search";
+
+    var backBtn = document.createElement('input');
+    backBtn.setAttribute('type', 'radio');
+    backBtn.setAttribute('name', 'options');
+    backBtn.setAttribute('id', 'option7');
+    backBtn.setAttribute('autocomplete', 'off');
+    backBtn.setAttribute('onclick', 'inventoryDash(event)');
+
     wineLabel.append(wineBtn);
     beerLabel.append(beerBtn);
     liquorLabel.append(liquorBtn);
+    backLabel.append(backBtn);
 
+    newDiv.append(backLabel);
     newDiv.append(wineLabel);
     newDiv.append(beerLabel);
     newDiv.append(liquorLabel);
+
+    newDiv.addClass('createGroup');
 
     theNewDiv.append(newDiv);
 
@@ -787,6 +885,5 @@ function inventoryView(Event) {
         }
     }
 
-    //document.body.appendChild(myForm);
     row.append(myForm);
 }
