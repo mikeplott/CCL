@@ -6,7 +6,7 @@ function inventoryView(Event) {
     var theNewDiv = $('#zeNav');
 
     var newDiv = document.createElement('div');
-    newDiv.setAttribute('class', 'btn-group');
+    newDiv.setAttribute('class', 'col-md-6 btn-group');
     newDiv.setAttribute('data-toggle', 'buttons');
 
     var dynNav = $('#theNav');
@@ -787,5 +787,6 @@ function inventoryView(Event) {
         }
     }
 
-    document.body.appendChild(myForm);
+    //document.body.appendChild(myForm);
+    row.append(myForm);
 }

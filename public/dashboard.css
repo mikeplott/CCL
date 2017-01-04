@@ -4,10 +4,6 @@
     margin-left: 25%;
 }
 
-#myHeader {
-    margin-left: 5%;
-}
-
 #input17 {
     width: 20px;
     height: 20px;
@@ -87,14 +83,9 @@
 }
 
 label {
-    font-size: 16px;
+    font-size: 18px;
     display: block;
     text-align: center;
-}
-
-#myContainer {
-    padding-bottom: 0px;
-    padding-top: 0px;
 }
 
 .col-md-2 {
@@ -376,16 +367,40 @@ label {
 }
 
 #theWineForm {
-    padding-top: 50px;
+    padding-top: 5px;
     width: 100%;
 }
 
 .btn-group {
-    display: block;
-    padding-top: 40px;
+    margin-left: 63.0%;
+    margin-top: -2.6%;
 }
 
 .selector {
-    width: 150px;
-    height: 40px;
+    width: 175px;
+    height: 35px;
+}
+
+#myHeader {
+    width: 100%;
+    margin: 0;
+    padding-left: 20px;
+    border-style: solid;
+    border-width: 0px 0px 5px 0px;
+}
+
+#zeNav {
+    padding-top: 65px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+    border-style: solid;
+    border-width: 0px 30px 0px 30px;
+}
+
+#myContainer {
+    padding-top: 65px;
+    padding-bottom: 40px;
+    border-style: solid;
+    border-width: 0px 30px 310px 30px;
 }
