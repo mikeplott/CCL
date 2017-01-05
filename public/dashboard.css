@@ -82,6 +82,18 @@
     margin-left: 46%;
 }
 
+#input30 {
+    width: 20px;
+    height: 20px;
+    margin-left: 46%;
+}
+
+#input31 {
+    width: 20px;
+    height: 20px;
+    margin-left: 46%;
+}
+
 label {
     font-size: 18px;
     display: block;
@@ -410,11 +422,25 @@ label {
 }
 
 #invSearch {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 83px;
+    padding-bottom: 150px;
     margin-left: -5%;
 }
 
 #searchLabel {
 
+}
+
+img {
+    cursor: pointer;
+}
+
+#wineHeader {
+    margin-left: 38%;
+    padding-bottom: 50px;
+}
+
+#beerHeader {
+    margin-left: 38%;
+    padding-bottom: 50px;
 }

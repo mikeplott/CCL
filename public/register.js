@@ -14,7 +14,6 @@ $(document).ready(function() {
             email:uEmail
             }),
           success: function(data){
-            alert('You will be redirected to the homepage to login.');
             window.location.href="/index.html";
           },
           error: function() {

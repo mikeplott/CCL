@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "liquours")
 public class Liquor {
 
-    private enum liquourCaseSize{
+    private enum caseSize{
         ONE_PACK,
         THREE_PACK,
         SIX_PACK,
@@ -46,7 +46,7 @@ public class Liquor {
     private String origin;
 
     @Column(nullable = false)
-    private int volume;
+    private String volume;
 
     @Column(nullable = false)
     private double frontPrice;
@@ -61,10 +61,10 @@ public class Liquor {
     private double cost;
 
     @Column(nullable = false)
-    private int bottleWeight;
+    private double bottleWeight;
 
     @Column(nullable = false)
-    private int caseWeight;
+    private double caseWeight;
 
     @Column(nullable = false)
     private int quantity;
@@ -76,14 +76,15 @@ public class Liquor {
     private boolean isDualState;
 
     @Column(nullable = false)
-    private liquourCaseSize liquourCaseSize;
+    private caseSize caseSize;
 
     public Liquor() {
     }
 
     public Liquor(String liquorType, String distillery, String name, String description, String itemCode, String origin,
-                  int volume, double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, int bottleWeight,
-                  int caseWeight, int quantity, boolean isExclusive, boolean isDualState, Liquor.liquourCaseSize liquourCaseSize) {
+                  String volume, double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost,
+                  double bottleWeight, double caseWeight, int quantity, boolean isExclusive, boolean isDualState,
+                  Liquor.caseSize caseSize) {
         this.liquorType = liquorType;
         this.distillery = distillery;
         this.name = name;
@@ -100,7 +101,7 @@ public class Liquor {
         this.quantity = quantity;
         this.isExclusive = isExclusive;
         this.isDualState = isDualState;
-        this.liquourCaseSize = liquourCaseSize;
+        this.caseSize = caseSize;
     }
 
     public int getId() {
@@ -159,11 +160,11 @@ public class Liquor {
         this.origin = origin;
     }
 
-    public int getVolume() {
+    public String getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(String volume) {
         this.volume = volume;
     }
 
@@ -199,19 +200,19 @@ public class Liquor {
         this.cost = cost;
     }
 
-    public int getBottleWeight() {
+    public double getBottleWeight() {
         return bottleWeight;
     }
 
-    public void setBottleWeight(int bottleWeight) {
+    public void setBottleWeight(double bottleWeight) {
         this.bottleWeight = bottleWeight;
     }
 
-    public int getCaseWeight() {
+    public double getCaseWeight() {
         return caseWeight;
     }
 
-    public void setCaseWeight(int caseWeight) {
+    public void setCaseWeight(double caseWeight) {
         this.caseWeight = caseWeight;
     }
 
@@ -239,11 +240,11 @@ public class Liquor {
         isDualState = dualState;
     }
 
-    public Liquor.liquourCaseSize getLiquourCaseSize() {
-        return liquourCaseSize;
+    public Liquor.caseSize getcaseSize() {
+        return caseSize;
     }
 
-    public void setLiquourCaseSize(Liquor.liquourCaseSize liquourCaseSize) {
-        this.liquourCaseSize = liquourCaseSize;
+    public void setcaseSize(Liquor.caseSize caseSize) {
+        this.caseSize = caseSize;
     }
 }

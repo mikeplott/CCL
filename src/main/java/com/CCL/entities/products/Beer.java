@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Table(name = "beers")
 public class Beer {
 
-    private enum beerCaseSize{
+    private enum caseSize{
         ONE_PACK,
         THREE_PACK,
         SIX_PACK,
@@ -59,7 +59,7 @@ public class Beer {
     private String origin;
 
     @Column(nullable = false)
-    private int volume;
+    private String volume;
 
     @Column(nullable = false)
     private double frontPrice;
@@ -74,10 +74,10 @@ public class Beer {
     private double cost;
 
     @Column(nullable = false)
-    private int bottleWeight;
+    private double bottleWeight;
 
     @Column(nullable = false)
-    private int caseWeight;
+    private double caseWeight;
 
     @Column(nullable = false)
     private int quantity;
@@ -89,15 +89,15 @@ public class Beer {
     private boolean isDualState;
 
     @Column(nullable = false)
-    private beerCaseSize beerCaseSize;
+    private caseSize caseSize;
 
     public Beer() {
     }
 
     public Beer(Timestamp lotDate, Timestamp expirationDate, String beerType, String brewery, boolean isDomestic,
-                boolean isSeasonal, String name, String description, String itemCode, String origin, int volume,
-                double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, int bottleWeight,
-                int caseWeight, int quantity, boolean isExclusive, boolean isDualState, Beer.beerCaseSize beerCaseSize) {
+                boolean isSeasonal, String name, String description, String itemCode, String origin, String volume,
+                double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight,
+                double caseWeight, int quantity, boolean isExclusive, boolean isDualState, Beer.caseSize caseSize) {
         this.lotDate = lotDate;
         this.expirationDate = expirationDate;
         this.beerType = beerType;
@@ -118,7 +118,7 @@ public class Beer {
         this.quantity = quantity;
         this.isExclusive = isExclusive;
         this.isDualState = isDualState;
-        this.beerCaseSize = beerCaseSize;
+        this.caseSize = caseSize;
     }
 
     public int getId() {
@@ -209,11 +209,11 @@ public class Beer {
         this.origin = origin;
     }
 
-    public int getVolume() {
+    public String getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(String volume) {
         this.volume = volume;
     }
 
@@ -249,19 +249,19 @@ public class Beer {
         this.cost = cost;
     }
 
-    public int getBottleWeight() {
+    public double getBottleWeight() {
         return bottleWeight;
     }
 
-    public void setBottleWeight(int bottleWeight) {
+    public void setBottleWeight(double bottleWeight) {
         this.bottleWeight = bottleWeight;
     }
 
-    public int getCaseWeight() {
+    public double getCaseWeight() {
         return caseWeight;
     }
 
-    public void setCaseWeight(int caseWeight) {
+    public void setCaseWeight(double caseWeight) {
         this.caseWeight = caseWeight;
     }
 
@@ -289,11 +289,11 @@ public class Beer {
         isDualState = dualState;
     }
 
-    public Beer.beerCaseSize getBeerCaseSize() {
-        return beerCaseSize;
+    public Beer.caseSize getBeerCaseSize() {
+        return caseSize;
     }
 
-    public void setBeerCaseSize(Beer.beerCaseSize beerCaseSize) {
-        this.beerCaseSize = beerCaseSize;
+    public void setBeerCaseSize(Beer.caseSize beerCaseSize) {
+        this.caseSize = caseSize;
     }
 }

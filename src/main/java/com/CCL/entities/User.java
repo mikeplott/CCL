@@ -6,6 +6,7 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.persistence.*;
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Properties;
@@ -117,9 +118,20 @@ public class User {
         if (!PasswordStorage.verifyPassword(user.getPassword(), userFromDB.getPassword())) {
             return false;
         }
+        if (userFromDB.isValid == false) {
+            return false;
+        }
         else {
             return true;
         }
+    }
+
+    public static boolean isLoggedIn(HttpSession session, User user) throws PasswordStorage.CannotPerformOperationException {
+        String uName = (String) session.getAttribute("userName");
+        if (isValidUser(user) != null && uName != null) {
+            return true;
+        }
+        return false;
     }
 
     public static User isValidUser(User user) throws PasswordStorage.CannotPerformOperationException {

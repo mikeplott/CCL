@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "wines")
 public class Wine {
 
-    public enum wineCaseSize{
+    public enum caseSize{
         ONE_PACK,
         THREE_PACK,
         SIX_PACK,
@@ -52,7 +52,7 @@ public class Wine {
     private String origin;
 
     @Column(nullable = false)
-    private int volume;
+    private String volume;
 
     @Column(nullable = false)
     private double frontPrice;
@@ -67,10 +67,10 @@ public class Wine {
     private double cost;
 
     @Column(nullable = false)
-    private int bottleWeight;
+    private double bottleWeight;
 
     @Column(nullable = false)
-    private int caseWeight;
+    private double caseWeight;
 
     @Column(nullable = false)
     private int quantity;
@@ -82,15 +82,15 @@ public class Wine {
     private boolean isDualState;
 
     @Column(nullable = false)
-    private wineCaseSize wineCaseSize;
+    private caseSize caseSize;
 
     public Wine() {
     }
 
     public Wine(int vintage, String varietal, String color, String importer, String name, String description,
-                String itemCode, String origin, int volume, double frontPrice, double tenCasePrice,
-                double twentyFiveCasePrice, double cost, int bottleWeight, int caseWeight, int quantity,
-                boolean isExclusive, boolean isDualState, Wine.wineCaseSize wineCaseSize) {
+                String itemCode, String origin, String volume, double frontPrice, double tenCasePrice,
+                double twentyFiveCasePrice, double cost, double bottleWeight, double caseWeight, int quantity,
+                boolean isExclusive, boolean isDualState, Wine.caseSize caseSize) {
         this.vintage = vintage;
         this.varietal = varietal;
         this.color = color;
@@ -109,7 +109,7 @@ public class Wine {
         this.quantity = quantity;
         this.isExclusive = isExclusive;
         this.isDualState = isDualState;
-        this.wineCaseSize = wineCaseSize;
+        this.caseSize = caseSize;
     }
 
     public int getId() {
@@ -184,11 +184,11 @@ public class Wine {
         this.origin = origin;
     }
 
-    public int getVolume() {
+    public String getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(String volume) {
         this.volume = volume;
     }
 
@@ -224,19 +224,19 @@ public class Wine {
         this.cost = cost;
     }
 
-    public int getBottleWeight() {
+    public double getBottleWeight() {
         return bottleWeight;
     }
 
-    public void setBottleWeight(int bottleWeight) {
+    public void setBottleWeight(double bottleWeight) {
         this.bottleWeight = bottleWeight;
     }
 
-    public int getCaseWeight() {
+    public double getCaseWeight() {
         return caseWeight;
     }
 
-    public void setCaseWeight(int caseWeight) {
+    public void setCaseWeight(double caseWeight) {
         this.caseWeight = caseWeight;
     }
 
@@ -264,11 +264,11 @@ public class Wine {
         isDualState = dualState;
     }
 
-    public Wine.wineCaseSize getWineCaseSize() {
-        return wineCaseSize;
+    public Wine.caseSize getcaseSize() {
+        return caseSize;
     }
 
-    public void setWineCaseSize(Wine.wineCaseSize wineCaseSize) {
-        this.wineCaseSize = wineCaseSize;
+    public void setcaseSize(Wine.caseSize caseSize) {
+        this.caseSize = caseSize;
     }
 }
