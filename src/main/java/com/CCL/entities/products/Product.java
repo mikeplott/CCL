@@ -10,23 +10,18 @@ import java.sql.Timestamp;
 @Table(name = "products")
 public class Product {
 
-    public enum caseSize {
-        ONE_PACK,
-        THREE_PACK,
-        SIX_PACK,
-        NINE_PACK,
-        TWELVE_PACK,
-        TWENTY_FOUR_PACK,
-        FIVE_SEVENTEEN_GAL_KEG,
-        SEVEN_SEVEN_FIVE_GAL_KEG,
-        FIFTEEN_FIVE_GAL_KEG,
-        TWENTY_LITRE_KEG,
-        FIFTY_LITRE_KEG;
-    }
-
     @Id
     @GeneratedValue
     int id;
+
+    @Column()
+    private int wineID;
+
+    @Column()
+    private int beerID;
+
+    @Column()
+    private int liquorID;
 
     @Column()
     private String name;
@@ -71,9 +66,6 @@ public class Product {
     private boolean isDualState;
 
     @Column()
-    private static caseSize caseSize;
-
-    @Column()
     private int vintage;
 
     @Column()
@@ -109,15 +101,23 @@ public class Product {
     @Column()
     private String distillery;
 
+    @Column()
+    private Wine.caseSize wineCaseSize;
+
+    @Column()
+    private Beer.caseSize beerCaseSize;
+
+    @Column()
+    private Liquor.caseSize liquorCaseSize;
+
     public Product() {
     }
 
-    public Product(String name, String description, String itemCode, String origin, String volume, double frontPrice,
-                   double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight, double caseWeight,
-                   int quantity, boolean isExclusive, boolean isDualState, Product.caseSize caseSize, int vintage,
-                   String varietal, String color, String importer, Timestamp lotDate, Timestamp expirationDate,
-                   String beerType, String brewery, boolean isDomestic, boolean isSeasonal, String liquorType,
-                   String distillery) {
+    public Product(int wineID, String name, String description, String itemCode, String origin, String volume,
+                   double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight,
+                   double caseWeight, int quantity, boolean isExclusive, boolean isDualState, int vintage, String varietal,
+                   String color, String importer, Wine.caseSize caseSize) {
+        this.wineID = wineID;
         this.name = name;
         this.description = description;
         this.itemCode = itemCode;
@@ -132,96 +132,64 @@ public class Product {
         this.quantity = quantity;
         this.isExclusive = isExclusive;
         this.isDualState = isDualState;
-        this.caseSize = caseSize;
         this.vintage = vintage;
         this.varietal = varietal;
         this.color = color;
         this.importer = importer;
+        this.wineCaseSize = caseSize;
+    }
+
+    public Product(int beerID, String name, String description, String itemCode, String origin, String volume,
+                   double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight,
+                   double caseWeight, int quantity, boolean isExclusive, boolean isDualState, Timestamp lotDate,
+                   Timestamp expirationDate, String beerType, String brewery, boolean isDomestic, boolean isSeasonal,
+                   Beer.caseSize caseSize) {
+        this.beerID = beerID;
+        this.name = name;
+        this.description = description;
+        this.itemCode = itemCode;
+        this.origin = origin;
+        this.volume = volume;
+        this.frontPrice = frontPrice;
+        this.tenCasePrice = tenCasePrice;
+        this.twentyFiveCasePrice = twentyFiveCasePrice;
+        this.cost = cost;
+        this.bottleWeight = bottleWeight;
+        this.caseWeight = caseWeight;
+        this.quantity = quantity;
+        this.isExclusive = isExclusive;
+        this.isDualState = isDualState;
         this.lotDate = lotDate;
         this.expirationDate = expirationDate;
         this.beerType = beerType;
         this.brewery = brewery;
         this.isDomestic = isDomestic;
         this.isSeasonal = isSeasonal;
+        this.beerCaseSize = caseSize;
+    }
+
+    public Product(int liquorID, String name, String description, String itemCode, String origin, String volume,
+                   double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight,
+                   double caseWeight, int quantity, boolean isExclusive, boolean isDualState, String liquorType,
+                   String distillery, Liquor.caseSize caseSize) {
+        this.liquorID = liquorID;
+        this.name = name;
+        this.description = description;
+        this.itemCode = itemCode;
+        this.origin = origin;
+        this.volume = volume;
+        this.frontPrice = frontPrice;
+        this.tenCasePrice = tenCasePrice;
+        this.twentyFiveCasePrice = twentyFiveCasePrice;
+        this.cost = cost;
+        this.bottleWeight = bottleWeight;
+        this.caseWeight = caseWeight;
+        this.quantity = quantity;
+        this.isExclusive = isExclusive;
+        this.isDualState = isDualState;
         this.liquorType = liquorType;
         this.distillery = distillery;
-    }
-
-    public Product(String name, String description, String itemCode, String origin, String volume, double frontPrice,
-                   double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight, double caseWeight,
-                   int quantity, boolean isExclusive, boolean isDualState, Product.caseSize caseSize, int vintage,
-                   String varietal, String color, String importer) {
-        this.name = name;
-        this.description = description;
-        this.itemCode = itemCode;
-        this.origin = origin;
-        this.volume = volume;
-        this.frontPrice = frontPrice;
-        this.tenCasePrice = tenCasePrice;
-        this.twentyFiveCasePrice = twentyFiveCasePrice;
-        this.cost = cost;
-        this.bottleWeight = bottleWeight;
-        this.caseWeight = caseWeight;
-        this.quantity = quantity;
-        this.isExclusive = isExclusive;
-        this.isDualState = isDualState;
-        this.caseSize = caseSize;
-        this.vintage = vintage;
-        this.varietal = varietal;
-        this.color = color;
-        this.importer = importer;
-    }
-
-    public Product(int id, String name, String description, String itemCode, String origin, String volume, double frontPrice,
-                   double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight, double caseWeight,
-                   int quantity, boolean isExclusive, boolean isDualState, Product.caseSize caseSize, Timestamp lotDate,
-                   Timestamp expirationDate, String beerType, String brewery, boolean isDomestic, boolean isSeasonal) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.itemCode = itemCode;
-        this.origin = origin;
-        this.volume = volume;
-        this.frontPrice = frontPrice;
-        this.tenCasePrice = tenCasePrice;
-        this.twentyFiveCasePrice = twentyFiveCasePrice;
-        this.cost = cost;
-        this.bottleWeight = bottleWeight;
-        this.caseWeight = caseWeight;
-        this.quantity = quantity;
-        this.isExclusive = isExclusive;
-        this.isDualState = isDualState;
-        this.caseSize = caseSize;
-        this.lotDate = lotDate;
-        this.expirationDate = expirationDate;
-        this.beerType = beerType;
-        this.brewery = brewery;
-        this.isDomestic = isDomestic;
-        this.isSeasonal = isSeasonal;
-    }
-
-    public Product(int id, String name, String description, String itemCode, String origin, String volume, double frontPrice,
-                   double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight, double caseWeight,
-                   int quantity, boolean isExclusive, boolean isDualState, Product.caseSize caseSize, String liquorType,
-                   String distillery) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.itemCode = itemCode;
-        this.origin = origin;
-        this.volume = volume;
-        this.frontPrice = frontPrice;
-        this.tenCasePrice = tenCasePrice;
-        this.twentyFiveCasePrice = twentyFiveCasePrice;
-        this.cost = cost;
-        this.bottleWeight = bottleWeight;
-        this.caseWeight = caseWeight;
-        this.quantity = quantity;
-        this.isExclusive = isExclusive;
-        this.isDualState = isDualState;
-        this.caseSize = caseSize;
-        this.liquorType = liquorType;
-        this.distillery = distillery;
+        this.liquorCaseSize = caseSize;
     }
 
     public int getId() {
@@ -230,6 +198,30 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getWineID() {
+        return wineID;
+    }
+
+    public void setWineID(int wineID) {
+        this.wineID = wineID;
+    }
+
+    public int getBeerID() {
+        return beerID;
+    }
+
+    public void setBeerID(int beerID) {
+        this.beerID = beerID;
+    }
+
+    public int getLiquorID() {
+        return liquorID;
+    }
+
+    public void setLiquorID(int liquorID) {
+        this.liquorID = liquorID;
     }
 
     public String getName() {
@@ -344,14 +336,6 @@ public class Product {
         isDualState = dualState;
     }
 
-    public Product.caseSize getCaseSize() {
-        return caseSize;
-    }
-
-    public void setCaseSize(Product.caseSize caseSize) {
-        this.caseSize = caseSize;
-    }
-
     public int getVintage() {
         return vintage;
     }
@@ -448,66 +432,55 @@ public class Product {
         this.distillery = distillery;
     }
 
-    public static Product createWineProduct(Wine wine) {
-        Product product = new Product(wine.getName(), wine.getDescription(), wine.getItemCode(), wine.getOrigin(), wine.getVolume(),
-                wine.getFrontPrice(), wine.getTenCasePrice(), wine.getTwentyFiveCasePrice(), wine.getCost(), wine.getBottleWeight(),
-                wine.getCaseWeight(), wine.getQuantity(), wine.isExclusive(), wine.isDualState(), null, wine.getVintage(),
-                wine.getVarietal(), wine.getColor(), wine.getImporter());
+    public Wine.caseSize getWineCaseSize() {
+        return wineCaseSize;
+    }
 
-        int enumValues = Wine.caseSize.values().length;
-        int theNum = wine.getcaseSize().ordinal();
-        product = findCaseSize(enumValues, theNum, product);
-        //ProductsController.products.save(product);
+    public void setWineCaseSize(Wine.caseSize wineCaseSize) {
+        this.wineCaseSize = wineCaseSize;
+    }
+
+    public Beer.caseSize getBeerCaseSize() {
+        return beerCaseSize;
+    }
+
+    public void setBeerCaseSize(Beer.caseSize beerCaseSize) {
+        this.beerCaseSize = beerCaseSize;
+    }
+
+    public Liquor.caseSize getLiquorCaseSize() {
+        return liquorCaseSize;
+    }
+
+    public void setLiquorCaseSize(Liquor.caseSize liquorCaseSize) {
+        this.liquorCaseSize = liquorCaseSize;
+    }
+
+    public static Product createWineProduct(Wine wine) {
+        Product product = new Product(wine.getId(), wine.getName(), wine.getDescription(), wine.getItemCode(), wine.getOrigin(),
+                wine.getVolume(), wine.getFrontPrice(), wine.getTenCasePrice(), wine.getTwentyFiveCasePrice(), wine.getCost(),
+                wine.getBottleWeight(), wine.getCaseWeight(), wine.getQuantity(), wine.isExclusive(), wine.isDualState(),
+                wine.getVintage(), wine.getVarietal(), wine.getColor(), wine.getImporter(), wine.getcaseSize());
+
         return product;
     }
 
-    public static Product findCaseSize(int enumValues, int theNum, Product product) {
-        for (int i = 0; i < enumValues + 1; i++) {
-            if (theNum == 0) {
-                product.setCaseSize(Product.caseSize.ONE_PACK);
-                return product;
-            }
-            if (theNum == 1) {
-                product.setCaseSize(Product.caseSize.THREE_PACK);
-                return product;
-            }
-            if (theNum == 2) {
-                product.setCaseSize(Product.caseSize.SIX_PACK);
-                return product;
-            }
-            if (theNum == 3) {
-                product.setCaseSize(Product.caseSize.NINE_PACK);
-                return product;
-            }
-            if (theNum == 4) {
-                product.setCaseSize(Product.caseSize.TWELVE_PACK);
-                return product;
-            }
-            if (theNum == 5) {
-                product.setCaseSize(Product.caseSize.TWENTY_FOUR_PACK);
-                return product;
-            }
-            if (theNum == 6) {
-                product.setCaseSize(Product.caseSize.FIVE_SEVENTEEN_GAL_KEG);
-                return product;
-            }
-            if (theNum == 7) {
-                product.setCaseSize(Product.caseSize.SEVEN_SEVEN_FIVE_GAL_KEG);
-                return product;
-            }
-            if (theNum == 8) {
-                product.setCaseSize(Product.caseSize.FIFTEEN_FIVE_GAL_KEG);
-                return product;
-            }
-            if (theNum == 9) {
-                product.setCaseSize(Product.caseSize.TWENTY_LITRE_KEG);
-                return product;
-            }
-            if (theNum == 10) {
-                product.setCaseSize(Product.caseSize.FIFTY_LITRE_KEG);
-                return product;
-            }
-        }
+    public static Product createBeerProduct(Beer beer) {
+        Product product = new Product(beer.getId(), beer.getName(), beer.getDescription(), beer.getItemCode(), beer.getOrigin(),
+                beer.getVolume(), beer.getFrontPrice(), beer.getTenCasePrice(), beer.getTwentyFiveCasePrice(), beer.getCost(),
+                beer.getBottleWeight(), beer.getCaseWeight(), beer.getQuantity(), beer.isExclusive(), beer.isDualState(),
+                beer.getLotDate(), beer.getExpirationDate(), beer.getBeerType(), beer.getBrewery(), beer.isDomestic(),
+                beer.isSeasonal(), beer.getCaseSize());
+
+        return product;
+    }
+
+    public static Product createLiquorProduct(Liquor liquor) {
+        Product product = new Product(liquor.getId(), liquor.getName(), liquor.getDescription(), liquor.getItemCode(),
+                liquor.getOrigin(), liquor.getVolume(), liquor.getFrontPrice(), liquor.getTenCasePrice(), liquor.getTwentyFiveCasePrice(),
+                liquor.getCost(), liquor.getBottleWeight(), liquor.getCaseWeight(), liquor.getQuantity(), liquor.isExclusive(),
+                liquor.isDualState(), liquor.getLiquorType(), liquor.getDistillery(), liquor.getcaseSize());
+
         return product;
     }
 }

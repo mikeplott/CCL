@@ -58,6 +58,8 @@ public class ProductsController {
             return new ResponseEntity<Beer>(HttpStatus.FORBIDDEN);
         }
         beers.save(beer);
+        Product product = Product.createBeerProduct(beer);
+        products.save(product);
         return new ResponseEntity<Beer>(HttpStatus.OK);
     }
 
@@ -69,8 +71,8 @@ public class ProductsController {
             return new ResponseEntity<Liquor>(HttpStatus.FORBIDDEN);
         }
         liquors.save(liquor);
-        //Product product = Product.createWineProduct(wine);
-        //products.save(product);
+        Product product = Product.createLiquorProduct(liquor);
+        products.save(product);
         return new ResponseEntity<Liquor>(liquor, HttpStatus.OK);
     }
 }

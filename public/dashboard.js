@@ -15,6 +15,9 @@ function inventoryDash(Event) {
         rightDiv.remove();
     }
 
+    var myHeader = document.getElementById('myHeader');
+    myHeader.innerHTML = "Inventory Search";
+
     var searchForm = document.createElement('form');
     searchForm.setAttribute('class', 'form-group');
     searchForm.setAttribute('id', 'invSearch');
