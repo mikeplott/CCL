@@ -2,11 +2,10 @@ package com.CCL.controllers;
 
 import com.CCL.entities.User;
 import com.CCL.entities.products.Beer;
+import com.CCL.entities.products.Liquor;
+import com.CCL.entities.products.Product;
 import com.CCL.entities.products.Wine;
-import com.CCL.services.BeerRepo;
-import com.CCL.services.LiquorRepo;
-import com.CCL.services.UserRepo;
-import com.CCL.services.WineRepo;
+import com.CCL.services.*;
 import com.CCL.utlities.PasswordStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +29,9 @@ public class ProductsController {
     LiquorRepo liquors;
 
     @Autowired
+    ProductRepo products;
+
+    @Autowired
     UserRepo users;
 
     @Autowired
@@ -43,6 +45,8 @@ public class ProductsController {
             return new ResponseEntity<Wine>(HttpStatus.FORBIDDEN);
         }
         wines.save(wine);
+        Product product =  Product.createWineProduct(wine);
+        products.save(product);
         return new ResponseEntity<Wine>(wine, HttpStatus.OK);
     }
 
@@ -55,5 +59,18 @@ public class ProductsController {
         }
         beers.save(beer);
         return new ResponseEntity<Beer>(HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/create-liquor", method = RequestMethod.POST)
+    public ResponseEntity<Liquor> createLiquor(HttpSession session, @RequestBody Liquor liquor) throws PasswordStorage.CannotPerformOperationException {
+        String userName = (String) session.getAttribute("userName");
+        User user = users.findByUserName(userName);
+        if (!User.isLoggedIn(session, user)) {
+            return new ResponseEntity<Liquor>(HttpStatus.FORBIDDEN);
+        }
+        liquors.save(liquor);
+        //Product product = Product.createWineProduct(wine);
+        //products.save(product);
+        return new ResponseEntity<Liquor>(liquor, HttpStatus.OK);
     }
 }

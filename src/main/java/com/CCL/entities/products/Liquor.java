@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "liquours")
 public class Liquor {
 
-    private enum caseSize{
+    public enum caseSize{
         ONE_PACK,
         THREE_PACK,
         SIX_PACK,

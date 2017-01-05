@@ -108,27 +108,27 @@ public class User {
         isValid = valid;
     }
 
-    public static boolean userValidation(User user, User userFromDB) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
+    public static boolean userValidation(User user, User userFromDB, HttpSession session) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
         if (user.getUserName() == null || user.getPassword() == null) {
             return false;
         }
-        if (userFromDB == null) {
+        else if (userFromDB == null) {
             return false;
         }
-        if (!PasswordStorage.verifyPassword(user.getPassword(), userFromDB.getPassword())) {
+        else if (!PasswordStorage.verifyPassword(user.getPassword(), userFromDB.getPassword())) {
             return false;
         }
-        if (userFromDB.isValid == false) {
+        else if (!userFromDB.isValid) {
             return false;
         }
         else {
+            session.setAttribute("userName", user.getUserName());
             return true;
         }
     }
 
     public static boolean isLoggedIn(HttpSession session, User user) throws PasswordStorage.CannotPerformOperationException {
-        String uName = (String) session.getAttribute("userName");
-        if (isValidUser(user) != null && uName != null) {
+        if (user != null && user.isValid == true && session != null) {
             return true;
         }
         return false;

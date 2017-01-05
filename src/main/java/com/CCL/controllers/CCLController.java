@@ -1,6 +1,7 @@
 package com.CCL.controllers;
 
 import com.CCL.entities.User;
+import com.CCL.entities.products.Product;
 import com.CCL.entities.products.Wine;
 import com.CCL.services.*;
 import com.CCL.utlities.PasswordStorage;
@@ -68,8 +69,7 @@ public class CCLController {
             Wine wine = new Wine(2017, "Picpoul Blanc", "White", "Kysela Pere et Fils",
                     "Hughes Picpoul", "Picpoul", "kys-643", "France", 750 + "",
                     9.99, 8.99, 7.99, 5.99, 3, 36,
-                    12000, false, true, Wine.wineCaseSize.TWELVE_PACK);
-
+                    12000, false, true, Wine.caseSize.TWELVE_PACK);
             wines.save(wine);
         }
     }
@@ -82,9 +82,10 @@ public class CCLController {
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public ResponseEntity<User> userLogin(HttpSession session, @RequestBody User user) throws PasswordStorage.CannotPerformOperationException, PasswordStorage.InvalidHashException {
         User userFromDB = users.findByUserName(user.getUserName());
-        if (User.userValidation(user, userFromDB)) {
-            session.setAttribute("userName", user.getUserName());
-            return new ResponseEntity<User>(userFromDB, HttpStatus.OK);
+        System.out.println(user);
+        if (User.userValidation(user, userFromDB, session)) {
+//            session.setAttribute("userName", user.getUserName());
+            return new ResponseEntity<User>(user, HttpStatus.OK);
         }
         else {
             return new ResponseEntity<User>(HttpStatus.FORBIDDEN);

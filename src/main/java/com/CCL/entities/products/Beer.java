@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Table(name = "beers")
 public class Beer {
 
-    private enum caseSize{
+    public enum caseSize{
         ONE_PACK,
         THREE_PACK,
         SIX_PACK,
@@ -289,11 +289,11 @@ public class Beer {
         isDualState = dualState;
     }
 
-    public Beer.caseSize getBeerCaseSize() {
+    public Beer.caseSize getCaseSize() {
         return caseSize;
     }
 
-    public void setBeerCaseSize(Beer.caseSize beerCaseSize) {
+    public void setCaseSize(Beer.caseSize caseSize) {
         this.caseSize = caseSize;
     }
 }
