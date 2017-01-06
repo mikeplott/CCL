@@ -104,6 +104,30 @@ public class Liquor {
         this.caseSize = caseSize;
     }
 
+    public Liquor(int id, String liquorType, String distillery, String name, String description, String itemCode,
+                  String origin, String volume, double frontPrice, double tenCasePrice, double twentyFiveCasePrice,
+                  double cost, double bottleWeight, double caseWeight, int quantity, boolean isExclusive, boolean isDualState,
+                  Liquor.caseSize caseSize) {
+        this.id = id;
+        this.liquorType = liquorType;
+        this.distillery = distillery;
+        this.name = name;
+        this.description = description;
+        this.itemCode = itemCode;
+        this.origin = origin;
+        this.volume = volume;
+        this.frontPrice = frontPrice;
+        this.tenCasePrice = tenCasePrice;
+        this.twentyFiveCasePrice = twentyFiveCasePrice;
+        this.cost = cost;
+        this.bottleWeight = bottleWeight;
+        this.caseWeight = caseWeight;
+        this.quantity = quantity;
+        this.isExclusive = isExclusive;
+        this.isDualState = isDualState;
+        this.caseSize = caseSize;
+    }
+
     public int getId() {
         return id;
     }

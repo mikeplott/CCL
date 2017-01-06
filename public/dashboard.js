@@ -2886,9 +2886,6 @@ function inventoryDeletion(event) {
     myForm.append(theDiv1);
     myForm.append(theDiv2);
     myForm.append(theDiv3);
-    //myForm.append(theDiv4);
-    //myForm.append(theDiv6);
-    //'productType': pType
     myForm.append(theDiv5);
 
     row.append(myForm);
@@ -2901,16 +2898,16 @@ function productSearch(event) {
     var itemC = f.find('[name=itemCode]').val();
     var itemN = f.find('[name=itemName]').val();
     var imp = f.find('[name=importer]').val();
-    var pType = f.find('[name=productType]').val();
+    //var pType = f.find('[name=productType]').val();
 
     console.log(itemC);
     console.log(itemN);
     console.log(imp);
-    console.log(pType);
+    //console.log(pType);
 
     $.ajax({
         url: '/search-products',
-        type: 'POST',
+        type: 'GET',
         contentType: 'application/json',
         data: JSON.stringify({
             'itemCode': itemC,
@@ -2921,81 +2918,11 @@ function productSearch(event) {
             //document.getElementById('theSearchForm').reset();
             console.log(data);
             var theData = data;
-
+            searchData(data);
         }
     });
 }
 
-
-
-
-
-
-
-
-
-// var theDiv5 = document.createElement('div');
-// theDiv5.setAttribute('class', 'col-md-4');
-// theDiv5.setAttribute('id', 'parent4');
-//
-// var theDiv6 = document.createElement('div');
-// theDiv6.setAttribute('class', 'col-md-4');
-// theDiv6.setAttribute('id', 'parent5');
-//
-// var theDiv7 = document.createElement('div');
-// theDiv7.setAttribute('class', 'col-md-4');
-// theDiv7.setAttribute('id', 'parent6');
-//
-// var theDiv8 = document.createElement('div');
-// theDiv8.setAttribute('class', 'col-md-4');
-// theDiv8.setAttribute('id', 'parent7');
-//
-// var theDiv9 = document.createElement('div');
-// theDiv9.setAttribute('class', ' col-md-4');
-// theDiv9.setAttribute('id', 'parent8');
-//
-// var theDiv10 = document.createElement('div');
-// theDiv10.setAttribute('class', ' col-md-4');
-// theDiv10.setAttribute('id', 'parent9');
-
-
-
-// var input5 = document.createElement('input');
-// input5.setAttribute('type', 'text');
-// input5.setAttribute('name', 'liquorType');
-// input5.setAttribute('class', 'form-control');
-// input5.setAttribute('id', 'input5');
-//
-// var label5 = document.createElement('label');
-// label5.setAttribute('for', 'input5');
-// label5.innerHTML = "Liqour Type";
-//
-// var input1 = document.createElement('input');
-// input1.setAttribute('type', 'text');
-// input1.setAttribute('name', 'liquorType');
-// input1.setAttribute('class', 'form-control');
-// input1.setAttribute('id', 'input1');
-//
-// var label1 = document.createElement('label');
-// label1.setAttribute('for', 'input1');
-// label1.innerHTML = "Liqour Type";
-//
-// var input1 = document.createElement('input');
-// input1.setAttribute('type', 'text');
-// input1.setAttribute('name', 'liquorType');
-// input1.setAttribute('class', 'form-control');
-// input1.setAttribute('id', 'input1');
-//
-// var label1 = document.createElement('label');
-// label1.setAttribute('for', 'input1');
-// label1.innerHTML = "Liqour Type";
-//
-// var input1 = document.createElement('input');
-// input1.setAttribute('type', 'text');
-// input1.setAttribute('name', 'liquorType');
-// input1.setAttribute('class', 'form-control');
-// input1.setAttribute('id', 'input1');
-//
-// var label1 = document.createElement('label');
-// label1.setAttribute('for', 'input1');
-// label1.innerHTML = "Liqour Type";
+function searchData(data) {
+    console.log(data);
+}

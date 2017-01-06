@@ -127,8 +127,8 @@ public class User {
         }
     }
 
-    public static boolean isLoggedIn(HttpSession session, User user) throws PasswordStorage.CannotPerformOperationException {
-        if (user != null && user.isValid == true && session != null) {
+    public static boolean isLoggedIn(User user) {
+        if (user != null && user.isValid) {
             return true;
         }
         return false;

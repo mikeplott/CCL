@@ -15,13 +15,13 @@ public class Product {
     int id;
 
     @Column()
-    private int wineID;
+    private Integer wineID;
 
     @Column()
-    private int beerID;
+    private Integer beerID;
 
     @Column()
-    private int liquorID;
+    private Integer liquorID;
 
     @Column()
     private String name;
@@ -113,7 +113,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int wineID, String name, String description, String itemCode, String origin, String volume,
+    public Product(Integer wineID, String name, String description, String itemCode, String origin, String volume,
                    double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight,
                    double caseWeight, int quantity, boolean isExclusive, boolean isDualState, int vintage, String varietal,
                    String color, String importer, Wine.caseSize caseSize) {
@@ -139,7 +139,7 @@ public class Product {
         this.wineCaseSize = caseSize;
     }
 
-    public Product(int beerID, String name, String description, String itemCode, String origin, String volume,
+    public Product(Integer beerID, String name, String description, String itemCode, String origin, String volume,
                    double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight,
                    double caseWeight, int quantity, boolean isExclusive, boolean isDualState, Timestamp lotDate,
                    Timestamp expirationDate, String beerType, String brewery, boolean isDomestic, boolean isSeasonal,
@@ -168,7 +168,7 @@ public class Product {
         this.beerCaseSize = caseSize;
     }
 
-    public Product(int liquorID, String name, String description, String itemCode, String origin, String volume,
+    public Product(Integer liquorID, String name, String description, String itemCode, String origin, String volume,
                    double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight,
                    double caseWeight, int quantity, boolean isExclusive, boolean isDualState, String liquorType,
                    String distillery, Liquor.caseSize caseSize) {
@@ -200,27 +200,27 @@ public class Product {
         this.id = id;
     }
 
-    public int getWineID() {
+    public Integer getWineID() {
         return wineID;
     }
 
-    public void setWineID(int wineID) {
+    public void setWineID(Integer wineID) {
         this.wineID = wineID;
     }
 
-    public int getBeerID() {
+    public Integer getBeerID() {
         return beerID;
     }
 
-    public void setBeerID(int beerID) {
+    public void setBeerID(Integer beerID) {
         this.beerID = beerID;
     }
 
-    public int getLiquorID() {
+    public Integer getLiquorID() {
         return liquorID;
     }
 
-    public void setLiquorID(int liquorID) {
+    public void setLiquorID(Integer liquorID) {
         this.liquorID = liquorID;
     }
 
