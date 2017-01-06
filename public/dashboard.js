@@ -2742,23 +2742,6 @@ function createLiquor(event) {
 
     var wCS = $("#theLiquorForm input[type='radio']:checked").val();
 
-    console.log(vin);
-    console.log(vari);
-    console.log(iColor);
-    console.log(imp);
-    console.log(name);
-    console.log(desc);
-    console.log(itemC);
-    console.log(orig);
-    console.log(vol);
-    console.log(frontP);
-    console.log(tenCP);
-    console.log(twentyFCP);
-    console.log(theCost);
-    console.log(bottleW);
-    console.log(exclu);
-    console.log(dualS);
-
     $.ajax({
         url: '/create-liquor',
         type: 'POST',
@@ -2898,16 +2881,10 @@ function productSearch(event) {
     var itemC = f.find('[name=itemCode]').val();
     var itemN = f.find('[name=itemName]').val();
     var imp = f.find('[name=importer]').val();
-    //var pType = f.find('[name=productType]').val();
-
-    console.log(itemC);
-    console.log(itemN);
-    console.log(imp);
-    //console.log(pType);
 
     $.ajax({
         url: '/search-products',
-        type: 'GET',
+        type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
             'itemCode': itemC,
@@ -2915,14 +2892,62 @@ function productSearch(event) {
             'importer': imp,
         }),
         success: function(data) {
-            //document.getElementById('theSearchForm').reset();
-            console.log(data);
-            var theData = data;
             searchData(data);
         }
     });
 }
 
+// const element =
+// <form>
+//     <div className='col-md-2' id='parent'>
+//         <label>Vintage</label>
+//         <input type='text' name='vintage' className='form-control' id='input1' value=data.vintage>
+//         <div className='col-md-1' id='popup1'>Enter product vintage</div>
+//     </div>
+// </form>;
+//
+//
+// React-DOM.render(
+//     element,
+//     document.getElementById('lowView');
+// );
+
+// 28 divs
+// var input1 = document.createElement('input');
+// input1.setAttribute('type', 'text');
+// input1.setAttribute('name', 'vintage');
+// input1.setAttribute('class', 'form-control');
+// input1.setAttribute('id', 'input1');
+//
+// var label1 = document.createElement('label');
+// label1.setAttribute('for', 'input1');
+// label1.innerHTML = "Vintage";
+//
+// theDiv1.append(label1);
+// theDiv1.append(input1);
+// theDiv1.append(theDiv30);
+// var theDiv30 = document.createElement('div');
+// theDiv30.setAttribute('class', 'col-md-1');
+// theDiv30.setAttribute('id', 'popup1');
+// theDiv30.innerHTML = 'Enter product vintage';
 function searchData(data) {
-    console.log(data);
+    document.getElementById('theSearchForm').reset();
+
+    const element = React.createClass({
+        render: function(data) {
+            return
+          <div className="col-md-2" id='parent'>
+            <label>Vintage</label>
+            <input className="form-control" type='text' id='input1' name='vintage' value=data.vintage>
+            <button className="btn btn-primary pull-right">Tweet</button>
+          </div>
+      }
+    });
+  };
+
+    ReactDOM.render(
+      <element />,
+      document.getElementById("lowView");
+    );
+
 }

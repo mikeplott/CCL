@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ProductRepo extends CrudRepository<Product, Integer> {
     Product findByItemCode(String itemCode);
-    Product findByName(String name);
+    Product findByName(String itemName);
     Product findByImporter(String importer);
     Product findByBrewery(String importer);
     Product findByDistillery(String distillery);

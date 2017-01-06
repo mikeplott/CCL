@@ -25,3 +25,4 @@ nbdist/
 .nb-gradle/
 *.db
 info.csv
+node_modules/

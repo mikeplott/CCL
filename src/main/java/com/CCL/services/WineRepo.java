@@ -10,4 +10,5 @@ import java.util.ArrayList;
  */
 public interface WineRepo extends CrudRepository<Wine, Integer> {
     ArrayList<Wine> findAll();
+    Wine findByItemCode(String itemCode);
 }
