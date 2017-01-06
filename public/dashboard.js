@@ -63,6 +63,7 @@ function inventoryDash(Event) {
     deleteBtn.setAttribute('name', 'deleteBtn');
     deleteBtn.setAttribute('id', 'option6');
     deleteBtn.setAttribute('autocomplete', 'off');
+    deleteBtn.setAttribute('onclick', 'inventoryDeletion(event)');
 
     var deleteLabel = document.createElement('label');
     deleteLabel.setAttribute('class', 'btn btn-primary selector');
@@ -2259,16 +2260,6 @@ function liquorView(Event) {
     theDiv56.setAttribute('id', 'popup27');
     theDiv56.innerHTML = 'Check if product comes in 50L gallon kegs';
 
-    // var theDiv57 = document.createElement('div');
-    // theDiv57.setAttribute('class', ' col-md-1');
-    // theDiv57.setAttribute('id', 'popup28');
-    // theDiv57.innerHTML = 'Check if product comes in 20L kegs';
-    //
-    // var theDiv58 = document.createElement('div');
-    // theDiv58.setAttribute('class', ' col-md-1');
-    // theDiv58.setAttribute('id', 'popup29');
-    // theDiv58.innerHTML = 'Check if product comes in 50L kegs';
-
     var myForm = document.createElement('form');
     myForm.setAttribute('name', 'liquorForm');
     myForm.setAttribute('id', 'theLiquorForm');
@@ -2796,3 +2787,215 @@ function createLiquor(event) {
         }
     });
 }
+
+function inventoryDeletion(event) {
+    event.preventDefault();
+
+    var row = $('#myContainer');
+    row.empty();
+
+    var myForm = document.createElement('form');
+    myForm.setAttribute('name', 'deleteForm');
+    myForm.setAttribute('id', 'theDeleteForm');
+
+    document.getElementById('myHeader').innerHTML = "Inventory Deletion";
+
+    var theDiv1 = document.createElement('div');
+    theDiv1.setAttribute('class', 'col-md-3');
+    theDiv1.setAttribute('id', 'bar1');
+
+    var theDiv2 = document.createElement('div');
+    theDiv2.setAttribute('class', 'col-md-3');
+    theDiv2.setAttribute('id', 'bar2');
+
+    var theDiv3 = document.createElement('div');
+    theDiv3.setAttribute('class', 'col-md-3');
+    theDiv3.setAttribute('id', 'bar3');
+
+    var theDiv4 = document.createElement('div');
+    theDiv4.setAttribute('class', 'col-md-3');
+    theDiv4.setAttribute('id', 'bar4');
+
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'itemCode');
+    input1.setAttribute('class', 'form-control');
+    input1.setAttribute('id', 'input1');
+
+    var label1 = document.createElement('label');
+    label1.setAttribute('for', 'input1');
+    label1.innerHTML = "Search By Item Code";
+
+    var input2 = document.createElement('input');
+    input2.setAttribute('type', 'text');
+    input2.setAttribute('name', 'itemName');
+    input2.setAttribute('class', 'form-control');
+    input2.setAttribute('id', 'input2');
+
+    var label2 = document.createElement('label');
+    label2.setAttribute('for', 'input2');
+    label2.innerHTML = "Search By Item Name";
+
+    var input3 = document.createElement('input');
+    input3.setAttribute('type', 'text');
+    input3.setAttribute('name', 'importer');
+    input3.setAttribute('class', 'form-control');
+    input3.setAttribute('id', 'input3');
+
+    var label3 = document.createElement('label');
+    label3.setAttribute('for', 'input3');
+    label3.innerHTML = "Search By Importer/Distillery/Brewery";
+
+    var input4 = document.createElement('input');
+    input4.setAttribute('type', 'text');
+    input4.setAttribute('name', 'productType');
+    input4.setAttribute('class', 'form-control');
+    input4.setAttribute('id', 'input4');
+
+    var label4 = document.createElement('label');
+    label4.setAttribute('for', 'input4');
+    label4.innerHTML = "Search By Product Type";
+
+    var srcBtn = document.createElement('button');
+    srcBtn.setAttribute('class', 'btn btn-primary');
+    srcBtn.setAttribute('onclick', 'productSearch(event)');
+    srcBtn.setAttribute('id', 'mySearchBtn');
+    srcBtn.innerHTML = "Submit";
+
+    var theDiv5 = document.createElement('div');
+    theDiv5.setAttribute('class', 'col-md-3');
+    theDiv5.setAttribute('id', 'bar5');
+
+    var theDiv6 = document.createElement('div');
+    theDiv6.setAttribute('class', 'col-md-3');
+
+    theDiv5.append(srcBtn);
+
+    theDiv1.append(label1);
+    theDiv1.append(input1);
+
+    theDiv2.append(label2);
+    theDiv2.append(input2);
+
+    theDiv3.append(label3);
+    theDiv3.append(input3);
+
+    theDiv4.append(label4);
+    theDiv4.append(input4);
+
+    myForm.append(theDiv1);
+    myForm.append(theDiv2);
+    myForm.append(theDiv3);
+    //myForm.append(theDiv4);
+    //myForm.append(theDiv6);
+    //'productType': pType
+    myForm.append(theDiv5);
+
+    row.append(myForm);
+}
+
+function productSearch(event) {
+    event.preventDefault();
+
+    var f = $('#theDeleteForm');
+    var itemC = f.find('[name=itemCode]').val();
+    var itemN = f.find('[name=itemName]').val();
+    var imp = f.find('[name=importer]').val();
+    var pType = f.find('[name=productType]').val();
+
+    console.log(itemC);
+    console.log(itemN);
+    console.log(imp);
+    console.log(pType);
+
+    $.ajax({
+        url: '/search-products',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            'itemCode': itemC,
+            'itemName': itemN,
+            'importer': imp,
+        }),
+        success: function(data) {
+            //document.getElementById('theSearchForm').reset();
+            console.log(data);
+            var theData = data;
+
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+// var theDiv5 = document.createElement('div');
+// theDiv5.setAttribute('class', 'col-md-4');
+// theDiv5.setAttribute('id', 'parent4');
+//
+// var theDiv6 = document.createElement('div');
+// theDiv6.setAttribute('class', 'col-md-4');
+// theDiv6.setAttribute('id', 'parent5');
+//
+// var theDiv7 = document.createElement('div');
+// theDiv7.setAttribute('class', 'col-md-4');
+// theDiv7.setAttribute('id', 'parent6');
+//
+// var theDiv8 = document.createElement('div');
+// theDiv8.setAttribute('class', 'col-md-4');
+// theDiv8.setAttribute('id', 'parent7');
+//
+// var theDiv9 = document.createElement('div');
+// theDiv9.setAttribute('class', ' col-md-4');
+// theDiv9.setAttribute('id', 'parent8');
+//
+// var theDiv10 = document.createElement('div');
+// theDiv10.setAttribute('class', ' col-md-4');
+// theDiv10.setAttribute('id', 'parent9');
+
+
+
+// var input5 = document.createElement('input');
+// input5.setAttribute('type', 'text');
+// input5.setAttribute('name', 'liquorType');
+// input5.setAttribute('class', 'form-control');
+// input5.setAttribute('id', 'input5');
+//
+// var label5 = document.createElement('label');
+// label5.setAttribute('for', 'input5');
+// label5.innerHTML = "Liqour Type";
+//
+// var input1 = document.createElement('input');
+// input1.setAttribute('type', 'text');
+// input1.setAttribute('name', 'liquorType');
+// input1.setAttribute('class', 'form-control');
+// input1.setAttribute('id', 'input1');
+//
+// var label1 = document.createElement('label');
+// label1.setAttribute('for', 'input1');
+// label1.innerHTML = "Liqour Type";
+//
+// var input1 = document.createElement('input');
+// input1.setAttribute('type', 'text');
+// input1.setAttribute('name', 'liquorType');
+// input1.setAttribute('class', 'form-control');
+// input1.setAttribute('id', 'input1');
+//
+// var label1 = document.createElement('label');
+// label1.setAttribute('for', 'input1');
+// label1.innerHTML = "Liqour Type";
+//
+// var input1 = document.createElement('input');
+// input1.setAttribute('type', 'text');
+// input1.setAttribute('name', 'liquorType');
+// input1.setAttribute('class', 'form-control');
+// input1.setAttribute('id', 'input1');
+//
+// var label1 = document.createElement('label');
+// label1.setAttribute('for', 'input1');
+// label1.innerHTML = "Liqour Type";

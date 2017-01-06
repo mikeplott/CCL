@@ -462,3 +462,27 @@ img {
     margin-left: 38%;
     padding-bottom: 50px;
 }
+
+#bar1 {
+    padding-bottom: 30px;
+}
+
+#bar2 {
+    padding-bottom: 30px;
+}
+
+#bar3 {
+    padding-bottom: 30px;
+}
+
+#bar4 {
+    padding-bottom: 30px;
+}
+
+#bar5 {
+    padding-top: 30px;
+}
+
+#mySearchBtn {
+    height: 35px;
+}
