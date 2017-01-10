@@ -3205,6 +3205,8 @@ if (theBeer != null) {
 
       theContainer.append(myCont);
 
+      console.log('this is a test!');
+
     //  $('#myContainer').append(theBtn);
   }
 
