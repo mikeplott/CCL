@@ -119,6 +119,7 @@ public class CCLController {
         }
         else {
             userFromDB.setValid(true);
+            users.save(userFromDB);
             session.setAttribute("userName", userFromDB.getUserName());
             response.sendRedirect("dashboard.html");
             return new ResponseEntity<User>(userFromDB, HttpStatus.OK);
