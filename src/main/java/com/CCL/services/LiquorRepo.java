@@ -11,4 +11,7 @@ import java.util.ArrayList;
 public interface LiquorRepo extends CrudRepository<Liquor, Integer> {
     Liquor findByItemCode(String itemCode);
     ArrayList findAllByNameContaining(String name);
+    ArrayList findAllByNameLikeIgnoreCase(String name);
+    ArrayList findAllByItemCodeLikeIgnoreCase(String itemCode);
+    ArrayList findAllByDistilleryLikeIgnoreCase(String distillery);
 }

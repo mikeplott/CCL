@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by michaelplott on 1/3/17.
@@ -70,30 +68,12 @@ public class ProductsController {
     }
 
     @RequestMapping(path = "/search-products", method = RequestMethod.POST)
-    public ResponseEntity<HashMap<String, ArrayList>> searchProducts(HttpSession session, @RequestBody Map<String, String> json) {
+    public ResponseEntity<HashMap<String, ArrayList<Product>>> searchProducts(HttpSession session, @RequestBody Map<String, String> json) {
         String userName = (String) session.getAttribute("userName");
         User user = users.findByUserName(userName);
         User.isLoggedIn(user);
-        ArrayList<Product> products = productSearch(json);
-        ArrayList theBeers = new ArrayList<>();
-        ArrayList theWines = new ArrayList<>();
-        ArrayList theLiquors = new ArrayList<>();
-        HashMap<String, ArrayList> results = new HashMap<>();
-        for (Product product : products) {
-            if (product.isBeer()) {
-                theBeers = beers.findAllByNameContaining(product.getName());
-            }
-            else if (product.isLiquor()) {
-                theLiquors = liquors.findAllByNameContaining(product.getName());
-            }
-            else if (product.isWine()){
-                theWines = wines.findAllByNameContaining(product.getName());
-            }
-        }
-        results.put("wine", theWines);
-        results.put("beer", theBeers);
-        results.put("liquor", theLiquors);
-        return new ResponseEntity<HashMap<String, ArrayList>>(results, HttpStatus.OK);
+        HashMap<String, ArrayList<Product>> results = productSearch(json);
+        return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/delete-product", method = RequestMethod.POST)
@@ -112,46 +92,42 @@ public class ProductsController {
         return productUpdate(product);
     }
 
-    public ArrayList<Product> productSearch(Map<String, String> json) {
-        String itemCode = json.get("itemCode");
-        String name = json.get("itemName");
-        String importer = json.get("importer");
-        String brewery = json.get("brewery");
-        String distillery = json.get("distillery");
-        ArrayList<Product> theProducts = new ArrayList<>();
-        if (itemCode != null) {
-            Product product = products.findByItemCode(itemCode);
-            if (product != null) {
-                theProducts.add(product);
-                return theProducts;
-            } else if (name != null) {
-                theProducts = products.findAllByNameContaining(name);
-                if (product != null) {
-                    theProducts.add(product);
-                    return theProducts;
-                } else if (importer != null) {
-                    product = products.findByImporter(importer);
-                    if (product != null) {
-                        theProducts.add(product);
-                        return theProducts;
-                    }
-                    Product product1 = products.findByBrewery(brewery);
-                    if (product1 != null) {
-                        theProducts.add(product1);
-                        return theProducts;
-                    }
-                    Product product2 = products.findByDistillery(distillery);
-                    if (product2 != null) {
-                        theProducts.add(product2);
-                        return theProducts;
-                    }
-                    return null;
-                }
-                return null;
-            }
-            return null;
+    public HashMap<String, ArrayList<Product>> productSearch(Map<String, String> json) {
+        String name = json.get("item");
+        String itemCode = json.get("item");
+        String importer = json.get("item");
+        String brewery = json.get("item");
+        String distillery = json.get("item");
+        ArrayList<Product> matchingProducts = new ArrayList<>();
+        ArrayList<Product> productsByName = products.findAllByNameContainingIgnoreCase(name);
+        ArrayList<Product> productsByItemCode = products.findByItemCodeContainingIgnoreCase(itemCode);
+        ArrayList<Product> productsByBrewery = products.findByBreweryContainingIgnoreCase(brewery);
+        ArrayList<Product> productsByDistillery = products.findByDistilleryContainingIgnoreCase(distillery);
+        ArrayList<Product> productsByImporter = products.findByImporterContainingIgnoreCase(importer);
+        for (Product product : productsByName) {
+            matchingProducts.add(product);
         }
-        return null;
+        for (Product product : productsByItemCode) {
+            matchingProducts.add(product);
+        }
+        for (Product product : productsByBrewery) {
+            matchingProducts.add(product);
+        }
+        for (Product product : productsByDistillery) {
+            matchingProducts.add(product);
+        }
+        for (Product product : productsByImporter) {
+            matchingProducts.add(product);
+        }
+        Collections.sort(matchingProducts, new Comparator<Product>() {
+            @Override
+            public int compare(Product o1, Product o2) {
+                return o1.getItemCode().compareTo(o2.getItemCode());
+            }
+        });
+        HashMap<String, ArrayList<Product>> results = new HashMap<>();
+        results.put("results", matchingProducts);
+        return results;
     }
 
     public ResponseEntity productDelete(Map<String, Integer> json) {

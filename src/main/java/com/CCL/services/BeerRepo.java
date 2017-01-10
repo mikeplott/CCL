@@ -10,5 +10,7 @@ import java.util.ArrayList;
  */
 public interface BeerRepo extends CrudRepository<Beer, Integer> {
     Beer findByItemCode(String itemCode);
-    ArrayList findAllByNameContaining(String name);
+    ArrayList findAllByNameLikeIgnoreCase(String name);
+    ArrayList findAllByItemCodeLikeIgnoreCase(String itemCode);
+    ArrayList findAllByBreweryLikeIgnoreCase(String brewery);
 }

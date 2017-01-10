@@ -12,4 +12,7 @@ public interface WineRepo extends CrudRepository<Wine, Integer> {
     ArrayList<Wine> findAll();
     Wine findByItemCode(String itemCode);
     ArrayList findAllByNameContaining(String name);
+    ArrayList findAllByNameLikeIgnoreCase(String name);
+    ArrayList findAllByItemCodeLikeIgnoreCase(String itemCode);
+    ArrayList findAllByImporterLikeIgnoreCase(String importer);
 }
