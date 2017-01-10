@@ -18,12 +18,22 @@ function inventoryDash(Event) {
     var myHeader = document.getElementById('myHeader');
     myHeader.innerHTML = "Inventory Search";
 
+    var div = document.createElement('div');
+    div.setAttribute('class', 'row');
+
+    var div1 = document.createElement('div');
+    div1.setAttribute('class', 'col-md-6');
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-6');
+
     var searchForm = document.createElement('form');
-    searchForm.setAttribute('class', 'form-group');
+    //searchForm.setAttribute('class', 'form-group');
     searchForm.setAttribute('id', 'invSearch');
 
     var searchBar = document.createElement('input');
     searchBar.setAttribute('type', 'text');
+    searchBar.setAttribute('class', 'form-control');
     searchBar.setAttribute('placeholder', 'Search...');
     searchBar.setAttribute('name', 'invBar');
     searchBar.setAttribute('id', 'invInput');
@@ -33,8 +43,19 @@ function inventoryDash(Event) {
     searchLabel.setAttribute('id', 'searchLabel');
     searchLabel.innerHTML = "Product lookup";
 
+    var searchBtn = document.createElement('button');
+    searchBtn.setAttribute('class', 'btn btn-primary');
+    searchBtn.setAttribute('id', 'mainSearchBtn');
+    searchBtn.setAttribute('type', 'submit');
+    searchBtn.setAttribute('onclick', 'productSearch(event)');
+    searchBtn.innerHTML = "Search";
+
     searchLabel.append(searchBar);
+
     searchForm.append(searchLabel);
+    searchForm.append(searchBar);
+    searchForm.append(searchBtn);
+
     row.append(searchForm);
 
     var createLabel = document.createElement('label');
@@ -79,8 +100,6 @@ function inventoryDash(Event) {
     searchTitle.append(searchBtn);
     createLabel.append(createBtn);
     deleteLabel.append(deleteBtn);
-
-
 
     newDiv.append(createLabel);
     newDiv.append(searchTitle);
@@ -934,15 +953,13 @@ function createWine(event) {
     var dualS;
     if ($("#theWineForm input[id='input17']:checked").val() == 'on') {
         exclu = true;
-    }
-    else {
+    } else {
         exclu = false;
     }
 
     if ($("#theWineForm input[id='input18']:checked").val() == 'on') {
         dualS = true;
-    }
-    else {
+    } else {
         dualS = false;
     }
 
@@ -980,7 +997,7 @@ function createWine(event) {
 function beerView(Event) {
     event.preventDefault();
     var row = $('#myContainer');
-        row.empty();
+    row.empty();
 
     var beerHeader = document.createElement('h1');
     beerHeader.setAttribute('id', 'beerHeader');
@@ -1869,29 +1886,25 @@ function createBeer(event) {
     var theSeasons;
     if ($("#theBeerForm input[id='input17']:checked").val() == 'on') {
         exclu = true;
-    }
-    else {
+    } else {
         exclu = false;
     }
 
     if ($("#theBeerForm input[id='input18']:checked").val() == 'on') {
         dualS = true;
-    }
-    else {
+    } else {
         dualS = false;
     }
 
     if ($("#theBeerForm input[id='input30']:checked").val() == 'on') {
         theDomes = true;
-    }
-    else {
+    } else {
         theDomes = false;
     }
 
     if ($("#theBeerForm input[id='input31']:checked").val() == 'on') {
         theSeasons = true;
-    }
-    else {
+    } else {
         theSeasons = false;
     }
 
@@ -1933,7 +1946,7 @@ function createBeer(event) {
 function liquorView(Event) {
     event.preventDefault();
     var row = $('#myContainer');
-        row.empty();
+    row.empty();
 
     var liquorHeader = document.createElement('h1');
     liquorHeader.setAttribute('id', 'liquorHeader');
@@ -2728,15 +2741,13 @@ function createLiquor(event) {
     var dualS;
     if ($("#theLiquorForm input[id='input100']:checked").val() == 'on') {
         exclu = true;
-    }
-    else {
+    } else {
         exclu = false;
     }
 
     if ($("#theLiquorForm input[id='input101']:checked").val() == 'on') {
         dualS = true;
-    }
-    else {
+    } else {
         dualS = false;
     }
 
@@ -2841,7 +2852,7 @@ function inventoryDeletion(event) {
 
     var srcBtn = document.createElement('button');
     srcBtn.setAttribute('class', 'btn btn-primary');
-    srcBtn.setAttribute('onclick', 'productSearch(event)');
+    srcBtn.setAttribute('onclick', 'updateProduct(event)');
     srcBtn.setAttribute('id', 'mySearchBtn');
     srcBtn.innerHTML = "Submit";
 
@@ -2877,19 +2888,21 @@ function inventoryDeletion(event) {
 function productSearch(event) {
     event.preventDefault();
 
-    var f = $('#theDeleteForm');
-    var itemC = f.find('[name=itemCode]').val();
-    var itemN = f.find('[name=itemName]').val();
-    var imp = f.find('[name=importer]').val();
+    var f = $('#invSearch');
+    var item = f.find('[name=invBar]').val();
+    console.log(item);
+    // var itemN = f.find('[name=itemName]').val();
+    // var imp = f.find('[name=importer]').val();
 
     $.ajax({
         url: '/search-products',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
-            'itemCode': itemC,
-            'itemName': itemN,
-            'importer': imp,
+          'item': item,
+            // 'itemCode': itemC,
+            // 'itemName': itemN,
+            // 'importer': imp,
         }),
         success: function(data) {
             searchData(data);
@@ -2898,369 +2911,307 @@ function productSearch(event) {
 }
 
 function searchData(data) {
-
-  console.log(data);
-
-  var rowDiv = document.createElement('div');
-  rowDiv.setAttribute('class', 'row');
-
-  var rowDiv1 = document.createElement('div');
-  rowDiv.setAttribute('class', 'row');
-
-  var rowDiv2 = document.createElement('div');
-  rowDiv.setAttribute('class', 'row');
-
-  var rowDiv3 = document.createElement('div');
-  rowDiv.setAttribute('class', 'row');
-
-  var rowDiv4 = document.createElement('div');
-  rowDiv.setAttribute('class', 'row');
-
-  var myCont = document.createElement('div');
-  myCont.setAttribute('class', 'col-md-12');
-
-
-  var theContainer = $('#myContainer');
-
-  var theData = data;
-
-  var theBeer = data.beer;
-  var theLiquor = data.liquor;
-  var theWine = data.wine;
-
-if (theBeer != null) {
-  for (var l = 0; l < theBeer.length; l++) {
-    for (var j in theBeer[l]) {
-      var beer = theBeer[l];
-
-      if (j != "id") {
-        var theDiv = document.createElement('div');
-        theDiv.setAttribute('class', 'col-md-2');
-        theDiv.setAttribute('id', "parent");
-
-        var theDiv2 = document.createElement('div');
-        theDiv2.setAttribute('class', 'col-md-1');
-        theDiv2.setAttribute('id', 'popup');
-
-        var input1;
-
-        if (j == "lotDate" || j == "expirationDate") {
-          console.log(beer[j]);
-          //var date = new Date(beer[j])
-          var date = JSON.parse(beer[j]);
-          console.log(date);
-          input1 = document.createElement('date');
-          input1.setAttribute('type', 'date');
-          // input1.setAttribute('value', date);
-        }
-
-        if (j == "exclusive" || j == "dualState" || j == "seasonal" || j == "domestic") {
-          input1 = document.createElement('input');
-          input1.setAttribute('type', 'checkbox');
-          input1.setAttribute('class', 'form-control');
-          input1.setAttribute('value', beer[j]);
-        }
-        else if (j == "caseSize") {
-          input1 = document.createElement('select');
-          input1.setAttribute('class', 'form-control');
-          input1.setAttribute('selected', beer[j]);
-
-          var o1 = document.createElement('option');
-          o1.setAttribute('value', 'ONE_PACK');
-          o1.innerHTML = "1 Pack";
-
-          var o2 = document.createElement('option');
-          o2.setAttribute('value', 'THREE_PACK');
-          o2.innerHTML = "3 Pack";
-
-          var o3 = document.createElement('option');
-          o3.setAttribute('value', 'SIX_PACK');
-          o3.innerHTML = "6 Pack";
-
-          var o4 = document.createElement('option');
-          o4.setAttribute('value', 'NINE_PACK');
-          o4.innerHTML = "9 Pack";
-
-          var o5 = document.createElement('option');
-          o5.setAttribute('value', 'TWELVE_PACK');
-          o5.innerHTML = "12 Pack";
-
-          var o6 = document.createElement('option');
-          o6.setAttribute('value', 'TWENTY_FOUR_PACK');
-          o6.innerHTML = "1 Pack";
-
-          var o7 = document.createElement('option');
-          o7.setAttribute('value', 'FIVE_SEVENTEEN_GAL_KEG');
-          o7.innerHTML = "5.17 Gallon Keg";
-
-          var o8 = document.createElement('option');
-          o8.setAttribute('value', 'SEVEN_SEVEN_FIVE_GAL_KEG');
-          o8.innerHTML = "7.75 Gallon Keg";
-
-          var o9 = document.createElement('option');
-          o9.setAttribute('value', 'FIFTEEN_FIVE_GAL_KEG');
-          o9.innerHTML = "15.5 Gallon Keg";
-
-          var o10 = document.createElement('option');
-          o10.setAttribute('value', 'TWENTY_LITRE_KEG');
-          o10.innerHTML = "20L Keg";
-
-          var o11 = document.createElement('option');
-          o11.setAttribute('value', 'FIFTY_LITRE_KEG');
-          o11.innerHTML = "50L Keg";
-
-          input1.append(o1);
-          input1.append(o2);
-          input1.append(o3);
-          input1.append(o4);
-          input1.append(o5);
-          input1.append(o6);
-          input1.append(o7);
-          input1.append(o8);
-          input1.append(o9);
-          input1.append(o10);
-          input1.append(o11);
-        }
-        else {
-          input1 = document.createElement('input');
-          input1.setAttribute('type', 'text');
-          input1.setAttribute('class', 'form-control');
-          input1.setAttribute('value', beer[j]);
-        }
-
-        var label1 = document.createElement('label');
-        label1.setAttribute('for', j);
-        label1.innerHTML = j;
-
-        theDiv.append(label1);
-        theDiv.append(input1);
-        theDiv.append(theDiv2);
-
-        myCont.append(theDiv);
-
-        theContainer.append(myCont);
-      }
-    }
-  }
+    console.log(data);
 }
 
-  if (theLiquor != null) {
-    for (var i = 0; i < theLiquor.length; i++) {
-      for (var k in theLiquor[i]) {
-            var liquor = theLiquor[i];
-            console.log(liquor[k]);
-            if (k != "id") {
-              var theDiv = document.createElement('div');
-              theDiv.setAttribute('class', 'col-md-2 ' + k);
-              theDiv.setAttribute('id', "parent");
+function updateProduct(data) {
 
-              var theDiv2 = document.createElement('div');
-              theDiv2.setAttribute('class', 'col-md-1');
-              theDiv2.setAttribute('id', 'popup');
+    console.log(data);
 
-              var input1;
-              if (k == "exclusive" || k == "dualState") {
-                  input1 = document.createElement('input');
-                  input1.setAttribute('type', 'checkbox');
-                  input1.setAttribute('class', 'form-control');
-                  input1.setAttribute('value', liquor[k]);
-              }
-              else if (k == "caseSize") {
-                console.log(k == "liquorCaseSize");
-                input1 = document.createElement('select');
-                input1.setAttribute('class', 'form-control');
-                input1.setAttribute('selected', liquor[k]);
+    var rowDiv = document.createElement('div');
+    rowDiv.setAttribute('class', 'row');
 
-                var o1 = document.createElement('option');
-                o1.setAttribute('value', 'ONE_PACK');
-                o1.innerHTML = "1 Pack";
+    var rowDiv1 = document.createElement('div');
+    rowDiv.setAttribute('class', 'row');
 
-                var o2 = document.createElement('option');
-                o2.setAttribute('value', 'THREE_PACK');
-                o2.innerHTML = "3 Pack";
+    var rowDiv2 = document.createElement('div');
+    rowDiv.setAttribute('class', 'row');
 
-                var o3 = document.createElement('option');
-                o3.setAttribute('value', 'SIX_PACK');
-                o3.innerHTML = "6 Pack";
+    var rowDiv3 = document.createElement('div');
+    rowDiv.setAttribute('class', 'row');
 
-                var o4 = document.createElement('option');
-                o4.setAttribute('value', 'NINE_PACK');
-                o4.innerHTML = "9 Pack";
+    var rowDiv4 = document.createElement('div');
+    rowDiv.setAttribute('class', 'row');
 
-                var o5 = document.createElement('option');
-                o5.setAttribute('value', 'TWELVE_PACK');
-                o5.innerHTML = "12 Pack";
+    var myCont = document.createElement('div');
+    myCont.setAttribute('class', 'col-md-12');
 
-                var o6 = document.createElement('option');
-                o6.setAttribute('value', 'TWENTY_FOUR_PACK');
-                o6.innerHTML = "1 Pack";
 
-                var o7 = document.createElement('option');
-                o7.setAttribute('value', 'FIVE_SEVENTEEN_GAL_KEG');
-                o7.innerHTML = "5.17 Gallon Keg";
+    var theContainer = $('#myContainer');
 
-                var o8 = document.createElement('option');
-                o8.setAttribute('value', 'SEVEN_SEVEN_FIVE_GAL_KEG');
-                o8.innerHTML = "7.75 Gallon Keg";
+    var theData = data;
 
-                var o9 = document.createElement('option');
-                o9.setAttribute('value', 'FIFTEEN_FIVE_GAL_KEG');
-                o9.innerHTML = "15.5 Gallon Keg";
+    var theBeer = data.beer;
+    var theLiquor = data.liquor;
+    var theWine = data.wine;
 
-                var o10 = document.createElement('option');
-                o10.setAttribute('value', 'TWENTY_LITRE_KEG');
-                o10.innerHTML = "20L Keg";
+    if (theBeer != null) {
+        for (var l = 0; l < theBeer.length; l++) {
+            for (var j in theBeer[l]) {
+                var beer = theBeer[l];
 
-                var o11 = document.createElement('option');
-                o11.setAttribute('value', 'FIFTY_LITRE_KEG');
-                o11.innerHTML = "50L Keg";
+                if (j != "id") {
+                    var theDiv = document.createElement('div');
+                    theDiv.setAttribute('class', 'col-md-2');
+                    theDiv.setAttribute('id', "parent");
 
-                input1.append(o1);
-                input1.append(o2);
-                input1.append(o3);
-                input1.append(o4);
-                input1.append(o5);
-                input1.append(o6);
-                input1.append(o7);
-                input1.append(o8);
-                input1.append(o9);
-                input1.append(o10);
-                input1.append(o11);
-              }
-              else {
-                input1 = document.createElement('input');
-                input1.setAttribute('name', k);
-                input1.setAttribute('type', 'text');
-                input1.setAttribute('class', 'form-control');
-                input1.setAttribute('value', liquor[k])
-              }
+                    var theDiv2 = document.createElement('div');
+                    theDiv2.setAttribute('class', 'col-md-1');
+                    theDiv2.setAttribute('id', 'popup');
 
-              var label1 = document.createElement('label');
-              label1.setAttribute('for', k);
-              label1.setAttribute('class', k)
-              label1.innerHTML = k;
+                    var input1;
 
-              theDiv.append(label1);
-              theDiv.append(input1);
-              theDiv.append(theDiv2);
+                    if (j == "lotDate" || j == "expirationDate") {
+                        console.log(beer[j]);
+                        var date = JSON.parse(beer[j]);
+                        console.log(date);
+                        input1 = document.createElement('date');
+                        input1.setAttribute('type', 'date');
+                    }
 
-              myCont.append(theDiv);
+                    if (j == "exclusive" || j == "dualState" || j == "seasonal" || j == "domestic") {
+                        input1 = document.createElement('input');
+                        input1.setAttribute('type', 'checkbox');
+                        input1.setAttribute('class', 'form-control');
+                        input1.setAttribute('value', beer[j]);
+                    } else if (j == "caseSize") {
+                        input1 = document.createElement('select');
+                        input1.setAttribute('class', 'form-control');
+                        input1.setAttribute('selected', beer[j]);
 
-              theContainer.append(myCont);
+                        var o1 = document.createElement('option');
+                        o1.setAttribute('value', 'ONE_PACK');
+                        o1.innerHTML = "1 Pack";
+
+                        var o2 = document.createElement('option');
+                        o2.setAttribute('value', 'THREE_PACK');
+                        o2.innerHTML = "3 Pack";
+
+                        var o3 = document.createElement('option');
+                        o3.setAttribute('value', 'SIX_PACK');
+                        o3.innerHTML = "6 Pack";
+
+                        var o4 = document.createElement('option');
+                        o4.setAttribute('value', 'NINE_PACK');
+                        o4.innerHTML = "9 Pack";
+
+                        var o5 = document.createElement('option');
+                        o5.setAttribute('value', 'TWELVE_PACK');
+                        o5.innerHTML = "12 Pack";
+
+                        var o6 = document.createElement('option');
+                        o6.setAttribute('value', 'TWENTY_FOUR_PACK');
+                        o6.innerHTML = "1 Pack";
+
+                        var o7 = document.createElement('option');
+                        o7.setAttribute('value', 'FIVE_SEVENTEEN_GAL_KEG');
+                        o7.innerHTML = "5.17 Gallon Keg";
+
+                        var o8 = document.createElement('option');
+                        o8.setAttribute('value', 'SEVEN_SEVEN_FIVE_GAL_KEG');
+                        o8.innerHTML = "7.75 Gallon Keg";
+
+                        var o9 = document.createElement('option');
+                        o9.setAttribute('value', 'FIFTEEN_FIVE_GAL_KEG');
+                        o9.innerHTML = "15.5 Gallon Keg";
+
+                        var o10 = document.createElement('option');
+                        o10.setAttribute('value', 'TWENTY_LITRE_KEG');
+                        o10.innerHTML = "20L Keg";
+
+                        var o11 = document.createElement('option');
+                        o11.setAttribute('value', 'FIFTY_LITRE_KEG');
+                        o11.innerHTML = "50L Keg";
+
+                        input1.append(o1);
+                        input1.append(o2);
+                        input1.append(o3);
+                        input1.append(o4);
+                        input1.append(o5);
+                        input1.append(o6);
+                        input1.append(o7);
+                        input1.append(o8);
+                        input1.append(o9);
+                        input1.append(o10);
+                        input1.append(o11);
+                    } else {
+                        input1 = document.createElement('input');
+                        input1.setAttribute('type', 'text');
+                        input1.setAttribute('class', 'form-control');
+                        input1.setAttribute('value', beer[j]);
+                    }
+
+                    var label1 = document.createElement('label');
+                    label1.setAttribute('for', j);
+                    label1.innerHTML = j;
+
+                    theDiv.append(label1);
+                    theDiv.append(input1);
+                    theDiv.append(theDiv2);
+
+                    myCont.append(theDiv);
+
+                    theContainer.append(myCont);
+                }
             }
-          }
         }
     }
 
-  if (theWine != null) {
-    for (var k in theWine) {
+    if (theLiquor != null) {
+        for (var i = 0; i < theLiquor.length; i++) {
+            for (var k in theLiquor[i]) {
+                var liquor = theLiquor[i];
+                console.log(liquor[k]);
+                if (k != "id") {
+                    var theDiv = document.createElement('div');
+                    theDiv.setAttribute('class', 'col-md-2 ' + k);
+                    theDiv.setAttribute('id', "parent");
 
-        var theDiv = document.createElement('div');
-        theDiv.setAttribute('class', 'col-md-2');
-        theDiv.setAttribute('id', "parent");
+                    var theDiv2 = document.createElement('div');
+                    theDiv2.setAttribute('class', 'col-md-1');
+                    theDiv2.setAttribute('id', 'popup');
 
-        var theDiv2 = document.createElement('div');
-        theDiv2.setAttribute('class', 'col-md-1');
-        theDiv2.setAttribute('id', 'popup');
+                    var input1;
+                    if (k == "exclusive" || k == "dualState") {
+                        input1 = document.createElement('input');
+                        input1.setAttribute('type', 'checkbox');
+                        input1.setAttribute('class', 'form-control');
+                        input1.setAttribute('value', liquor[k]);
+                    } else if (k == "caseSize") {
+                        console.log(k == "liquorCaseSize");
+                        input1 = document.createElement('select');
+                        input1.setAttribute('class', 'form-control');
+                        input1.setAttribute('selected', liquor[k]);
 
-        var input1 = document.createElement('fieldset');
-        input1.setAttribute('name', k);
-        if (k === "exclusive" || k === "dualState") {
-            input1.setAttribute('type', 'checkbox');
-            input1.setAttribute('class', 'form-control ' +  k);
+                        var o1 = document.createElement('option');
+                        o1.setAttribute('value', 'ONE_PACK');
+                        o1.innerHTML = "1 Pack";
+
+                        var o2 = document.createElement('option');
+                        o2.setAttribute('value', 'THREE_PACK');
+                        o2.innerHTML = "3 Pack";
+
+                        var o3 = document.createElement('option');
+                        o3.setAttribute('value', 'SIX_PACK');
+                        o3.innerHTML = "6 Pack";
+
+                        var o4 = document.createElement('option');
+                        o4.setAttribute('value', 'NINE_PACK');
+                        o4.innerHTML = "9 Pack";
+
+                        var o5 = document.createElement('option');
+                        o5.setAttribute('value', 'TWELVE_PACK');
+                        o5.innerHTML = "12 Pack";
+
+                        var o6 = document.createElement('option');
+                        o6.setAttribute('value', 'TWENTY_FOUR_PACK');
+                        o6.innerHTML = "1 Pack";
+
+                        var o7 = document.createElement('option');
+                        o7.setAttribute('value', 'FIVE_SEVENTEEN_GAL_KEG');
+                        o7.innerHTML = "5.17 Gallon Keg";
+
+                        var o8 = document.createElement('option');
+                        o8.setAttribute('value', 'SEVEN_SEVEN_FIVE_GAL_KEG');
+                        o8.innerHTML = "7.75 Gallon Keg";
+
+                        var o9 = document.createElement('option');
+                        o9.setAttribute('value', 'FIFTEEN_FIVE_GAL_KEG');
+                        o9.innerHTML = "15.5 Gallon Keg";
+
+                        var o10 = document.createElement('option');
+                        o10.setAttribute('value', 'TWENTY_LITRE_KEG');
+                        o10.innerHTML = "20L Keg";
+
+                        var o11 = document.createElement('option');
+                        o11.setAttribute('value', 'FIFTY_LITRE_KEG');
+                        o11.innerHTML = "50L Keg";
+
+                        input1.append(o1);
+                        input1.append(o2);
+                        input1.append(o3);
+                        input1.append(o4);
+                        input1.append(o5);
+                        input1.append(o6);
+                        input1.append(o7);
+                        input1.append(o8);
+                        input1.append(o9);
+                        input1.append(o10);
+                        input1.append(o11);
+                    } else {
+                        input1 = document.createElement('input');
+                        input1.setAttribute('name', k);
+                        input1.setAttribute('type', 'text');
+                        input1.setAttribute('class', 'form-control');
+                        input1.setAttribute('value', liquor[k])
+                    }
+
+                    var label1 = document.createElement('label');
+                    label1.setAttribute('for', k);
+                    label1.setAttribute('class', k)
+                    label1.innerHTML = k;
+
+                    theDiv.append(label1);
+                    theDiv.append(input1);
+                    theDiv.append(theDiv2);
+
+                    myCont.append(theDiv);
+
+                    theContainer.append(myCont);
+                }
+            }
         }
-        else if (k === "wineCaseSize") {
-            input1.setAttribute('type', 'radio');
-            input1.setAttribute('class', 'form-control ' + k);
-            input1.setAttribute('id', k);
-        }
-        else {
-            input1.setAttribute('type', 'text');
-            input1.setAttribute('class', 'form-control ' + k);
-        }
-
-        var label1 = document.createElement('label');
-        label1.setAttribute('for', k);
-        label1.innerHTML = k;
-
-        theDiv.append(label1);
-        theDiv.append(input1);
-        theDiv.append(theDiv2);
-
-        theContainer.append(theDiv);
     }
-  }
 
-      var lastDiv = document.createElement('div');
-      lastDiv.setAttribute('class', 'col-md-2');
+    if (theWine != null) {
+        for (var k in theWine) {
 
-      var theBtn = document.createElement('button');
-      theBtn.setAttribute('class', 'btn btn-primary');
-      theBtn.setAttribute('id', 'srcBtn');
-      theBtn.innerHTML = "Submit";
+            var theDiv = document.createElement('div');
+            theDiv.setAttribute('class', 'col-md-2');
+            theDiv.setAttribute('id', "parent");
 
-      lastDiv.append(theBtn);
+            var theDiv2 = document.createElement('div');
+            theDiv2.setAttribute('class', 'col-md-1');
+            theDiv2.setAttribute('id', 'popup');
 
-      myCont.append(lastDiv);
+            var input1 = document.createElement('fieldset');
+            input1.setAttribute('name', k);
+            if (k === "exclusive" || k === "dualState") {
+                input1.setAttribute('type', 'checkbox');
+                input1.setAttribute('class', 'form-control ' + k);
+            } else if (k === "wineCaseSize") {
+                input1.setAttribute('type', 'radio');
+                input1.setAttribute('class', 'form-control ' + k);
+                input1.setAttribute('id', k);
+            } else {
+                input1.setAttribute('type', 'text');
+                input1.setAttribute('class', 'form-control ' + k);
+            }
 
-      theContainer.append(myCont);
+            var label1 = document.createElement('label');
+            label1.setAttribute('for', k);
+            label1.innerHTML = k;
 
-      
+            theDiv.append(label1);
+            theDiv.append(input1);
+            theDiv.append(theDiv2);
 
-    //  $('#myContainer').append(theBtn);
-  }
+            theContainer.append(theDiv);
+        }
+    }
 
-// const element =
-// <form>
-//     <div className='col-md-2' id='parent'>
-//         <label>Vintage</label>
-//         <input type='text' name='vintage' className='form-control' id='input1' value=data.vintage>
-//         <div className='col-md-1' id='popup1'>Enter product vintage</div>
-//     </div>
-// </form>;
-//
-//
-// React-DOM.render(
-//     element,
-//     document.getElementById('lowView');
-// );
+    var lastDiv = document.createElement('div');
+    lastDiv.setAttribute('class', 'col-md-2');
 
-// 28 divs
-// var input1 = document.createElement('input');
-// input1.setAttribute('type', 'text');
-// input1.setAttribute('name', 'vintage');
-// input1.setAttribute('class', 'form-control');
-// input1.setAttribute('id', 'input1');
-//
-// var label1 = document.createElement('label');
-// label1.setAttribute('for', 'input1');
-// label1.innerHTML = "Vintage";
-//
-// theDiv1.append(label1);
-// theDiv1.append(input1);
-// theDiv1.append(theDiv30);
-// var theDiv30 = document.createElement('div');
-// theDiv30.setAttribute('class', 'col-md-1');
-// theDiv30.setAttribute('id', 'popup1');
-// theDiv30.innerHTML = 'Enter product vintage';
-// function searchData(data) {
-//     document.getElementById('theSearchForm').reset();
-//
-//     const element = React.createClass({
-//         render: function(data) {
-//             return
-//           <div className="col-md-2" id='parent'>
-//             <label>Vintage</label>
-//             <input className="form-control" type='text' id='input1' name='vintage' value=data.vintage>
-//             <button className="btn btn-primary pull-right">Tweet</button>
-//           </div>
-//       }
-//     });
-//   };
-//
-//     ReactDOM.render(
-//       <element />,
-//       document.getElementById("lowView");
-//     );
-//
-// }
+    var theBtn = document.createElement('button');
+    theBtn.setAttribute('class', 'btn btn-primary');
+    theBtn.setAttribute('id', 'srcBtn');
+    theBtn.innerHTML = "Submit";
+
+    lastDiv.append(theBtn);
+
+    myCont.append(lastDiv);
+
+    theContainer.append(myCont);
+
+}
