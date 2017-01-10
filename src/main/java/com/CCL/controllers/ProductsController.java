@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -68,11 +70,30 @@ public class ProductsController {
     }
 
     @RequestMapping(path = "/search-products", method = RequestMethod.POST)
-    public ResponseEntity<Product> searchProducts(HttpSession session, @RequestBody Map<String, String> json) {
+    public ResponseEntity<HashMap<String, ArrayList>> searchProducts(HttpSession session, @RequestBody Map<String, String> json) {
         String userName = (String) session.getAttribute("userName");
         User user = users.findByUserName(userName);
         User.isLoggedIn(user);
-        return productSearch(json);
+        ArrayList<Product> products = productSearch(json);
+        ArrayList theBeers = new ArrayList<>();
+        ArrayList theWines = new ArrayList<>();
+        ArrayList theLiquors = new ArrayList<>();
+        HashMap<String, ArrayList> results = new HashMap<>();
+        for (Product product : products) {
+            if (product.isBeer()) {
+                theBeers = beers.findAllByNameContaining(product.getName());
+            }
+            else if (product.isLiquor()) {
+                theLiquors = liquors.findAllByNameContaining(product.getName());
+            }
+            else if (product.isWine()){
+                theWines = wines.findAllByNameContaining(product.getName());
+            }
+        }
+        results.put("wine", theWines);
+        results.put("beer", theBeers);
+        results.put("liquor", theLiquors);
+        return new ResponseEntity<HashMap<String, ArrayList>>(results, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/delete-product", method = RequestMethod.POST)
@@ -91,40 +112,46 @@ public class ProductsController {
         return productUpdate(product);
     }
 
-    public ResponseEntity<Product> productSearch(Map<String, String> json) {
+    public ArrayList<Product> productSearch(Map<String, String> json) {
         String itemCode = json.get("itemCode");
-        String itemName = json.get("itemName");
+        String name = json.get("itemName");
         String importer = json.get("importer");
         String brewery = json.get("brewery");
         String distillery = json.get("distillery");
+        ArrayList<Product> theProducts = new ArrayList<>();
         if (itemCode != null) {
             Product product = products.findByItemCode(itemCode);
             if (product != null) {
-                return new ResponseEntity<Product>(product, HttpStatus.OK);
-            } else if (itemName != null) {
-                product = products.findByName(itemName);
+                theProducts.add(product);
+                return theProducts;
+            } else if (name != null) {
+                theProducts = products.findAllByNameContaining(name);
                 if (product != null) {
-                    return new ResponseEntity<Product>(product, HttpStatus.OK);
+                    theProducts.add(product);
+                    return theProducts;
                 } else if (importer != null) {
                     product = products.findByImporter(importer);
                     if (product != null) {
-                        return new ResponseEntity<Product>(product, HttpStatus.OK);
+                        theProducts.add(product);
+                        return theProducts;
                     }
                     Product product1 = products.findByBrewery(brewery);
                     if (product1 != null) {
-                        return new ResponseEntity<Product>(product1, HttpStatus.OK);
+                        theProducts.add(product1);
+                        return theProducts;
                     }
                     Product product2 = products.findByDistillery(distillery);
                     if (product2 != null) {
-                        return new ResponseEntity<Product>(product2, HttpStatus.OK);
+                        theProducts.add(product2);
+                        return theProducts;
                     }
-                    return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
+                    return null;
                 }
-                return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
+                return null;
             }
-            return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
+            return null;
         }
-        return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
+        return null;
     }
 
     public ResponseEntity productDelete(Map<String, Integer> json) {

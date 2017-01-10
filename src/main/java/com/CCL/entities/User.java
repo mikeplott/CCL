@@ -143,7 +143,7 @@ public class User {
         }
         else {
             User userForDB = new User(user.getUserName(), PasswordStorage.createHash(user.getPassword()), user.getEmail(),
-                    false, false, false, false, true);
+                    false, false, false, false, false);
             return userForDB;
         }
     }
