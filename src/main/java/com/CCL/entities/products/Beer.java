@@ -1,7 +1,7 @@
 package com.CCL.entities.products;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 /**
  * Created by michaelplott on 1/3/17.
@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Table(name = "beers")
 public class Beer {
 
-    public enum caseSize{
+    public enum caseSize {
         ONE_PACK,
         THREE_PACK,
         SIX_PACK,
@@ -29,10 +29,10 @@ public class Beer {
     private int id;
 
     @Column(nullable = false)
-    private Timestamp lotDate;
+    private Date lotDate;
 
     @Column(nullable = false)
-    private Timestamp expirationDate;
+    private Date expirationDate;
 
     @Column(nullable = false)
     private String beerType;
@@ -94,38 +94,10 @@ public class Beer {
     public Beer() {
     }
 
-    public Beer(Timestamp lotDate, Timestamp expirationDate, String beerType, String brewery, boolean isDomestic,
+    public Beer(Date lotDate, Date expirationDate, String beerType, String brewery, boolean isDomestic,
                 boolean isSeasonal, String name, String description, String itemCode, String origin, String volume,
                 double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight,
                 double caseWeight, int quantity, boolean isExclusive, boolean isDualState, Beer.caseSize caseSize) {
-        this.lotDate = lotDate;
-        this.expirationDate = expirationDate;
-        this.beerType = beerType;
-        this.brewery = brewery;
-        this.isDomestic = isDomestic;
-        this.isSeasonal = isSeasonal;
-        this.name = name;
-        this.description = description;
-        this.itemCode = itemCode;
-        this.origin = origin;
-        this.volume = volume;
-        this.frontPrice = frontPrice;
-        this.tenCasePrice = tenCasePrice;
-        this.twentyFiveCasePrice = twentyFiveCasePrice;
-        this.cost = cost;
-        this.bottleWeight = bottleWeight;
-        this.caseWeight = caseWeight;
-        this.quantity = quantity;
-        this.isExclusive = isExclusive;
-        this.isDualState = isDualState;
-        this.caseSize = caseSize;
-    }
-
-    public Beer(int id, Timestamp lotDate, Timestamp expirationDate, String beerType, String brewery, boolean isDomestic,
-                boolean isSeasonal, String name, String description, String itemCode, String origin, String volume,
-                double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight,
-                double caseWeight, int quantity, boolean isExclusive, boolean isDualState, Beer.caseSize caseSize) {
-        this.id = id;
         this.lotDate = lotDate;
         this.expirationDate = expirationDate;
         this.beerType = beerType;
@@ -157,19 +129,19 @@ public class Beer {
         this.id = id;
     }
 
-    public Timestamp getLotDate() {
+    public Date getLotDate() {
         return lotDate;
     }
 
-    public void setLotDate(Timestamp lotDate) {
+    public void setLotDate(Date lotDate) {
         this.lotDate = lotDate;
     }
 
-    public Timestamp getExpirationDate() {
+    public Date getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(Timestamp expirationDate) {
+    public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
     }
 

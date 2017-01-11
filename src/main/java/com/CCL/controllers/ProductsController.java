@@ -172,7 +172,7 @@ public class ProductsController {
             return new ResponseEntity<Product>(product, HttpStatus.OK);
         }
         else if (product.getBeerID() != null) {
-            Beer beer = new Beer(product.getBeerID(), product.getLotDate(), product.getExpirationDate(),
+            Beer beer = new Beer(product.getLotDate(), product.getExpirationDate(),
                     product.getBeerType(), product.getBrewery(), product.isDomestic(), product.isSeasonal(),
                     product.getName(), product.getDescription(), product.getItemCode(),
                     product.getOrigin(), product.getVolume(), product.getFrontPrice(), product.getTenCasePrice(),

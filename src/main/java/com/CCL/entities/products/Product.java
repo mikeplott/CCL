@@ -1,6 +1,7 @@
 package com.CCL.entities.products;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -78,10 +79,10 @@ public class Product {
     private String importer;
 
     @Column()
-    private Timestamp lotDate;
+    private Date lotDate;
 
     @Column()
-    private Timestamp expirationDate;
+    private Date expirationDate;
 
     @Column()
     private String beerType;
@@ -153,8 +154,8 @@ public class Product {
 
     public Product(Integer beerID, String name, String description, String itemCode, String origin, String volume,
                    double frontPrice, double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight,
-                   double caseWeight, int quantity, boolean isExclusive, boolean isDualState, Timestamp lotDate,
-                   Timestamp expirationDate, String beerType, String brewery, boolean isDomestic, boolean isSeasonal,
+                   double caseWeight, int quantity, boolean isExclusive, boolean isDualState, Date lotDate,
+                   Date expirationDate, String beerType, String brewery, boolean isDomestic, boolean isSeasonal,
                    Beer.caseSize caseSize, boolean isBeer, boolean isLiquor, boolean isWine) {
         this.beerID = beerID;
         this.name = name;
@@ -386,19 +387,19 @@ public class Product {
         this.importer = importer;
     }
 
-    public Timestamp getLotDate() {
+    public Date getLotDate() {
         return lotDate;
     }
 
-    public void setLotDate(Timestamp lotDate) {
+    public void setLotDate(Date lotDate) {
         this.lotDate = lotDate;
     }
 
-    public Timestamp getExpirationDate() {
+    public Date getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(Timestamp expirationDate) {
+    public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
     }
 
