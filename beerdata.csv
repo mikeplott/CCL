@@ -1,300 +1,100 @@
-2016-08-17,2016-11-25 08:37:39,Imperial IPA,River Rat,true,true,nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",#7a8,Arizona,16oz,117.96,61.13,84.38,62.32,1.9,51.0,672,true,true,SEVEN_SEVENTEEN_GAL_KEG
-2016-09-03,2016-05-18 13:30:55,Ale,Ommegang,true,true,ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis,"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",#e80,California,375ml,97.00,46.42,49.29,45.20,1.4,57.9,206,false,false,SEVEN_SEVENTEEN_GAL_KEG
-2016-03-09,2016-05-27 00:56:14,Imperial Stout,Ommegang,false,false,nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices,In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.,#c49,New Mexico,24.2oz,51.27,110.41,105.51,66.09,2.0,55.0,96,false,false,SEVEN_SEVENTEEN_GAL_KEG
-2016-09-05,2016-10-02 12:00:00,Lager,Great Divide,false,true,ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula,"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.
-
-Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.
-
-Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",#ca9,Maryland,750ml,69.04,101.23,89.34,32.31,2.9,28.6,238,false,true,SIX_PACK
-2016-09-16,2016-06-05 02:51:37,Belgian White,Great Divide,true,false,faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis,In congue. Etiam justo. Etiam pretium iaculis justo.,#520,Texas,12oz,58.77,36.68,54.22,82.29,1.9,34.9,397,true,false,SEVEN_SEVENTEEN_GAL_KEG
-2016-07-23,2016-07-11 22:02:41,Stout,FullSteam,false,true,donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus,Sed ante. Vivamus tortor. Duis mattis egestas metus.,#e9c,Kansas,12oz,103.07,83.05,37.70,51.41,2.8,46.9,437,false,true,TWENTY_LITRE_KEG
-2016-08-14,2016-03-20 20:43:39,IPA,Coast,true,false,sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl,"In congue. Etiam justo. Etiam pretium iaculis justo.
-
-In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",#3e6,Minnesota,750ml,45.44,108.28,42.61,36.98,4.5,25.5,515,true,false,TWENTY_LITRE_KEG
-2016-12-05,2016-12-21 01:22:05,Belgian White,Coast,true,true,duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate,"Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.
-
-Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.
-
-Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",#69f,California,3L,78.32,68.20,93.75,64.87,2.2,47.7,515,false,true,THREE_PACK
-2016-03-31,2016-02-15 17:31:29,Ale,FullSteam,true,false,neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et,"Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.
-
-Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",#df3,Washington,750ml,52.90,65.23,109.60,34.43,3.9,43.6,479,false,true,NINE_PACK
-2016-07-29,2016-03-27 13:44:34,Gose,Ommegang,false,true,orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus,"Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.
-
-Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",#ab6,West Virginia,16oz,92.87,45.41,106.74,61.47,4.8,43.3,74,true,false,SEVEN_SEVENTEEN_GAL_KEG
-2016-05-07,2016-02-10 05:51:30,IPA,Ommegang,true,false,in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc,"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.
-
-Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.
-
-Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",#e1f,Texas,24.2oz,50.77,94.81,103.26,67.72,1.1,48.1,314,true,false,FIVE_SEVENTEEN_GAL_KEG
-2016-10-15,2016-02-18 13:48:48,Imperial Stout,Avery,false,false,felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis,"Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",#7cb,Nevada,750ml,98.48,85.61,84.62,89.26,2.3,48.5,700,true,false,SEVEN_SEVENTEEN_GAL_KEG
-2016-05-16,2016-02-21 16:51:39,IPA,Coast,false,true,tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea,Fusce consequat. Nulla nisl. Nunc nisl.,#cd3,Arizona,3L,112.30,39.26,97.00,72.87,1.5,49.9,815,false,true,NINE_PACK
-2016-03-23,2016-12-04 23:11:56,Stout,Coast,false,true,duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh,"Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
-
-Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.
-
-Phasellus in felis. Donec semper sapien a libero. Nam dui.",#b4f,Texas,12oz,59.35,73.60,107.17,36.24,3.1,39.2,943,true,true,TWENTY_LITRE_KEG
-2016-03-28,2016-03-31 01:07:08,IPA,Great Divide,false,true,platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.
-
-Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",#1a4,Minnesota,3L,79.19,91.99,84.43,29.15,4.3,54.2,391,false,false,FIFTEEN_FIVE_GAL_KEG
-2016-10-14,2016-04-21 04:37:21,Pale Ale,River Rat,false,true,a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel,"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.
-
-Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",#03e,California,3L,103.21,54.60,35.61,71.09,1.4,26.3,293,true,true,TWENTY_FOUR_PACK
-2016-04-25,2016-09-01 15:52:28,Framboise,Westbrook,true,true,blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non,"Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.
-
-Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",#1a1,Florida,16oz,63.37,40.54,56.85,46.76,3.6,33.1,374,true,false,TWENTY_FOUR_PACK
-2016-09-14,2016-05-01 06:37:19,Pale Ale,Lefthand,false,false,sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur,"Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",#425,Virginia,12oz,114.55,114.11,89.49,35.61,1.4,39.0,258,false,true,TWENTY_FOUR_PACK
-2016-06-01,2016-12-09 16:06:06,Gose,River Rat,true,false,nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt,"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.
-
-Fusce consequat. Nulla nisl. Nunc nisl.",#772,Oklahoma,3L,67.87,63.30,54.28,86.98,4.7,26.4,329,true,true,THREE_PACK
-2016-10-22,2016-01-27 09:02:21,IPA,Stone,false,true,id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy,"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",#90f,Ohio,3L,63.54,41.03,39.27,59.13,3.0,55.4,692,true,true,NINE_PACK
-2016-10-27,2016-11-10 04:02:06,Imperial Stout,Westbrook,true,false,ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras,"Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",#674,California,16oz,104.34,47.32,84.72,84.63,4.4,32.5,276,false,true,TWENTY_LITRE_KEG
-2017-01-06,2016-12-16 06:36:37,Imperial Stout,Ommegang,true,false,vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue,"Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.
-
-Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
-
-Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",#18f,Arkansas,12oz,112.95,42.28,44.63,83.56,1.2,40.7,485,false,true,TWENTY_FOUR_PACK
-2016-09-17,2016-10-03 00:33:22,Gose,FullSteam,true,true,pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien,"In congue. Etiam justo. Etiam pretium iaculis justo.
-
-In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.
-
-Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",#61c,Texas,12oz,73.64,38.35,108.13,40.84,2.8,45.6,77,true,true,THREE_PACK
-2016-09-19,2016-02-08 04:26:36,Gose,River Rat,true,true,mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae,"Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.
-
-Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.
-
-Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",#96b,Texas,750ml,105.06,89.99,44.65,39.20,4.9,57.1,231,true,false,TWELVE_PACK
-2016-01-25,2016-05-06 11:33:49,Imperial Stout,Stone,true,true,sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in,"Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
-
-Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.
-
-Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",#391,Tennessee,24.2oz,64.75,53.44,80.85,44.30,3.3,47.2,591,true,false,NINE_PACK
-2016-06-21,2016-03-08 07:06:21,Ale,Great Divide,true,true,ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras,"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.
-
-Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",#c89,Louisiana,24.2oz,75.19,113.93,63.77,52.40,4.6,59.3,982,false,false,ONE_PACK
-2016-05-07,2016-06-14 19:53:13,Gose,Allagash,true,false,quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",#cdb,Massachusetts,3L,91.50,87.53,98.11,42.65,3.4,49.2,639,false,true,SIX_PACK
-2016-04-07,2016-03-26 10:43:29,Imperial IPA,Lefthand,false,false,leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque,"Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.
-
-Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.
-
-Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",#ce7,Texas,375ml,88.29,91.24,65.31,41.87,4.4,57.3,372,true,false,ONE_PACK
-2016-12-11,2016-09-24 10:05:16,IPA,Bells,false,false,habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur,"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.
-
-Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.
-
-Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",#152,Michigan,375ml,119.96,61.87,67.57,78.49,4.8,26.8,334,false,true,FIVE_SEVENTEEN_GAL_KEG
-2016-01-22,2016-04-13 07:20:45,Pale Ale,Coast,true,false,potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.
-
-Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.
-
-In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",#ae2,Virginia,12oz,55.73,44.89,89.79,82.55,2.3,53.7,553,true,true,FIFTY_LITRE_KEG
-2016-07-05,2016-08-04 13:03:40,Belgian White,FullSteam,false,true,elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum,"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",#986,Connecticut,375ml,72.21,47.95,96.06,39.73,4.7,56.9,179,true,true,TWELVE_PACK
-2016-04-26,2016-07-19 17:21:08,Lambent,Stone,false,true,sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus,"Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.
-
-Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",#434,Georgia,750ml,97.94,37.92,76.43,87.71,2.4,40.6,57,false,true,FIVE_SEVENTEEN_GAL_KEG
-2016-05-03,2016-12-22 14:49:55,Imperial IPA,Lefthand,false,false,pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse,"Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.
-
-Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.
-
-Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",#1ce,Virginia,24.2oz,113.22,53.03,90.33,76.82,4.0,25.0,721,true,true,ONE_PACK
-2016-06-01,2016-09-23 00:43:05,Pale Ale,FullSteam,false,true,quam pede lobortis ligula sit amet eleifend pede libero quis,Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.,#5b2,Tennessee,750ml,114.05,81.25,59.08,31.97,1.2,24.6,818,false,true,ONE_PACK
-2016-01-23,2016-11-02 06:01:12,Ale,Great Divide,false,false,sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris,"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",#f57,New York,16oz,72.17,86.01,95.30,56.42,1.7,27.9,437,true,true,SEVEN_SEVENTEEN_GAL_KEG
-2016-02-11,2016-12-08 17:14:33,Belgian White,Ommegang,true,true,duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus,"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.
-
-In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",#f33,Texas,3L,74.42,101.19,63.33,80.33,2.2,55.8,988,true,false,NINE_PACK
-2016-10-14,2016-10-30 13:54:58,Ale,Westbrook,true,true,in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est,In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.,#e55,Oklahoma,24.2oz,86.94,56.23,54.17,30.25,2.6,42.1,348,true,false,SEVEN_SEVENTEEN_GAL_KEG
-2016-12-29,2016-10-14 15:10:38,Stout,Avery,false,false,ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus,"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.
-
-Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",#b0c,Florida,16oz,88.30,96.06,44.52,89.28,3.4,27.9,430,true,false,SEVEN_SEVENTEEN_GAL_KEG
-2016-06-19,2016-10-13 00:11:13,Framboise,Ommegang,true,false,a pede posuere nonummy integer non velit donec diam neque vestibulum,"Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.
-
-Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.
-
-Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",#469,Missouri,12oz,114.82,91.77,72.85,52.12,4.7,53.9,167,true,false,TWENTY_FOUR_PACK
-2016-11-05,2016-08-25 11:48:12,Pale Ale,Coast,false,true,pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed,Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.,#791,California,24.2oz,79.51,74.51,92.63,42.36,2.4,39.6,94,false,false,NINE_PACK
-2016-06-22,2016-08-31 01:54:54,Framboise,Westbrook,true,true,ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae,"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",#36a,Missouri,3L,74.80,88.67,48.71,78.48,1.8,54.8,503,false,true,SIX_PACK
-2016-09-16,2016-05-20 00:35:54,Pale Ale,Ommegang,false,true,ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam,"In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.
-
-Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",#a2f,Massachusetts,750ml,71.76,44.63,74.54,79.95,4.6,51.1,464,false,true,FIFTY_LITRE_KEG
-2016-07-06,2016-09-15 12:45:28,IPA,Allagash,false,true,placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede,"Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.
-
-Sed ante. Vivamus tortor. Duis mattis egestas metus.",#e8c,New Mexico,375ml,56.23,64.62,98.39,39.73,3.3,26.0,255,false,false,TWENTY_LITRE_KEG
-2016-06-04,2017-01-02 05:02:57,IPA,Lefthand,true,false,venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium,"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",#3a4,Texas,750ml,63.81,83.14,59.07,38.48,2.4,31.4,1001,false,false,FIVE_SEVENTEEN_GAL_KEG
-2016-10-17,2016-05-20 04:30:37,Lager,FullSteam,false,false,hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante,"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.
-
-Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.
-
-In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",#246,Texas,3L,72.99,101.96,75.32,73.83,2.1,52.3,237,false,false,FIFTEEN_FIVE_GAL_KEG
-2016-04-25,2016-06-12 22:22:42,Framboise,Avery,true,true,nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit,"Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.
-
-Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",#8cb,California,16oz,81.52,41.27,59.23,51.78,3.9,24.7,240,true,false,THREE_PACK
-2016-03-31,2016-08-08 10:21:49,Lambent,Stone,false,true,ligula nec sem duis aliquam convallis nunc proin at turpis a pede,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.
-
-Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",#284,Ohio,12oz,96.14,63.48,52.26,42.67,2.7,52.6,239,true,false,FIFTEEN_FIVE_GAL_KEG
-2016-08-20,2016-12-13 07:14:27,IPA,Coast,false,true,aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse,"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.
-
-In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.
-
-Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",#3e4,Nebraska,3L,50.35,74.06,34.18,26.34,4.6,31.6,164,false,true,TWELVE_PACK
-2016-08-22,2016-10-07 03:12:34,Pale Ale,FullSteam,false,true,ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo,"Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.
-
-Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.
-
-Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",#2f3,Texas,16oz,86.60,37.64,53.57,43.32,3.7,53.9,369,false,false,TWENTY_LITRE_KEG
-2016-11-20,2016-07-12 09:45:08,Imperial IPA,FullSteam,false,true,ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id,In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.,#036,Alabama,750ml,85.47,114.85,93.72,45.14,2.3,43.3,279,false,false,SIX_PACK
-2016-01-19,2016-10-07 00:57:27,Framboise,Allagash,true,false,integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",#934,California,3L,69.23,114.10,104.55,47.14,1.6,39.9,681,false,false,NINE_PACK
-2016-12-19,2016-08-27 06:25:24,Brown Ale,Lefthand,true,false,ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec,"Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.
-
-Sed ante. Vivamus tortor. Duis mattis egestas metus.
-
-Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",#3b2,District of Columbia,24.2oz,101.46,50.21,61.71,27.93,3.8,55.2,809,false,true,TWELVE_PACK
-2016-12-20,2016-11-17 18:49:16,Lager,Stone,false,true,rhoncus dui vel sem sed sagittis nam congue risus semper porta,"Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.
-
-Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.
-
-In congue. Etiam justo. Etiam pretium iaculis justo.",#920,New York,12oz,41.41,74.18,83.30,76.17,4.4,27.1,107,true,false,FIFTY_LITRE_KEG
-2016-11-18,2016-02-14 10:03:30,IPA,River Rat,true,false,aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis,"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.
-
-Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",#e21,Kentucky,750ml,52.50,101.52,77.80,75.63,2.3,40.3,632,false,true,FIFTEEN_FIVE_GAL_KEG
-2016-05-12,2016-06-08 15:21:12,Imperial Stout,Westbrook,true,true,posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec,"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.
-
-Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",#cbe,Pennsylvania,24.2oz,89.20,49.38,45.71,81.81,1.3,33.0,831,false,true,SEVEN_SEVENTEEN_GAL_KEG
-2016-10-23,2016-09-26 13:34:41,Stout,Allagash,true,false,quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec semper,"Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.
-
-Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",#2f1,Texas,750ml,82.02,72.51,62.86,82.33,2.4,59.9,157,true,true,TWENTY_LITRE_KEG
-2016-02-03,2016-06-10 10:12:53,Lambent,Westbrook,true,false,ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus,"In congue. Etiam justo. Etiam pretium iaculis justo.
-
-In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",#b31,New York,24.2oz,91.87,88.05,39.82,80.77,2.8,53.7,873,true,true,THREE_PACK
-2016-07-29,2016-07-16 01:35:57,Ale,Great Divide,true,false,quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla,In congue. Etiam justo. Etiam pretium iaculis justo.,#e6b,Florida,24.2oz,44.25,56.35,67.33,26.13,3.5,32.2,72,false,true,FIVE_SEVENTEEN_GAL_KEG
-2016-04-05,2016-05-25 07:34:47,Imperial Stout,Stone,true,true,convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim,"Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.
-
-Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",#653,Arizona,3L,105.75,83.03,39.16,27.84,3.8,40.5,303,true,true,ONE_PACK
-2016-03-05,2016-10-26 16:33:59,IPA,Great Divide,false,false,non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis,"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",#825,Iowa,3L,42.39,60.59,88.35,76.48,2.2,48.3,693,false,false,ONE_PACK
-2016-01-12,2016-04-08 20:42:28,Framboise,Coast,false,true,morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor,"Sed ante. Vivamus tortor. Duis mattis egestas metus.
-
-Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.
-
-Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",#02b,Nevada,3L,112.04,104.07,73.06,78.33,2.1,48.5,269,true,false,ONE_PACK
-2016-02-20,2016-10-02 17:42:43,Lambent,Westbrook,false,false,varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.
-
-Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",#1b7,Texas,375ml,61.28,71.50,92.45,76.66,2.7,25.1,937,false,true,FIFTEEN_FIVE_GAL_KEG
-2016-02-01,2016-04-19 19:28:32,Belgian White,Westbrook,true,true,nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa,"Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",#175,Wisconsin,750ml,65.19,54.21,98.01,39.23,1.5,44.1,86,false,false,FIFTEEN_FIVE_GAL_KEG
-2016-06-02,2016-10-15 15:47:50,Pale Ale,Stone,true,false,metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean,"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.
-
-Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",#f71,Florida,12oz,55.93,104.93,39.51,51.31,3.7,36.2,645,false,false,SIX_PACK
-2016-05-20,2016-01-28 12:15:59,Framboise,Bells,false,true,integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum,In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.,#724,Louisiana,375ml,45.03,63.57,68.94,51.45,2.8,57.4,343,false,false,SIX_PACK
-2016-01-30,2016-08-31 04:16:26,Belgian White,FullSteam,true,true,lobortis sapien sapien non mi integer ac neque duis bibendum morbi,"Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.
-
-Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",#940,South Carolina,24.2oz,41.11,51.09,102.60,62.08,3.5,35.7,126,false,false,SIX_PACK
-2016-11-18,2016-01-24 03:54:30,Belgian White,Ommegang,true,true,odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec,Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.,#00f,Florida,12oz,59.67,108.28,60.70,60.70,3.5,27.5,408,true,false,FIVE_SEVENTEEN_GAL_KEG
-2016-08-24,2016-06-29 08:15:31,Stout,River Rat,true,true,phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing,Phasellus in felis. Donec semper sapien a libero. Nam dui.,#243,Texas,750ml,48.73,96.89,53.00,77.52,2.7,24.6,524,true,true,TWENTY_FOUR_PACK
-2016-06-21,2016-09-19 23:48:58,Pale Ale,Avery,true,false,donec quis orci eget orci vehicula condimentum curabitur in libero,"Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.
-
-Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.
-
-Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",#893,Texas,16oz,83.58,78.09,100.31,26.10,3.0,50.4,636,false,true,FIFTEEN_FIVE_GAL_KEG
-2016-09-24,2016-02-17 20:47:42,Imperial IPA,Lefthand,false,false,erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi,Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.,#1d1,Colorado,3L,81.98,88.34,50.43,51.07,3.6,26.1,615,false,true,TWENTY_FOUR_PACK
-2016-02-17,2016-12-29 10:20:31,Brown Ale,Great Divide,false,false,feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna,"Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
-
-Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",#ac7,New York,12oz,65.41,101.05,99.96,48.70,4.1,57.3,162,true,false,FIFTY_LITRE_KEG
-2016-08-22,2016-08-13 20:58:23,Lambent,Coast,false,false,in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in,"Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.
-
-Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.
-
-Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",#8cc,New York,12oz,47.96,36.48,79.99,60.13,2.0,31.6,420,true,true,TWENTY_LITRE_KEG
-2016-09-15,2016-06-09 22:50:27,Ale,FullSteam,false,true,eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in,"In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.
-
-Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.
-
-Sed ante. Vivamus tortor. Duis mattis egestas metus.",#a69,Alaska,12oz,75.84,73.87,80.67,85.92,1.7,46.3,729,true,false,SEVEN_SEVENTEEN_GAL_KEG
-2016-10-29,2016-04-04 22:02:00,Brown Ale,Allagash,true,true,dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat,"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",#178,Florida,12oz,59.16,86.32,51.26,36.23,1.5,28.6,222,true,true,TWENTY_FOUR_PACK
-2016-11-07,2016-05-03 04:29:57,Lambent,FullSteam,true,false,amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in,"Phasellus in felis. Donec semper sapien a libero. Nam dui.
-
-Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",#e95,Tennessee,24.2oz,63.72,58.14,69.18,73.47,3.0,50.0,237,false,true,TWENTY_LITRE_KEG
-2016-12-05,2016-12-17 22:14:16,Stout,Westbrook,true,true,id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede,"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.
-
-Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.
-
-Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",#24a,Pennsylvania,375ml,75.01,65.59,84.25,35.09,3.2,28.2,67,true,false,FIFTEEN_FIVE_GAL_KEG
-2016-07-27,2016-06-30 17:08:06,Imperial Stout,River Rat,true,true,lectus in est risus auctor sed tristique in tempus sit amet sem,"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.
-
-Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.
-
-Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",#779,District of Columbia,3L,115.55,87.33,71.01,66.97,2.8,38.1,541,false,false,TWELVE_PACK
-2016-01-15,2016-07-30 14:55:20,Lager,River Rat,false,true,ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy,"Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.
-
-Phasellus in felis. Donec semper sapien a libero. Nam dui.
-
-Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",#85b,Texas,24.2oz,40.64,43.55,81.34,76.38,1.4,46.2,158,false,true,ONE_PACK
-2016-03-16,2016-02-29 13:13:18,Stout,Stone,false,false,luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus,"In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.
-
-Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.
-
-Sed ante. Vivamus tortor. Duis mattis egestas metus.",#ed3,Arizona,750ml,103.60,59.60,53.12,49.75,2.5,27.3,58,true,false,ONE_PACK
-2016-08-31,2016-02-20 01:04:32,Lager,Allagash,false,false,amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo,"Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.
-
-Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",#80d,Washington,375ml,92.68,76.78,84.44,66.36,2.9,41.8,628,true,false,THREE_PACK
-2016-03-13,2017-01-05 08:35:19,Imperial Stout,Lefthand,true,false,leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id,"Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.
-
-Phasellus in felis. Donec semper sapien a libero. Nam dui.
-
-Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",#f1e,California,750ml,100.01,111.02,90.63,52.89,4.7,28.5,99,true,true,FIVE_SEVENTEEN_GAL_KEG
-2016-04-19,2016-08-31 21:33:31,Imperial Stout,Coast,true,true,augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum,Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.,#551,Iowa,24.2oz,52.90,39.15,62.56,75.54,1.1,53.2,924,true,true,FIFTY_LITRE_KEG
-2016-04-14,2016-04-24 03:43:08,Imperial IPA,Ommegang,true,true,interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien,Sed ante. Vivamus tortor. Duis mattis egestas metus.,#326,Ohio,12oz,99.68,75.73,96.95,34.76,3.1,45.4,554,true,true,TWELVE_PACK
-2016-08-25,2016-02-16 09:54:41,Gose,Great Divide,false,false,justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit,Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.,#800,District of Columbia,375ml,76.24,86.58,86.66,44.94,4.2,38.5,498,true,false,FIFTEEN_FIVE_GAL_KEG
-2016-12-15,2016-10-30 14:44:34,Brown Ale,FullSteam,false,true,congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo,"Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.
-
-Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",#c32,California,3L,99.13,90.88,94.64,58.45,2.2,51.4,903,true,false,FIFTY_LITRE_KEG
-2016-04-04,2016-11-05 10:08:24,Pale Ale,Stone,false,false,diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu,"Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",#a6b,Ohio,750ml,69.54,38.94,36.53,30.25,2.3,27.2,617,false,true,FIFTEEN_FIVE_GAL_KEG
-2016-11-29,2016-02-06 23:34:47,Belgian White,Avery,true,true,ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo,"In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.
-
-Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
-
-Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",#d4c,Tennessee,16oz,118.00,42.03,98.37,27.22,4.1,55.3,447,true,true,TWENTY_FOUR_PACK
-2016-07-14,2016-03-30 13:25:29,Ale,Ommegang,true,false,platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat,"Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.
-
-Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",#a5e,Alabama,375ml,110.08,72.16,34.69,68.49,2.4,27.6,740,true,false,THREE_PACK
-2016-10-23,2016-06-01 23:59:58,Pale Ale,Stone,false,true,luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus,"Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.
-
-Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
-
-Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",#7e7,California,375ml,43.70,80.51,99.30,81.98,3.5,51.8,301,true,false,TWELVE_PACK
-2016-12-12,2016-01-13 17:42:21,Belgian White,Bells,true,true,sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet,"Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",#349,West Virginia,750ml,63.44,85.33,68.24,30.11,3.5,24.8,136,true,true,FIFTEEN_FIVE_GAL_KEG
-2016-01-12,2016-08-25 18:37:37,Gose,Westbrook,true,true,accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit,"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-
-Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.
-
-Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",#f07,Indiana,750ml,109.47,79.95,73.58,74.43,4.1,36.5,65,true,true,TWENTY_FOUR_PACK
-2016-02-21,2016-10-14 04:22:25,Belgian White,Great Divide,true,true,vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa,"Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",#9a0,Arizona,24.2oz,42.24,42.72,41.93,49.18,1.2,45.8,1017,true,true,NINE_PACK
-2016-12-12,2016-11-25 03:32:32,Stout,Bells,false,true,dictumst etiam faucibus cursus urna ut tellus nulla ut erat id,"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.
-
-Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.
-
-In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",#36b,California,24.2oz,63.69,85.70,49.41,81.94,3.2,47.8,916,false,true,SIX_PACK
-2016-06-13,2016-04-28 05:21:04,Stout,Lefthand,false,true,purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes,"Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.
-
-Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.
-
-Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",#dde,New York,3L,72.59,89.97,35.75,52.79,1.0,43.1,860,false,true,TWENTY_FOUR_PACK
-2016-07-13,2016-08-30 23:02:26,IPA,FullSteam,false,false,nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt,Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.,#c50,Arizona,3L,91.97,68.57,44.29,40.49,1.2,36.2,395,false,true,NINE_PACK
-2016-11-28,2016-03-28 11:51:02,IPA,Stone,false,false,sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl,Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.,#37c,Florida,375ml,40.15,77.66,100.66,27.11,2.9,48.6,668,false,false,FIVE_SEVENTEEN_GAL_KEG
-2017-01-02,2016-03-29 17:12:30,Stout,Westbrook,true,false,sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum,"Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.
-
-Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",#e1e,Michigan,12oz,107.99,103.98,43.61,27.04,4.5,29.0,576,false,true,THREE_PACK
-2016-03-09,2016-10-23 23:40:11,Belgian White,Ommegang,true,true,nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy,"Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",#1db,Michigan,3L,42.86,61.11,54.68,68.74,3.7,36.7,283,true,false,TWELVE_PACK
-2016-09-03,2016-06-20 08:50:09,Belgian White,Ommegang,true,true,nec nisi volutpat eleifend donec ut dolor morbi vel lectus,"Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.
-
-Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",#58c,Massachusetts,3L,106.89,49.06,60.67,57.02,2.2,35.2,676,true,true,FIFTEEN_FIVE_GAL_KEG
-2016-12-31,2016-08-24 20:55:45,Gose,Coast,false,false,sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum,"In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.
-
-Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.
-
-Sed ante. Vivamus tortor. Duis mattis egestas metus.",#a1b,Florida,750ml,80.44,78.93,50.89,51.72,4.8,46.6,903,false,false,SEVEN_SEVENTEEN_GAL_KEG
+02/24/2017|01/18/2016|IPA|Lefthand|true|true|nisi dictum augue|suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus|495|Palau|187ml|137|41|85|46|2|55|281|false|true|FIFTEEN_FIVE_GAL_KEG
+02/20/2016|07/13/2016|DIPA|Avery|false|false|luctus aliquet|ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac, eleifend|527|Canada|750ml|99|125|62|43|3|43|573|false|true|ONE_PACK
+02/27/2016|03/22/2017|DIPA|Westbrook|false|false|arcu. Morbi|Donec tempus, lorem fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur|804|Guatemala|1.5L|127|108|84|36|3|44|897|true|true|TWENTY_LITRE_KEG
+12/03/2016|07/03/2017|DIPA|Bells|false|false|non, sollicitudin a, malesuada id,|Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum|671|Ukraine|750ml|42|46|71|86|3|44|658|true|true|ONE_PACK
+09/22/2017|09/06/2016|DIPA|Westbrook|false|false|diam dictum sapien. Aenean|blandit mattis. Cras eget nisi dictum augue malesuada malesuada. Integer id magna et ipsum cursus vestibulum. Mauris magna. Duis dignissim|192|South Sudan|16oz|81|118|127|54|3|52|405|false|true|THREE_PACK
+02/07/2016|05/04/2016|Ale|Freehouse|true|true|arcu. Nunc mauris. Morbi non sapien molestie orci tincidunt adipiscing.|rutrum magna. Cras convallis convallis dolor. Quisque tincidunt pede ac urna. Ut|338|Saint Barthélemy|16oz|86|73|36|92|2|49|928|true|true|FIFTY_LITRE_KEG
+04/12/2016|02/20/2017|DIPA|Westbrook|true|true|hymenaeos. Mauris ut quam|cursus a, enim. Suspendisse aliquet, sem ut cursus luctus, ipsum leo elementum sem, vitae aliquam eros turpis non enim.|972|Indonesia|12oz|72|125|58|34|1|47|1178|false|false|FIFTY_LITRE_KEG
+03/03/2016|05/16/2017|Pale|Lefthand|false|true|Sed malesuada augue ut|aliquet magna a neque. Nullam ut nisi a odio semper|618|Kazakhstan|24.4oz|123|43|112|95|1|53|317|true|true|TWENTY_FOUR_PACK
+12/11/2017|02/21/2016|IPA|Avery|false|false|Nunc sollicitudin commodo ipsum. Suspendisse non leo.|Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis odio. Nam interdum enim non nisi. Aenean eget metus. In nec|761|Vanuatu|187ml|51|45|106|60|1|40|737|true|true|THREE_PACK
+05/31/2017|04/06/2016|Brown|Fullsteam|false|false|ullamcorper, nisl arcu iaculis enim, sit amet|ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada|160|Portugal|375ml|44|130|47|67|2|45|449|false|false|THREE_PACK
+10/23/2017|02/06/2016|Framboise|Allagash|false|false|eu metus. In|interdum. Sed auctor odio a purus. Duis elementum, dui quis accumsan convallis, ante lectus convallis est, vitae sodales|188|Malaysia|24.4oz|59|105|49|54|3|42|279|true|false|TWELVE_PACK
+12/16/2017|09/19/2017|Gose|Westbrook|true|false|eu, ultrices sit amet, risus. Donec nibh|sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non,|848|Liberia|24.4oz|73|94|43|58|3|44|427|true|true|SIX_PACK
+11/30/2016|06/12/2017|IPA|Freehouse|true|false|Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue|nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod|845|Gambia|3L|41|57|42|86|2|46|616|false|false|TWELVE_PACK
+05/12/2016|12/17/2017|IPA|Westbrook|false|true|erat, eget|augue id ante dictum cursus. Nunc mauris elit, dictum eu, eleifend nec, malesuada ut,|371|Angola|16oz|42|50|42|69|1|55|242|true|false|FIVE_SEVENTEEN_GAL_KEG
+03/11/2016|04/01/2017|Lambent|Avery|true|false|lectus, a sollicitudin orci|vitae, aliquet nec, imperdiet nec, leo. Morbi neque tellus, imperdiet non, vestibulum nec, euismod in, dolor. Fusce|678|Liberia|16oz|115|44|48|97|1|51|196|false|true|FIVE_SEVENTEEN_GAL_KEG
+12/06/2017|06/10/2017|Brown|Fullsteam|false|true|non leo.|convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat|951|Trinidad and Tobago|1.5L|106|131|126|32|2|51|607|false|true|TWELVE_PACK
+12/21/2016|11/23/2016|IPA|Fullsteam|true|true|et malesuada|orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet|275|Northern Mariana Islands|12oz|58|89|132|38|1|25|773|false|true|SIX_PACK
+12/18/2017|05/05/2017|DIPA|Westbrook|true|true|Nulla tincidunt, neque vitae|dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor|223|Fiji|1.5L|91|133|63|66|1|38|828|false|true|TWELVE_PACK
+07/30/2017|05/07/2017|Lambent|Allagash|true|true|bibendum fermentum|eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a,|968|China|12oz|117|134|47|96|1|58|955|true|false|THREE_PACK
+10/08/2016|11/30/2017|Gose|Allagash|true|false|tempor arcu. Vestibulum ut eros non|mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede nec ante blandit viverra.|732|Australia|16oz|70|72|38|61|1|35|1067|true|true|ONE_PACK
+02/06/2017|05/17/2016|Pale|Allagash|false|true|lorem, auctor quis, tristique ac,|montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo auctor|255|Botswana|1.5L|95|99|94|61|3|60|481|true|false|SEVEN_SEVEN_FIVE_GAL_KEG
+05/31/2017|08/10/2016|Lambent|Lefthand|false|false|Nullam vitae diam. Proin dolor. Nulla semper|rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget nisi|804|Kuwait|750ml|104|83|47|95|1|52|848|false|false|NINE_PACK
+07/03/2016|09/03/2017|Gose|Allagash|true|false|lorem ut aliquam iaculis, lacus pede sagittis augue, eu tempor|ante bibendum ullamcorper. Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue eu tellus.|518|Bouvet Island|12oz|85|52|59|78|1|34|981|true|false|TWENTY_LITRE_KEG
+10/02/2016|08/20/2017|Framboise|Coast|false|true|euismod in, dolor. Fusce feugiat.|ornare egestas ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris|119|Benin|375ml|137|78|84|74|1|53|192|false|true|SIX_PACK
+12/08/2016|05/15/2017|Lambent|Freehouse|true|false|malesuada fames|facilisis facilisis, magna tellus faucibus leo, in lobortis tellus justo sit amet nulla. Donec|546|Austria|12oz|132|87|75|46|3|25|1147|false|true|TWENTY_FOUR_PACK
+04/11/2017|09/01/2016|Ale|Fullsteam|true|true|ornare|dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed|221|Togo|187ml|83|60|106|55|3|53|916|true|false|FIVE_SEVENTEEN_GAL_KEG
+03/18/2016|10/17/2016|Lambent|Coast|false|true|ut ipsum ac mi eleifend egestas. Sed pharetra, felis|ut aliquam iaculis, lacus pede sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi|969|Papua New Guinea|16oz|99|38|73|46|3|24|1006|false|true|TWENTY_FOUR_PACK
+11/13/2016|02/27/2016|Lambent|Avery|true|false|rutrum lorem ac risus. Morbi metus. Vivamus euismod|in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque|547|Palau|375ml|106|80|83|63|3|55|523|false|true|TWENTY_FOUR_PACK
+12/13/2017|09/22/2016|Brown|Bells|true|true|metus. Vivamus|odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec,|219|Norway|16oz|125|93|83|30|3|47|1122|false|false|TWENTY_LITRE_KEG
+12/09/2017|07/26/2017|Framboise|Bells|true|false|Aliquam erat volutpat. Nulla dignissim.|diam. Duis mi enim, condimentum eget, volutpat ornare, facilisis eget, ipsum. Donec sollicitudin adipiscing|256|Greenland|12oz|129|55|118|75|3|42|428|true|false|ONE_PACK
+05/16/2017|06/02/2017|Lambent|Bells|false|true|vel, vulputate eu, odio. Phasellus at augue id|Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse aliquet, sem|333|Mozambique|5L|68|107|98|44|2|31|556|false|true|TWELVE_PACK
+03/14/2016|12/13/2017|Framboise|Lefthand|false|true|In ornare sagittis felis. Donec tempor, est ac mattis semper,|convallis, ante lectus convallis est, vitae sodales nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales|625|American Samoa|24.4oz|136|127|128|66|2|26|1044|true|true|NINE_PACK
+10/19/2016|12/07/2016|Lambent|Fullsteam|true|true|ipsum cursus|mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula|331|Monaco|375ml|133|130|90|37|3|25|1100|true|true|TWENTY_FOUR_PACK
+08/18/2016|04/21/2017|Framboise|Freehouse|false|true|sed dui. Fusce aliquam, enim nec tempus scelerisque,|volutpat ornare, facilisis eget, ipsum. Donec sollicitudin adipiscing ligula. Aenean gravida|398|Bulgaria|3L|93|136|121|47|3|44|1196|false|false|NINE_PACK
+07/02/2017|11/14/2016|Ale|Bells|true|true|tincidunt, nunc ac mattis ornare, lectus ante|fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare.|640|Jamaica|5L|123|99|101|72|1|46|342|true|true|SIX_PACK
+09/24/2017|09/20/2017|DIPA|Lefthand|true|true|vel lectus. Cum sociis natoque penatibus et|laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat|881|Belgium|3L|111|97|56|99|3|45|345|true|true|FIFTEEN_FIVE_GAL_KEG
+07/16/2016|10/22/2017|Pale|Bells|true|true|ultrices iaculis odio. Nam interdum enim|non nisi. Aenean eget metus. In nec orci. Donec nibh. Quisque nonummy ipsum non arcu. Vivamus sit amet risus. Donec|201|Kiribati|1.5L|43|60|118|33|1|45|645|false|false|NINE_PACK
+03/15/2016|02/26/2017|IPA|Fullsteam|false|false|egestas blandit. Nam|dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat semper rutrum. Fusce dolor|537|Holy See (Vatican City State)|16oz|102|94|44|34|1|49|327|false|false|NINE_PACK
+11/16/2017|10/21/2016|Gose|Allagash|false|true|orci tincidunt adipiscing. Mauris molestie pharetra|Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices sit amet, risus. Donec nibh enim, gravida|825|Fiji|24.4oz|105|67|75|42|1|53|785|false|false|ONE_PACK
+06/13/2016|07/21/2017|Ale|Fullsteam|true|true|nec urna et arcu imperdiet ullamcorper.|aliquam eros turpis non enim. Mauris quis turpis vitae purus gravida sagittis. Duis gravida. Praesent eu nulla|146|Western Sahara|5L|119|79|88|39|3|45|420|false|false|SIX_PACK
+01/03/2018|02/07/2017|Gose|Freehouse|false|false|auctor odio a purus. Duis elementum, dui|mauris a nunc. In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum ac mi eleifend|931|Iraq|187ml|61|113|100|32|2|57|987|true|true|SEVEN_SEVEN_FIVE_GAL_KEG
+05/11/2017|06/04/2016|IPA|Westbrook|false|true|molestie pharetra nibh. Aliquam ornare,|commodo ipsum. Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat non,|348|Rwanda|16oz|101|71|42|55|2|58|442|true|true|ONE_PACK
+05/05/2017|01/24/2017|Brown|Westbrook|true|true|Nam nulla magna, malesuada vel, convallis in,|montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim. Etiam gravida molestie|734|Hungary|375ml|127|104|110|78|2|40|881|false|false|TWELVE_PACK
+07/11/2017|06/01/2017|Lambent|Lefthand|true|false|Curae;|lectus sit amet luctus vulputate, nisi sem semper erat, in consectetuer ipsum nunc id enim.|910|Taiwan|187ml|129|90|41|49|1|39|315|false|false|FIVE_SEVENTEEN_GAL_KEG
+07/25/2016|12/02/2016|Gose|Westbrook|false|true|Morbi neque tellus, imperdiet non, vestibulum nec, euismod in, dolor.|vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non,|221|Jersey|187ml|125|122|107|69|2|30|705|true|true|FIVE_SEVENTEEN_GAL_KEG
+01/06/2018|11/14/2017|Gose|Allagash|true|false|non nisi. Aenean eget metus. In nec|adipiscing ligula. Aenean gravida nunc sed pede. Cum sociis natoque|362|Brunei|375ml|92|62|43|53|3|31|544|true|true|TWENTY_FOUR_PACK
+01/15/2017|09/26/2017|Gose|Avery|true|false|nisl. Quisque fringilla euismod enim.|euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin|549|Holy See (Vatican City State)|3L|134|54|39|52|1|45|984|true|false|THREE_PACK
+10/05/2017|10/25/2017|Lambent|Avery|true|true|vulputate, lacus. Cras interdum. Nunc sollicitudin|Nulla facilisis. Suspendisse commodo tincidunt nibh. Phasellus nulla. Integer vulputate, risus a ultricies|717|Slovenia|750ml|101|39|95|34|1|53|691|true|true|TWELVE_PACK
+08/21/2016|10/10/2017|Gose|Westbrook|false|true|mattis.|leo, in lobortis tellus justo sit amet nulla. Donec non justo. Proin non massa|761|Algeria|3L|124|38|80|59|2|44|115|false|false|SEVEN_SEVEN_FIVE_GAL_KEG
+05/19/2016|03/11/2017|Ale|Bells|true|true|sed, hendrerit a, arcu. Sed et libero. Proin|Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam auctor,|572|Korea, North|1.5L|45|82|79|92|2|58|169|true|false|FIVE_SEVENTEEN_GAL_KEG
+07/20/2017|07/10/2017|IPA|Freehouse|true|false|tellus. Nunc lectus pede, ultrices|ac mattis semper, dui lectus rutrum urna, nec luctus felis purus ac tellus. Suspendisse sed dolor. Fusce mi lorem,|545|Mali|5L|42|105|75|73|2|29|409|true|true|THREE_PACK
+10/05/2016|03/30/2017|Lager|Fullsteam|false|true|lorem.|turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere|441|Estonia|24.4oz|45|54|114|51|1|54|602|true|false|ONE_PACK
+08/01/2017|05/27/2016|Gose|Westbrook|true|true|vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat|dapibus gravida. Aliquam tincidunt, nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo|322|Tuvalu|16oz|133|66|122|79|2|51|729|true|false|SEVEN_SEVEN_FIVE_GAL_KEG
+12/13/2016|06/05/2017|Framboise|Coast|false|false|malesuada fames ac turpis egestas. Fusce aliquet magna|ridiculus mus. Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec ligula|806|Sweden|187ml|84|75|48|57|1|32|728|false|false|FIFTEEN_FIVE_GAL_KEG
+10/22/2016|12/02/2016|Pale|Allagash|true|true|non nisi.|volutpat nunc sit amet metus. Aliquam erat volutpat. Nulla facilisis. Suspendisse|843|Norfolk Island|12oz|61|60|100|51|2|47|356|true|true|SEVEN_SEVEN_FIVE_GAL_KEG
+11/11/2017|10/21/2016|Lambent|Bells|true|false|Aliquam|Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie|326|Cuba|5L|40|86|131|54|1|58|488|false|false|NINE_PACK
+04/08/2016|10/19/2016|DIPA|Bells|true|false|enim. Sed|bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci,|459|Iraq|16oz|120|93|93|89|1|29|863|false|true|SIX_PACK
+03/14/2016|03/24/2017|Framboise|Avery|true|true|sit amet|pede et risus. Quisque libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur|504|Switzerland|187ml|44|68|56|59|3|59|603|true|true|THREE_PACK
+06/24/2016|05/16/2017|Brown|Bells|false|false|velit.|Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna.|970|Saint Martin|5L|66|130|53|88|2|44|294|true|true|TWENTY_FOUR_PACK
+01/31/2017|07/12/2016|Brown|Freehouse|false|true|quis urna. Nunc quis arcu vel|purus, in molestie tortor nibh sit amet orci. Ut sagittis lobortis mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit|360|Djibouti|750ml|118|105|80|69|3|59|237|false|false|SIX_PACK
+08/14/2017|10/06/2017|Lager|Coast|false|false|Cras eu tellus eu augue|a mi fringilla mi lacinia mattis. Integer eu lacus. Quisque|960|Romania|1.5L|79|123|55|44|3|26|469|false|true|TWELVE_PACK
+07/27/2016|03/12/2017|Pale|Coast|true|true|sapien imperdiet ornare. In faucibus. Morbi|et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt, nunc ac|170|Saint Helena, Ascension and Tristan da Cunha|24.4oz|126|119|103|52|2|44|511|false|true|TWENTY_FOUR_PACK
+01/29/2017|08/01/2016|Lambent|Coast|false|false|aliquet. Proin velit. Sed malesuada augue ut|vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla|288|Cape Verde|24.4oz|74|39|42|98|1|24|259|true|true|TWENTY_LITRE_KEG
+10/12/2016|09/01/2016|Ale|Westbrook|true|true|iaculis enim, sit amet ornare|blandit mattis. Cras eget nisi dictum augue malesuada malesuada. Integer id magna et ipsum cursus vestibulum. Mauris magna.|151|Gibraltar|187ml|133|109|66|76|3|39|238|true|true|FIFTY_LITRE_KEG
+10/07/2017|09/15/2017|Ale|Coast|false|false|gravida. Aliquam tincidunt, nunc ac mattis ornare, lectus|Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio.|374|Cocos (Keeling) Islands|187ml|65|85|88|30|2|39|650|true|true|TWELVE_PACK
+04/26/2017|10/07/2016|IPA|Coast|true|true|dui lectus rutrum urna, nec luctus felis purus|In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante|701|Kenya|12oz|135|104|123|69|3|52|849|true|false|THREE_PACK
+08/25/2016|07/11/2016|Framboise|Bells|true|true|eleifend vitae, erat. Vivamus nisi.|neque non quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam fringilla|853|United States|24.4oz|137|60|77|87|1|35|515|true|false|SEVEN_SEVEN_FIVE_GAL_KEG
+12/07/2017|03/15/2017|Brown|Fullsteam|false|true|aliquet diam. Sed diam lorem, auctor quis,|blandit viverra. Donec tempus, lorem fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec|142|El Salvador|750ml|81|51|87|85|2|39|722|false|false|SEVEN_SEVEN_FIVE_GAL_KEG
+09/29/2016|02/13/2016|Ale|Coast|false|false|elit. Nulla facilisi. Sed neque. Sed eget lacus.|dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor|209|India|3L|129|79|128|54|2|39|809|false|true|FIFTEEN_FIVE_GAL_KEG
+11/15/2016|08/06/2017|Lambent|Freehouse|true|false|Ut tincidunt orci quis lectus. Nullam|molestie. Sed id risus quis diam luctus lobortis. Class aptent taciti sociosqu ad litora torquent|795|Trinidad and Tobago|3L|95|54|79|93|3|47|1078|true|false|FIFTY_LITRE_KEG
+09/20/2017|12/06/2017|DIPA|Freehouse|false|false|tempus mauris erat eget ipsum.|Integer vulputate, risus a ultricies adipiscing, enim mi tempor lorem, eget mollis lectus pede et risus. Quisque libero lacus, varius|895|Somalia|16oz|63|128|44|57|1|33|1059|true|false|SEVEN_SEVEN_FIVE_GAL_KEG
+04/06/2017|04/28/2017|IPA|Lefthand|true|false|malesuada malesuada. Integer id magna|id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac|381|Falkland Islands|24.4oz|40|122|49|89|3|59|1168|true|false|FIFTEEN_FIVE_GAL_KEG
+02/26/2016|10/04/2016|Gose|Freehouse|false|false|dolor. Fusce mi lorem,|libero et tristique pellentesque, tellus sem mollis dui, in sodales elit erat vitae risus. Duis a|905|Nigeria|375ml|121|96|131|75|3|44|69|true|false|ONE_PACK
+12/30/2016|02/09/2017|DIPA|Fullsteam|false|false|turpis.|velit in aliquet lobortis, nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut semper pretium neque.|559|Chile|375ml|67|84|113|43|3|42|133|false|true|SIX_PACK
+02/25/2016|11/18/2017|Framboise|Allagash|false|false|vitae nibh. Donec est mauris, rhoncus id, mollis nec,|dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend|855|Barbados|24.4oz|41|95|51|88|2|24|1138|false|false|THREE_PACK
+04/14/2016|09/23/2016|Lambent|Westbrook|true|false|augue malesuada|sed, facilisis vitae, orci. Phasellus dapibus quam quis diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac|837|Vanuatu|375ml|138|98|49|77|2|25|241|false|false|ONE_PACK
+08/07/2016|11/15/2017|DIPA|Bells|false|false|magnis dis parturient montes,|libero et tristique pellentesque, tellus sem mollis dui, in sodales elit erat vitae risus. Duis a|964|Uzbekistan|375ml|84|48|54|58|2|30|241|true|false|TWENTY_FOUR_PACK
+11/16/2016|08/05/2017|Lager|Bells|true|true|ac ipsum. Phasellus vitae mauris sit amet lorem semper auctor.|posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus|373|Sierra Leone|3L|91|80|103|41|2|47|1117|true|true|FIVE_SEVENTEEN_GAL_KEG
+06/28/2017|05/22/2016|Ale|Freehouse|false|false|elit, dictum eu, eleifend nec, malesuada ut, sem.|metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada vel, venenatis|553|Cyprus|375ml|48|127|113|36|1|36|878|true|true|SIX_PACK
+09/01/2017|01/12/2017|Pale|Allagash|false|false|mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam. Proin|sed turpis nec mauris blandit mattis. Cras eget nisi dictum augue malesuada malesuada. Integer id magna et ipsum cursus|808|Hong Kong|1.5L|67|41|114|31|3|56|615|true|false|FIFTEEN_FIVE_GAL_KEG
+10/18/2017|01/21/2017|Ale|Bells|false|false|vitae purus gravida sagittis. Duis gravida. Praesent|odio tristique pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia|534|Greenland|3L|99|87|111|48|2|60|437|true|false|TWENTY_FOUR_PACK
+03/28/2017|04/13/2016|Lambent|Coast|true|false|rhoncus. Proin|mi eleifend egestas. Sed pharetra, felis eget varius ultrices, mauris ipsum porta elit, a feugiat tellus|906|Comoros|3L|90|65|52|79|3|56|446|false|true|SEVEN_SEVEN_FIVE_GAL_KEG
+07/21/2017|05/11/2016|Lager|Fullsteam|true|true|pede nec ante blandit viverra. Donec tempus,|egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget nisi dictum|838|Tuvalu|24.4oz|71|134|132|36|3|51|684|true|true|FIFTEEN_FIVE_GAL_KEG
+04/07/2017|08/29/2017|Pale|Westbrook|false|true|arcu imperdiet ullamcorper. Duis at|imperdiet ornare. In faucibus. Morbi vehicula. Pellentesque tincidunt tempus risus. Donec egestas. Duis ac arcu.|185|Georgia|1.5L|74|126|43|73|2|25|372|false|true|THREE_PACK
+11/20/2016|09/10/2017|Lager|Avery|false|false|tristique neque venenatis lacus. Etiam bibendum|Vivamus sit amet risus. Donec egestas. Aliquam nec enim. Nunc ut erat.|964|Mongolia|12oz|101|84|52|65|2|54|571|false|true|FIFTY_LITRE_KEG
+04/18/2017|07/15/2016|IPA|Westbrook|false|false|ut mi. Duis risus odio, auctor vitae, aliquet nec, imperdiet|nunc. In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum|716|Samoa|750ml|90|66|51|47|1|45|788|true|true|FIFTEEN_FIVE_GAL_KEG
+03/11/2016|04/13/2017|Gose|Coast|true|true|Quisque libero lacus, varius|egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio.|916|Ecuador|16oz|104|98|51|37|2|59|840|false|true|FIVE_SEVENTEEN_GAL_KEG
+02/21/2017|01/13/2016|Framboise|Freehouse|true|false|odio a purus.|Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna|183|Guatemala|750ml|52|79|72|67|2|29|280|false|false|TWELVE_PACK
+07/16/2017|12/09/2017|Lager|Bells|true|false|gravida sagittis. Duis gravida.|a odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis odio. Nam interdum|576|Algeria|5L|69|126|61|43|2|59|1070|false|true|FIFTEEN_FIVE_GAL_KEG
+06/14/2016|10/14/2017|Gose|Fullsteam|false|false|et|Ut tincidunt vehicula risus. Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed,|886|Montserrat|5L|135|100|90|50|2|37|707|false|true|ONE_PACK
+11/13/2016|12/25/2017|DIPA|Coast|false|false|tempor arcu.|pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus|695|Turks and Caicos Islands|187ml|43|105|102|67|2|42|797|true|true|NINE_PACK
+02/04/2016|11/17/2016|DIPA|Freehouse|true|false|ornare placerat, orci lacus vestibulum lorem,|vestibulum nec, euismod in, dolor. Fusce feugiat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam auctor,|391|Congo, the Democratic Republic of the|3L|56|124|71|35|1|46|155|false|true|SIX_PACK
+11/29/2016|12/12/2017|Brown|Avery|false|true|nec luctus felis purus ac tellus.|enim non nisi. Aenean eget metus. In nec orci. Donec nibh. Quisque nonummy ipsum non|615|Norway|3L|86|134|90|66|2|24|251|false|true|NINE_PACK
+05/03/2017|01/22/2016|Gose|Allagash|false|false|mauris eu elit. Nulla facilisi.|amet metus. Aliquam erat volutpat. Nulla facilisis. Suspendisse commodo tincidunt nibh. Phasellus nulla. Integer vulputate, risus a ultricies adipiscing, enim|484|Burundi|3L|70|59|73|36|1|26|1085|false|false|NINE_PACK
+03/21/2016|02/04/2017|Ale|Bells|true|false|facilisis facilisis, magna tellus faucibus leo, in lobortis tellus|odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam|702|Eritrea|3L|114|129|126|80|2|60|212|false|false|SEVEN_SEVEN_FIVE_GAL_KEG
+12/24/2016|03/01/2016|Ale|Allagash|false|false|feugiat tellus lorem eu metus. In|quam a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac, eleifend vitae,|503|Sudan|16oz|55|117|78|98|1|56|1124|true|false|FIFTY_LITRE_KEG
+06/26/2017|11/16/2016|IPA|Avery|true|true|Suspendisse commodo tincidunt nibh. Phasellus nulla.|accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus gravida.|674|Heard Island and Mcdonald Islands|375ml|83|66|55|45|1|26|503|true|true|THREE_PACK
+05/22/2017|12/02/2016|Lager|Avery|false|true|nunc sed pede.|at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt, nunc ac|672|Mauritania|12oz|95|52|124|50|2|24|64|false|false|SEVEN_SEVEN_FIVE_GAL_KEG
+01/13/2016|04/03/2016|Pale|Westbrook|true|false|nunc est, mollis non, cursus|habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam fringilla cursus purus. Nullam|425|Sao Tome and Principe|24.4oz|120|81|129|90|3|24|385|true|true|TWENTY_FOUR_PACK
+08/16/2016|12/19/2016|Lager|Bells|false|false|Aliquam|turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque|923|Korea, South|375ml|128|86|109|52|3|41|871|false|false|NINE_PACK

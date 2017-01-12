@@ -2,17 +2,11 @@ package com.CCL.controllers;
 
 import com.CCL.entities.User;
 import com.CCL.entities.products.Beer;
-import com.CCL.entities.products.BeerWrapper;
 import com.CCL.entities.products.Wine;
 import com.CCL.services.*;
 import com.CCL.utlities.PasswordStorage;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jodd.json.JsonParser;
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +16,6 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -77,16 +69,13 @@ public class CCLController {
         }
 
         if (beers.count() == 0) {
-            File c = new File("beerdata.txt");
+            File c = new File("beerdata.csv");
             Scanner fr = new Scanner(c);
             while (fr.hasNext()) {
                 String line = fr.nextLine();
                 String[] columns = line.split("\\|");
-                for (int i = 0; i < columns.length; i++) {
-                    System.out.println(columns[i]);
-                }
                 String lot = columns[0];
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+                SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
                 Date parsed = format.parse(lot);
                 java.sql.Date lotDate = new java.sql.Date(parsed.getTime());
                 String exp = columns[1];
