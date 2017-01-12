@@ -63,6 +63,8 @@ public class CCLController {
     public void init() throws SQLException, IOException, ParseException, PasswordStorage.CannotPerformOperationException {
         h2.createWebServer().start();
 
+        System.out.println(Beer.caseSize.values().toString());
+
         File f = new File("info.csv");
         Scanner fileReader = new Scanner(f);
         while (fileReader.hasNext()) {
@@ -75,7 +77,7 @@ public class CCLController {
             mapsJSApiKey = columns[4];
             embeddedMapsApiKey = columns[5];
             String name = columns[6];
-            String pass = PasswordStorage.createHash(columns[7]);
+            String pass = columns[7];
             String email = columns[8];
             boolean admin = Boolean.parseBoolean(columns[9]);
             boolean rep = Boolean.parseBoolean(columns[10]);
@@ -83,9 +85,11 @@ public class CCLController {
             boolean warehouse = Boolean.parseBoolean(columns[12]);
             boolean valid = Boolean.parseBoolean(columns[13]);
 
-            User user = new User(name, pass, email, admin, rep, driver, warehouse, valid);
-
-            users.save(user);
+            if (users.count() == 0) {
+                User user = new User(name, pass, email, admin, rep, driver, warehouse, valid);
+                user.setPassword(PasswordStorage.createHash(user.getPassword()));
+                users.save(user);
+            }
         }
 
         if (wines.count() == 0) {

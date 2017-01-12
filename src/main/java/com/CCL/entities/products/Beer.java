@@ -22,6 +22,11 @@ public class Beer {
         FIFTEEN_FIVE_GAL_KEG,
         TWENTY_LITRE_KEG,
         FIFTY_LITRE_KEG;
+
+        @Override
+        public String toString() {
+            return super.toString();
+        }
     }
 
     @Id

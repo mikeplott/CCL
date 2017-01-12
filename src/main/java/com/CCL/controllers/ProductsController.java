@@ -93,8 +93,17 @@ public class ProductsController {
     }
 
     @RequestMapping(path = "/product-models", method = RequestMethod.GET)
-    public ResponseEntity<HashMap<String, ArrayList<String>>> getProductModels(HttpSession session) {
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<HashMap> getProductModels(HttpSession session) {
+        Wine wine = new Wine();
+        Beer beer = new Beer();
+        Liquor liquor = new Liquor();
+        Beer.caseSize[] sizes = Beer.caseSize.values();
+        HashMap json = new HashMap();
+        json.put("beer", beer);
+        json.put("liquor", liquor);
+        json.put("wine", wine);
+        json.put("sizes", sizes);
+        return new ResponseEntity<>(json, HttpStatus.OK);
     }
 
     public HashMap<String, ArrayList<Product>> productSearch(Map<String, String> json) {

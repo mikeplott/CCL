@@ -26,3 +26,4 @@ nbdist/
 *.db
 info.csv
 node_modules/
+font-awesome-4.7.0/
