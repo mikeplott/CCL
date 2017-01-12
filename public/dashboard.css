@@ -190,3 +190,7 @@ img {
   border-right-width: 50px;
   border-left-width: 50px;
 }
+
+#searchResults {
+  width: 100%;
+}

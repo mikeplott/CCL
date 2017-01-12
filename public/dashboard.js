@@ -1,4 +1,4 @@
-  function checkBox(t) {
+function checkBox(t) {
     var el = document.getElementById($(t).attr('id'));
     var check = document.getElementById($(t).attr('id')).getAttribute('checked');
     console.log(check);
@@ -764,22 +764,15 @@ function inventoryDeletion(event) {
 
 function productSearch(event) {
     event.preventDefault();
-
+    $('#tableRow').remove();
     var f = $('#invSearch');
     var item = f.find('[name=invBar]').val();
-    console.log(item);
-    // var itemN = f.find('[name=itemName]').val();
-    // var imp = f.find('[name=importer]').val();
-
     $.ajax({
         url: '/search-products',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
           'item': item,
-            // 'itemCode': itemC,
-            // 'itemName': itemN,
-            // 'importer': imp,
         }),
         success: function(data) {
             searchData(data);
@@ -788,7 +781,63 @@ function productSearch(event) {
 }
 
 function searchData(data) {
-    console.log(data);
+    var newRow = document.createElement('div');
+    newRow.setAttribute('id', 'tableRow');
+    var labels = ['itemCode', 'name', 'quantity', 'brewery', 'distillery', 'importer', 'vintage', 'Case Size'];
+    var theData = data.results;
+    var theTable = document.createElement('table');
+    theTable.setAttribute('class', 'table table-striped');
+    theTable.setAttribute('id', 'searchResults');
+    var list = theData[1];
+    for (var key in theData[0]) {
+      var theKey = key.toLowerCase();
+      theKey = capitalizeEachWord(theKey);
+      if (key != 'id' && key != 'wineID' && key != 'beerID' && key != 'liquorID' && key != 'liquor'
+        && key != 'beer' && key != 'wine' && key != 'wineCaseSize' && key != 'beerCaseSize'
+        && key != 'itemCode' && key != 'name' && key != 'quantity' && key != 'brewery'
+        && key != 'distillery' && key != 'importer' && key != 'vintage' && key != 'liquorCaseSize') {
+        labels.push(key);
+      }
+    }
+    for (var headerKey = 0; headerKey < labels.length; headerKey++) {
+      var header = document.createElement('th');
+      header.innerHTML = capitalizeEachWord(labels[headerKey]);
+      theTable.appendChild(header);
+    }
+    for (var i = 0; i < theData.length; i++) {
+      var tRow = document.createElement('tr');
+      var zeData = theData[i];
+      var size = ['wineCaseSize', 'beerCaseSize', 'liquorCaseSize'];
+
+    for (var n = 0; n < labels.length; n++) {
+      var deKey = labels[n];
+      var theVal = zeData[deKey];
+      var tCol = document.createElement('td');
+      tCol.setAttribute('class', 'filterable-cell');
+      tCol.setAttribute('style', 'border-style: solid; border-width: 2px;');
+      tCol.innerHTML = theVal;
+
+      if (deKey == 'Case Size') {
+        if (zeData.wineCaseSize != null) {
+          tCol.innerHTML = zeData.wineCaseSize;
+        }
+        else if (zeData.beerCaseSize != null) {
+          tCol.innerHTML = zeData.wineCaseSize;
+        }
+        else {
+          tCol.innerHTML = zeData.liquorCaseSize;
+        }
+      }
+
+      if (theVal == null) {
+        tCol.innerHTML = 'N/A';
+      }
+      tRow.append(tCol);
+    }
+    theTable.appendChild(tRow);
+  }
+  newRow.append(theTable);
+  $('#myContainer').append(newRow);
 }
 
 function updateProduct(data) {
