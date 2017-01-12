@@ -111,8 +111,6 @@ function inventoryDash(Event) {
 function wineView(Event) {
     event.preventDefault();
 
-    $.get('/product-models', createWineView(data));
-
     var row = $('#myContainer');
     row.empty();
 
@@ -190,121 +188,169 @@ function wineView(Event) {
 
     document.getElementById('myHeader').innerHTML = "Inventory Management";
 
-    var theDiv1 = document.createElement('div');
-    theDiv1.setAttribute('class', 'col-md-2');
-    theDiv1.setAttribute('id', 'parent');
+    var myForm = document.createElement('form');
+    myForm.setAttribute('name', 'wineForm');
+    myForm.setAttribute('id', 'theWineForm');
 
-    var theDiv2 = document.createElement('div');
-    theDiv2.setAttribute('class', 'col-md-2');
-    theDiv2.setAttribute('id', 'parent1');
+    row.append(myForm);
 
-    var theDiv3 = document.createElement('div');
-    theDiv3.setAttribute('class', 'col-md-2');
-    theDiv3.setAttribute('id', 'parent2');
+    createWineView();
 
-    var theDiv4 = document.createElement('div');
-    theDiv4.setAttribute('class', 'col-md-2');
-    theDiv4.setAttribute('id', 'parent3');
+    var wineButton = document.createElement('button');
+    wineButton.setAttribute('type', 'submit');
+    wineButton.setAttribute('class', 'btn btn-primary');
+    wineButton.setAttribute('id', 'wine');
+    wineButton.setAttribute('onclick', 'createWine(event)');
+    wineButton.innerHTML = 'Submit';
 
-    var theDiv5 = document.createElement('div');
-    theDiv5.setAttribute('class', 'col-md-2');
-    theDiv5.setAttribute('id', 'parent4');
+    var lastDiv = document.createElement('div');
+    lastDiv.setAttribute('class', 'col-md-2');
+    lastDiv.append(wineButton);
 
-    var theDiv6 = document.createElement('div');
-    theDiv6.setAttribute('class', 'col-md-2');
-    theDiv6.setAttribute('id', 'parent5');
+    myForm.appendChild(lastDiv);
+}
 
-    var theDiv7 = document.createElement('div');
-    theDiv7.setAttribute('class', 'col-md-2');
-    theDiv7.setAttribute('id', 'parent6');
+function createWineView() {
 
-    var theDiv8 = document.createElement('div');
-    theDiv8.setAttribute('class', 'col-md-2');
-    theDiv8.setAttribute('id', 'parent7');
+  var myForm = $('#theWineForm');
+  $.get('/product-models', function(data) {
+    for (var i = 0; i < data.length; i ++) {
+      var dataDiv = document.createElement('div');
+      theDiv.setAttribute('class', 'col-md-2');
+      theDiv.setAttribute('id', 'parent' + i);
 
-    var theDiv9 = document.createElement('div');
-    theDiv9.setAttribute('class', ' col-md-2');
-    theDiv9.setAttribute('id', 'parent8');
+      var input = document.createElement('input');
+      input.setAttribute('type', 'text');
+      // input.setAttribute('name', data.k);
+      input.setAttribute('class', 'form-control');
+      input.setAttribute('id', 'input' + i);
 
-    var theDiv10 = document.createElement('div');
-    theDiv10.setAttribute('class', ' col-md-2');
-    theDiv10.setAttribute('id', 'parent9');
+      var label = document.createElement('label');
+      label.setAttribute('for', 'input' + i);
+      // label.innerHTML = data.k;
 
-    var theDiv11 = document.createElement('div');
-    theDiv11.setAttribute('class', ' col-md-2');
-    theDiv11.setAttribute('id', 'parent10');
-
-    var theDiv12 = document.createElement('div');
-    theDiv12.setAttribute('class', ' col-md-2');
-    theDiv12.setAttribute('id', 'parent11');
-
-    var theDiv13 = document.createElement('div');
-    theDiv13.setAttribute('class', ' col-md-2');
-    theDiv13.setAttribute('id', 'parent12');
-
-    var theDiv14 = document.createElement('div');
-    theDiv14.setAttribute('class', ' col-md-2');
-    theDiv14.setAttribute('id', 'parent13');
-
-    var theDiv15 = document.createElement('div');
-    theDiv15.setAttribute('class', ' col-md-2');
-    theDiv15.setAttribute('id', 'parent14');
-
-    var theDiv16 = document.createElement('div');
-    theDiv16.setAttribute('class', ' col-md-2');
-    theDiv16.setAttribute('id', 'parent15');
-
-    var theDiv17 = document.createElement('div');
-    theDiv17.setAttribute('class', ' col-md-2');
-    theDiv17.setAttribute('id', 'parent16');
-
-    var theDiv18 = document.createElement('div');
-    theDiv18.setAttribute('class', ' col-md-2');
-    theDiv18.setAttribute('id', 'parent17');
-
-    var theDiv19 = document.createElement('div');
-    theDiv19.setAttribute('class', ' col-md-2');
-    theDiv19.setAttribute('id', 'parent18');
-
-    var theDiv20 = document.createElement('div');
-    theDiv20.setAttribute('class', ' col-md-2');
-    theDiv20.setAttribute('id', 'parent19');
-
-    var theDiv21 = document.createElement('div');
-    theDiv21.setAttribute('class', ' col-md-2');
-    theDiv21.setAttribute('id', 'parent20');
-
-    var theDiv22 = document.createElement('div');
-    theDiv22.setAttribute('class', ' col-md-2');
-    theDiv22.setAttribute('id', 'parent21');
-
-    var theDiv23 = document.createElement('div');
-    theDiv23.setAttribute('class', ' col-md-2');
-    theDiv23.setAttribute('id', 'parent22');
-
-    var theDiv24 = document.createElement('div');
-    theDiv24.setAttribute('class', ' col-md-2');
-    theDiv24.setAttribute('id', 'parent23');
-
-    var theDiv25 = document.createElement('div');
-    theDiv25.setAttribute('class', ' col-md-2');
-    theDiv25.setAttribute('id', 'parent24');
-
-    var theDiv26 = document.createElement('div');
-    theDiv26.setAttribute('class', ' col-md-2');
-    theDiv26.setAttribute('id', 'parent25');
-
-    var theDiv27 = document.createElement('div');
-    theDiv27.setAttribute('class', ' col-md-2');
-    theDiv27.setAttribute('id', 'parent26');
-
-    var theDiv28 = document.createElement('div');
-    theDiv28.setAttribute('class', ' col-md-2');
-    theDiv28.setAttribute('id', 'parent27');
-
-    var theDiv29 = document.createElement('div');
-    theDiv29.setAttribute('class', ' col-md-2');
-    theDiv29.setAttribute('id', 'parent28');
+      dataDiv.append(label);
+      dataDiv.append(input);
+      myForm.append(dataDiv);
+    }
+  });
+}
+    
+    // var theDiv1 = document.createElement('div');
+    // theDiv1.setAttribute('class', 'col-md-2');
+    // theDiv1.setAttribute('id', 'parent');
+    //
+    // var theDiv2 = document.createElement('div');
+    // theDiv2.setAttribute('class', 'col-md-2');
+    // theDiv2.setAttribute('id', 'parent1');
+    //
+    // var theDiv3 = document.createElement('div');
+    // theDiv3.setAttribute('class', 'col-md-2');
+    // theDiv3.setAttribute('id', 'parent2');
+    //
+    // var theDiv4 = document.createElement('div');
+    // theDiv4.setAttribute('class', 'col-md-2');
+    // theDiv4.setAttribute('id', 'parent3');
+    //
+    // var theDiv5 = document.createElement('div');
+    // theDiv5.setAttribute('class', 'col-md-2');
+    // theDiv5.setAttribute('id', 'parent4');
+    //
+    // var theDiv6 = document.createElement('div');
+    // theDiv6.setAttribute('class', 'col-md-2');
+    // theDiv6.setAttribute('id', 'parent5');
+    //
+    // var theDiv7 = document.createElement('div');
+    // theDiv7.setAttribute('class', 'col-md-2');
+    // theDiv7.setAttribute('id', 'parent6');
+    //
+    // var theDiv8 = document.createElement('div');
+    // theDiv8.setAttribute('class', 'col-md-2');
+    // theDiv8.setAttribute('id', 'parent7');
+    //
+    // var theDiv9 = document.createElement('div');
+    // theDiv9.setAttribute('class', ' col-md-2');
+    // theDiv9.setAttribute('id', 'parent8');
+    //
+    // var theDiv10 = document.createElement('div');
+    // theDiv10.setAttribute('class', ' col-md-2');
+    // theDiv10.setAttribute('id', 'parent9');
+    //
+    // var theDiv11 = document.createElement('div');
+    // theDiv11.setAttribute('class', ' col-md-2');
+    // theDiv11.setAttribute('id', 'parent10');
+    //
+    // var theDiv12 = document.createElement('div');
+    // theDiv12.setAttribute('class', ' col-md-2');
+    // theDiv12.setAttribute('id', 'parent11');
+    //
+    // var theDiv13 = document.createElement('div');
+    // theDiv13.setAttribute('class', ' col-md-2');
+    // theDiv13.setAttribute('id', 'parent12');
+    //
+    // var theDiv14 = document.createElement('div');
+    // theDiv14.setAttribute('class', ' col-md-2');
+    // theDiv14.setAttribute('id', 'parent13');
+    //
+    // var theDiv15 = document.createElement('div');
+    // theDiv15.setAttribute('class', ' col-md-2');
+    // theDiv15.setAttribute('id', 'parent14');
+    //
+    // var theDiv16 = document.createElement('div');
+    // theDiv16.setAttribute('class', ' col-md-2');
+    // theDiv16.setAttribute('id', 'parent15');
+    //
+    // var theDiv17 = document.createElement('div');
+    // theDiv17.setAttribute('class', ' col-md-2');
+    // theDiv17.setAttribute('id', 'parent16');
+    //
+    // var theDiv18 = document.createElement('div');
+    // theDiv18.setAttribute('class', ' col-md-2');
+    // theDiv18.setAttribute('id', 'parent17');
+    //
+    // var theDiv19 = document.createElement('div');
+    // theDiv19.setAttribute('class', ' col-md-2');
+    // theDiv19.setAttribute('id', 'parent18');
+    //
+    // var theDiv20 = document.createElement('div');
+    // theDiv20.setAttribute('class', ' col-md-2');
+    // theDiv20.setAttribute('id', 'parent19');
+    //
+    // var theDiv21 = document.createElement('div');
+    // theDiv21.setAttribute('class', ' col-md-2');
+    // theDiv21.setAttribute('id', 'parent20');
+    //
+    // var theDiv22 = document.createElement('div');
+    // theDiv22.setAttribute('class', ' col-md-2');
+    // theDiv22.setAttribute('id', 'parent21');
+    //
+    // var theDiv23 = document.createElement('div');
+    // theDiv23.setAttribute('class', ' col-md-2');
+    // theDiv23.setAttribute('id', 'parent22');
+    //
+    // var theDiv24 = document.createElement('div');
+    // theDiv24.setAttribute('class', ' col-md-2');
+    // theDiv24.setAttribute('id', 'parent23');
+    //
+    // var theDiv25 = document.createElement('div');
+    // theDiv25.setAttribute('class', ' col-md-2');
+    // theDiv25.setAttribute('id', 'parent24');
+    //
+    // var theDiv26 = document.createElement('div');
+    // theDiv26.setAttribute('class', ' col-md-2');
+    // theDiv26.setAttribute('id', 'parent25');
+    //
+    // var theDiv27 = document.createElement('div');
+    // theDiv27.setAttribute('class', ' col-md-2');
+    // theDiv27.setAttribute('id', 'parent26');
+    //
+    // var theDiv28 = document.createElement('div');
+    // theDiv28.setAttribute('class', ' col-md-2');
+    // theDiv28.setAttribute('id', 'parent27');
+    //
+    // var theDiv29 = document.createElement('div');
+    // theDiv29.setAttribute('class', ' col-md-2');
+    // theDiv29.setAttribute('id', 'parent28');
 
     // var theDiv30 = document.createElement('div');
     // theDiv30.setAttribute('class', 'col-md-1');
@@ -450,13 +496,6 @@ function wineView(Event) {
     // theDiv58.setAttribute('class', ' col-md-1');
     // theDiv58.setAttribute('id', 'popup29');
     // theDiv58.innerHTML = 'Check if product comes in 50L kegs';
-
-    var myForm = document.createElement('form');
-    myForm.setAttribute('name', 'wineForm');
-    myForm.setAttribute('id', 'theWineForm');
-
-
-
 
     // var input1 = document.createElement('input');
     // input1.setAttribute('type', 'text');
@@ -877,12 +916,6 @@ function wineView(Event) {
     // theDiv29.append(input29);
     // theDiv29.append(theDiv58);
     //
-    // var wineButton = document.createElement('button');
-    // wineButton.setAttribute('type', 'submit');
-    // wineButton.setAttribute('class', 'btn btn-primary');
-    // wineButton.setAttribute('id', 'wine');
-    // wineButton.innerHTML = 'Submit';
-    //
     // myForm.appendChild(theDiv1);
     // myForm.appendChild(theDiv2);
     // myForm.appendChild(theDiv3);
@@ -913,34 +946,6 @@ function wineView(Event) {
     // myForm.appendChild(theDiv28);
     // myForm.appendChild(theDiv29);
 
-    for (var i = 0; i < 30; i ++) {
-      var dataDiv = document.createElement('div');
-      theDiv.setAttribute('class', 'col-md-2');
-      theDiv.setAttribute('id', 'parent' + i);
-
-      var input = document.createElement('input');
-      input.setAttribute('type', 'text');
-      // input.setAttribute('name', data.k);
-      input.setAttribute('class', 'form-control');
-      input.setAttribute('id', 'input' + i);
-
-      var label = document.createElement('label');
-      label.setAttribute('for', 'input' + i);
-      // label.innerHTML = data.k;
-
-      dataDiv.append(label);
-      dataDiv.append(input);
-      myForm.append(dataDiv);
-    }
-
-    wineButton.setAttribute('onclick', 'createWine(event)');
-
-    var lastDiv = document.createElement('div');
-    lastDiv.setAttribute('class', 'col-md-2');
-    lastDiv.append(wineButton);
-
-    myForm.appendChild(lastDiv);
-
     // for (var i = 0; i < 30; i++) {
     //     var divTarget = $('#parent' + i);
     //     divTarget.onmouseover = function() {
@@ -951,8 +956,7 @@ function wineView(Event) {
     //     }
     // }
 
-    row.append(myForm);
-}
+
 
 function createWine(event) {
     event.preventDefault();

@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * Created by michaelplott on 1/3/17.
  */
 public interface BeerRepo extends CrudRepository<Beer, Integer> {
+    Beer findByName(String name);
     Beer findByItemCode(String itemCode);
     ArrayList findAllByNameLikeIgnoreCase(String name);
     ArrayList findAllByItemCodeLikeIgnoreCase(String itemCode);

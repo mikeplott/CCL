@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public interface WineRepo extends CrudRepository<Wine, Integer> {
     ArrayList<Wine> findAll();
     Wine findByItemCode(String itemCode);
+    Wine findByName(String name);
     ArrayList findAllByNameContaining(String name);
     ArrayList findAllByNameLikeIgnoreCase(String name);
     ArrayList findAllByItemCodeLikeIgnoreCase(String itemCode);

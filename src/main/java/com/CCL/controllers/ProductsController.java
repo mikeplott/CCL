@@ -92,6 +92,11 @@ public class ProductsController {
         return productUpdate(product);
     }
 
+    @RequestMapping(path = "/product-models", method = RequestMethod.GET)
+    public ResponseEntity<HashMap<String, ArrayList<String>>> getProductModels(HttpSession session) {
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     public HashMap<String, ArrayList<Product>> productSearch(Map<String, String> json) {
         String name = json.get("item");
         String itemCode = json.get("item");

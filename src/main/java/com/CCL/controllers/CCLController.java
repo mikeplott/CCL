@@ -2,6 +2,8 @@ package com.CCL.controllers;
 
 import com.CCL.entities.User;
 import com.CCL.entities.products.Beer;
+import com.CCL.entities.products.Liquor;
+import com.CCL.entities.products.Product;
 import com.CCL.entities.products.Wine;
 import com.CCL.services.*;
 import com.CCL.utlities.PasswordStorage;
@@ -44,6 +46,12 @@ public class CCLController {
     BeerRepo beers;
 
     @Autowired
+    LiquorRepo liquors;
+
+    @Autowired
+    ProductRepo products;
+
+    @Autowired
     UserRepo users;
 
     @Autowired
@@ -52,7 +60,7 @@ public class CCLController {
     Server h2;
 
     @PostConstruct
-    public void init() throws SQLException, IOException, ParseException {
+    public void init() throws SQLException, IOException, ParseException, PasswordStorage.CannotPerformOperationException {
         h2.createWebServer().start();
 
         File f = new File("info.csv");
@@ -66,6 +74,121 @@ public class CCLController {
             distanceApiKey = columns[3];
             mapsJSApiKey = columns[4];
             embeddedMapsApiKey = columns[5];
+            String name = columns[6];
+            String pass = PasswordStorage.createHash(columns[7]);
+            String email = columns[8];
+            boolean admin = Boolean.parseBoolean(columns[9]);
+            boolean rep = Boolean.parseBoolean(columns[10]);
+            boolean driver = Boolean.parseBoolean(columns[11]);
+            boolean warehouse = Boolean.parseBoolean(columns[12]);
+            boolean valid = Boolean.parseBoolean(columns[13]);
+
+            User user = new User(name, pass, email, admin, rep, driver, warehouse, valid);
+
+            users.save(user);
+        }
+
+        if (wines.count() == 0) {
+            File wineFile = new File("winedata.csv");
+            Scanner scanner = new Scanner(wineFile);
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                String[] wineData = line.split("\\|");
+                int vintage = Integer.parseInt(wineData[0]);
+                String varietal = wineData[1];
+                String color = wineData[2];
+                String importer = wineData[3];
+                String name = wineData[4];
+                String desc = wineData[5];
+                String itemCode = wineData[6];
+                String origin = wineData[7];
+                String volume = wineData[8];
+                double frontPrice = Double.valueOf(wineData[9]);
+                double tenCP = Double.valueOf(wineData[10]);
+                double twentyFCP = Double.valueOf(wineData[11]);
+                double cost = Double.valueOf(wineData[12]);
+                double bW = Double.valueOf(wineData[13]);
+                double cW = Double.valueOf(wineData[14]);
+                int quant = Integer.parseInt(wineData[15]);
+                boolean isEx;
+                boolean isDual;
+                int ex = Integer.parseInt(wineData[16]);
+                int dual = Integer.parseInt(wineData[17]);
+                if (ex == 0) {
+                    isEx = true;
+                }
+                else {
+                    isEx = false;
+                }
+                if (dual == 0) {
+                    isDual = true;
+                }
+                else isDual = false;
+                Wine.caseSize caseSize = Wine.caseSize.valueOf(wineData[18]);
+
+                Wine wine = new Wine(vintage, varietal, color, importer, name, desc, itemCode, origin, volume,
+                        frontPrice, tenCP, twentyFCP, cost, bW, cW, quant, isEx, isDual, caseSize);
+                wines.save(wine);
+
+                Wine wineFromDb = wines.findByName(name);
+
+                Product product = new Product(wineFromDb.getId(), name, desc, itemCode, origin, volume,
+                        frontPrice, tenCP, twentyFCP, cost, bW, cW, quant, isEx,  isDual, vintage, varietal, color,
+                        importer, caseSize, false, false, true);
+
+                products.save(product);
+            }
+        }
+
+        if (liquors.count() == 0) {
+            File liquorFile = new File("liquordata.csv");
+            Scanner scanner = new Scanner(liquorFile);
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                String[] liqData = line.split("\\|");
+                String type = liqData[0];
+                String distillery = liqData[1];
+                String name = liqData[2];
+                String desc = liqData[3];
+                String itemCode = liqData[4];
+                String origin = liqData[5];
+                String volume = liqData[6];
+                double frontPrice = Double.valueOf(liqData[7]);
+                double tenCP = Double.valueOf(liqData[8]);
+                double twentyFCP = Double.valueOf(liqData[9]);
+                double cost = Double.valueOf(liqData[10]);
+                double bW = Double.valueOf(liqData[11]);
+                double cW = Double.valueOf(liqData[12]);
+                int quant = Integer.parseInt(liqData[13]);
+                boolean isEx;
+                boolean isDual;
+                int ex = Integer.parseInt(liqData[14]);
+                int dual = Integer.parseInt(liqData[15]);
+                if (ex == 0) {
+                    isEx = true;
+                }
+                else {
+                    isEx = false;
+                }
+                if (dual == 0) {
+                    isDual = true;
+                }
+                else isDual = false;
+                Liquor.caseSize caseSize = Liquor.caseSize.valueOf(liqData[16]);
+
+                Liquor liquor = new Liquor(type, distillery, name, desc, itemCode, origin, volume, frontPrice,
+                        tenCP, twentyFCP, cost, bW, cW, quant, isEx, isDual, caseSize);
+
+                liquors.save(liquor);
+
+                Liquor liquorFromDb = liquors.findByName(name);
+
+                Product product = new Product(liquorFromDb.getId(), name, desc, itemCode, origin, volume,
+                        frontPrice, tenCP, twentyFCP, cost, bW, cW, quant, isEx, isDual, type, distillery, caseSize,
+                        false, true, false);
+
+                products.save(product);
+            }
         }
 
         if (beers.count() == 0) {
@@ -100,18 +223,20 @@ public class CCLController {
                 boolean isExclusive = Boolean.getBoolean(columns[18]);
                 boolean isDualState = Boolean.getBoolean(columns[19]);
                 Beer.caseSize caseSize = Beer.caseSize.valueOf(columns[20]);
+
                 Beer beer = new Beer(lotDate, expDate, beerType, brewery, isDomestic, isSeasonal, name, desc, itemCode, origin, volume, frontPrice,
                         tenCasePrice, twentyFiveCasePrice, cost, bottleWeight, caseWeight, quantity, isExclusive, isDualState, caseSize);
-                beers.save(beer);
-            }
-        }
 
-        if (wines.findAll().size() == 0) {
-            Wine wine = new Wine(2017, "Picpoul Blanc", "White", "Kysela Pere et Fils",
-                    "Hughes Picpoul", "Picpoul", "kys-643", "France", 750 + "",
-                    9.99, 8.99, 7.99, 5.99, 3, 36,
-                    12000, false, true, Wine.caseSize.TWELVE_PACK);
-            wines.save(wine);
+                beers.save(beer);
+
+                Beer beerFromDb = beers.findByName(name);
+
+                Product product = new Product(beerFromDb.getId(), name, desc, itemCode, origin, volume, frontPrice, tenCasePrice, twentyFiveCasePrice,
+                        cost, bottleWeight, caseWeight, quantity, isExclusive, isDualState, lotDate, expDate, beerType, brewery, isDomestic, isSeasonal, caseSize,
+                        false, true, false);
+
+                products.save(product);
+            }
         }
     }
 
@@ -123,9 +248,7 @@ public class CCLController {
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public ResponseEntity<User> userLogin(HttpSession session, @RequestBody User user) throws PasswordStorage.CannotPerformOperationException, PasswordStorage.InvalidHashException {
         User userFromDB = users.findByUserName(user.getUserName());
-        System.out.println(user);
         if (User.userValidation(user, userFromDB, session)) {
-//            session.setAttribute("userName", user.getUserName());
             return new ResponseEntity<User>(user, HttpStatus.OK);
         }
         else {
@@ -143,6 +266,7 @@ public class CCLController {
         if (userForDB == null) {
             return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
         }
+        PasswordStorage.createHash(userForDB.getPassword());
         users.save(userForDB);
         session.setAttribute("userName", userForDB.getUserName());
         User.userEmailValidation(user);
