@@ -94,9 +94,9 @@ public class ProductsController {
 
     @RequestMapping(path = "/product-models", method = RequestMethod.GET)
     public ResponseEntity<HashMap> getProductModels(HttpSession session) {
-        Wine wine = new Wine();
-        Beer beer = new Beer();
-        Liquor liquor = new Liquor();
+        Wine wine = wines.findOne(1);
+        Beer beer = beers.findOne(1);
+        Liquor liquor = liquors.findOne(1);
         Beer.caseSize[] sizes = Beer.caseSize.values();
         HashMap json = new HashMap();
         json.put("beer", beer);

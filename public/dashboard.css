@@ -4,17 +4,60 @@
     margin-left: 25%;
 }
 
-input[type='checkbox'] {
-  font-family: FontAwesome;
+.navbar {
+  opacity: 0.9;
 }
 
 #wineexclusive {
-width: 15%;
+  width: 15%;
+}
+
+#beerexclusive {
+  width: 15%;
+}
+
+#liquorexclusive {
+  width: 15%;
+}
+
+#iclassexclusive {
+  margin-left: 43%;
+  padding-top: 5px;
 }
 
 #winedualstate {
-  width: 50%
-  height: 50%;
+  width: 15%;
+}
+
+#beerdualstate {
+  width: 15%;
+}
+
+#liquordualstate {
+  width: 15%;
+}
+
+#beerdomestic {
+  width: 15%;
+}
+
+#beerseasonal {
+  width: 15%;
+}
+
+#iclassdualstate {
+  margin-left: 43%;
+  padding-top: 5px;
+}
+
+#iclassdomestic {
+  margin-left: 43%;
+  padding-top: 5px;
+}
+
+#iclassseasonal {
+  margin-left: 43%;
+  padding-top: 5px;
 }
 
 label {
@@ -25,17 +68,14 @@ label {
 
 .col-md-2 {
     padding-bottom: 40px;
-}
-
-.col-md-1 {
-    width: 100%;
-    text-align: center;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 #theWineForm {
     padding-top: 5px;
     width: 100%;
+    margin-top: -2%;
+    padding-bottom: 0;
 }
 
 .btn-group {
@@ -57,19 +97,22 @@ label {
 }
 
 #zeNav {
-    padding-top: 65px;
-    padding-left: 0;
-    padding-right: 0;
-    margin: 0;
+    padding: 0;
+    padding-top: 30px;
     border-style: solid;
-    border-width: 0px 30px 0px 30px;
+    border-right-width: 30px;
+    border-left-width: 30px;
+    border-top-width: 54px;
+    border-bottom-width: 0;
 }
 
 #myContainer {
-    padding-top: 65px;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
+    padding-top: 40px;
     border-style: solid;
-    border-width: 0px 30px 310px 30px;
+    border-right-width: 30px;
+    border-left-width: 30px;
+    border-top-width: 0;
 }
 
 .createGroup {
@@ -79,15 +122,12 @@ label {
 #invSearch {
     padding-top: 83px;
     padding-bottom: 150px;
-    margin-left: -5%;
+    margin-left: 0%;
 }
 
 #searchLabel {
-    text-align: center;
-}
-
-#invInput {
-  width: 100%;
+    padding-top: 4px;
+    text-align: right;
 }
 
 img {
@@ -96,37 +136,20 @@ img {
 
 #wineHeader {
     margin-left: 38%;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
+    margin-top: -1%;
 }
 
 #beerHeader {
     margin-left: 38%;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
+    margin-top: -1%;
 }
 
 #liquorHeader {
     margin-left: 38%;
-    padding-bottom: 50px;
-}
-
-#bar1 {
-    padding-bottom: 30px;
-}
-
-#bar2 {
-    padding-bottom: 30px;
-}
-
-#bar3 {
-    padding-bottom: 30px;
-}
-
-#bar4 {
-    padding-bottom: 30px;
-}
-
-#bar5 {
-    padding-top: 30px;
+    padding-bottom: 20px;
+    margin-top: -1%;
 }
 
 #mySearchBtn {
@@ -135,5 +158,35 @@ img {
 
 #mainSearchBtn {
     height: 35px;
-    margin-top: 4.5%;
+    margin-left: 0%;
+}
+
+#wineCreater {
+  margin-top: 12%;
+  height: 35px;
+  margin-left: 29%;
+}
+
+#beerCreater {
+  margin-top: 12%;
+  height: 35px;
+  margin-left: 52%;
+}
+
+#liquorCreater {
+  margin-top: 12%;
+  height: 35px;
+  margin-left: 50%;
+}
+
+.theRows {
+  padding-top: 10px;
+}
+
+#lowView {
+  border-style: solid;
+  border-top-width: 100px;
+  border-bottom-width: 500px;
+  border-right-width: 50px;
+  border-left-width: 50px;
 }
