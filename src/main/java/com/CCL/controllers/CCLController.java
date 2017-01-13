@@ -1,7 +1,6 @@
 package com.CCL.controllers;
 
 import com.CCL.entities.EmpMetaData;
-import com.CCL.entities.Report;
 import com.CCL.entities.User;
 import com.CCL.entities.employees.*;
 import com.CCL.entities.employees.Driver;
@@ -17,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -79,7 +79,7 @@ public class CCLController {
 
     @PostConstruct
     public void init() throws SQLException, IOException, ParseException, PasswordStorage.CannotPerformOperationException {
-        //h2.createWebServer().start();
+        h2.createWebServer().start();
 
         File f = new File("info.csv");
         Scanner fileReader = new Scanner(f);
@@ -420,10 +420,10 @@ public class CCLController {
         }
     }
 
-//    @PreDestroy
-//    public void destroy() {
-//        h2.stop();
-//    }
+    @PreDestroy
+    public void destroy() {
+        h2.stop();
+    }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public ResponseEntity<User> userLogin(HttpSession session, @RequestBody User user) throws PasswordStorage.CannotPerformOperationException, PasswordStorage.InvalidHashException {

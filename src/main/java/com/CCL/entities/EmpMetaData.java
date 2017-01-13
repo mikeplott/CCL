@@ -1,9 +1,9 @@
 package com.CCL.entities;
 
 import com.CCL.entities.employees.Employee;
-
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,10 +18,7 @@ public class EmpMetaData extends Employee {
     private String id;
 
     @Column
-    private List<Report> reports;
-
-    public EmpMetaData() {
-    }
+    private ArrayList<Report> reports;
 
     public EmpMetaData(String firstName, String middleName, String lastName, String address, Date DOB, Date hireDate, boolean currentEmployee, long salary, long ssn) {
         super(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
@@ -35,11 +32,11 @@ public class EmpMetaData extends Employee {
         this.id = id;
     }
 
-    public List<Report> getReports() {
+    public ArrayList<Report> getReports() {
         return reports;
     }
 
-    public void setReports(List<Report> reports) {
+    public void setReports(ArrayList<Report> reports) {
         this.reports = reports;
     }
 }
