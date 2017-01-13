@@ -1,8 +1,7 @@
 package com.CCL.entities.employees;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.sql.Date;
 
 /**
  * Created by michaelplott on 1/3/17.
@@ -16,6 +15,12 @@ public class Driver extends Employee {
     private int id;
 
     @Column(nullable = false)
+    private double breakageCost;
+
+    @Column(nullable = false)
+    private double deliveryDollarTotal;
+
+    @Column(nullable = false)
     private int productBreakage;
 
     @Column(nullable = false)
@@ -23,9 +28,6 @@ public class Driver extends Employee {
 
     @Column(nullable = false)
     private long driversLicenseNumber;
-
-    @Column(nullable = false)
-    private ArrayList<String> movingViolations;
 
     @Column(nullable = false)
     private String motorVehicleRecord;
@@ -46,21 +48,27 @@ public class Driver extends Employee {
     private String fridayRoute;
 
     @Column(nullable = false)
-    private Timestamp licenseExpirationDate;
+    private Date licenseExpirationDate;
 
     @Column(nullable = false)
     private boolean isCdlCertified;
 
+    @Column(nullable = false)
+    private  boolean isBackUpDriver;
+
     public Driver() {
     }
 
-    public Driver(int productBreakage, int hoursDriven, long driversLicenseNumber, ArrayList<String> movingViolations,
-                  String motorVehicleRecord, String insurancePolicyNumber, String tuesdayRoute, String wednesdayRoute,
-                  String thursdayRoute, String fridayRoute, Timestamp licenseExpirationDate) {
+    public Driver(String firstName, String middleName, String lastName, String address, Date DOB, Date hireDate,
+                  boolean currentEmployee, long salary, long ssn, double breakageCost, double deliveryDollarTotal, int productBreakage,
+                  int hoursDriven, long driversLicenseNumber, String motorVehicleRecord, String insurancePolicyNumber, String tuesdayRoute,
+                  String wednesdayRoute, String thursdayRoute, String fridayRoute, Date licenseExpirationDate, boolean isCdlCertified, boolean isBackUpDriver ) {
+        super(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
+        this.breakageCost = breakageCost;
+        this.deliveryDollarTotal = deliveryDollarTotal;
         this.productBreakage = productBreakage;
         this.hoursDriven = hoursDriven;
         this.driversLicenseNumber = driversLicenseNumber;
-        this.movingViolations = movingViolations;
         this.motorVehicleRecord = motorVehicleRecord;
         this.insurancePolicyNumber = insurancePolicyNumber;
         this.tuesdayRoute = tuesdayRoute;
@@ -68,6 +76,8 @@ public class Driver extends Employee {
         this.thursdayRoute = thursdayRoute;
         this.fridayRoute = fridayRoute;
         this.licenseExpirationDate = licenseExpirationDate;
+        this.isCdlCertified = isCdlCertified;
+        this.isBackUpDriver = isBackUpDriver;
     }
 
     public int getId() {
@@ -76,6 +86,22 @@ public class Driver extends Employee {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public double getBreakageCost() {
+        return breakageCost;
+    }
+
+    public void setBreakageCost(double breakageCost) {
+        this.breakageCost = breakageCost;
+    }
+
+    public double getDeliveryDollarTotal() {
+        return deliveryDollarTotal;
+    }
+
+    public void setDeliveryDollarTotal(double deliveryDollarTotal) {
+        this.deliveryDollarTotal = deliveryDollarTotal;
     }
 
     public int getProductBreakage() {
@@ -100,14 +126,6 @@ public class Driver extends Employee {
 
     public void setDriversLicenseNumber(long driversLicenseNumber) {
         this.driversLicenseNumber = driversLicenseNumber;
-    }
-
-    public ArrayList<String> getMovingViolations() {
-        return movingViolations;
-    }
-
-    public void setMovingViolations(ArrayList<String> movingViolations) {
-        this.movingViolations = movingViolations;
     }
 
     public String getMotorVehicleRecord() {
@@ -158,11 +176,27 @@ public class Driver extends Employee {
         this.fridayRoute = fridayRoute;
     }
 
-    public Timestamp getLicenseExpirationDate() {
+    public Date getLicenseExpirationDate() {
         return licenseExpirationDate;
     }
 
-    public void setLicenseExpirationDate(Timestamp licenseExpirationDate) {
+    public void setLicenseExpirationDate(Date licenseExpirationDate) {
         this.licenseExpirationDate = licenseExpirationDate;
+    }
+
+    public boolean isCdlCertified() {
+        return isCdlCertified;
+    }
+
+    public void setCdlCertified(boolean cdlCertified) {
+        isCdlCertified = cdlCertified;
+    }
+
+    public boolean isBackUpDriver() {
+        return isBackUpDriver;
+    }
+
+    public void setBackUpDriver(boolean backUpDriver) {
+        isBackUpDriver = backUpDriver;
     }
 }
