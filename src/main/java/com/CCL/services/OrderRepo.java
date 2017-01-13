@@ -1,6 +1,6 @@
 package com.CCL.services;
 
-import com.CCL.entities.accounts.Order;
+import com.CCL.entities.paperwork.Order;
 import org.springframework.data.repository.CrudRepository;
 
 /**

@@ -1,6 +1,6 @@
 package com.CCL.controllers;
 
-import com.CCL.entities.User;
+import com.CCL.entities.api_access.User;
 import com.CCL.entities.products.Beer;
 import com.CCL.entities.products.Liquor;
 import com.CCL.entities.products.Product;

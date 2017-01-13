@@ -1,6 +1,6 @@
 package com.CCL.services;
 
-import com.CCL.entities.accounts.Invoice;
+import com.CCL.entities.paperwork.Invoice;
 import org.springframework.data.repository.CrudRepository;
 
 /**

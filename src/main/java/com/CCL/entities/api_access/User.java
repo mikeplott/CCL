@@ -1,4 +1,4 @@
-package com.CCL.entities;
+package com.CCL.entities.api_access;
 
 import com.CCL.controllers.CCLController;
 import com.CCL.utlities.PasswordStorage;

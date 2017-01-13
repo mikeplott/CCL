@@ -1,6 +1,6 @@
 package com.CCL.services;
 
-import com.CCL.entities.User;
+import com.CCL.entities.api_access.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;

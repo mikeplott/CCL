@@ -1,6 +1,6 @@
 package com.CCL.services;
 
-import com.CCL.entities.accounts.Credit;
+import com.CCL.entities.paperwork.Credit;
 import org.springframework.data.repository.CrudRepository;
 
 /**

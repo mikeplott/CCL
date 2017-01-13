@@ -1,6 +1,6 @@
 package com.CCL.services;
 
-import com.CCL.entities.EmpMetaData;
+import com.CCL.entities.employees.EmpMetaData;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

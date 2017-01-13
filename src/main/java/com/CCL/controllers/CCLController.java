@@ -1,7 +1,7 @@
 package com.CCL.controllers;
 
-import com.CCL.entities.EmpMetaData;
-import com.CCL.entities.User;
+import com.CCL.entities.employees.EmpMetaData;
+import com.CCL.entities.api_access.User;
 import com.CCL.entities.employees.*;
 import com.CCL.entities.employees.Driver;
 import com.CCL.entities.products.Beer;
@@ -9,9 +9,11 @@ import com.CCL.entities.products.Liquor;
 import com.CCL.entities.products.Product;
 import com.CCL.entities.products.Wine;
 import com.CCL.services.*;
+import com.CCL.services.EmpMetaDataRepo;
 import com.CCL.utlities.PasswordStorage;
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,7 +66,7 @@ public class CCLController {
     DriverRepo drivers;
 
     @Autowired
-    EmpMetaDataRepo employees;
+    EmpMetaDataRepo empMetaDataRepoImpl;
 
     @Autowired
     OfficeRepRepo officeReps;
@@ -214,6 +216,7 @@ public class CCLController {
         if (beers.count() == 0) {
             File c = new File("beerdata.csv");
             Scanner fr = new Scanner(c);
+            int i = 1;
             while (fr.hasNext()) {
                 String line = fr.nextLine();
                 String[] columns = line.split("\\|");
@@ -249,7 +252,8 @@ public class CCLController {
 
                 beers.save(beer);
 
-                Beer beerFromDb = beers.findByName(name);
+                Beer beerFromDb = beers.findOne(i);
+                i++;
 
                 Product product = new Product(beerFromDb.getId(), name, desc, itemCode, origin, volume, frontPrice, tenCasePrice, twentyFiveCasePrice,
                         cost, bottleWeight, caseWeight, quantity, isExclusive, isDualState, lotDate, expDate, beerType, brewery, isDomestic, isSeasonal, caseSize,
@@ -301,9 +305,10 @@ public class CCLController {
 
                 drivers.save(driver);
 
-                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
+                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate,
+                        currentEmployee, salary, ssn, new ArrayList());
 
-                employees.save(emp);
+                empMetaDataRepoImpl.save(emp);
             }
         }
 
@@ -335,9 +340,10 @@ public class CCLController {
 
                 officeReps.save(officeRep);
 
-                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
+                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate,
+                        currentEmployee, salary, ssn, new ArrayList());
 
-                employees.save(emp);
+                empMetaDataRepoImpl.save(emp);
             }
         }
 
@@ -376,9 +382,10 @@ public class CCLController {
 
                 salesReps.save(salesRep);
 
-                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
+                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate,
+                        currentEmployee, salary, ssn, new ArrayList());
 
-                employees.save(emp);
+                empMetaDataRepoImpl.save(emp);
             }
         }
 
@@ -413,9 +420,10 @@ public class CCLController {
 
                 warehouseReps.save(warehouseRep);
 
-                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
+                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate,
+                        currentEmployee, salary, ssn, new ArrayList());
 
-                employees.save(emp);
+                empMetaDataRepoImpl.save(emp);
             }
         }
     }

@@ -1,4 +1,6 @@
-package com.CCL.entities.accounts;
+package com.CCL.entities.paperwork;
+
+import com.CCL.entities.accounts.Account;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

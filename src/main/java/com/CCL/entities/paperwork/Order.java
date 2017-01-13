@@ -1,4 +1,4 @@
-package com.CCL.entities.accounts;
+package com.CCL.entities.paperwork;
 
 import com.CCL.entities.employees.SalesRep;
 import javax.persistence.*;
