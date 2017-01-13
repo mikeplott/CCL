@@ -781,13 +781,14 @@ function productSearch(event) {
 }
 
 function searchData(data) {
-    var newRow = document.createElement('div');
-    newRow.setAttribute('id', 'tableRow');
-    var labels = ['itemCode', 'name', 'quantity', 'brewery', 'distillery', 'importer', 'vintage', 'Case Size'];
+    var labels = ['itemCode', 'name', 'quantity', 'brewery', 'distillery', 'importer', 'vintage', 'Case Size', 'Lot Date', 'Expiration Date'];
     var theData = data.results;
     var theTable = document.createElement('table');
-    theTable.setAttribute('class', 'table table-striped');
+    theTable.setAttribute('class', 'table table-fixed-header table-bordered table-inverse table-hover table-responsive overflow-y:hidden');
     theTable.setAttribute('id', 'searchResults');
+    var theHead = document.createElement('thead');
+    theHead.setAttribute('class', 'header');
+    var headerRow = document.createElement('tr');
     var list = theData[1];
     for (var key in theData[0]) {
       var theKey = key.toLowerCase();
@@ -795,49 +796,68 @@ function searchData(data) {
       if (key != 'id' && key != 'wineID' && key != 'beerID' && key != 'liquorID' && key != 'liquor'
         && key != 'beer' && key != 'wine' && key != 'wineCaseSize' && key != 'beerCaseSize'
         && key != 'itemCode' && key != 'name' && key != 'quantity' && key != 'brewery'
-        && key != 'distillery' && key != 'importer' && key != 'vintage' && key != 'liquorCaseSize') {
+        && key != 'distillery' && key != 'importer' && key != 'vintage' && key != 'liquorCaseSize'
+        && key != 'lotDate' && key != 'expirationDate') {
         labels.push(key);
       }
     }
     for (var headerKey = 0; headerKey < labels.length; headerKey++) {
       var header = document.createElement('th');
-      header.innerHTML = capitalizeEachWord(labels[headerKey]);
-      theTable.appendChild(header);
+      header.setAttribute('id', 'myTHS');
+      if (labels[headerKey] == 'tenCasePrice') {
+        header.innerHTML = '10 Case Price';
+      }
+      else if (labels[headerKey] == 'twentyFiveCasePrice') {
+        header.innerHTML = '25 Case Price';
+      }
+      else {
+        header.innerHTML = capitalizeEachWord(labels[headerKey]);
+      }
+      headerRow.appendChild(header);
     }
+    theHead.appendChild(headerRow);
+    theTable.appendChild(theHead);
+    var tBody = document.createElement('tbody');
+    tBody.setAttribute('class', 'myBody');
+    theTable.appendChild(tBody);
     for (var i = 0; i < theData.length; i++) {
       var tRow = document.createElement('tr');
       var zeData = theData[i];
       var size = ['wineCaseSize', 'beerCaseSize', 'liquorCaseSize'];
-
+      var casesize;
+      if (zeData.wineCaseSize != null) {
+        casesize = zeData.wineCaseSize;
+      }
+      else if (zeData.beerCaseSize != null) {
+        casesize = zeData.beerCaseSize;
+      }
+      else {
+        casesize = zeData.liquorCaseSize;
+      }
     for (var n = 0; n < labels.length; n++) {
       var deKey = labels[n];
       var theVal = zeData[deKey];
       var tCol = document.createElement('td');
-      tCol.setAttribute('class', 'filterable-cell');
-      tCol.setAttribute('style', 'border-style: solid; border-width: 2px;');
+      tCol.setAttribute('class', 'overflow-x:hidden');
+      tCol.setAttribute('id', 'myTDS');
       tCol.innerHTML = theVal;
+      console.log(zeData.lotDate);
 
-      if (deKey == 'Case Size') {
-        if (zeData.wineCaseSize != null) {
-          tCol.innerHTML = zeData.wineCaseSize;
-        }
-        else if (zeData.beerCaseSize != null) {
-          tCol.innerHTML = zeData.wineCaseSize;
-        }
-        else {
-          tCol.innerHTML = zeData.liquorCaseSize;
-        }
+      if (deKey === 'Case Size') {
+        tCol.innerHTML = casesize;
       }
-
-      if (theVal == null) {
-        tCol.innerHTML = 'N/A';
+      else if (deKey == 'Lot Date') {
+        tCol.innerHTML = zeData.lotDate;
+      }
+      else if (deKey == 'Expiration Date') {
+        tCol.innerHTML = zeData.expirationDate;
       }
       tRow.append(tCol);
     }
-    theTable.appendChild(tRow);
+    tBody.append(tRow);
   }
-  newRow.append(theTable);
-  $('#myContainer').append(newRow);
+  theTable.append(tBody);
+  $('#myContainer').append(theTable);
 }
 
 function updateProduct(data) {

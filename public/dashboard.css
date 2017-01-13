@@ -120,8 +120,8 @@ label {
 }
 
 #invSearch {
-    padding-top: 83px;
-    padding-bottom: 150px;
+    padding-top: 23px;
+    padding-bottom: 100px;
     margin-left: 0%;
 }
 
@@ -192,5 +192,42 @@ img {
 }
 
 #searchResults {
-  width: 100%;
+  margin-top: -5%;
+  height: 480px;
+  font-size: 13px;
+  max-width: none;
+  table-layout: fixed;
+}
+
+#myTHS {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/*.header-fixed {
+  position: fixed;
+  top: 40px;
+  z-index: 1020;
+}*/
+
+td {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.navbar {
+  display: inline-block;
+  height: 7%;
+}
+
+.hud {
+  margin-top: -10%;
+}
+
+.navbar-form {
+  margin-top: .25%;
+}
+
+.table-hover tbody tr:hover td {
+  background-color: #262626;
 }
