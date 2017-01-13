@@ -107,6 +107,7 @@ function inventoryDash(Event) {
     searchBtn.setAttribute('name', 'searchBtn');
     searchBtn.setAttribute('id', 'option5');
     searchBtn.setAttribute('autocomplete', 'off');
+    searchBtn.setAttribute('onclick', 'inventoryDash(event)');
 
     var deleteBtn = document.createElement('input');
     deleteBtn.setAttribute('type', 'radio');
@@ -260,18 +261,21 @@ function productViewCreation(beer, liquor, wine, sizes) {
 
   var i = 0;
   var fieldset;
+  var productHeader = document.createElement('h1');
+  productHeader.setAttribute('id', 'productHeader');
 
   if (wine != null) {
     fieldset = wine;
+    productHeader.innerHTML = 'Wine Sheet';
   }
   else if (liquor != null) {
     fieldset = liquor;
+    productHeader.innerHTML = 'Liquor Sheet';
   }
   else {
     fieldset = beer;
+    productHeader.innerHTML = 'Beer Sheet';
   }
-
-  console.log(fieldset);
 
   var row1 = document.createElement('div');
   row1.setAttribute('class', 'row theRows');
@@ -398,7 +402,6 @@ function productViewCreation(beer, liquor, wine, sizes) {
         else {
           row4.appendChild(dataDiv);
         }
-        console.log(i);
       }
     }
 
@@ -444,6 +447,7 @@ function productViewCreation(beer, liquor, wine, sizes) {
     myForm.appendChild(row2);
     myForm.appendChild(row3);
     myForm.appendChild(row4);
+    row.append(productHeader);
     row.append(myForm);
   }
 
