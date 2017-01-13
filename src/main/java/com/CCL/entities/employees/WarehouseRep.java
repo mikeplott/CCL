@@ -1,6 +1,7 @@
 package com.CCL.entities.employees;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 /**
  * Created by michaelplott on 1/3/17.
@@ -31,7 +32,10 @@ public class WarehouseRep extends Employee {
     public WarehouseRep() {
     }
 
-    public WarehouseRep(boolean isForkLiftCertified, boolean isBackUpDriver, boolean isDayShift, String productArea, String forkLiftLicenseNumber) {
+    public WarehouseRep(String firstName, String middleName, String lastName, String address, Date DOB, Date hireDate,
+                        boolean currentEmployee, long salary, long ssn, boolean isForkLiftCertified, boolean isBackUpDriver, boolean isDayShift,
+                        String productArea, String forkLiftLicenseNumber) {
+        super(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
         this.isForkLiftCertified = isForkLiftCertified;
         this.isBackUpDriver = isBackUpDriver;
         this.isDayShift = isDayShift;

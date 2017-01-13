@@ -2,6 +2,7 @@ package com.CCL.entities.accounts;
 
 import com.CCL.entities.employees.SalesRep;
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -22,10 +23,10 @@ public class Order {
     private long accountNumber;
 
     @Column(nullable = false)
-    private Timestamp orderDate;
+    private Date orderDate;
 
     @Column(nullable = false)
-    private Timestamp deliveryDate;
+    private Date deliveryDate;
 
     @ManyToOne
     SalesRep salesRep;
@@ -33,7 +34,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(String accountName, long accountNumber, Timestamp orderDate, Timestamp deliveryDate, SalesRep salesRep) {
+    public Order(String accountName, long accountNumber, Date orderDate, Date deliveryDate, SalesRep salesRep) {
         this.accountName = accountName;
         this.accountNumber = accountNumber;
         this.orderDate = orderDate;
@@ -65,19 +66,19 @@ public class Order {
         this.accountNumber = accountNumber;
     }
 
-    public Timestamp getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Timestamp orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 
-    public Timestamp getDeliveryDate() {
+    public Date getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(Timestamp deliveryDate) {
+    public void setDeliveryDate(Date deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 

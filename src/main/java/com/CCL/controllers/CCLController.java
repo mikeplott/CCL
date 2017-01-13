@@ -1,6 +1,8 @@
 package com.CCL.controllers;
 
 import com.CCL.entities.User;
+import com.CCL.entities.employees.*;
+import com.CCL.entities.employees.Driver;
 import com.CCL.entities.products.Beer;
 import com.CCL.entities.products.Liquor;
 import com.CCL.entities.products.Product;
@@ -13,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -57,13 +58,26 @@ public class CCLController {
     @Autowired
     WineRepo wines;
 
+    @Autowired
+    DriverRepo drivers;
+
+    @Autowired
+    EmpMetaDataRepo employees;
+
+    @Autowired
+    OfficeRepRepo officeReps;
+
+    @Autowired
+    SalesRepRepo salesReps;
+
+    @Autowired
+    WarehouseRepRepo warehouseReps;
+
     Server h2;
 
     @PostConstruct
     public void init() throws SQLException, IOException, ParseException, PasswordStorage.CannotPerformOperationException {
-        h2.createWebServer().start();
-
-        System.out.println(Beer.caseSize.values().toString());
+        //h2.createWebServer().start();
 
         File f = new File("info.csv");
         Scanner fileReader = new Scanner(f);
@@ -242,12 +256,156 @@ public class CCLController {
                 products.save(product);
             }
         }
+
+        if (drivers.count() == 0) {
+            File c = new File("driverdata.csv");
+            Scanner fr = new Scanner(c);
+            while (fr.hasNext()) {
+                String line = fr.nextLine();
+                String[] columns = line.split("\\|");
+                String firstName = columns[0];
+                String middleName = columns[1];
+                String lastName = columns[2];
+                String address = columns[3];
+                String birth = columns[4];
+                String hire = columns[5];
+                SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
+                Date parsed = format.parse(birth);
+                java.sql.Date DOB = new java.sql.Date(parsed.getTime());
+                Date parsed1 = format.parse(hire);
+                java.sql.Date hireDate = new java.sql.Date(parsed1.getTime());
+                boolean currentEmployee = Boolean.getBoolean(columns[6]);
+                long salary = Long.parseLong(columns[7]);
+                long ssn = Long.parseLong(columns[8]);
+                double breakageCost = Double.parseDouble(columns[9]);
+                double deliveryDollarTotal = Double.parseDouble(columns[10]);
+                int productBreakage = Integer.parseInt(columns[11]);
+                int hoursDriven = Integer.parseInt(columns[12]);
+                long dLN = Long.parseLong(columns[13]);
+                String MVR = columns[14];
+                String IPN = columns[15];
+                String tuesR = columns[16];
+                String wedsR = columns[17];
+                String thursR = columns[18];
+                String friR = columns[19];
+                String licExpDate = columns[20];
+                Date parsed2 = format.parse(licExpDate);
+                java.sql.Date licenseExpDate = new java.sql.Date(parsed2.getTime());
+                boolean cdl = Boolean.getBoolean(columns[21]);
+                boolean back = Boolean.getBoolean(columns[22]);
+
+                Driver driver = new Driver(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn,
+                        breakageCost, deliveryDollarTotal, productBreakage, hoursDriven, dLN, MVR, IPN, tuesR, wedsR, thursR, friR, licenseExpDate, cdl, back);
+
+                drivers.save(driver);
+            }
+        }
+
+        if (officeReps.count() == 0) {
+            File c = new File("officerepdata.csv");
+            Scanner fr = new Scanner(c);
+            while (fr.hasNext()) {
+                String line = fr.nextLine();
+                String[] columns = line.split("\\|");
+                String firstName = columns[0];
+                String middleName = columns[1];
+                String lastName = columns[2];
+                String address = columns[3];
+                String birth = columns[4];
+                String hire = columns[5];
+                SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
+                Date parsed = format.parse(birth);
+                java.sql.Date DOB = new java.sql.Date(parsed.getTime());
+                Date parsed1 = format.parse(hire);
+                java.sql.Date hireDate = new java.sql.Date(parsed1.getTime());
+                boolean currentEmployee = Boolean.getBoolean(columns[6]);
+                long salary = Long.parseLong(columns[7]);
+                long ssn = Long.parseLong(columns[8]);
+                String department = columns[9];
+                String jobTitle = columns[10];
+
+                OfficeRep officeRep = new OfficeRep(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary,
+                        ssn, department, jobTitle);
+
+                officeReps.save(officeRep);
+            }
+        }
+
+        if (salesReps.count() == 0) {
+            File c = new File("salesrepdata.csv");
+            Scanner fr = new Scanner(c);
+            while (fr.hasNext()) {
+                String line = fr.nextLine();
+                String[] columns = line.split("\\|");
+                String firstName = columns[0];
+                String middleName = columns[1];
+                String lastName = columns[2];
+                String address = columns[3];
+                String birth = columns[4];
+                String hire = columns[5];
+                SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
+                Date parsed = format.parse(birth);
+                java.sql.Date DOB = new java.sql.Date(parsed.getTime());
+                Date parsed1 = format.parse(hire);
+                java.sql.Date hireDate = new java.sql.Date(parsed1.getTime());
+                boolean currentEmployee = Boolean.getBoolean(columns[6]);
+                long salary = Long.parseLong(columns[7]);
+                long ssn = Long.parseLong(columns[8]);
+                double dollarSales = Double.parseDouble(columns[9]);
+                double dollarReturns = Double.parseDouble(columns[10]);
+                double beerSales = Double.parseDouble(columns[11]);
+                double wineSales = Double.parseDouble(columns[12]);
+                double liquorSales = Double.parseDouble(columns[12]);
+                String territory = columns[13];
+                boolean pod = Boolean.getBoolean(columns[14]);
+                boolean reg = Boolean.getBoolean(columns[15]);
+                boolean salesMan = Boolean.getBoolean(columns[16]);
+
+                SalesRep salesRep = new SalesRep(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn,
+                        dollarSales, dollarReturns, beerSales, wineSales, liquorSales, territory, pod, reg, salesMan);
+
+                salesReps.save(salesRep);
+            }
+        }
+
+        if (warehouseReps.count() == 0) {
+            File c = new File("warehouserepdata.csv");
+            Scanner fr = new Scanner(c);
+            while (fr.hasNext()) {
+                String line = fr.nextLine();
+                String[] columns = line.split("\\|");
+                String firstName = columns[0];
+                String middleName = columns[1];
+                String lastName = columns[2];
+                String address = columns[3];
+                String birth = columns[4];
+                String hire = columns[5];
+                SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
+                Date parsed = format.parse(birth);
+                java.sql.Date DOB = new java.sql.Date(parsed.getTime());
+                Date parsed1 = format.parse(hire);
+                java.sql.Date hireDate = new java.sql.Date(parsed1.getTime());
+                boolean currentEmployee = Boolean.getBoolean(columns[6]);
+                long salary = Long.parseLong(columns[7]);
+                long ssn = Long.parseLong(columns[8]);
+                boolean certed = Boolean.getBoolean(columns[9]);
+                boolean backup = Boolean.getBoolean(columns[10]);
+                boolean days = Boolean.getBoolean(columns[11]);
+                String area = columns[12];
+                String liftNum = columns[13];
+
+                WarehouseRep warehouseRep = new WarehouseRep(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee,
+                        salary, ssn, certed, backup, days, area, liftNum);
+
+                warehouseReps.save(warehouseRep);
+            }
+        }
     }
 
-    @PreDestroy
-    public void destroy() {
-        h2.stop();
-    }
+//    @PreDestroy
+//    public void destroy() {
+//        h2.stop();
+//    }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public ResponseEntity<User> userLogin(HttpSession session, @RequestBody User user) throws PasswordStorage.CannotPerformOperationException, PasswordStorage.InvalidHashException {

@@ -1,7 +1,7 @@
 package com.CCL.entities.employees;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.sql.Date;
 
 /**
  * Created by michaelplott on 1/3/17.
@@ -15,10 +15,10 @@ public class SalesRep extends Employee {
     private int id;
 
     @Column(nullable = false)
-    private BigDecimal totalDollarSales;
+    private double totalDollarSales;
 
     @Column(nullable = false)
-    private BigDecimal totalDollarReturns;
+    private double totalDollarReturns;
 
     @Column(nullable = false)
     private double beerSales;
@@ -44,8 +44,11 @@ public class SalesRep extends Employee {
     public SalesRep() {
     }
 
-    public SalesRep(BigDecimal totalDollarSales, BigDecimal totalDollarReturns, double beerSales, double wineSales,
-                    double liquorSales, String territory, boolean isPodLeader, boolean isRegionalManager, boolean isSalesManager) {
+    public SalesRep(String firstName, String middleName, String lastName, String address, Date DOB, Date hireDate,
+                    boolean currentEmployee, long salary, long ssn, double totalDollarSales, double totalDollarReturns, double beerSales,
+                    double wineSales, double liquorSales, String territory, boolean isPodLeader, boolean isRegionalManager,
+                    boolean isSalesManager) {
+        super(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
         this.totalDollarSales = totalDollarSales;
         this.totalDollarReturns = totalDollarReturns;
         this.beerSales = beerSales;
@@ -65,19 +68,19 @@ public class SalesRep extends Employee {
         this.id = id;
     }
 
-    public BigDecimal getTotalDollarSales() {
+    public double getTotalDollarSales() {
         return totalDollarSales;
     }
 
-    public void setTotalDollarSales(BigDecimal totalDollarSales) {
+    public void setTotalDollarSales(double totalDollarSales) {
         this.totalDollarSales = totalDollarSales;
     }
 
-    public BigDecimal getTotalDollarReturns() {
+    public double getTotalDollarReturns() {
         return totalDollarReturns;
     }
 
-    public void setTotalDollarReturns(BigDecimal totalDollarReturns) {
+    public void setTotalDollarReturns(double totalDollarReturns) {
         this.totalDollarReturns = totalDollarReturns;
     }
 

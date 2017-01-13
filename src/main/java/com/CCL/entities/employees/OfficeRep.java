@@ -1,6 +1,7 @@
 package com.CCL.entities.employees;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 /**
  * Created by michaelplott on 1/3/17.
@@ -22,7 +23,9 @@ public class OfficeRep extends Employee {
     public OfficeRep() {
     }
 
-    public OfficeRep(String department, String jobTitle) {
+    public OfficeRep(String firstName, String middleName, String lastName, String address, Date DOB, Date hireDate,
+                     boolean currentEmployee, long salary, long ssn, String department, String jobTitle) {
+        super(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
         this.department = department;
         this.jobTitle = jobTitle;
     }
