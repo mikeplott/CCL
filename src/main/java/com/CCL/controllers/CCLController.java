@@ -1,5 +1,7 @@
 package com.CCL.controllers;
 
+import com.CCL.entities.EmpMetaData;
+import com.CCL.entities.Report;
 import com.CCL.entities.User;
 import com.CCL.entities.employees.*;
 import com.CCL.entities.employees.Driver;
@@ -298,6 +300,10 @@ public class CCLController {
                         breakageCost, deliveryDollarTotal, productBreakage, hoursDriven, dLN, MVR, IPN, tuesR, wedsR, thursR, friR, licenseExpDate, cdl, back);
 
                 drivers.save(driver);
+
+                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
+
+                employees.save(emp);
             }
         }
 
@@ -328,6 +334,10 @@ public class CCLController {
                         ssn, department, jobTitle);
 
                 officeReps.save(officeRep);
+
+                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
+
+                employees.save(emp);
             }
         }
 
@@ -365,6 +375,10 @@ public class CCLController {
                         dollarSales, dollarReturns, beerSales, wineSales, liquorSales, territory, pod, reg, salesMan);
 
                 salesReps.save(salesRep);
+
+                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
+
+                employees.save(emp);
             }
         }
 
@@ -398,6 +412,10 @@ public class CCLController {
                         salary, ssn, certed, backup, days, area, liftNum);
 
                 warehouseReps.save(warehouseRep);
+
+                EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
+
+                employees.save(emp);
             }
         }
     }

@@ -1,8 +1,8 @@
 package com.CCL.entities;
 
 import com.CCL.entities.employees.Employee;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -13,17 +13,18 @@ import java.util.List;
 @Table(name = "employees")
 public class EmpMetaData extends Employee {
 
+    @Id
+    @GeneratedValue
     private String id;
 
+    @Column
     private List<Report> reports;
 
     public EmpMetaData() {
     }
 
-    public EmpMetaData(String firstName, String middleName, String lastName, String address, Date DOB, Date hireDate, boolean currentEmployee, long salary, long ssn, String id, List<Report> reports) {
+    public EmpMetaData(String firstName, String middleName, String lastName, String address, Date DOB, Date hireDate, boolean currentEmployee, long salary, long ssn) {
         super(firstName, middleName, lastName, address, DOB, hireDate, currentEmployee, salary, ssn);
-        this.id = id;
-        this.reports = reports;
     }
 
     public String getId() {
