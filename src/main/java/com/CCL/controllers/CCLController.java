@@ -4,10 +4,7 @@ import com.CCL.entities.employees.EmpMetaData;
 import com.CCL.entities.api_access.User;
 import com.CCL.entities.employees.*;
 import com.CCL.entities.employees.Driver;
-import com.CCL.entities.products.Beer;
-import com.CCL.entities.products.Liquor;
-import com.CCL.entities.products.Product;
-import com.CCL.entities.products.Wine;
+import com.CCL.entities.products.*;
 import com.CCL.services.*;
 import com.CCL.services.EmpMetaDataRepo;
 import com.CCL.utlities.PasswordStorage;
@@ -53,9 +50,6 @@ public class CCLController {
     LiquorRepo liquors;
 
     @Autowired
-    ProductRepo products;
-
-    @Autowired
     UserRepo users;
 
     @Autowired
@@ -65,7 +59,10 @@ public class CCLController {
     DriverRepo drivers;
 
     @Autowired
-    EmpMetaDataRepo empMetaDataRepoImpl;
+    EmpMetaDataRepo employees;
+
+    @Autowired
+    ProductMetaDataRepo products;
 
     @Autowired
     OfficeRepRepo officeReps;
@@ -147,17 +144,20 @@ public class CCLController {
                 else isDual = false;
                 Wine.caseSize caseSize = Wine.caseSize.valueOf(wineData[18]);
 
-                Wine wine = new Wine(vintage, varietal, color, importer, name, desc, itemCode, origin, volume,
-                        frontPrice, tenCP, twentyFCP, cost, bW, cW, quant, isEx, isDual, caseSize);
+                Wine wine = new Wine(name, desc, itemCode, origin, volume, frontPrice, tenCP, twentyFCP, cost,
+                        bW, cW, quant, isEx, isDual, vintage, varietal, color, importer, caseSize);
+
                 wines.save(wine);
 
                 Wine wineFromDb = wines.findByName(name);
 
-                Product product = new Product(wineFromDb.getId(), name, desc, itemCode, origin, volume,
-                        frontPrice, tenCP, twentyFCP, cost, bW, cW, quant, isEx,  isDual, vintage, varietal, color,
-                        importer, caseSize, false, false, true);
+                ProductMetaData productMetaData = new ProductMetaData(String.valueOf(wineFromDb.getId()), name, desc,
+                        itemCode, origin, volume, String.valueOf(frontPrice), String.valueOf(tenCP), String.valueOf
+                        (twentyFCP), String.valueOf(cost), String.valueOf(bW), String.valueOf(cW), String.valueOf
+                        (quant), String.valueOf(isEx), String.valueOf(isDual), String.valueOf(vintage), varietal,
+                        color, importer, wine.getCaseSize().name());
 
-                products.save(product);
+                products.save(productMetaData);
             }
         }
 
@@ -195,20 +195,22 @@ public class CCLController {
                     isDual = true;
                 }
                 else isDual = false;
-                Liquor.caseSize caseSize = Liquor.caseSize.valueOf(liqData[16]);
+                Product.caseSize caseSize = Product.caseSize.valueOf(liqData[16]);
 
-                Liquor liquor = new Liquor(type, distillery, name, desc, itemCode, origin, volume, frontPrice,
-                        tenCP, twentyFCP, cost, bW, cW, quant, isEx, isDual, caseSize);
+                Liquor liquor = new Liquor(name, desc, itemCode, origin, volume, frontPrice, tenCP, twentyFCP, cost,
+                        bW, cW, quant, isEx, isDual, caseSize,type, distillery);
 
                 liquors.save(liquor);
 
                 Liquor liquorFromDb = liquors.findByName(name);
 
-                Product product = new Product(liquorFromDb.getId(), name, desc, itemCode, origin, volume,
-                        frontPrice, tenCP, twentyFCP, cost, bW, cW, quant, isEx, isDual, type, distillery, caseSize,
-                        false, true, false);
+                ProductMetaData productMetaData = new ProductMetaData(String.valueOf(liquorFromDb.getId()), name, desc,
+                        itemCode, origin, volume, String.valueOf(frontPrice), String.valueOf(tenCP), String.valueOf
+                        (twentyFCP), String.valueOf(cost), String.valueOf(bW), String.valueOf(cW), String.valueOf
+                        (quant), String.valueOf(isEx), String.valueOf(isDual), type, distillery,
+                        liquor.getCaseSize().name());
 
-                products.save(product);
+                products.save(productMetaData);
             }
         }
 
@@ -246,19 +248,22 @@ public class CCLController {
                 boolean isDualState = Boolean.getBoolean(columns[19]);
                 Beer.caseSize caseSize = Beer.caseSize.valueOf(columns[20]);
 
-                Beer beer = new Beer(lotDate, expDate, beerType, brewery, isDomestic, isSeasonal, name, desc, itemCode, origin, volume, frontPrice,
-                        tenCasePrice, twentyFiveCasePrice, cost, bottleWeight, caseWeight, quantity, isExclusive, isDualState, caseSize);
+                Beer beer = new Beer(name, desc, itemCode, origin, volume, frontPrice, tenCasePrice,
+                        twentyFiveCasePrice, cost, bottleWeight, caseWeight, quantity, isExclusive, isDualState,
+                        lotDate, expDate, beerType, brewery, isDomestic, isSeasonal, caseSize);
 
                 beers.save(beer);
 
                 Beer beerFromDb = beers.findOne(i);
                 i++;
 
-                Product product = new Product(beerFromDb.getId(), name, desc, itemCode, origin, volume, frontPrice, tenCasePrice, twentyFiveCasePrice,
-                        cost, bottleWeight, caseWeight, quantity, isExclusive, isDualState, lotDate, expDate, beerType, brewery, isDomestic, isSeasonal, caseSize,
-                        false, true, false);
+                ProductMetaData productMetaData = new ProductMetaData(String.valueOf(beerFromDb.getId()), name, desc,
+                        itemCode, origin, volume, String.valueOf(frontPrice), String.valueOf(tenCasePrice), String.valueOf
+                        (twentyFiveCasePrice), String.valueOf(cost), String.valueOf(bottleWeight), String.valueOf
+                        (caseSize), String.valueOf(quantity), columns[18], columns[19], columns[0], columns[1], beerType,
+                        brewery, columns[4], columns[5], beer.getCaseSize().name());
 
-                products.save(product);
+                products.save(productMetaData);
             }
         }
 
@@ -307,7 +312,7 @@ public class CCLController {
                 EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate,
                         currentEmployee, salary, ssn, new ArrayList());
 
-                empMetaDataRepoImpl.save(emp);
+                employees.save(emp);
             }
         }
 
@@ -342,7 +347,7 @@ public class CCLController {
                 EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate,
                         currentEmployee, salary, ssn, new ArrayList());
 
-                empMetaDataRepoImpl.save(emp);
+                employees.save(emp);
             }
         }
 
@@ -384,7 +389,7 @@ public class CCLController {
                 EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate,
                         currentEmployee, salary, ssn, new ArrayList());
 
-                empMetaDataRepoImpl.save(emp);
+                employees.save(emp);
             }
         }
 
@@ -422,7 +427,7 @@ public class CCLController {
                 EmpMetaData emp = new EmpMetaData(firstName, middleName, lastName, address, DOB, hireDate,
                         currentEmployee, salary, ssn, new ArrayList());
 
-                empMetaDataRepoImpl.save(emp);
+                employees.save(emp);
             }
         }
     }

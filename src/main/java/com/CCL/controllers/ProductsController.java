@@ -1,11 +1,9 @@
 package com.CCL.controllers;
 
 import com.CCL.entities.api_access.User;
-import com.CCL.entities.products.Beer;
-import com.CCL.entities.products.Liquor;
-import com.CCL.entities.products.Product;
-import com.CCL.entities.products.Wine;
+import com.CCL.entities.products.*;
 import com.CCL.services.*;
+import org.hibernate.validator.internal.util.privilegedactions.GetDeclaredFields;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
+import java.sql.*;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -29,7 +31,7 @@ public class ProductsController {
     LiquorRepo liquors;
 
     @Autowired
-    ProductRepo products;
+    ProductMetaDataRepo products;
 
     @Autowired
     UserRepo users;
@@ -77,15 +79,15 @@ public class ProductsController {
     }
 
     @RequestMapping(path = "/delete-product", method = RequestMethod.POST)
-    public ResponseEntity deleteProduct(HttpSession session, @RequestBody Map<String, Integer> json) {
+    public ResponseEntity deleteProduct(HttpSession session, @RequestBody Map<String, String> json) {
         String userName = (String) session.getAttribute("userName");
         User user = users.findByUserName(userName);
         User.isLoggedIn(user);
-        return  productDelete(json);
+        return productDelete(json);
     }
 
     @RequestMapping(path = "/update-product", method = RequestMethod.POST)
-    public ResponseEntity<Product> updateProduct(HttpSession session, @RequestBody Product product) {
+    public ResponseEntity<ProductMetaData> updateProduct(HttpSession session, @RequestBody ProductMetaData product) throws ParseException {
         String userName = (String) session.getAttribute("userName");
         User user = users.findByUserName(userName);
         User.isLoggedIn(user);
@@ -144,106 +146,136 @@ public class ProductsController {
         return results;
     }
 
-    public ResponseEntity productDelete(Map<String, Integer> json) {
-        Integer productID = json.get("productID");
-        Integer wineID = json.get("wineID");
-        Integer beerID = json.get("beerID");
-        Integer liquorID = json.get("liquorID");
+    public ResponseEntity productDelete(Map<String, String> json) {
+        String productID = json.get("productID");
+        Integer wineID = Integer.parseInt(json.get("wineID"));
+        Integer beerID = Integer.parseInt(json.get("beerID"));
+        Integer liquorID = Integer.parseInt(json.get("liquorID"));
         if (productID == null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-        else if (wineID != null) {
+        } else if (wineID != null) {
             products.delete(productID);
             wines.delete(wineID);
             return new ResponseEntity(HttpStatus.OK);
-        }
-        else if (beerID != null) {
+        } else if (beerID != null) {
             products.delete(productID);
             beers.delete(beerID);
             return new ResponseEntity(HttpStatus.OK);
-        }
-        else if (liquorID != null) {
+        } else if (liquorID != null) {
             products.delete(productID);
             liquors.delete(liquorID);
             return new ResponseEntity(HttpStatus.OK);
-        }
-        else {
+        } else {
             return new ResponseEntity(HttpStatus.FORBIDDEN);
         }
     }
 
-    public ResponseEntity<Product> productUpdate(Product product) {
-        if (product.getWineID() != null) {
-            Wine wine = new Wine(product.getWineID(), product.getVintage(), product.getVarietal(), product.getColor(),
-                    product.getImporter(), product.getName(), product.getDescription(), product.getItemCode(),
-                    product.getOrigin(), product.getVolume(), product.getFrontPrice(), product.getTenCasePrice(),
-                    product.getTwentyFiveCasePrice(), product.getCost(), product.getBottleWeight(),
-                    product.getCaseWeight(), product.getQuantity(), product.isExclusive(), product.isDualState(),
-                    product.getWineCaseSize());
+    public ResponseEntity<ProductMetaData> productUpdate(ProductMetaData product) throws ParseException {
+        if (Integer.valueOf(product.getWineID()) != null) {
+            Wine wine = wines.findOne(Integer.valueOf(product.getWineID()));
+            if (wine != null) {
+                wines.setWineInfo(wine.getName(), wine.getDescription(), wine.getItemCode(), wine.getOrigin(),
+                        wine.getVolume(), wine.getFrontPrice(), wine.getTenCasePrice(), wine.getTwentyFiveCasePrice(),
+                        wine.getCost(), wine.getBottleWeight(), wine.getCaseWeight(), wine.getQuantity(),
+                        wine.isExclusive(), wine.isDualState(), wine.getCaseSize(), wine.getVintage(), wine.getVarietal(),
+                        wine.getColor(), wine.getImporter(), wine.getId());
 
-            products.save(product);
-            wines.save(wine);
-            return new ResponseEntity<Product>(product, HttpStatus.OK);
-        }
-        else if (product.getBeerID() != null) {
-            Beer beer = new Beer(product.getLotDate(), product.getExpirationDate(),
-                    product.getBeerType(), product.getBrewery(), product.isDomestic(), product.isSeasonal(),
-                    product.getName(), product.getDescription(), product.getItemCode(),
-                    product.getOrigin(), product.getVolume(), product.getFrontPrice(), product.getTenCasePrice(),
-                    product.getTwentyFiveCasePrice(), product.getCost(), product.getBottleWeight(),
-                    product.getCaseWeight(), product.getQuantity(), product.isExclusive(), product.isDualState(),
-                    product.getBeerCaseSize());
+//                products.ProductMetaWDataWineInfo(product.getName(), product.getDescription(),
+//                        String.valueOf(product.getItemCode()), product.getOrigin(), product.getVolume(),
+//                        String.valueOf(product.getFrontPrice()), String.valueOf(product.getTenCasePrice()),
+//                        String.valueOf(product.getTwentyFiveCasePrice()), String.valueOf(product.getCost()),
+//                        String.valueOf(product.getBottleWeight()), String.valueOf(product.getCaseWeight()),
+//                        String.valueOf(product.getQuantity()), String.valueOf(product.getIsEclusive()),
+//                        String.valueOf(product.getIsDualState()), String.valueOf(product.getCaseSize()),
+//                        String.valueOf(product.getVintage()), String.valueOf(product.getVarietal()),
+//                        String.valueOf(product.getColor()), String.valueOf(product.getImporter()),
+//                        String.valueOf(product.getWineID()), String.valueOf(product.getId()));
 
-            products.save(product);
-            beers.save(beer);
-            return new ResponseEntity<Product>(product, HttpStatus.OK);
+                return new ResponseEntity<>(product, HttpStatus.OK);
+            }
         }
-        else if (product.getLiquorID() != null) {
-            Liquor liquor = new Liquor(product.getLiquorID(), product.getLiquorType(), product.getDistillery(),
-                    product.getName(), product.getDescription(), product.getItemCode(), product.getOrigin(),
-                    product.getVolume(), product.getFrontPrice(), product.getTenCasePrice(),
-                    product.getTwentyFiveCasePrice(), product.getCost(), product.getBottleWeight(),
-                    product.getCaseWeight(), product.getQuantity(), product.isExclusive(), product.isDualState(),
-                    product.getLiquorCaseSize());
+        else if (Integer.valueOf(product.getBeerID()) != null) {
+            Beer beer = beers.findOne(Integer.valueOf(product.getBeerID()));
+            beers.setBeerInfo(beer.getName(), beer.getDescription(), beer.getItemCode(), beer.getOrigin(),
+                    beer.getVolume(), beer.getFrontPrice(), beer.getTenCasePrice(), beer.getTwentyFiveCasePrice(),
+                    beer.getCost(), beer.getBottleWeight(), beer.getCaseWeight(), beer.getQuantity(),
+                    beer.isExclusive(), beer.isDualState(), beer.getCaseSize(), beer.getLotDate(),
+                    beer.getExpirationDate(), beer.getBeerType(), beer.getBrewery(), beer.isDomestic(),
+                    beer.isSeasonal(), beer.getId());
 
-            products.save(product);
-            liquors.save(liquor);
-            return new ResponseEntity<Product>(product, HttpStatus.OK);
+//            products.ProductMetaDataBeerInfo(product.getName(), product.getDescription(),
+//                    String.valueOf(product.getItemCode()), product.getOrigin(), product.getVolume(),
+//                    String.valueOf(product.getFrontPrice()), String.valueOf(product.getTenCasePrice()),
+//                    String.valueOf(product.getTwentyFiveCasePrice()), String.valueOf(product.getCost()),
+//                    String.valueOf(product.getBottleWeight()), String.valueOf(product.getCaseWeight()),
+//                    String.valueOf(product.getQuantity()), String.valueOf(product.getIsEclusive()),
+//                    String.valueOf(product.getIsDualState()), String.valueOf(product.getCaseSize()),
+//                    String.valueOf(product.getLotDate()), String.valueOf(product.getExpirationDate()),
+//                    String.valueOf(product.getBeerType()), String.valueOf(product.getBrewery()),
+//                    String.valueOf(product.getIsDomestic()), String.valueOf(product.getIsSeasonal()),
+//                    String.valueOf(product.getBeerID()), String.valueOf(product.getId()));
+
+            return new ResponseEntity<>(product, HttpStatus.OK);
         }
-        return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
+        else if (Integer.valueOf(product.getLiquorID()) != null) {
+            Liquor liquor = liquors.findOne(Integer.parseInt(product.getLiquorID()));
+            liquors.setLiquorInfo(liquor.getName(), liquor.getDescription(), liquor.getItemCode(), liquor.getOrigin(),
+                    liquor.getVolume(), liquor.getFrontPrice(), liquor.getTenCasePrice(),
+                    liquor.getTwentyFiveCasePrice(), liquor.getCost(), liquor.getBottleWeight(),
+                    liquor.getCaseWeight(), liquor.getQuantity(), liquor.isExclusive(), liquor.isDualState(),
+                    liquor.getCaseSize(), liquor.getLiquorType(), liquor.getDistillery(), liquor.getId());
+
+//            products.ProductMetaDataLiquorInfo(product.getName(), product.getDescription(),
+//                    String.valueOf(product.getItemCode()), product.getOrigin(), product.getVolume(),
+//                    String.valueOf(product.getFrontPrice()), String.valueOf(product.getTenCasePrice()),
+//                    String.valueOf(product.getTwentyFiveCasePrice()), String.valueOf(product.getCost()),
+//                    String.valueOf(product.getBottleWeight()), String.valueOf(product.getCaseWeight()),
+//                    String.valueOf(product.getQuantity()), String.valueOf(product.getIsEclusive()),
+//                    String.valueOf(product.getIsDualState()), String.valueOf(product.getCaseSize()),
+//                    product.getLiquorType(), product.getDistillery(), String.valueOf(product.getBeerID()),
+//                    String.valueOf(product.getId()));
+
+            return new ResponseEntity<>(product, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     public ResponseEntity<Wine> wineValidator(Wine wine) {
         Wine wineFromDB = wines.findByItemCode(wine.getItemCode());
         if (wineFromDB != null) {
-            return new ResponseEntity<Wine>(HttpStatus.FOUND);
+            return new ResponseEntity<>(HttpStatus.FOUND);
         }
-        Product product = Product.createWineProduct(wine);
+        ProductMetaData product = ProductMetaData.createWineProduct(wine);
         products.save(product);
         wines.save(wine);
-        return new ResponseEntity<Wine>(wine, HttpStatus.CREATED);
+        return new ResponseEntity<>(wine, HttpStatus.CREATED);
     }
 
     public ResponseEntity<Beer> beerValidator(Beer beer) {
         Beer beerFromDB = beers.findByItemCode(beer.getItemCode());
         if (beerFromDB != null) {
-            return new ResponseEntity<Beer>(HttpStatus.FOUND);
+            return new ResponseEntity<>(HttpStatus.FOUND);
         }
-        Product product = Product.createBeerProduct(beer);
+        ProductMetaData product = ProductMetaData.createBeerProduct(beer);
         products.save(product);
         beers.save(beer);
-        return new ResponseEntity<Beer>(beer, HttpStatus.CREATED);
+        return new ResponseEntity<>(beer, HttpStatus.CREATED);
     }
 
     public ResponseEntity<Liquor> liquorValidator(Liquor liquor) {
         Liquor liquorFromDB = liquors.findByItemCode(liquor.getItemCode());
         if (liquorFromDB != null) {
-            return new ResponseEntity<Liquor>(HttpStatus.FOUND);
+            return new ResponseEntity<>(HttpStatus.FOUND);
         }
-        Product product = Product.createLiquorProduct(liquor);
+        ProductMetaData product = ProductMetaData.createLiquorProduct(liquor);
         products.save(product);
         liquors.save(liquor);
-        return new ResponseEntity<Liquor>(liquor, HttpStatus.CREATED);
+        return new ResponseEntity<>(liquor, HttpStatus.CREATED);
     }
 }
+
 

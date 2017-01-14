@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @MappedSuperclass
 public abstract class Product {
 
-    public enum caseSize{
+    public enum caseSize {
         ONE_PACK,
         THREE_PACK,
         SIX_PACK,
@@ -67,12 +67,15 @@ public abstract class Product {
     @Column()
     private boolean isDualState;
 
+    @Column()
+    private caseSize caseSize;
+
     public Product() {
     }
 
     public Product(String name, String description, String itemCode, String origin, String volume, double frontPrice,
                    double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight, double caseWeight,
-                   int quantity, boolean isExclusive, boolean isDualState) {
+                   int quantity, boolean isExclusive, boolean isDualState, caseSize caseSize) {
         this.name = name;
         this.description = description;
         this.itemCode = itemCode;
@@ -87,7 +90,131 @@ public abstract class Product {
         this.quantity = quantity;
         this.isExclusive = isExclusive;
         this.isDualState = isDualState;
+        this.caseSize = caseSize;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getItemCode() {
+        return itemCode;
+    }
+
+    public void setItemCode(String itemCode) {
+        this.itemCode = itemCode;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getVolume() {
+        return volume;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    public double getFrontPrice() {
+        return frontPrice;
+    }
+
+    public void setFrontPrice(double frontPrice) {
+        this.frontPrice = frontPrice;
+    }
+
+    public double getTenCasePrice() {
+        return tenCasePrice;
+    }
+
+    public void setTenCasePrice(double tenCasePrice) {
+        this.tenCasePrice = tenCasePrice;
+    }
+
+    public double getTwentyFiveCasePrice() {
+        return twentyFiveCasePrice;
+    }
+
+    public void setTwentyFiveCasePrice(double twentyFiveCasePrice) {
+        this.twentyFiveCasePrice = twentyFiveCasePrice;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public double getBottleWeight() {
+        return bottleWeight;
+    }
+
+    public void setBottleWeight(double bottleWeight) {
+        this.bottleWeight = bottleWeight;
+    }
+
+    public double getCaseWeight() {
+        return caseWeight;
+    }
+
+    public void setCaseWeight(double caseWeight) {
+        this.caseWeight = caseWeight;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public boolean isExclusive() {
+        return isExclusive;
+    }
+
+    public void setExclusive(boolean exclusive) {
+        isExclusive = exclusive;
+    }
+
+    public boolean isDualState() {
+        return isDualState;
+    }
+
+    public void setDualState(boolean dualState) {
+        isDualState = dualState;
+    }
+
+    public Product.caseSize getCaseSize() {
+        return caseSize;
+    }
+
+    public void setCaseSize(Product.caseSize caseSize) {
+        this.caseSize = caseSize;
+    }
+}
+
+
     //    @Id
 //    @GeneratedValue
 //    int id;
@@ -533,33 +660,3 @@ public abstract class Product {
 //    public void setWine(boolean wine) {
 //        isWine = wine;
 //    }
-}
-
-//    public static Product createWineProduct(Wine wine) {
-//        Product product = new Product(wine.getId(), wine.getName(), wine.getDescription(), wine.getItemCode(), wine.getOrigin(),
-//                wine.getVolume(), wine.getFrontPrice(), wine.getTenCasePrice(), wine.getTwentyFiveCasePrice(), wine.getCost(),
-//                wine.getBottleWeight(), wine.getCaseWeight(), wine.getQuantity(), wine.isExclusive(), wine.isDualState(),
-//                wine.getVintage(), wine.getVarietal(), wine.getColor(), wine.getImporter(), wine.getcaseSize(), false, false, true);
-//
-//        return product;
-//    }
-//
-//    public static Product createBeerProduct(Beer beer) {
-//        Product product = new Product(beer.getId(), beer.getName(), beer.getDescription(), beer.getItemCode(), beer.getOrigin(),
-//                beer.getVolume(), beer.getFrontPrice(), beer.getTenCasePrice(), beer.getTwentyFiveCasePrice(), beer.getCost(),
-//                beer.getBottleWeight(), beer.getCaseWeight(), beer.getQuantity(), beer.isExclusive(), beer.isDualState(),
-//                beer.getLotDate(), beer.getExpirationDate(), beer.getBeerType(), beer.getBrewery(), beer.isDomestic(),
-//                beer.isSeasonal(), beer.getCaseSize(), true, false, false);
-//
-//        return product;
-//    }
-//
-//    public static Product createLiquorProduct(Liquor liquor) {
-//        Product product = new Product(liquor.getId(), liquor.getName(), liquor.getDescription(), liquor.getItemCode(),
-//                liquor.getOrigin(), liquor.getVolume(), liquor.getFrontPrice(), liquor.getTenCasePrice(), liquor.getTwentyFiveCasePrice(),
-//                liquor.getCost(), liquor.getBottleWeight(), liquor.getCaseWeight(), liquor.getQuantity(), liquor.isExclusive(),
-//                liquor.isDualState(), liquor.getLiquorType(), liquor.getDistillery(), liquor.getcaseSize(), false, true, false);
-//
-//        return product;
-//    }
-//}

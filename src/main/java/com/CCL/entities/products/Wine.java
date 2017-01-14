@@ -31,15 +31,15 @@ public class Wine extends Product {
 
     public Wine(String name, String description, String itemCode, String origin, String volume, double frontPrice,
                 double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight, double caseWeight,
-                int quantity, boolean isExclusive, boolean isDualState, int id, int vintage, String varietal, String color,
-                String importer) {
+                int quantity, boolean isExclusive, boolean isDualState, int vintage, String varietal, String color,
+                String importer, Product.caseSize caseSize) {
         super(name, description, itemCode, origin, volume, frontPrice, tenCasePrice, twentyFiveCasePrice, cost,
-                bottleWeight, caseWeight, quantity, isExclusive, isDualState);
-        this.id = id;
+                bottleWeight, caseWeight, quantity, isExclusive, isDualState, caseSize);
         this.vintage = vintage;
         this.varietal = varietal;
         this.color = color;
         this.importer = importer;
+
     }
 
     public int getId() {
@@ -82,7 +82,6 @@ public class Wine extends Product {
         this.importer = importer;
     }
 }
-
 //    public Wine(int vintage, String varietal, String color, String importer, String name, String description,
 //                String itemCode, String origin, String volume, double frontPrice, double tenCasePrice,
 //                double twentyFiveCasePrice, double cost, double bottleWeight, double caseWeight, int quantity,

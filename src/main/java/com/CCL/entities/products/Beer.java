@@ -37,17 +37,17 @@ public class Beer extends Product {
 
     public Beer(String name, String description, String itemCode, String origin, String volume, double frontPrice,
                 double tenCasePrice, double twentyFiveCasePrice, double cost, double bottleWeight, double caseWeight,
-                int quantity, boolean isExclusive, boolean isDualState, int id, Date lotDate, Date expirationDate,
-                String beerType, String brewery, boolean isDomestic, boolean isSeasonal) {
+                int quantity, boolean isExclusive, boolean isDualState, Date lotDate, Date expirationDate,
+                String beerType, String brewery, boolean isDomestic, boolean isSeasonal, Product.caseSize caseSize) {
         super(name, description, itemCode, origin, volume, frontPrice, tenCasePrice, twentyFiveCasePrice, cost,
-                bottleWeight, caseWeight, quantity, isExclusive, isDualState);
-        this.id = id;
+                bottleWeight, caseWeight, quantity, isExclusive, isDualState, caseSize);
         this.lotDate = lotDate;
         this.expirationDate = expirationDate;
         this.beerType = beerType;
         this.brewery = brewery;
         this.isDomestic = isDomestic;
         this.isSeasonal = isSeasonal;
+        Beer.caseSize caseSize1 = caseSize;
     }
 
     public int getId() {
