@@ -3,7 +3,6 @@ package com.CCL.controllers;
 import com.CCL.entities.api_access.User;
 import com.CCL.entities.products.*;
 import com.CCL.services.*;
-import org.hibernate.validator.internal.util.privilegedactions.GetDeclaredFields;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
-import java.sql.*;
-import java.sql.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -174,66 +170,66 @@ public class ProductsController {
         if (Integer.valueOf(product.getWineID()) != null) {
             Wine wine = wines.findOne(Integer.valueOf(product.getWineID()));
             if (wine != null) {
-                wines.setWineInfo(wine.getName(), wine.getDescription(), wine.getItemCode(), wine.getOrigin(),
+                wines.wineUpdater(wine.getName(), wine.getDescription(), wine.getItemCode(), wine.getOrigin(),
                         wine.getVolume(), wine.getFrontPrice(), wine.getTenCasePrice(), wine.getTwentyFiveCasePrice(),
                         wine.getCost(), wine.getBottleWeight(), wine.getCaseWeight(), wine.getQuantity(),
                         wine.isExclusive(), wine.isDualState(), wine.getCaseSize(), wine.getVintage(), wine.getVarietal(),
                         wine.getColor(), wine.getImporter(), wine.getId());
 
-//                products.ProductMetaWDataWineInfo(product.getName(), product.getDescription(),
-//                        String.valueOf(product.getItemCode()), product.getOrigin(), product.getVolume(),
-//                        String.valueOf(product.getFrontPrice()), String.valueOf(product.getTenCasePrice()),
-//                        String.valueOf(product.getTwentyFiveCasePrice()), String.valueOf(product.getCost()),
-//                        String.valueOf(product.getBottleWeight()), String.valueOf(product.getCaseWeight()),
-//                        String.valueOf(product.getQuantity()), String.valueOf(product.getIsEclusive()),
-//                        String.valueOf(product.getIsDualState()), String.valueOf(product.getCaseSize()),
-//                        String.valueOf(product.getVintage()), String.valueOf(product.getVarietal()),
-//                        String.valueOf(product.getColor()), String.valueOf(product.getImporter()),
-//                        String.valueOf(product.getWineID()), String.valueOf(product.getId()));
+                products.updateWineFields(product.getName(), product.getDescription(),
+                        String.valueOf(product.getItemCode()), product.getOrigin(), product.getVolume(),
+                        String.valueOf(product.getFrontPrice()), String.valueOf(product.getTenCasePrice()),
+                        String.valueOf(product.getTwentyFiveCasePrice()), String.valueOf(product.getCost()),
+                        String.valueOf(product.getBottleWeight()), String.valueOf(product.getCaseWeight()),
+                        String.valueOf(product.getQuantity()), String.valueOf(product.getIsEclusive()),
+                        String.valueOf(product.getIsDualState()), String.valueOf(product.getCaseSize()),
+                        String.valueOf(product.getVintage()), String.valueOf(product.getVarietal()),
+                        String.valueOf(product.getColor()), String.valueOf(product.getImporter()),
+                        String.valueOf(product.getWineID()), String.valueOf(product.getId()));
 
                 return new ResponseEntity<>(product, HttpStatus.OK);
             }
         }
         else if (Integer.valueOf(product.getBeerID()) != null) {
             Beer beer = beers.findOne(Integer.valueOf(product.getBeerID()));
-            beers.setBeerInfo(beer.getName(), beer.getDescription(), beer.getItemCode(), beer.getOrigin(),
+            beers.beerUpdate(beer.getName(), beer.getDescription(), beer.getItemCode(), beer.getOrigin(),
                     beer.getVolume(), beer.getFrontPrice(), beer.getTenCasePrice(), beer.getTwentyFiveCasePrice(),
                     beer.getCost(), beer.getBottleWeight(), beer.getCaseWeight(), beer.getQuantity(),
                     beer.isExclusive(), beer.isDualState(), beer.getCaseSize(), beer.getLotDate(),
                     beer.getExpirationDate(), beer.getBeerType(), beer.getBrewery(), beer.isDomestic(),
                     beer.isSeasonal(), beer.getId());
 
-//            products.ProductMetaDataBeerInfo(product.getName(), product.getDescription(),
-//                    String.valueOf(product.getItemCode()), product.getOrigin(), product.getVolume(),
-//                    String.valueOf(product.getFrontPrice()), String.valueOf(product.getTenCasePrice()),
-//                    String.valueOf(product.getTwentyFiveCasePrice()), String.valueOf(product.getCost()),
-//                    String.valueOf(product.getBottleWeight()), String.valueOf(product.getCaseWeight()),
-//                    String.valueOf(product.getQuantity()), String.valueOf(product.getIsEclusive()),
-//                    String.valueOf(product.getIsDualState()), String.valueOf(product.getCaseSize()),
-//                    String.valueOf(product.getLotDate()), String.valueOf(product.getExpirationDate()),
-//                    String.valueOf(product.getBeerType()), String.valueOf(product.getBrewery()),
-//                    String.valueOf(product.getIsDomestic()), String.valueOf(product.getIsSeasonal()),
-//                    String.valueOf(product.getBeerID()), String.valueOf(product.getId()));
+            products.updateBeerFields(product.getName(), product.getDescription(),
+                    String.valueOf(product.getItemCode()), product.getOrigin(), product.getVolume(),
+                    String.valueOf(product.getFrontPrice()), String.valueOf(product.getTenCasePrice()),
+                    String.valueOf(product.getTwentyFiveCasePrice()), String.valueOf(product.getCost()),
+                    String.valueOf(product.getBottleWeight()), String.valueOf(product.getCaseWeight()),
+                    String.valueOf(product.getQuantity()), String.valueOf(product.getIsEclusive()),
+                    String.valueOf(product.getIsDualState()), String.valueOf(product.getCaseSize()),
+                    String.valueOf(product.getLotDate()), String.valueOf(product.getExpirationDate()),
+                    String.valueOf(product.getBeerType()), String.valueOf(product.getBrewery()),
+                    String.valueOf(product.getIsDomestic()), String.valueOf(product.getIsSeasonal()),
+                    String.valueOf(product.getBeerID()), String.valueOf(product.getId()));
 
             return new ResponseEntity<>(product, HttpStatus.OK);
         }
         else if (Integer.valueOf(product.getLiquorID()) != null) {
             Liquor liquor = liquors.findOne(Integer.parseInt(product.getLiquorID()));
-            liquors.setLiquorInfo(liquor.getName(), liquor.getDescription(), liquor.getItemCode(), liquor.getOrigin(),
+            liquors.liquorUpdater(liquor.getName(), liquor.getDescription(), liquor.getItemCode(), liquor.getOrigin(),
                     liquor.getVolume(), liquor.getFrontPrice(), liquor.getTenCasePrice(),
                     liquor.getTwentyFiveCasePrice(), liquor.getCost(), liquor.getBottleWeight(),
                     liquor.getCaseWeight(), liquor.getQuantity(), liquor.isExclusive(), liquor.isDualState(),
                     liquor.getCaseSize(), liquor.getLiquorType(), liquor.getDistillery(), liquor.getId());
 
-//            products.ProductMetaDataLiquorInfo(product.getName(), product.getDescription(),
-//                    String.valueOf(product.getItemCode()), product.getOrigin(), product.getVolume(),
-//                    String.valueOf(product.getFrontPrice()), String.valueOf(product.getTenCasePrice()),
-//                    String.valueOf(product.getTwentyFiveCasePrice()), String.valueOf(product.getCost()),
-//                    String.valueOf(product.getBottleWeight()), String.valueOf(product.getCaseWeight()),
-//                    String.valueOf(product.getQuantity()), String.valueOf(product.getIsEclusive()),
-//                    String.valueOf(product.getIsDualState()), String.valueOf(product.getCaseSize()),
-//                    product.getLiquorType(), product.getDistillery(), String.valueOf(product.getBeerID()),
-//                    String.valueOf(product.getId()));
+            products.updateLiquorFields(product.getName(), product.getDescription(),
+                    String.valueOf(product.getItemCode()), product.getOrigin(), product.getVolume(),
+                    String.valueOf(product.getFrontPrice()), String.valueOf(product.getTenCasePrice()),
+                    String.valueOf(product.getTwentyFiveCasePrice()), String.valueOf(product.getCost()),
+                    String.valueOf(product.getBottleWeight()), String.valueOf(product.getCaseWeight()),
+                    String.valueOf(product.getQuantity()), String.valueOf(product.getIsEclusive()),
+                    String.valueOf(product.getIsDualState()), String.valueOf(product.getCaseSize()),
+                    product.getLiquorType(), product.getDistillery(), String.valueOf(product.getBeerID()),
+                    String.valueOf(product.getId()));
 
             return new ResponseEntity<>(product, HttpStatus.OK);
         }

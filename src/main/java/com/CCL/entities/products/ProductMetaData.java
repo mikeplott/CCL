@@ -1,5 +1,7 @@
 package com.CCL.entities.products;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 import javax.persistence.*;
 
 /**
@@ -7,6 +9,27 @@ import javax.persistence.*;
  */
 
 @Entity
+
+@NamedQueries({
+        @NamedQuery(name = "updateWineFields",
+                query = "update ProductMetaData w set w.name = ?1, w.description = ?2,  w.itemCode = ?3, w.origin = ?4, " +
+                        "w.volume = ?5, w.frontPrice = ?6, w.tenCasePrice = ?7, w.twentyFiveCasePrice = ?8, w.cost = ?9, " +
+                        "w.bottleWeight = ?10, w.caseWeight = ?11, w.quantity = ?12, w.isExclusive = ?13, w.isDualState = ?14, " +
+                        "w.caseSize = ?15, w.vintage = ?16, w.varietal = ?17, w.color = ?18, w.importer = ?19, w.wineID = ?20 " +
+                        "where w.id = ?21"),
+        @NamedQuery(name = "updateBeerFields",
+                query = "update ProductMetaData w set w.name = ?1, w.description = ?2,  w.itemCode = ?3, w.origin = ?4," +
+                        "w.volume = ?5, w.frontPrice = ?6, w.tenCasePrice = ?7, w.twentyFiveCasePrice = ?8, w.cost = ?9," +
+                        "w.bottleWeight = ?10, w.caseWeight = ?11, w.quantity = ?12, w.isExclusive = ?13, w.isDualState = ?14," +
+                        "w.caseSize = ?15, w.lotDate = ?16, w.expirationDate = ?17, w.beerType = ?18, w.brewery = ?19, " +
+                        "w.isDomestic = ?20, w.isSeasonal = ?21, w.beerID = ?22 where w.id = ?23"),
+        @NamedQuery(name = "updateLiquorFields",
+                query = "update ProductMetaData w set w.name = ?1, w.description = ?2,  w.itemCode = ?3, w.origin = ?4," +
+                        "w.volume = ?5, w.frontPrice = ?6, w.tenCasePrice = ?7, w.twentyFiveCasePrice = ?8, w.cost = ?9," +
+                        "w.bottleWeight = ?10, w.caseWeight = ?11, w.quantity = ?12, w.isExclusive = ?13, w.isDualState = ?14," +
+                        "w.caseSize = ?15, w.liquorType = ?16, w.distillery = ?17, w.liquorID = ?18 where w.id = ?19"),
+})
+
 @Table(name = "products")
 public class ProductMetaData {
 
