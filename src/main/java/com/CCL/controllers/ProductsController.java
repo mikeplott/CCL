@@ -66,11 +66,12 @@ public class ProductsController {
     }
 
     @RequestMapping(path = "/search-products", method = RequestMethod.POST)
-    public ResponseEntity<HashMap<String, ArrayList<Product>>> searchProducts(HttpSession session, @RequestBody Map<String, String> json) {
+    public ResponseEntity<HashMap<String, ArrayList<ProductMetaData>>> searchProducts(HttpSession session, @RequestBody
+            Map<String, String> json) {
         String userName = (String) session.getAttribute("userName");
         User user = users.findByUserName(userName);
         User.isLoggedIn(user);
-        HashMap<String, ArrayList<Product>> results = productSearch(json);
+        HashMap<String, ArrayList<ProductMetaData>> results = productSearch(json);
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
@@ -104,40 +105,40 @@ public class ProductsController {
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
 
-    public HashMap<String, ArrayList<Product>> productSearch(Map<String, String> json) {
+    public HashMap<String, ArrayList<ProductMetaData>> productSearch(Map<String, String> json) {
         String name = json.get("item");
         String itemCode = json.get("item");
         String importer = json.get("item");
         String brewery = json.get("item");
         String distillery = json.get("item");
-        ArrayList<Product> matchingProducts = new ArrayList<>();
-        ArrayList<Product> productsByName = products.findAllByNameContainingIgnoreCase(name);
-        ArrayList<Product> productsByItemCode = products.findByItemCodeContainingIgnoreCase(itemCode);
-        ArrayList<Product> productsByBrewery = products.findByBreweryContainingIgnoreCase(brewery);
-        ArrayList<Product> productsByDistillery = products.findByDistilleryContainingIgnoreCase(distillery);
-        ArrayList<Product> productsByImporter = products.findByImporterContainingIgnoreCase(importer);
-        for (Product product : productsByName) {
+        ArrayList<ProductMetaData> matchingProducts = new ArrayList<>();
+        ArrayList<ProductMetaData> productsByName = products.findAllByNameContainingIgnoreCase(name);
+        ArrayList<ProductMetaData> productsByItemCode = products.findByItemCodeContainingIgnoreCase(itemCode);
+        ArrayList<ProductMetaData> productsByBrewery = products.findByBreweryContainingIgnoreCase(brewery);
+        ArrayList<ProductMetaData> productsByDistillery = products.findByDistilleryContainingIgnoreCase(distillery);
+        ArrayList<ProductMetaData> productsByImporter = products.findByImporterContainingIgnoreCase(importer);
+        for (ProductMetaData product : productsByName) {
             matchingProducts.add(product);
         }
-        for (Product product : productsByItemCode) {
+        for (ProductMetaData product : productsByItemCode) {
             matchingProducts.add(product);
         }
-        for (Product product : productsByBrewery) {
+        for (ProductMetaData product : productsByBrewery) {
             matchingProducts.add(product);
         }
-        for (Product product : productsByDistillery) {
+        for (ProductMetaData product : productsByDistillery) {
             matchingProducts.add(product);
         }
-        for (Product product : productsByImporter) {
+        for (ProductMetaData product : productsByImporter) {
             matchingProducts.add(product);
         }
-        Collections.sort(matchingProducts, new Comparator<Product>() {
+        Collections.sort(matchingProducts, new Comparator<ProductMetaData>() {
             @Override
-            public int compare(Product o1, Product o2) {
+            public int compare(ProductMetaData o1, ProductMetaData o2) {
                 return o1.getItemCode().compareTo(o2.getItemCode());
             }
         });
-        HashMap<String, ArrayList<Product>> results = new HashMap<>();
+        HashMap<String, ArrayList<ProductMetaData>> results = new HashMap<>();
         results.put("results", matchingProducts);
         return results;
     }

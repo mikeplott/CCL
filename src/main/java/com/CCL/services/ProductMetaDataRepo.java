@@ -10,13 +10,13 @@ import java.util.ArrayList;
  */
 
 public interface ProductMetaDataRepo extends MongoRepository<ProductMetaData, String>, ProductMetaDataRepoCustom {
-    ArrayList findAllByNameContainingIgnoreCase(String name);
+    ArrayList<ProductMetaData> findAllByNameContainingIgnoreCase(String name);
 
-    ArrayList findByItemCodeContainingIgnoreCase(String itemCode);
+    ArrayList<ProductMetaData> findByItemCodeContainingIgnoreCase(String itemCode);
 
-    ArrayList findByBreweryContainingIgnoreCase(String brewery);
+    ArrayList<ProductMetaData> findByBreweryContainingIgnoreCase(String brewery);
 
-    ArrayList findByDistilleryContainingIgnoreCase(String distillery);
+    ArrayList<ProductMetaData> findByDistilleryContainingIgnoreCase(String distillery);
 
-    ArrayList findByImporterContainingIgnoreCase(String importer);
+    ArrayList<ProductMetaData> findByImporterContainingIgnoreCase(String importer);
 }
