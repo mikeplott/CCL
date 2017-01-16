@@ -1,21 +1,25 @@
 function checkBox(t) {
     var el = document.getElementById($(t).attr('id'));
+    var id = ($(t).attr('id'));
     var check = document.getElementById($(t).attr('id')).getAttribute('checked');
-    console.log(check);
-    console.log(check);
+    var input = document.getElementById('input' + id);
     if (check == 'false') {
       el.setAttribute('checked', '');
       el.setAttribute('checked', true);
+      el.setAttribute('value', '');
+      el.setAttribute('value', true);
       el.setAttribute('class', '');
       el.setAttribute('class', 'fa fa-check-square fa-2x');
-      console.log(el.checked);
+      input.setAttribute('value', true);
     }
     else {
       el.setAttribute('checked', '');
       el.setAttribute('checked', 'false');
+      el.setAttribute('value', '');
+      el.setAttribute('value', false);
       el.setAttribute('class', '');
+      input.setAttribute('value', false);
       el.setAttribute('class', 'fa fa-square-o fa-2x');
-      console.log(check);
     }
   }
 
@@ -310,7 +314,6 @@ function productViewCreation(beer, liquor, wine, sizes) {
       else {
         dataDiv.setAttribute('id', 'beer' + k);
       }
-      console.log(k);
 
       if (k == 'casesize') {
 
@@ -344,14 +347,21 @@ function productViewCreation(beer, liquor, wine, sizes) {
         var iclass = document.createElement('i');
         iclass.setAttribute('class', 'fa fa-square-o fa-2x');
         iclass.setAttribute('onclick', 'checkBox($(this))');
-        iclass.setAttribute('id', 'iclass' + k);
+        iclass.setAttribute('id', k);
         iclass.setAttribute('checked', 'false');
+
+        var hidInput = document.createElement('input');
+        hidInput.setAttribute('type', 'hidden');
+        hidInput.setAttribute('value', 'false');
+        hidInput.setAttribute('name', k);
+        hidInput.setAttribute('id', 'input' + k);
 
         var label = document.createElement('label');
         label.setAttribute('for', 'input' + i);
         label.innerHTML = k;
 
         dataDiv.appendChild(label);
+        dataDiv.appendChild(hidInput);
         dataDiv.appendChild(iclass);
 
         if (i >= 13 && i < 20) {
@@ -461,30 +471,19 @@ function createWine(event) {
     var imp = f.find('[name=importer]').val();
     var name = f.find('[name=name]').val();
     var desc = f.find('[name=description]').val();
-    var itemC = f.find('[name=itemCode]').val();
+    var itemC = f.find('[name=itemcode]').val();
     var orig = f.find('[name=origin]').val();
     var vol = f.find('[name=volume]').val();
-    var frontP = f.find('[name=frontPrice]').val();
-    var tenCP = f.find('[name=tenCasePrice]').val();
-    var twentyFCP = f.find('[name=twentyFiveCasePrice]').val();
+    var frontP = f.find('[name=frontprice]').val();
+    var tenCP = f.find('[name=tencaseprice]').val();
+    var twentyFCP = f.find('[name=twentyfivecaseprice]').val();
     var theCost = f.find('[name=cost]').val();
-    var bottleW = f.find('[name=bottleWeight]').val();
-    var caseW = f.find('[name=caseWeight]').val();
+    var bottleW = f.find('[name=bottleweight]').val();
+    var caseW = f.find('[name=caseweight]').val();
     var quantity = f.find('[name=quantity]').val();
-    var wCS = $("#theWineForm input[type='radio']:checked").val();;
-    var exclu;
-    var dualS;
-    if ($("#theWineForm input[id='input17']:checked").val() == 'on') {
-        exclu = true;
-    } else {
-        exclu = false;
-    }
-
-    if ($("#theWineForm input[id='input18']:checked").val() == 'on') {
-        dualS = true;
-    } else {
-        dualS = false;
-    }
+    var wCS = f.find('[name=selector]').val();
+    var exclu = f.find('[name=exclusive]').val();
+    var dualS = f.find('[name=dualstate]').val();
 
     $.ajax({
         url: '/create-wine',
@@ -520,52 +519,28 @@ function createWine(event) {
 function createBeer(event) {
     event.preventDefault();
 
-    var f = $('#theBeerForm');
-    var vin = f.find('[name=lotDate]').val();
-    var vari = f.find('[name=expirationDate]').val();
-    var iColor = f.find('[name=beerType]').val();
-    var imp = f.find('[name=Brewery]').val();
+    var f = $('#theWineForm');
+    var vin = f.find('[name=lotdate]').val();
+    var vari = f.find('[name=expirationdate]').val();
+    var iColor = f.find('[name=beertype]').val();
+    var imp = f.find('[name=brewery]').val();
     var name = f.find('[name=name]').val();
     var desc = f.find('[name=description]').val();
-    var itemC = f.find('[name=itemCode]').val();
+    var itemC = f.find('[name=itemcode]').val();
     var orig = f.find('[name=origin]').val();
     var vol = f.find('[name=volume]').val();
-    var frontP = f.find('[name=frontPrice]').val();
-    var tenCP = f.find('[name=tenCasePrice]').val();
-    var twentyFCP = f.find('[name=twentyFiveCasePrice]').val();
+    var frontP = f.find('[name=frontprice]').val();
+    var tenCP = f.find('[name=tencaseprice]').val();
+    var twentyFCP = f.find('[name=twentyfivecaseprice]').val();
     var theCost = f.find('[name=cost]').val();
-    var bottleW = f.find('[name=bottleWeight]').val();
-    var caseW = f.find('[name=caseWeight]').val();
+    var bottleW = f.find('[name=bottleweight]').val();
+    var caseW = f.find('[name=caseweight]').val();
     var quantity = f.find('[name=quantity]').val();
-    var exclu;
-    var dualS;
-    var theDomes;
-    var theSeasons;
-    if ($("#theBeerForm input[id='input17']:checked").val() == 'on') {
-        exclu = true;
-    } else {
-        exclu = false;
-    }
-
-    if ($("#theBeerForm input[id='input18']:checked").val() == 'on') {
-        dualS = true;
-    } else {
-        dualS = false;
-    }
-
-    if ($("#theBeerForm input[id='input30']:checked").val() == 'on') {
-        theDomes = true;
-    } else {
-        theDomes = false;
-    }
-
-    if ($("#theBeerForm input[id='input31']:checked").val() == 'on') {
-        theSeasons = true;
-    } else {
-        theSeasons = false;
-    }
-
-    var wCS = $("#theBeerForm input[type='radio']:checked").val();
+    var exclu = f.find('[name=exclusive]').val();
+    var dualS = f.find('[name=dualstate]').val();
+    var theDomes = f.find('[name=domestic]').val();
+    var theSeasons = f.find('[name=seasonal]').val();
+    var wCS = f.find('[name=selector]').val();
 
     $.ajax({
         url: '/create-beer',
@@ -595,7 +570,7 @@ function createBeer(event) {
             'caseSize': wCS
         }),
         success: function(data) {
-            document.getElementById('theBeerForm').reset();
+            document.getElementById('theWineForm').reset();
         }
     });
 }
@@ -603,36 +578,24 @@ function createBeer(event) {
 function createLiquor(event) {
     event.preventDefault();
 
-    var f = $('#theLiquorForm');
-    var vin = f.find('[name=liquorType]').val();
+    var f = $('#theWineForm');
+    var vin = f.find('[name=liquortype]').val();
     var vari = f.find('[name=distillery]').val();
     var iColor = f.find('[name=name]').val();
     var imp = f.find('[name=description]').val();
-    var name = f.find('[name=itemCode]').val();
+    var name = f.find('[name=itemcode]').val();
     var desc = f.find('[name=origin]').val();
     var itemC = f.find('[name=volume]').val();
-    var orig = f.find('[name=frontPrice]').val();
-    var vol = f.find('[name=tenCasePrice]').val();
-    var frontP = f.find('[name=twentyFiveCasePrice]').val();
+    var orig = f.find('[name=frontprice]').val();
+    var vol = f.find('[name=tencaseprice]').val();
+    var frontP = f.find('[name=twentyfivecaseprice]').val();
     var tenCP = f.find('[name=cost]').val();
-    var twentyFCP = f.find('[name=bottleWeight]').val();
-    var theCost = f.find('[name=caseWeight]').val();
+    var twentyFCP = f.find('[name=bottleweight]').val();
+    var theCost = f.find('[name=caseweight]').val();
     var bottleW = f.find('[name=quantity]').val();
-    var exclu;
-    var dualS;
-    if ($("#theLiquorForm input[id='input100']:checked").val() == 'on') {
-        exclu = true;
-    } else {
-        exclu = false;
-    }
-
-    if ($("#theLiquorForm input[id='input101']:checked").val() == 'on') {
-        dualS = true;
-    } else {
-        dualS = false;
-    }
-
-    var wCS = $("#theLiquorForm input[type='radio']:checked").val();
+    var exclu = f.find('[name=exclusive]').val();
+    var dualS = f.find('[name=dualstate]').val();
+    var wCS = f.find('[name=selector]').val();
 
     $.ajax({
         url: '/create-liquor',
@@ -658,7 +621,7 @@ function createLiquor(event) {
             'caseSize': wCS
         }),
         success: function(data) {
-            document.getElementById('theLiquorForm').reset();
+            document.getElementById('theWineForm').reset();
         }
     });
 }
