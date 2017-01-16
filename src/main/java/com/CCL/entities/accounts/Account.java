@@ -1,10 +1,13 @@
 package com.CCL.entities.accounts;
 
 import com.CCL.entities.employees.SalesRep;
+import com.CCL.services.AccountRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by michaelplott on 1/3/17.
@@ -12,6 +15,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "accounts")
 public class Account {
+
     @Id
     @GeneratedValue
     private int id;

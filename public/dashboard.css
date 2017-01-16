@@ -232,3 +232,13 @@ td {
 .table-hover tbody tr:hover td {
   background-color: #262626;
 }
+
+#acctBtn {
+    width: 100px;
+    height: 35px;
+    margin-left: -20%;
+}
+
+#acctForm {
+    margin-left: 20%;
+}

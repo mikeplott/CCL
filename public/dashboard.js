@@ -1128,3 +1128,74 @@ function updateProduct(data) {
     theContainer.append(myCont);
 
 }
+
+function orderEntry(event) {
+    event.preventDefault();
+
+    var row = $('#myContainer');
+    row.empty();
+
+    var div1 = document.createElement('div');
+    div1.setAttribute('class', 'col-md-4');
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-4');
+
+    var div3 = document.createElement('div');
+    div3.setAttribute('class', 'col-md-4');
+
+    var acctForm = document.createElement('form');
+    acctForm.setAttribute('id', 'acctForm');
+    acctForm.setAttribute('class', 'form-inline');
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('name', 'acctInfo');
+    input.setAttribute('placeholder', 'Search accts');
+    input.setAttribute('id', 'acctInfo');
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'acctInfo');
+    label.innerHTML = "Search accounts by itemcode or name";
+
+    var btn = document.createElement('button');
+    btn.setAttribute('class', 'btn btn-primary');
+    btn.setAttribute('id', 'acctBtn');
+    btn.setAttribute('type', 'submit');
+    btn.setAttribute('onclick', 'acctsSearch(event)');
+    btn.innerHTML = "Submit";
+
+    div1.appendChild(label);
+    div2.appendChild(input);
+    div3.appendChild(btn);
+
+    acctForm.appendChild(div1);
+    acctForm.appendChild(div2);
+    acctForm.appendChild(div3);
+
+    row.append(acctForm);
+}
+
+function acctsSearch(event) {
+    event.preventDefault();
+
+    var f = $('#acctForm');
+    var account = f.find('[name=acctInfo]').val();
+
+    $.ajax({
+        url: '/search-accounts',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          'account': account,
+        }),
+        success: function(data) {
+            accountData(data);
+        }
+    })
+}
+
+function accountData(data) {
+    console.log(data);
+}
