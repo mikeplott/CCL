@@ -1198,4 +1198,47 @@ function acctsSearch(event) {
 
 function accountData(data) {
     console.log(data);
+
+    var zeCont = $('#tableHolder');
+    if (zeCont != null) {
+        zeCont.empty();
+    }
+
+    for (var i = 0; i < data.length; i++) {
+        var theData = data[i]
+        var repData = theData.salesRep;
+        var rep = repData.lastName;
+        var theTable = document.createElement('table');
+        theTable.setAttribute('class', 'table table-fixed-header table-bordered table-inverse table-hover table-responsive overflow-y:hidden');
+        theTable.setAttribute('id', 'searchResults');
+        var theHead = document.createElement('thead');
+        theHead.setAttribute('class', 'header');
+        var headerRow = document.createElement('tr');
+        var row = document.createElement('tr');
+        row.appendChild(theHead);
+        var labels = [];
+        for (var k in theData) {
+            if (k != "abcExpiration" && k != "abcIssueDate" && k != "balance" && k != "businessLicense" && k != "buyer" && k != "classBWholeSaler" && k != "onPremise" && k != "receiver" && k != "specialEvent" && k != "supplier") {
+                labels.push(k);
+                var header = document.createElement('th');
+                header.innerHTML = k;
+                headerRow.appendChild(header);
+            }
+        }
+        theTable.appendChild(headerRow);
+        for (var l = 0; l < labels.length; l++) {
+            var col = document.createElement('td');
+            if (label[l] == 'salesReps') {
+                col.innerHTML = rep;
+            }
+            else {
+                col.innerHTML = theData.label[l];
+            }
+            row.appendChild(col);
+        }
+        theTable.appendChild(row);
+    }
+    zeCont.append(theTable);
+    // zeCont.append(theTable);
+    // theCont.append(zeCont);
 }
