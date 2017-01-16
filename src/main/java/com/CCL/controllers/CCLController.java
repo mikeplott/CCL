@@ -1,5 +1,6 @@
 package com.CCL.controllers;
 
+import com.CCL.entities.accounts.Account;
 import com.CCL.entities.employees.EmpMetaData;
 import com.CCL.entities.api_access.User;
 import com.CCL.entities.employees.*;
@@ -42,6 +43,9 @@ public class CCLController {
     public static String mapsJSApiKey;
 
     public static String embeddedMapsApiKey;
+
+    @Autowired
+    AccountRepo accounts;
 
     @Autowired
     BeerRepo beers;
@@ -428,6 +432,54 @@ public class CCLController {
                         currentEmployee, salary, ssn, new ArrayList());
 
                 employees.save(emp);
+            }
+        }
+
+        if (accounts.count() == 0) {
+            File accountData = new File("accountlist.csv");
+            Scanner scanner = new Scanner(accountData);
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                String[] columns = line.split(",");
+                String name = columns[0];
+                String address = columns[1];
+                String city = columns[2];
+                String state = columns[3];
+                String owner = columns[4];
+                String receiver = columns[5];
+                String buyer = columns[6];
+                String abcLiscense = columns[7];
+                String businessLicense = columns[8];
+                String type = columns[9];
+                boolean isOnPremise = false;
+                boolean isClassB = false;
+                boolean isSupplier = false;
+                if (type.equals("On Premise")) {
+                    isOnPremise = true;
+                }
+                else if (type.equals("Off Premise")) {
+                    isClassB = true;
+                }
+                else if (type.equals("Supplier")) {
+                    isSupplier = true;
+                }
+                else {
+                    isOnPremise = false;
+                    isClassB = false;
+                    isSupplier = false;
+                }
+                String zipCode = columns[12];
+                String phoneNum = columns[13];
+                String accountNum = columns[14];
+
+                int randId = (int) (Math.random() * (100 - 1)) + 1;
+                SalesRep rep = salesReps.findOne(randId);
+
+                Account account = new Account(name, address, city, state, owner, receiver, buyer, abcLiscense,
+                        businessLicense, isOnPremise, isClassB, isSupplier, false, false, null, null, zipCode,
+                        phoneNum, accountNum, 0.0, rep);
+
+                accounts.save(account);
             }
         }
     }

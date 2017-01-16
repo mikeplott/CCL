@@ -3,6 +3,7 @@ package com.CCL.entities.accounts;
 import com.CCL.entities.employees.SalesRep;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -36,41 +37,44 @@ public class Account {
     @Column()
     private String buyer;
 
-    @Column(nullable = false)
+    @Column()
     private String abcLicense;
 
-    @Column(nullable = false)
+    @Column()
     private String businessLicense;
 
-    @Column(nullable = false)
+    @Column()
     private boolean isOnPremise;
 
-    @Column(nullable = false)
+    @Column()
     private boolean isClassBWholeSaler;
 
-    @Column(nullable = false)
+    @Column()
+    private boolean isSupplier;
+
+    @Column()
     private boolean isPastDue;
 
-    @Column(nullable = false)
+    @Column()
     private boolean isSpecialEvent;
 
-    @Column(nullable = false)
-    private Timestamp abcIssueDate;
+    @Column()
+    private Date abcIssueDate;
 
-    @Column(nullable = false)
-    private Timestamp abcExpiration;
+    @Column()
+    private Date abcExpiration;
 
-    @Column(nullable = false)
-    private long zipCode;
+    @Column()
+    private String zipCode;
 
-    @Column(nullable = false)
-    private long phoneNumber;
+    @Column()
+    private String phoneNumber;
 
-    @Column(nullable = false)
-    private long accountNumber;
+    @Column()
+    private String accountNumber;
 
-    @Column(nullable = false)
-    private BigDecimal balance;
+    @Column()
+    private double balance;
 
     @ManyToOne
     SalesRep salesRep;
@@ -79,9 +83,9 @@ public class Account {
     }
 
     public Account(String name, String address, String city, String state, String owner, String receiver, String buyer,
-                   String abcLicense, String businessLicense, boolean isOnPremise, boolean isClassBWholeSaler, boolean isPastDue,
-                   boolean isSpecialEvent, Timestamp abcIssueDate, Timestamp abcExpiration, long zipCode, long phoneNumber,
-                   long accountNumber, BigDecimal balance, SalesRep salesRep) {
+                   String abcLicense, String businessLicense, boolean isOnPremise, boolean isClassBWholeSaler,
+                   boolean isSupplier, boolean isPastDue, boolean isSpecialEvent, Date abcIssueDate, Date abcExpiration,
+                   String zipCode, String phoneNumber, String accountNumber, double balance, SalesRep salesRep) {
         this.name = name;
         this.address = address;
         this.city = city;
@@ -93,28 +97,7 @@ public class Account {
         this.businessLicense = businessLicense;
         this.isOnPremise = isOnPremise;
         this.isClassBWholeSaler = isClassBWholeSaler;
-        this.isPastDue = isPastDue;
-        this.isSpecialEvent = isSpecialEvent;
-        this.abcIssueDate = abcIssueDate;
-        this.abcExpiration = abcExpiration;
-        this.zipCode = zipCode;
-        this.phoneNumber = phoneNumber;
-        this.accountNumber = accountNumber;
-        this.balance = balance;
-        this.salesRep = salesRep;
-    }
-
-    public Account(String name, String address, String city, String state, String abcLicense, String businessLicense,
-                   boolean isOnPremise, boolean isClassBWholeSaler, boolean isPastDue, boolean isSpecialEvent, Timestamp abcIssueDate,
-                   Timestamp abcExpiration, long zipCode, long phoneNumber, long accountNumber, BigDecimal balance, SalesRep salesRep) {
-        this.name = name;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.abcLicense = abcLicense;
-        this.businessLicense = businessLicense;
-        this.isOnPremise = isOnPremise;
-        this.isClassBWholeSaler = isClassBWholeSaler;
+        this.isSupplier = isSupplier;
         this.isPastDue = isPastDue;
         this.isSpecialEvent = isSpecialEvent;
         this.abcIssueDate = abcIssueDate;
@@ -222,6 +205,14 @@ public class Account {
         isClassBWholeSaler = classBWholeSaler;
     }
 
+    public boolean isSupplier() {
+        return isSupplier;
+    }
+
+    public void setSupplier(boolean supplier) {
+        isSupplier = supplier;
+    }
+
     public boolean isPastDue() {
         return isPastDue;
     }
@@ -238,43 +229,51 @@ public class Account {
         isSpecialEvent = specialEvent;
     }
 
-    public Timestamp getAbcIssueDate() {
+    public Date getAbcIssueDate() {
         return abcIssueDate;
     }
 
-    public void setAbcIssueDate(Timestamp abcIssueDate) {
+    public void setAbcIssueDate(Date abcIssueDate) {
         this.abcIssueDate = abcIssueDate;
     }
 
-    public Timestamp getAbcExpiration() {
+    public Date getAbcExpiration() {
         return abcExpiration;
     }
 
-    public void setAbcExpiration(Timestamp abcExpiration) {
+    public void setAbcExpiration(Date abcExpiration) {
         this.abcExpiration = abcExpiration;
     }
 
-    public long getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(long zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public BigDecimal getBalance() {
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(BigDecimal balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
