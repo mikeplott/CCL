@@ -1589,10 +1589,13 @@ function addItem() {
 
     $('#myContainer').append(row);
 
+    var tableForm = document.createElement('form');
+    tableForm.setAttribute('id', 'tableForm');
+
     var theTable = document.createElement('table');
-    theTable.setAttribute('class', 'table table-fixed-header table-bordered table-hover table-responsive overflow-y:hidden');
+    theTable.setAttribute('class', 'dynatable table table-fixed-header table-bordered table-hover table-responsive table-striped overflow-y:hidden');
     theTable.setAttribute('id', 'orderItems');
-    var headerRow = document.createElement('tr');
+    var headerRow = document.createElement('thead');
     headerRow.setAttribute('id', 'orderHeaders');
 
     var th = document.createElement('th');
@@ -1622,11 +1625,17 @@ function addItem() {
 
     var addItemBtn = document.createElement('button');
     addItemBtn.setAttribute('class', 'btn btn-primary');
-    addItemBtn.setAttribute('id', 'itemSubmitBtn');
+    addItemBtn.setAttribute('id', 'theItemButton');
+    addItemBtn.setAttribute('type', 'Submit');
+    addItemBtn.setAttribute('onclick', 'addOrder(event)');
     addItemBtn.innerHTML = "Submit Order";
 
-    $('#myContainer').append(theTable);
-    $('#myContainer').append(addItemBtn);
+    tableForm.appendChild(theTable);
+    tableForm.append(addItemBtn);
+
+    // $('#myContainer').append(theTable);
+    $('#myContainer').append(tableForm);
+    // $('#myContainer').append(addItemBtn);
 }
 
 function itemRow() {
@@ -1642,17 +1651,52 @@ function itemRow() {
     delBtn.innerHTML = "Delete Item";
 
     var col = document.createElement('td');
+    var input = document.createElement('input');
+    input.setAttribute('value', code);
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('name', 'code');
+    col.append(input);
     col.innerHTML = code;
+
     var col1 = document.createElement('td');
+    var input1 = document.createElement('input');
+    input1.setAttribute('value', name);
+    input1.setAttribute('type', 'hidden');
+    input1.setAttribute('name', 'name');
     col1.innerHTML = name;
+
     var col2 = document.createElement('td');
+    var input2 = document.createElement('input');
+    input2.setAttribute('value', quantity);
+    input2.setAttribute('type', 'hidden');
+    input2.setAttribute('name', 'quantity');
+    col2.append(input2);
     col2.innerHTML = quantity;
+
     var col3 = document.createElement('td');
+    var input3 = document.createElement('input');
+    input3.setAttribute('value', um);
+    input3.setAttribute('type', 'hidden');
+    input3.setAttribute('name', 'um');
+    col3.append(input3);
     col3.innerHTML = um;
+
     var col4 = document.createElement('td');
+    var input4 = document.createElement('input');
+    input4.setAttribute('value', price);
+    input4.setAttribute('type', 'hidden');
+    input4.setAttribute('name', 'price');
+    col4.append(input4);
     col4.innerHTML = price;
+
     var col5 = document.createElement('td');
+    var input5 = document.createElement('input');
+    input5.setAttribute('value', (price * quantity));
+    input5.setAttribute('type', 'hidden');
+    input5.setAttribute('name', 'amount');
+    col5.append(input5);
     col5.innerHTML = (price * quantity);
+
     var col6 = document.createElement('td');
     col6.append(delBtn);
 
@@ -1669,7 +1713,34 @@ function itemRow() {
     table.append(row);
 }
 
-function addOrder() {
+function addOrder(event) {
+    event.preventDefault();
+
+    var data = [];
+
+    var rows = document.getElementsByTagName('tr');
+    for (var i = 0; i < rows.length; i++) {
+        var cells = rows[i].children;
+        var output = {};
+        output.itemCode = cells[0].innerHTML;
+        output.name = cells[1].innerHTML;
+        output.quantity = cells[2].innerHTML;
+        output.caseSize = cells[3].innerHTML;
+        output.price = cells[4].innerHTML;
+        output.amount = cells[5].innerHTML;
+        data.push(output);
+    }
+    $.ajax({
+        url: 'add-order',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            'items': data
+        }),
+        success: function(data) {
+            console.log(data);
+        }
+    });
 
 }
 
