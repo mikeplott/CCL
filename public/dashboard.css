@@ -241,7 +241,7 @@ td {
 
 #acctForm {
     margin-left: 20%;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 }
 
 #accountResults {
@@ -261,6 +261,7 @@ th {
 
 #itemForm {
     margin-left: 15%;
+    padding-bottom: 30px;
 }
 
 #itemDiv {
@@ -269,4 +270,26 @@ th {
 
 .col-md-3 {
     padding-top: 30px;
+}
+
+#itemRow {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+#orderBtn {
+    width: 100px;
+    height: 35px;
+    margin-top: 8%;
+}
+
+#orderItems {
+    width: 100%;
+    display: table;
+}
+
+#itemSubmitBtn {
+    width: 120px;
+    height: 35px;
+    margin-left: 89%;
 }

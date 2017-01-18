@@ -1393,6 +1393,7 @@ function itemEntry(t) {
         input.setAttribute('type', 'text');
         input.setAttribute('name', 'input');
         input.setAttribute('readonly', true);
+        input.setAttribute('id', 'code');
         input.setAttribute('class', 'form-control');
         input.setAttribute('value', data.product.itemCode);
 
@@ -1410,6 +1411,7 @@ function itemEntry(t) {
         input1.setAttribute('type', 'text');
         input1.setAttribute('name', 'input1');
         input1.setAttribute('readonly', true);
+        input1.setAttribute('id', 'theName');
         input1.setAttribute('class', 'form-control');
         input1.setAttribute('value', data.product.name);
 
@@ -1444,6 +1446,7 @@ function itemEntry(t) {
         input3.setAttribute('type', 'text');
         input3.setAttribute('name', 'input3');
         input3.setAttribute('readonly', true);
+        input3.setAttribute('id', 'theSize');
         input3.setAttribute('class', 'form-control');
         input3.setAttribute('value', data.product.caseSize);
 
@@ -1461,6 +1464,7 @@ function itemEntry(t) {
         input4.setAttribute('type', 'text');
         input4.setAttribute('name', 'input4');
         input4.setAttribute('readonly', true);
+        input4.setAttribute('id', 'theFrontPrice');
         input4.setAttribute('class', 'form-control');
         input4.setAttribute('value', data.product.frontPrice);
 
@@ -1478,6 +1482,7 @@ function itemEntry(t) {
         input5.setAttribute('type', 'text');
         input5.setAttribute('name', 'input5');
         input5.setAttribute('readonly', true);
+        input5.setAttribute('id', 'theTenPrice');
         input5.setAttribute('class', 'form-control');
         input5.setAttribute('value', data.product.tenCasePrice);
 
@@ -1495,6 +1500,7 @@ function itemEntry(t) {
         input6.setAttribute('type', 'text');
         input6.setAttribute('name', 'input6');
         input6.setAttribute('readonly', true);
+        input6.setAttribute('id', 'theTwentyFivePrice');
         input6.setAttribute('class', 'form-control');
         input6.setAttribute('value', data.product.twentyFiveCasePrice);
 
@@ -1517,12 +1523,156 @@ function itemEntry(t) {
         row.append(div5);
         row.append(div6);
 
-        $('#myContainer').append(row)
+        var theDiv = document.createElement('div');
+        theDiv.setAttribute('class', 'col-md-12');
+        theDiv.append(row);
+
+        $('#myContainer').append(theDiv)
         addItem();
         }
     });
 }
 
 function addItem() {
+    var row = document.createElement('div');
+    row.setAttribute('class', 'col-md-12');
+    row.setAttribute('id', 'itemRow');
+
     var div = document.createElement('div');
+    div.setAttribute('class', 'col-md-4');
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'number');
+    input.setAttribute('name', 'input');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('id', 'theQuantity');
+    input.setAttribute('placeholder', 'Enter Quantity')
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'input');
+    label.innerHTML = 'Quantity';
+
+    div.appendChild(label);
+    div.appendChild(input);
+
+    var div1 = document.createElement('div');
+    div1.setAttribute('class', 'col-md-4');
+
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'number');
+    input1.setAttribute('name', 'input1');
+    input1.setAttribute('id', 'thePrice');
+    input1.setAttribute('class', 'form-control');
+    input1.setAttribute('placeholder', 'Enter Price')
+
+    var label1 = document.createElement('label');
+    label1.setAttribute('for', 'input');
+    label1.innerHTML = 'Price';
+
+    div1.appendChild(label1);
+    div1.appendChild(input1);
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-4');
+
+    var btn = document.createElement('button');
+    btn.setAttribute('class', 'btn btn-primary');
+    btn.setAttribute('id', 'orderBtn');
+    btn.setAttribute('onclick', 'itemRow()');
+    btn.innerHTML = "Add Item";
+
+    div2.appendChild(btn);
+
+    row.append(div);
+    row.append(div1);
+    row.append(div2);
+
+    $('#myContainer').append(row);
+
+    var theTable = document.createElement('table');
+    theTable.setAttribute('class', 'table table-fixed-header table-bordered table-hover table-responsive overflow-y:hidden');
+    theTable.setAttribute('id', 'orderItems');
+    var headerRow = document.createElement('tr');
+    headerRow.setAttribute('id', 'orderHeaders');
+
+    var th = document.createElement('th');
+    th.innerHTML = "Item Code";
+    var th1 = document.createElement('th');
+    th1.innerHTML = "Item Name";
+    var th2 = document.createElement('th');
+    th2.innerHTML = "Quantity";
+    var th3 = document.createElement('th');
+    th3.innerHTML = "U/M";
+    var th4 = document.createElement('th');
+    th4.innerHTML = "Price";
+    var th5 = document.createElement('th');
+    th5.innerHTML = "Delete";
+    var th6 = document.createElement('th');
+    th6.innerHTML = "amount";
+
+    headerRow.appendChild(th);
+    headerRow.appendChild(th1);
+    headerRow.appendChild(th2);
+    headerRow.appendChild(th3);
+    headerRow.appendChild(th4);
+    headerRow.appendChild(th6);
+    headerRow.appendChild(th5);
+
+    theTable.append(headerRow);
+
+    var addItemBtn = document.createElement('button');
+    addItemBtn.setAttribute('class', 'btn btn-primary');
+    addItemBtn.setAttribute('id', 'itemSubmitBtn');
+    addItemBtn.innerHTML = "Submit Order";
+
+    $('#myContainer').append(theTable);
+    $('#myContainer').append(addItemBtn);
+}
+
+function itemRow() {
+    var table = $('#orderItems');
+    var code = $('#code').val();
+    var name = $('#theName').val();
+    var um = $('#theSize').val();
+    var quantity = $('#theQuantity').val();
+    var price = $('#thePrice').val();
+    var delBtn = document.createElement('button');
+    delBtn.setAttribute('class', 'btn btn-danger');
+    delBtn.setAttribute('onclick', 'deleteRow(this)');
+    delBtn.innerHTML = "Delete Item";
+
+    var col = document.createElement('td');
+    col.innerHTML = code;
+    var col1 = document.createElement('td');
+    col1.innerHTML = name;
+    var col2 = document.createElement('td');
+    col2.innerHTML = quantity;
+    var col3 = document.createElement('td');
+    col3.innerHTML = um;
+    var col4 = document.createElement('td');
+    col4.innerHTML = price;
+    var col5 = document.createElement('td');
+    col5.innerHTML = (price * quantity);
+    var col6 = document.createElement('td');
+    col6.append(delBtn);
+
+    var row = document.createElement('tr');
+
+    row.appendChild(col);
+    row.appendChild(col1);
+    row.appendChild(col2);
+    row.appendChild(col3);
+    row.appendChild(col4);
+    row.appendChild(col5);
+    row.appendChild(col6);
+
+    table.append(row);
+}
+
+function addOrder() {
+
+}
+
+function deleteRow(t) {
+    t.parentNode.parentNode.remove();
 }
