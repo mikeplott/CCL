@@ -252,3 +252,17 @@ td {
 th {
     text-align: center;
 }
+
+#itemBtn {
+    width: 100px;
+    height: 35px;
+    margin-left: -20%;
+}
+
+#itemForm {
+    margin-left: 15%;
+}
+
+#itemDiv {
+    padding-top: 50px;
+}

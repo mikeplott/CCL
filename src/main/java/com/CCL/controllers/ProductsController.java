@@ -105,6 +105,29 @@ public class ProductsController {
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/item", method = RequestMethod.POST)
+    public ResponseEntity<HashMap> getProduct(HttpSession session, @RequestBody HashMap<String, String> json) {
+        String id = json.get("id");
+        ProductMetaData product = products.findOne(id);
+        HashMap results = new HashMap();
+        if (product.getBeerID() != null) {
+            Beer beer = beers.findOne(Integer.valueOf(product.getBeerID()));
+            results.put("beer", beer);
+        }
+        else if (product.getLiquorID() != null) {
+            Liquor liquor = liquors.findOne(Integer.valueOf(product.getLiquorID()));
+            results.put("liquor", liquor);
+        }
+        else if (product.getWineID() != null) {
+            Wine wine = wines.findOne(Integer.valueOf(product.getWineID()));
+            results.put("wine", wine);
+        }
+        else {
+            return new ResponseEntity<HashMap>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<HashMap>(results, HttpStatus.OK);
+    }
+
     public HashMap<String, ArrayList<ProductMetaData>> productSearch(Map<String, String> json) {
         String name = json.get("item");
         String itemCode = json.get("item");

@@ -748,7 +748,7 @@ function productSearch(event) {
 }
 
 function searchData(data) {
-    var labels = ['itemCode', 'name', 'quantity', 'brewery', 'distillery', 'importer', 'vintage', 'Case Size', 'Lot Date', 'Expiration Date'];
+    var labels = ['itemCode', 'name', 'quantity', 'Case Size','brewery', 'distillery', 'importer', 'vintage','Lot Date', 'Expiration Date'];
     var theData = data.results;
     var theTable = document.createElement('table');
     theTable.setAttribute('class', 'table table-fixed-header table-bordered table-inverse table-hover table-responsive overflow-y:hidden');
@@ -801,6 +801,7 @@ function searchData(data) {
       else {
         casesize = zeData.liquorCaseSize;
       }
+      casesize = zeData.caseSize;
     for (var n = 0; n < labels.length; n++) {
       var deKey = labels[n];
       var theVal = zeData[deKey];
@@ -808,8 +809,6 @@ function searchData(data) {
       tCol.setAttribute('class', 'overflow-x:hidden');
       tCol.setAttribute('id', 'myTDS');
       tCol.innerHTML = theVal;
-      console.log(zeData.lotDate);
-
       if (deKey === 'Case Size') {
         tCol.innerHTML = casesize;
       }
@@ -821,6 +820,11 @@ function searchData(data) {
       }
       tRow.append(tCol);
     }
+    var input = document.createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('value', zeData.id);
+    tRow.setAttribute('ondblclick', 'itemEntry(this)');
+    tRow.append(input);
     tBody.append(tRow);
   }
   theTable.append(tBody);
@@ -1157,7 +1161,7 @@ function orderEntry(event) {
 
     var label = document.createElement('label');
     label.setAttribute('for', 'acctInfo');
-    label.innerHTML = "Search accounts by itemcode or name";
+    label.innerHTML = "Search accounts by account number or name";
 
     var btn = document.createElement('button');
     btn.setAttribute('class', 'btn btn-primary');
@@ -1257,7 +1261,6 @@ function inputOrders(t) {
             'id': id
         }),
     success: function(data) {
-        console.log(data);
         $('#accountResults').empty();
         var div = document.createElement('div');
         div.setAttribute('class', 'col-md-6');
@@ -1295,6 +1298,87 @@ function inputOrders(t) {
 
         $('#myContainer').append(div);
         $('#myContainer').append(div1);
+        orderData();
+        }
+    });
+}
+
+function orderData() {
+    var div = document.createElement('div');
+    div.setAttribute('class', 'col-md-12');
+    div.setAttribute('id', 'itemDiv');
+
+    var div1 = document.createElement('div');
+    div1.setAttribute('class', 'col-md-4');
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-4');
+
+    var div3 = document.createElement('div');
+    div3.setAttribute('class', 'col-md-4');
+
+    var itemForm = document.createElement('form');
+    itemForm.setAttribute('id', 'itemForm');
+    itemForm.setAttribute('class', 'form-inline');
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('name', 'itemInfo');
+    input.setAttribute('placeholder', 'Search items');
+    input.setAttribute('id', 'itemInfo');
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'itemInfo');
+    label.innerHTML = "Search items by itemcode or name";
+
+    var btn = document.createElement('button');
+    btn.setAttribute('class', 'btn btn-primary');
+    btn.setAttribute('id', 'itemBtn');
+    btn.setAttribute('type', 'submit');
+    btn.setAttribute('onclick', 'itemSearch(event)');
+    btn.innerHTML = "Submit";
+
+    div1.appendChild(label);
+    div2.appendChild(input);
+    div3.appendChild(btn);
+
+    itemForm.appendChild(div1);
+    itemForm.appendChild(div2);
+    itemForm.appendChild(div3);
+    div.appendChild(itemForm);
+
+    $('#myContainer').append(div);
+}
+
+function itemSearch(event) {
+    event.preventDefault();
+    var f = $('#itemForm');
+    var item = f.find('[name=itemInfo]').val();
+    $.ajax({
+        url: '/search-products',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          'item': item,
+        }),
+        success: function(data) {
+            searchData(data);
+        }
+    });
+}
+
+function itemEntry(t) {
+    var id = t.lastChild.value;
+    $.ajax({
+        url: '/item',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            'id': id
+        }),
+    success: function(data) {
+        console.log(data);
         }
     });
 }
