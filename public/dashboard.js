@@ -1249,7 +1249,6 @@ function accountData(data) {
 
 function inputOrders(t) {
     var id = t.lastChild.value;
-    console.log(id);
     $.ajax({
         url: '/account',
         type: 'POST',
@@ -1259,10 +1258,43 @@ function inputOrders(t) {
         }),
     success: function(data) {
         console.log(data);
-    }
-});
+        $('#accountResults').empty();
+        var div = document.createElement('div');
+        div.setAttribute('class', 'col-md-6');
 
-    $('#accountResults').empty();
+        var input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.setAttribute('name', 'input');
+        input.setAttribute('readonly', true);
+        input.setAttribute('class', 'form-control');
+        input.setAttribute('value', data.accountNumber);
 
+        var label = document.createElement('label');
+        label.setAttribute('for', 'input');
+        label.innerHTML = 'Account Number';
 
+        div.append(label);
+        div.append(input);
+
+        var div1 = document.createElement('div');
+        div1.setAttribute('class', 'col-md-6');
+
+        var input1 = document.createElement('input');
+        input1.setAttribute('type', 'text');
+        input1.setAttribute('name', 'input1');
+        input1.setAttribute('readonly', true);
+        input1.setAttribute('class', 'form-control');
+        input1.setAttribute('value', data.name);
+
+        var label1 = document.createElement('label');
+        label1.setAttribute('for', 'input1');
+        label1.innerHTML = 'Account Name';
+
+        div1.append(label1);
+        div1.append(input1);
+
+        $('#myContainer').append(div);
+        $('#myContainer').append(div1);
+        }
+    });
 }
