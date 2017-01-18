@@ -32,7 +32,7 @@ function capitalizeEachWord(str) {
 function inventoryDash(Event) {
     event.preventDefault();
 
-    var row = $('#myContainer');
+    var row = row;
     row.empty();
 
     var rightDiv = $('#myButtons');
@@ -145,7 +145,7 @@ function inventoryDash(Event) {
 function wineView(Event) {
     event.preventDefault();
 
-    var row = $('#myContainer');
+    var row = row;
     row.empty();
 
     var wineHeader = document.createElement('h1');
@@ -256,7 +256,7 @@ function createLiquorView() {
 }
 
 function productViewCreation(beer, liquor, wine, sizes) {
-  var row = $('#myContainer');
+  var row = row;
   row.empty();
 
   var myForm = document.createElement('form');
@@ -629,7 +629,7 @@ function createLiquor(event) {
 function inventoryDeletion(event) {
     event.preventDefault();
 
-    var row = $('#myContainer');
+    var row = row;
     row.empty();
 
     var myForm = document.createElement('form');
@@ -828,7 +828,9 @@ function searchData(data) {
     tBody.append(tRow);
   }
   theTable.append(tBody);
-  $('#myContainer').append(theTable);
+
+  var row = $('#myContainer');
+  row.append(theTable);
 }
 
 function updateProduct(data) {
@@ -854,7 +856,7 @@ function updateProduct(data) {
     myCont.setAttribute('class', 'col-md-12');
 
 
-    var theContainer = $('#myContainer');
+    var theContainer = row;
 
     var theData = data;
 
@@ -1296,8 +1298,10 @@ function inputOrders(t) {
         div1.append(label1);
         div1.append(input1);
 
-        $('#myContainer').append(div);
-        $('#myContainer').append(div1);
+        var row = $('#myContainer');
+
+        row.append(div);
+        row.append(div1);
         orderData();
         }
     });
@@ -1348,7 +1352,9 @@ function orderData() {
     itemForm.appendChild(div3);
     div.appendChild(itemForm);
 
-    $('#myContainer').append(div);
+    var row = $('#myContainer');
+
+    row.append(div);
 }
 
 function itemSearch(event) {
@@ -1378,7 +1384,145 @@ function itemEntry(t) {
             'id': id
         }),
     success: function(data) {
-        console.log(data);
+        console.log(data.product);
+        $('#searchResults').remove();
+        var div = document.createElement('div');
+        div.setAttribute('class', 'col-md-3');
+
+        var input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.setAttribute('name', 'input');
+        input.setAttribute('readonly', true);
+        input.setAttribute('class', 'form-control');
+        input.setAttribute('value', data.product.itemCode);
+
+        var label = document.createElement('label');
+        label.setAttribute('for', 'input');
+        label.innerHTML = 'Item Code';
+
+        div.append(label);
+        div.append(input);
+
+        var div1 = document.createElement('div');
+        div1.setAttribute('class', 'col-md-3');
+
+        var input1 = document.createElement('input');
+        input1.setAttribute('type', 'text');
+        input1.setAttribute('name', 'input1');
+        input1.setAttribute('readonly', true);
+        input1.setAttribute('class', 'form-control');
+        input1.setAttribute('value', data.product.name);
+
+        var label1 = document.createElement('label');
+        label1.setAttribute('for', 'input1');
+        label1.innerHTML = 'Item Name';
+
+        div1.append(label1);
+        div1.append(input1);
+
+        var div2 = document.createElement('div');
+        div2.setAttribute('class', 'col-md-3');
+
+        var input2 = document.createElement('input');
+        input2.setAttribute('type', 'text');
+        input2.setAttribute('name', 'input2');
+        input2.setAttribute('readonly', true);
+        input2.setAttribute('class', 'form-control');
+        input2.setAttribute('value', data.product.quantity);
+
+        var label2 = document.createElement('label');
+        label2.setAttribute('for', 'input2');
+        label2.innerHTML = 'Quantity';
+
+        div2.append(label2);
+        div2.append(input2);
+
+        var div3 = document.createElement('div');
+        div3.setAttribute('class', 'col-md-3');
+
+        var input3 = document.createElement('input');
+        input3.setAttribute('type', 'text');
+        input3.setAttribute('name', 'input3');
+        input3.setAttribute('readonly', true);
+        input3.setAttribute('class', 'form-control');
+        input3.setAttribute('value', data.product.caseSize);
+
+        var label3 = document.createElement('label');
+        label3.setAttribute('for', 'input3');
+        label3.innerHTML = 'U/M';
+
+        div3.append(label3);
+        div3.append(input3);
+
+        var div4 = document.createElement('div');
+        div4.setAttribute('class', 'col-md-3');
+
+        var input4 = document.createElement('input');
+        input4.setAttribute('type', 'text');
+        input4.setAttribute('name', 'input4');
+        input4.setAttribute('readonly', true);
+        input4.setAttribute('class', 'form-control');
+        input4.setAttribute('value', data.product.frontPrice);
+
+        var label4 = document.createElement('label');
+        label4.setAttribute('for', 'input4');
+        label4.innerHTML = 'Front Price';
+
+        div4.append(label4);
+        div4.append(input4);
+
+        var div5 = document.createElement('div');
+        div5.setAttribute('class', 'col-md-3');
+
+        var input5 = document.createElement('input');
+        input5.setAttribute('type', 'text');
+        input5.setAttribute('name', 'input5');
+        input5.setAttribute('readonly', true);
+        input5.setAttribute('class', 'form-control');
+        input5.setAttribute('value', data.product.tenCasePrice);
+
+        var label5 = document.createElement('label');
+        label5.setAttribute('for', 'input5');
+        label5.innerHTML = '10 Case Price';
+
+        div5.append(label5);
+        div5.append(input5);
+
+        var div6 = document.createElement('div');
+        div6.setAttribute('class', 'col-md-3');
+
+        var input6 = document.createElement('input');
+        input6.setAttribute('type', 'text');
+        input6.setAttribute('name', 'input6');
+        input6.setAttribute('readonly', true);
+        input6.setAttribute('class', 'form-control');
+        input6.setAttribute('value', data.product.twentyFiveCasePrice);
+
+        var label6 = document.createElement('label');
+        label6.setAttribute('for', 'input6');
+        label6.innerHTML = '25 Case Price';
+
+        div6.append(label6);
+        div6.append(input6);
+
+        var row = document.createElement('div');
+        row.setAttribute('class', 'col-md-12');
+        row.setAttribute('id', 'theItem');
+
+        row.append(div);
+        row.append(div1);
+        row.append(div2);
+        row.append(div3);
+        row.append(div4);
+        row.append(div5);
+        row.append(div6);
+
+        $('#myContainer').append(row)
+        addItem();
         }
     });
+}
+
+function addItem() {
+    var div = document.createElement('div');
 }

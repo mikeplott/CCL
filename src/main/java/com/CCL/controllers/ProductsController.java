@@ -112,15 +112,15 @@ public class ProductsController {
         HashMap results = new HashMap();
         if (product.getBeerID() != null) {
             Beer beer = beers.findOne(Integer.valueOf(product.getBeerID()));
-            results.put("beer", beer);
+            results.put("product", beer);
         }
         else if (product.getLiquorID() != null) {
             Liquor liquor = liquors.findOne(Integer.valueOf(product.getLiquorID()));
-            results.put("liquor", liquor);
+            results.put("product", liquor);
         }
         else if (product.getWineID() != null) {
             Wine wine = wines.findOne(Integer.valueOf(product.getWineID()));
-            results.put("wine", wine);
+            results.put("product", wine);
         }
         else {
             return new ResponseEntity<HashMap>(HttpStatus.NOT_FOUND);

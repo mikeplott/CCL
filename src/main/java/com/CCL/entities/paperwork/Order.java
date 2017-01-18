@@ -1,8 +1,11 @@
 package com.CCL.entities.paperwork;
 
 import com.CCL.entities.employees.SalesRep;
+import com.CCL.entities.products.Product;
+
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  * Created by michaelplott on 1/3/17.
@@ -25,6 +28,9 @@ public class Order {
     private Date orderDate;
 
     @Column(nullable = false)
+    private ArrayList<Product> items;
+
+    @Column(nullable = false)
     private Date deliveryDate;
 
     @ManyToOne
@@ -33,10 +39,13 @@ public class Order {
     public Order() {
     }
 
-    public Order(String accountName, long accountNumber, Date orderDate, Date deliveryDate, SalesRep salesRep) {
+    public Order(String accountName, long accountNumber, Date orderDate, ArrayList<Product> items, Date deliveryDate,
+                 SalesRep
+            salesRep) {
         this.accountName = accountName;
         this.accountNumber = accountNumber;
         this.orderDate = orderDate;
+        this.items = items;
         this.deliveryDate = deliveryDate;
         this.salesRep = salesRep;
     }
@@ -71,6 +80,14 @@ public class Order {
 
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public ArrayList<Product> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Product> items) {
+        this.items = items;
     }
 
     public Date getDeliveryDate() {
