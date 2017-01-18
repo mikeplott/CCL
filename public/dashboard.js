@@ -1197,48 +1197,43 @@ function acctsSearch(event) {
 }
 
 function accountData(data) {
-    console.log(data);
-
-    var zeCont = $('#tableHolder');
-    if (zeCont != null) {
-        zeCont.empty();
-    }
-
-    for (var i = 0; i < data.length; i++) {
-        var theData = data[i]
-        var repData = theData.salesRep;
+    var myCont = $('#myContainer');
+    var theData = data.account;
+    var labels = [];
+    for (var i = 0; i < theData.length; i++) {
+        var zeData = theData[i];
+        var repData = theData[i].salesRep;
+        console.log(repData);
         var rep = repData.lastName;
+        console.log(rep);
         var theTable = document.createElement('table');
         theTable.setAttribute('class', 'table table-fixed-header table-bordered table-inverse table-hover table-responsive overflow-y:hidden');
-        theTable.setAttribute('id', 'searchResults');
-        var theHead = document.createElement('thead');
-        theHead.setAttribute('class', 'header');
+        theTable.setAttribute('id', 'accountResults');
         var headerRow = document.createElement('tr');
+        headerRow.setAttribute('id', 'acctHeaders');
         var row = document.createElement('tr');
-        row.appendChild(theHead);
-        var labels = [];
-        for (var k in theData) {
-            if (k != "abcExpiration" && k != "abcIssueDate" && k != "balance" && k != "businessLicense" && k != "buyer" && k != "classBWholeSaler" && k != "onPremise" && k != "receiver" && k != "specialEvent" && k != "supplier") {
+        for (var k in theData[i]) {
+            if (k != "abcExpiration" && k != "abcIssueDate" && k != "balance" && k != "businessLicense" && k != "buyer" && k != "classBWholeSaler" && k != "onPremise" && k != "receiver" && k != "specialEvent" && k != "supplier" && k != "id") {
                 labels.push(k);
                 var header = document.createElement('th');
                 header.innerHTML = k;
                 headerRow.appendChild(header);
             }
+            theTable.appendChild(headerRow);
         }
-        theTable.appendChild(headerRow);
-        for (var l = 0; l < labels.length; l++) {
+        for (var j = 0; j < labels.length; j++) {
+            var key = labels[j];
+            console.log(key);
             var col = document.createElement('td');
-            if (label[l] == 'salesReps') {
-                col.innerHTML = rep;
+            if (key == 'salesReps') {
+                col.innerHTML = zeData[key].lastName;
             }
             else {
-                col.innerHTML = theData.label[l];
+                col.innerHTML = zeData[key];
             }
             row.appendChild(col);
         }
         theTable.appendChild(row);
+        myCont.append(theTable);
     }
-    zeCont.append(theTable);
-    // zeCont.append(theTable);
-    // theCont.append(zeCont);
 }

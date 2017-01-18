@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,28 +47,15 @@ public class AccountsController {
         HashMap results = new HashMap();
         String name = json.get("account");
         String accountNumber = json.get("account");
+        ArrayList<Account> accountsByName = accounts.findAllByNameContainingIgnoreCase(name);
         Account account = accounts.findByAccountNumber(accountNumber);
-        if (account == null) {
-            account = accounts.findByNameContainingIgnoreCase(name);
-            if (account == null) {
-                ArrayList<Account> accountList = accounts.findAllByNameContainingIgnoreCase(name);
-                if (accountList == null) {
-                    return null;
-                }
-                else {
-                    results.put("accounts", accountList);
-                    return results;
-                }
-            }
-            else {
-                results.put("account", account);
-                return results;
-            }
+        if (account != null) {
+            results.put("account", account);
         }
         else {
-            results.put("account", account);
-            return results;
+            results.put("account", accountsByName);
         }
+        return results;
     }
     
 }
