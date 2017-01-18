@@ -3,7 +3,6 @@ package com.CCL.entities.paperwork;
 import com.CCL.entities.employees.SalesRep;
 import javax.persistence.*;
 import java.sql.Date;
-import java.sql.Timestamp;
 
 /**
  * Created by michaelplott on 1/3/17.

@@ -43,6 +43,12 @@ public class AccountsController {
         return accountSearch(json);
     }
 
+    @RequestMapping(path = "/account", method = RequestMethod.POST)
+    public Account getAccount(HttpSession session, @RequestBody HashMap<String, Integer> json) {
+        int id = json.get("id");
+        return accounts.findOne(id);
+    }
+
     public HashMap accountSearch(HashMap<String, String> json) {
         HashMap results = new HashMap();
         String name = json.get("account");

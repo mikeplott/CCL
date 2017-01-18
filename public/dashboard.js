@@ -1197,11 +1197,14 @@ function acctsSearch(event) {
 }
 
 function accountData(data) {
+    console.log(data);
     var myCont = $('#myContainer');
     var theData = data.account;
     var labels = [];
     for (var i = 0; i < theData.length; i++) {
         var zeData = theData[i];
+        var zeId = theData[i].id;
+        console.log(zeId);
         var repData = theData[i].salesRep;
         console.log(repData);
         var rep = repData.lastName;
@@ -1212,6 +1215,8 @@ function accountData(data) {
         var headerRow = document.createElement('tr');
         headerRow.setAttribute('id', 'acctHeaders');
         var row = document.createElement('tr');
+        console.log(theData.id);
+        row.setAttribute('ondblclick', 'inputOrders(this)');
         for (var k in theData[i]) {
             if (k != "abcExpiration" && k != "abcIssueDate" && k != "balance" && k != "businessLicense" && k != "buyer" && k != "classBWholeSaler" && k != "onPremise" && k != "receiver" && k != "specialEvent" && k != "supplier" && k != "id") {
                 labels.push(k);
@@ -1233,7 +1238,31 @@ function accountData(data) {
             }
             row.appendChild(col);
         }
+        var input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('value', zeId);
+        row.appendChild(input);
         theTable.appendChild(row);
         myCont.append(theTable);
     }
+}
+
+function inputOrders(t) {
+    var id = t.lastChild.value;
+    console.log(id);
+    $.ajax({
+        url: '/account',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            'id': id
+        }),
+    success: function(data) {
+        console.log(data);
+    }
+});
+
+    $('#accountResults').empty();
+
+
 }
