@@ -32,7 +32,7 @@ function capitalizeEachWord(str) {
 function inventoryDash(Event) {
     event.preventDefault();
 
-    var row = row;
+    var row = $('#myContainer');
     row.empty();
 
     var rightDiv = $('#myButtons');
@@ -1748,4 +1748,73 @@ function addOrder(event) {
 
 function deleteRow(t) {
     t.parentNode.parentNode.remove();
+}
+
+function fleetView(event) {
+    event.preventDefault();
+
+    var row = $('#myContainer');
+    if (row != null) {
+        row.empty();
+    }
+
+    var theHeader = $('#myHeader');
+    theHeader.empty();
+    theHeader.innerHTML = "Fleet Management";
+
+    var div1 = document.createElement('div');
+    div1.setAttribute('class', 'col-md-4');
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-4');
+
+    var div3 = document.createElement('div');
+    div3.setAttribute('class', 'col-md-4');
+
+    var fleetForm = document.createElement('form');
+    fleetForm.setAttribute('id', 'fleetForm');
+    fleetForm.setAttribute('class', 'form-inline');
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('name', 'fleetMake');
+    input.setAttribute('placeholder', 'Search Vehicles');
+    input.setAttribute('id', 'vehicleMake');
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'fleetMake');
+    label.innerHTML = "Search vehicles by make";
+
+    var btn = document.createElement('button');
+    btn.setAttribute('class', 'btn btn-primary');
+    btn.setAttribute('id', 'vehicleBtn');
+    btn.setAttribute('type', 'submit');
+    btn.setAttribute('onclick', 'searchVehicleMakes(event)');
+    btn.innerHTML = "Submit";
+
+    div1.appendChild(label);
+    div2.appendChild(input);
+    div3.appendChild(btn);
+
+    fleetForm.appendChild(div1);
+    fleetForm.appendChild(div2);
+    fleetForm.appendChild(div3);
+
+    row.append(fleetForm);
+}
+
+function searchVehicleMakes() {
+    event.preventDefault();
+
+    var f = $('#fleetForm');
+    var make = f.find('[name=fleetMake]').val();
+
+    var url = 'https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformakeyear/make/' + make + '/vehicleType/truck?format=json'
+
+    $.get(url, function(data) {
+        console.log(data);
+        var theData = data.results;
+        
+    })
 }
