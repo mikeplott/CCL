@@ -1205,32 +1205,34 @@ function acctsSearch(event) {
 function accountData(data) {
     console.log(data);
     var myCont = $('#myContainer');
+    var myTable = $('#accountResults');
+    if (myTable != null) {
+        myTable.empty();
+    }
     var theData = data.account;
+    var myLabels = ['Name', 'Address', 'City', 'State', 'Owner', 'ABC License', 'Zipcode', 'Phone Number', 'Account Number', 'Sales Rep', 'Pastdue'];
     var labels = [];
+    var theTable = document.createElement('table');
+    theTable.setAttribute('class', 'table table-fixed-header table-bordered table-inverse table-hover table-responsive overflow-y:hidden');
+    theTable.setAttribute('id', 'accountResults');
+    var headerRow = document.createElement('tr');
+    headerRow.setAttribute('id', 'acctHeaders');
+    for (var i = 0; i < myLabels.length; i++) {
+        var headerCol = document.createElement('th');
+        headerCol.innerHTML = myLabels[i];
+        theTable.appendChild(headerCol);
+    }
     for (var i = 0; i < theData.length; i++) {
         var zeData = theData[i];
         var zeId = theData[i].id;
-        console.log(zeId);
         var repData = theData[i].salesRep;
-        console.log(repData);
         var rep = repData.lastName;
-        console.log(rep);
-        var theTable = document.createElement('table');
-        theTable.setAttribute('class', 'table table-fixed-header table-bordered table-inverse table-hover table-responsive overflow-y:hidden');
-        theTable.setAttribute('id', 'accountResults');
-        var headerRow = document.createElement('tr');
-        headerRow.setAttribute('id', 'acctHeaders');
         var row = document.createElement('tr');
-        console.log(theData.id);
         row.setAttribute('ondblclick', 'inputOrders(this)');
         for (var k in theData[i]) {
             if (k != "abcExpiration" && k != "abcIssueDate" && k != "balance" && k != "businessLicense" && k != "buyer" && k != "classBWholeSaler" && k != "onPremise" && k != "receiver" && k != "specialEvent" && k != "supplier" && k != "id") {
                 labels.push(k);
-                var header = document.createElement('th');
-                header.innerHTML = k;
-                headerRow.appendChild(header);
             }
-            theTable.appendChild(headerRow);
         }
         for (var j = 0; j < labels.length; j++) {
             var key = labels[j];
