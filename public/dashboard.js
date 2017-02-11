@@ -145,7 +145,10 @@ function inventoryDash(Event) {
 function wineView(Event) {
     event.preventDefault();
 
-    // ('#myContainer').empty();
+    var row = $('#myContainer');
+    if (row != null) {
+        row.empty();
+    }
 
     var wineHeader = document.createElement('h1');
     wineHeader.setAttribute('id', 'wineHeader');
@@ -255,7 +258,7 @@ function createLiquorView() {
 }
 
 function productViewCreation(beer, liquor, wine, sizes) {
-  var row = row;
+  var row = $('#myContainer');
   row.empty();
 
   var myForm = document.createElement('form');
@@ -628,7 +631,7 @@ function createLiquor(event) {
 function inventoryDeletion(event) {
     event.preventDefault();
 
-    var row = row;
+    var row = $('#myContainer');
     row.empty();
 
     var myForm = document.createElement('form');
