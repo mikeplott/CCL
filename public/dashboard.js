@@ -145,8 +145,7 @@ function inventoryDash(Event) {
 function wineView(Event) {
     event.preventDefault();
 
-    var row = row;
-    row.empty();
+    // ('#myContainer').empty();
 
     var wineHeader = document.createElement('h1');
     wineHeader.setAttribute('id', 'wineHeader');
@@ -1758,9 +1757,8 @@ function fleetView(event) {
         row.empty();
     }
 
-    var theHeader = $('#myHeader');
-    theHeader.empty();
-    theHeader.innerHTML = "Fleet Management";
+    $('#myHeader').innerHTML = "Fleet Management";
+
 
     var div1 = document.createElement('div');
     div1.setAttribute('class', 'col-md-4');
@@ -1807,6 +1805,11 @@ function fleetView(event) {
 function searchVehicleMakes() {
     event.preventDefault();
 
+    var table = $('#accountResults');
+    if (table != null) {
+        table.empty();
+    }
+
     var f = $('#fleetForm');
     var make = f.find('[name=fleetMake]').val();
 
@@ -1814,7 +1817,88 @@ function searchVehicleMakes() {
 
     $.get(url, function(data) {
         console.log(data);
-        var theData = data.results;
-        
-    })
+        var theData = data.Results;
+        console.log(theData);
+
+        var myLabels = ['Make', 'Model', 'Vehicle Type'];
+
+        var theTable = document.createElement('table');
+        theTable.setAttribute('class', 'table table-bordered table-striped');
+        theTable.setAttribute('id', 'accountResults');
+
+        var headerRow = document.createElement('tr');
+        headerRow.setAttribute('id', 'acctHeaders');
+
+        for (var i = 0; i < myLabels.length; i++) {
+            var headerCol = document.createElement('th');
+            headerCol.innerHTML = myLabels[i];
+            theTable.appendChild(headerCol);
+        }
+        var body = document.createElement('tbody');
+
+        for (var l = 0; l < theData.length; l++) {
+            var tableRow = document.createElement('tr');
+            tableRow.setAttribute('ondblclick', 'vehicleInfo(event, this)');
+
+            var col = document.createElement('td');
+            col.innerHTML = theData[l].Make_Name;
+
+            var col2 = document.createElement('td');
+            col2.innerHTML = theData[l].Model_Name;
+
+            var col3 = document.createElement('td');
+            col3.innerHTML = theData[l].VehicleTypeName;
+
+            tableRow.appendChild(col);
+            tableRow.appendChild(col2);
+            tableRow.appendChild(col3);
+
+            body.appendChild(tableRow);
+        }
+        theTable.appendChild(body);
+        $('#myContainer').append(theTable);
+    });
+}
+
+function vehicleInfo(event, t) {
+    event.preventDefault();
+    var cols = t.childen;
+
+    var vehicleForm = document.createElement('form');
+
+}
+
+function addTruck(event) {
+
+}
+
+function fleetDash(event) {
+    event.preventDefault();
+    var row = $('#myContainer');
+    if (row != null) {
+        row.empty();
+    }
+
+    var div = document.createElement('div');
+    div.setAttribute('class', 'col-md-6');
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-6');
+
+    // var div3 = document.createElement('div');
+    // div3.setAttribute('class', 'col-md-4');
+
+    var img = document.createElement('img');
+    img.setAttribute('src', 'images/fleet.jpg');
+    img.setAttribute('onclick', 'fleetView(event)');
+    img.setAttribute('id', 'fleetPic');
+
+    var img2 = document.createElement('img');
+    img2.setAttribute('src', 'images/gps.png');
+    img2.setAttribute('id', 'gpsPic');
+
+    //var img3 = document.createElement('img');
+
+    row.append(img);
+    row.append(img2);
 }

@@ -293,3 +293,14 @@ th {
     height: 35px;
     margin-left: 89%;
 }
+
+#fleetPic {
+    width: 500px;
+    height: 300px;
+}
+
+#gpsPic {
+    width: 300px;
+    height: 300px;
+    margin-left: 30%;
+}
