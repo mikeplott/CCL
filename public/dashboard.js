@@ -1865,10 +1865,238 @@ function searchVehicleMakes() {
 
 function vehicleInfo(event, t) {
     event.preventDefault();
-    var cols = t.childen;
+    var row = t;
+    var cols = row.children;
+    console.log(cols);
+
+    var make = cols[0].innerHTML;
+    var model = cols[1].innerHTML;
+    var type = cols[2].innerHTML;
+
+    console.log(make);
+    console.log(model);
+    console.log(type);
+
+    var row = $('#myContainer');
+    if (row != null) {
+        row.empty();
+    }
 
     var vehicleForm = document.createElement('form');
 
+    var div = document.createElement('div');
+    div.setAttribute('class', 'col-md-4');
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'make');
+    label.innerHTML = 'Vehicle Make';
+
+    var input = document.createElement('input');
+    input.setAttribute('readonly', 'true');
+    input.setAttribute('name', 'make');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('value', make);
+
+    div.appendChild(label);
+    div.appendChild(input);
+    vehicleForm.appendChild(div);
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-4');
+
+    var label2 = document.createElement('label');
+    label2.setAttribute('for', 'model');
+    label2.innerHTML = 'Vehicle Model';
+
+    var input2 = document.createElement('input');
+    input2.setAttribute('readonly', 'true');
+    input2.setAttribute('class', 'form-control');
+    input2.setAttribute('name', 'model');
+    input2.setAttribute('value', model);
+
+    div2.appendChild(label2);
+    div2.appendChild(input2);
+    vehicleForm.appendChild(div2);
+
+    var div3 = document.createElement('div');
+    div3.setAttribute('class', 'col-md-4');
+
+    var label3 = document.createElement('label');
+    label3.setAttribute('for', 'type');
+    label3.innerHTML = 'Vehicle Type';
+
+    var input3 = document.createElement('input');
+    input3.setAttribute('readonly', 'true');
+    input3.setAttribute('class', 'form-control');
+    input3.setAttribute('name', 'type');
+    input3.setAttribute('value', type);
+
+    div3.appendChild(label3);
+    div3.appendChild(input3);
+    vehicleForm.appendChild(div3);
+
+    var div4 = document.createElement('div');
+    div4.setAttribute('class', 'col-md-4');
+
+    var label4 = document.createElement('label');
+    label4.setAttribute('for', 'year');
+    label4.innerHTML = 'Vehicle Year';
+
+    var input4 = document.createElement('input');
+    input4.setAttribute('name', 'year');
+    input4.setAttribute('class', 'form-control');
+    input4.setAttribute('type', 'number');
+
+    div4.appendChild(label4);
+    div4.appendChild(input4);
+    vehicleForm.appendChild(div4);
+
+    var div5 = document.createElement('div');
+    div5.setAttribute('class', 'col-md-4');
+
+    var label5 = document.createElement('label');
+    label5.setAttribute('for', 'mileage');
+    label5.innerHTML = 'Vehicle Mileage';
+
+    var input5 = document.createElement('input');
+    input5.setAttribute('name', 'mileage');
+    input5.setAttribute('class', 'form-control');
+    input5.setAttribute('type', 'number');
+
+    div5.appendChild(label5);
+    div5.appendChild(input5);
+    vehicleForm.appendChild(div5);
+
+    var div6 = document.createElement('div');
+    div6.setAttribute('class', 'col-md-4');
+
+    var input6 = document.createElement('input');
+    input6.setAttribute('type', 'text');
+    input6.setAttribute('class', 'form-control');
+    input6.setAttribute('name', 'vin');
+
+    var label6 = document.createElement('label');
+    label6.setAttribute('for', 'vin');
+    label6.innerHTML = 'Vehicle Vin';
+
+    div6.appendChild(label6);
+    div6.appendChild(input6);
+    vehicleForm.appendChild(div6);
+
+    var div7 = document.createElement('div');
+    div7.setAttribute('class', 'col-md-4');
+
+    var input7 = document.createElement('input');
+    input7.setAttribute('type', 'text');
+    input7.setAttribute('class', 'form-control');
+    input7.setAttribute('name', 'plate');
+
+    var label7 = document.createElement('label');
+    label7.setAttribute('for', 'plate');
+    label7.innerHTML = 'Vehicle License Plate';
+
+    div7.appendChild(label7);
+    div7.appendChild(input7);
+    vehicleForm.appendChild(div7);
+
+    var div8 = document.createElement('div');
+    div8.setAttribute('class', 'col-md-4');
+
+    var input8 = document.createElement('select');
+    input8.setAttribute('class', 'form-control');
+    input8.setAttribute('name', 'fueltype');
+
+    var option = document.createElement('option');
+    option.innerHTML = 'Gasoline';
+
+    var option2 = document.createElement('option');
+    option2.innerHTML = 'Diesel';
+
+    var option3 = document.createElement('option');
+    option3.innerHTML = 'Electric';
+
+    var option4 = document.createElement('option');
+    option4.innerHTML = 'Bio-Diesel';
+
+    input8.appendChild(option);
+    input8.appendChild(option2);
+    input8.appendChild(option3);
+    input8.appendChild(option4);
+
+    var label8 = document.createElement('label');
+    label8.setAttribute('for', 'fueltype');
+    label8.innerHTML = 'Vehicle Fuel Type';
+
+    div8.appendChild(label8);
+    div8.appendChild(input8);
+    vehicleForm.appendChild(div8);
+
+    var div9 = document.createElement('div');
+    div9.setAttribute('class', 'col-md-4');
+
+    var iclass = document.createElement('i');
+    iclass.setAttribute('class', 'fa fa-square-o fa-2x');
+    iclass.setAttribute('onclick', 'checkBox($(this))');
+    iclass.setAttribute('id', 'warCheck');
+    iclass.setAttribute('checked', 'false');
+
+    var hidInput = document.createElement('input');
+    hidInput.setAttribute('type', 'hidden');
+    hidInput.setAttribute('value', 'false');
+    hidInput.setAttribute('name', 'hasWarranty');
+    hidInput.setAttribute('id', 'vehicleWarranty');
+
+    var label9 = document.createElement('label');
+    label9.setAttribute('for', 'hasWarranty');
+    label9.innerHTML = 'Warranty';
+
+    div9.append(label9);
+    div9.append(iclass);
+    div9.append(hidInput);
+
+    vehicleForm.appendChild(div9);
+
+    var div10 = document.createElement('div');
+    div10.setAttribute('class', 'col-md-4');
+
+    var input10 = document.createElement('input');
+    input10.setAttribute('type', 'text');
+    input10.setAttribute('display', 'hidden');
+    input10.setAttribute('name', 'warrantyInfo');
+    input10.setAttribute('id', 'warInformation');
+
+    var label10 = document.createElement('label');
+    label10.setAttribute('display', 'hidden');
+    label10.setAttribute('for', 'warrantyInfo');
+    label10.setAttribute('id', 'warLabel');
+    label10.innerHTML = 'Vehicle Warranty Info';
+
+    div10.appendChild(label10);
+    div10.appendChild(input10);
+    vehicleForm.appendChild(div10);
+
+    var div11 = document.createElement('div');
+    div11.setAttribute('class', 'col-md-4');
+
+    var vehicleBtn = document.createElement('button');
+    vehicleBtn.setAttribute('class', 'btn btn-primary');
+    vehicleBtn.setAttribute('id', 'vehicleBtn');
+    vehicleBtn.setAttribute('type', 'submit');
+    vehicleBtn.innerHTML = 'Submit';
+
+    div11.appendChild(vehicleBtn);
+    vehicleForm.appendChild(div9);
+
+    row.append(vehicleForm);
+
+    var hid = $('#vehicleWarranty');
+    var war = $('#warInformation');
+    var lab = $('#warLabel');
+
+    if (hid.val() == true) {
+        war.setAttribute('display', 'block');
+        lab.setAttribute('display', 'block');
+    }
 }
 
 function addTruck(event) {

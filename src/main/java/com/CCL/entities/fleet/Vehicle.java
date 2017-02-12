@@ -28,7 +28,7 @@ public class Vehicle {
     @Column(nullable = false)
     private String fuelType;
 
-    @Column(nullable = false)
+    @Column()
     private String manufacturer;
 
     @Column

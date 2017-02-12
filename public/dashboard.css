@@ -304,3 +304,8 @@ th {
     height: 300px;
     margin-left: 30%;
 }
+
+#vehicleBtn {
+    margin-top: 5%;
+    height: 40px;
+}
