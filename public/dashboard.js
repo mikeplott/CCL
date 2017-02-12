@@ -1269,11 +1269,12 @@ function inputOrders(t) {
     success: function(data) {
         $('#accountResults').empty();
         var div = document.createElement('div');
-        div.setAttribute('class', 'col-md-6');
+        div.setAttribute('class', 'col-md-4');
 
         var input = document.createElement('input');
         input.setAttribute('type', 'text');
         input.setAttribute('name', 'input');
+        input.setAttribute('id', 'theAccountName');
         input.setAttribute('readonly', true);
         input.setAttribute('class', 'form-control');
         input.setAttribute('value', data.accountNumber);
@@ -1286,11 +1287,12 @@ function inputOrders(t) {
         div.append(input);
 
         var div1 = document.createElement('div');
-        div1.setAttribute('class', 'col-md-6');
+        div1.setAttribute('class', 'col-md-4');
 
         var input1 = document.createElement('input');
         input1.setAttribute('type', 'text');
         input1.setAttribute('name', 'input1');
+        input1.setAttribute('id', 'theAccountNumber');
         input1.setAttribute('readonly', true);
         input1.setAttribute('class', 'form-control');
         input1.setAttribute('value', data.name);
@@ -1302,10 +1304,27 @@ function inputOrders(t) {
         div1.append(label1);
         div1.append(input1);
 
+        var div2 = document.createElement('div');
+        div2.setAttribute('class', 'col-md-4');
+
+        input2 = document.createElement('input');
+        input2.setAttribute('type', 'date');
+        input2.setAttribute('id', 'deliveryDate');
+        input2.setAttribute('class', 'form-control');
+        input2.setAttribute('name', 'orderDeliveryDate');
+
+        var label2 = document.createElement('label');
+        label2.setAttribute('for', 'orderDeliveryDate');
+        label2.innerHTML = 'Delivery Date';
+
+        div2.appendChild(label2);
+        div2.appendChild(input2);
+
         var row = $('#myContainer');
 
         row.append(div);
         row.append(div1);
+        row.append(div2);
         orderData();
         }
     });
@@ -1638,7 +1657,8 @@ function addItem() {
     tableForm.append(addItemBtn);
 
     // $('#myContainer').append(theTable);
-    $('#myContainer').append(tableForm);
+    //$('#myContainer').append(tableForm);
+    $('#itemDiv').append(tableForm);
     // $('#myContainer').append(addItemBtn);
 }
 
@@ -1715,23 +1735,33 @@ function itemRow() {
     row.appendChild(col6);
 
     table.append(row);
+
+    $('#itemForm').reset;
+    $('#theItem').remove();
+    $('#itemRow').remove();
 }
 
 function addOrder(event) {
     event.preventDefault();
 
     var data = [];
+    var name = $('#theAccountName').val();
+    var num = $('#theAccountNumber').val();
+    var account = [name, num];
+    var date = [Date.now()];
+    var delDate = [$('#deliveryDate').val()];
+    console.log(delDate);
 
     var rows = document.getElementsByTagName('tr');
     for (var i = 0; i < rows.length; i++) {
         var cells = rows[i].children;
-        var output = {};
-        output.itemCode = cells[0].innerHTML;
-        output.name = cells[1].innerHTML;
-        output.quantity = cells[2].innerHTML;
-        output.caseSize = cells[3].innerHTML;
-        output.price = cells[4].innerHTML;
-        output.amount = cells[5].innerHTML;
+        var output = [];
+        output.push(cells[0].innerHTML);
+        output.push(cells[1].innerHTML);
+        output.push(cells[2].innerHTML);
+        output.push(cells[3].innerHTML);
+        output.push(cells[4].innerHTML);
+        output.push(cells[5].innerHTML);
         data.push(output);
     }
     $.ajax({
@@ -1739,7 +1769,10 @@ function addOrder(event) {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
-            'items': data
+            'items': data,
+            'account' : account,
+            'date' : date,
+            'delDate' : delDate
         }),
         success: function(data) {
             console.log(data);
