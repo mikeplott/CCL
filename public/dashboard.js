@@ -1755,6 +1755,15 @@ function deleteRow(t) {
 function fleetView(event) {
     event.preventDefault();
 
+    var header = $('#headerDiv');
+    header.empty();
+
+    var zeHeader = document.createElement('h1');
+    zeHeader.setAttribute('id', 'myHeader');
+    zeHeader.innerHTML = 'Vehicle Search';
+
+    header.append(zeHeader);
+
     var row = $('#myContainer');
     if (row != null) {
         row.empty();
@@ -2080,7 +2089,7 @@ function addTruck(event) {
     var warInfo = f.find('[name=warrantyInfo]').val();
 
     $.ajax({
-        url: '/add-truck',
+        url: '/create-truck',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -2095,14 +2104,24 @@ function addTruck(event) {
             'warInfo' : warInfo
         }),
         success: function(data) {
-            //document.getElementById('vehicleForm').reset();
-            console.log(data);
+            document.getElementById('vehicleForm').remove();
+            fleetView(event);
         }
     });
 }
 
 function fleetDash(event) {
     event.preventDefault();
+
+    var header = $('#headerDiv');
+    header.empty();
+
+    var zeHeader = document.createElement('h1');
+    zeHeader.setAttribute('id', 'myHeader');
+    zeHeader.innerHTML = 'Fleet Dashboard';
+
+    header.append(zeHeader);
+
     var row = $('#myContainer');
     if (row != null) {
         row.empty();
@@ -2114,8 +2133,8 @@ function fleetDash(event) {
     var div2 = document.createElement('div');
     div2.setAttribute('class', 'col-md-6');
 
-    // var div3 = document.createElement('div');
-    // div3.setAttribute('class', 'col-md-4');
+    var div3 = document.createElement('div');
+    div3.setAttribute('class', 'col-md-4');
 
     var img = document.createElement('img');
     img.setAttribute('src', 'images/fleet.jpg');
@@ -2126,7 +2145,7 @@ function fleetDash(event) {
     img2.setAttribute('src', 'images/gps.png');
     img2.setAttribute('id', 'gpsPic');
 
-    //var img3 = document.createElement('img');
+    var img3 = document.createElement('img');
 
     row.append(img);
     row.append(img2);
