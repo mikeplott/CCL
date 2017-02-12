@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -46,6 +47,19 @@ public class FleetController {
 
             fleet.save(vehicle);
             return new ResponseEntity<Vehicle>(vehicle, HttpStatus.OK);
+        }
+    }
+
+    @RequestMapping(path = "/all-fleet-info", method = RequestMethod.GET)
+    public ResponseEntity<ArrayList<Vehicle>> getAllVehicles(HttpSession session) {
+        String userName = (String) session.getAttribute("userName");
+        User user = users.findByUserName(userName);
+        if (!User.isLoggedIn(user)) {
+            return new ResponseEntity<ArrayList<Vehicle>>(HttpStatus.FORBIDDEN);
+        }
+        else {
+            ArrayList<Vehicle> theFleet = fleet.findAll();
+            return new ResponseEntity<ArrayList<Vehicle>>(theFleet, HttpStatus.OK);
         }
     }
 }

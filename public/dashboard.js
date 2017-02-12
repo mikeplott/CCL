@@ -2128,25 +2128,59 @@ function fleetDash(event) {
     }
 
     var div = document.createElement('div');
-    div.setAttribute('class', 'col-md-6');
+    div.setAttribute('class', 'col-md-4');
 
     var div2 = document.createElement('div');
-    div2.setAttribute('class', 'col-md-6');
+    div2.setAttribute('class', 'col-md-4');
 
     var div3 = document.createElement('div');
     div3.setAttribute('class', 'col-md-4');
 
+    var label = document.createElement('label');
+    label.setAttribute('for', 'fleet');
+    label.innerHTML = 'Fleet List';
+
     var img = document.createElement('img');
-    img.setAttribute('src', 'images/fleet.jpg');
-    img.setAttribute('onclick', 'fleetView(event)');
+    img.setAttribute('src', 'images/fleet.png');
+    img.setAttribute('name', 'fleet');
     img.setAttribute('id', 'fleetPic');
+
+    div.appendChild(label);
+    div.appendChild(img);
+
+    var label2 = document.createElement('label');
+    label2.setAttribute('for', 'gps');
+    label2.innerHTML = 'Routing and Logistics';
 
     var img2 = document.createElement('img');
     img2.setAttribute('src', 'images/gps.png');
+    img2.setAttribute('name', 'gps');
     img2.setAttribute('id', 'gpsPic');
 
-    var img3 = document.createElement('img');
+    div2.appendChild(label2);
+    div2.appendChild(img2);
 
-    row.append(img);
-    row.append(img2);
+    var label3 = document.createElement('label');
+    label3.setAttribute('for', 'addTruck');
+    label3.innerHTML = 'Add Truck To Fleet';
+
+    var img3 = document.createElement('img');
+    img3.setAttribute('src', 'images/truck.jpeg');
+    img3.setAttribute('name', 'addTruck');
+    img.setAttribute('onclick', 'fleetView(event)');
+    img3.setAttribute('id', 'theTruck');
+
+    div3.appendChild(label3);
+    div3.appendChild(img3);
+
+    row.append(div);
+    row.append(div2);
+    row.append(div3);
+}
+
+function getFleetInfo(event) {
+    event.preventDefault();
+    $.get('/all-fleet-info', function(data) {
+        console.log(data);
+    });
 }

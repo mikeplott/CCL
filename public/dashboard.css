@@ -295,14 +295,21 @@ th {
 }
 
 #fleetPic {
-    width: 500px;
+    width: 400px;
     height: 300px;
+    margin-left: 7%;
 }
 
 #gpsPic {
-    width: 300px;
+    width: 400px;
     height: 300px;
-    margin-left: 30%;
+    margin-left: 8%;
+}
+
+#theTruck {
+    width: 400px;
+    height: 300px;
+    margin-left: 10%;
 }
 
 #vehicleBtn {
