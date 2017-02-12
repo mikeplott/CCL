@@ -2143,6 +2143,7 @@ function fleetDash(event) {
     var img = document.createElement('img');
     img.setAttribute('src', 'images/fleet.png');
     img.setAttribute('name', 'fleet');
+    img.setAttribute('onclick', 'getFleetInfo(event)');
     img.setAttribute('id', 'fleetPic');
 
     div.appendChild(label);
@@ -2167,7 +2168,7 @@ function fleetDash(event) {
     var img3 = document.createElement('img');
     img3.setAttribute('src', 'images/truck.jpeg');
     img3.setAttribute('name', 'addTruck');
-    img.setAttribute('onclick', 'fleetView(event)');
+    img3.setAttribute('onclick', 'fleetView(event)');
     img3.setAttribute('id', 'theTruck');
 
     div3.appendChild(label3);
@@ -2180,7 +2181,59 @@ function fleetDash(event) {
 
 function getFleetInfo(event) {
     event.preventDefault();
+    var header = $('#headerDiv');
+    header.empty();
+
+    var zeHeader = document.createElement('h1');
+    zeHeader.setAttribute('id', 'myHeader');
+    zeHeader.innerHTML = 'Fleet Dashboard';
+
+    header.append(zeHeader);
+
+    var row = $('#myContainer');
+    if (row != null) {
+        row.empty();
+    }
+
+    var table = document.createElement('table');
+    table.setAttribute('class', 'table table-bordered table-striped');
+    table.setAttribute('id', 'accountResults');
+
+    var headerRow = document.createElement('tr');
+    headerRow.setAttribute('id', 'acctHeaders');
+
+    table.appendChild(headerRow);
+
+    var tBody = document.createElement('tbody');
+
     $.get('/all-fleet-info', function(data) {
         console.log(data);
+        var labels = [];
+        var theLabels = ['ID', 'Make', 'Model', 'Year', 'Mileage', 'Fuel Type', 'Warranty Info', 'VIN', 'License Plate', 'Currently Has A Warranty'];
+
+        for (var k in data[0]) {
+            labels.push(k);
+        }
+
+        for (var j = 0; j < theLabels.length; j++) {
+            var th = document.createElement('th');
+            th.innerHTML = theLabels[j];
+            headerRow.appendChild(th);
+        }
+        console.log(data.length);
+        for (var i = 0; i < data.length; i++) {
+            var theRow = document.createElement('tr');
+            var zeData = data[i];
+            console.log(zeData);
+            for (var g = 0; g < labels.length; g++) {
+                var key = labels[g];
+                var col = document.createElement('td');
+                col.innerHTML = zeData[key];
+                theRow.appendChild(col);
+            }
+            tBody.appendChild(theRow);
+        }
+        table.appendChild(tBody);
+        row.append(table);
     });
 }
