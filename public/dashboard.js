@@ -1883,6 +1883,7 @@ function vehicleInfo(event, t) {
     }
 
     var vehicleForm = document.createElement('form');
+    vehicleForm.setAttribute('id', 'vehicleForm');
 
     var div = document.createElement('div');
     div.setAttribute('class', 'col-md-4');
@@ -2004,6 +2005,7 @@ function vehicleInfo(event, t) {
 
     var input8 = document.createElement('select');
     input8.setAttribute('class', 'form-control');
+    input8.setAttribute('id', 'fuelType');
     input8.setAttribute('name', 'fueltype');
 
     var option = document.createElement('option');
@@ -2031,42 +2033,16 @@ function vehicleInfo(event, t) {
     div8.appendChild(input8);
     vehicleForm.appendChild(div8);
 
-    var div9 = document.createElement('div');
-    div9.setAttribute('class', 'col-md-4');
-
-    var iclass = document.createElement('i');
-    iclass.setAttribute('class', 'fa fa-square-o fa-2x');
-    iclass.setAttribute('onclick', 'checkBox($(this))');
-    iclass.setAttribute('id', 'warCheck');
-    iclass.setAttribute('checked', 'false');
-
-    var hidInput = document.createElement('input');
-    hidInput.setAttribute('type', 'hidden');
-    hidInput.setAttribute('value', 'false');
-    hidInput.setAttribute('name', 'hasWarranty');
-    hidInput.setAttribute('id', 'vehicleWarranty');
-
-    var label9 = document.createElement('label');
-    label9.setAttribute('for', 'hasWarranty');
-    label9.innerHTML = 'Warranty';
-
-    div9.append(label9);
-    div9.append(iclass);
-    div9.append(hidInput);
-
-    vehicleForm.appendChild(div9);
-
     var div10 = document.createElement('div');
     div10.setAttribute('class', 'col-md-4');
 
     var input10 = document.createElement('input');
     input10.setAttribute('type', 'text');
-    input10.setAttribute('display', 'hidden');
+    input10.setAttribute('class', 'form-control');
     input10.setAttribute('name', 'warrantyInfo');
     input10.setAttribute('id', 'warInformation');
 
     var label10 = document.createElement('label');
-    label10.setAttribute('display', 'hidden');
     label10.setAttribute('for', 'warrantyInfo');
     label10.setAttribute('id', 'warLabel');
     label10.innerHTML = 'Vehicle Warranty Info';
@@ -2081,26 +2057,48 @@ function vehicleInfo(event, t) {
     var vehicleBtn = document.createElement('button');
     vehicleBtn.setAttribute('class', 'btn btn-primary');
     vehicleBtn.setAttribute('id', 'vehicleBtn');
-    vehicleBtn.setAttribute('type', 'submit');
+    vehicleBtn.setAttribute('onclick', 'addTruck(event)');
     vehicleBtn.innerHTML = 'Submit';
 
     div11.appendChild(vehicleBtn);
-    vehicleForm.appendChild(div9);
+    vehicleForm.appendChild(div11);
 
     row.append(vehicleForm);
-
-    var hid = $('#vehicleWarranty');
-    var war = $('#warInformation');
-    var lab = $('#warLabel');
-
-    if (hid.val() == true) {
-        war.setAttribute('display', 'block');
-        lab.setAttribute('display', 'block');
-    }
 }
 
 function addTruck(event) {
+    event.preventDefault();
+    var f = $('#vehicleForm');
+    var make = f.find('[name=make]').val();
+    var model = f.find('[name=model]').val();
+    var type = f.find('[name=type]').val();
+    var year = f.find('[name=year]').val();
+    var mileage = f.find('[name=mileage]').val();
+    var vin = f.find('[name=vin]').val();
+    var plate = f.find('[name=plate]').val();
+    var fueltype = f.find('[name=fueltype]').val();
+    var warInfo = f.find('[name=warrantyInfo]').val();
 
+    $.ajax({
+        url: '/add-truck',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            'make' : make,
+            'model' : model,
+            'type' : type,
+            'year' : year,
+            'mileage' : mileage,
+            'vin' : vin,
+            'plate' : plate,
+            'fueltype' : fueltype,
+            'warInfo' : warInfo
+        }),
+        success: function(data) {
+            //document.getElementById('vehicleForm').reset();
+            console.log(data);
+        }
+    });
 }
 
 function fleetDash(event) {

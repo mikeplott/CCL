@@ -28,9 +28,6 @@ public class Vehicle {
     @Column(nullable = false)
     private String fuelType;
 
-    @Column()
-    private String manufacturer;
-
     @Column
     private String warrantyInfo;
 
@@ -41,43 +38,21 @@ public class Vehicle {
     private String licensePlate;
 
     @Column
-    private boolean cdlRequired;
-
-    @Column
-    private boolean isVan;
-
-    @Column
-    private boolean isTruck;
-
-    @Column
-    private boolean isCar;
-
-    @Column
-    private boolean hasRamp;
-
-    @Column
     private boolean hasWarranty;
 
     public Vehicle() {
     }
 
-    public Vehicle(String make, String model, int year, long mileage, String fuelType, String manufacturer,
-                   String warrantyInfo, String vin, String licensePlate, boolean cdlRequired, boolean isVan,
-                   boolean isTruck, boolean isCar, boolean hasRamp, boolean hasWarranty) {
+    public Vehicle(String make, String model, int year, long mileage, String fuelType, String warrantyInfo, String vin,
+                   String licensePlate, boolean hasWarranty) {
         this.make = make;
         this.model = model;
         this.year = year;
         this.mileage = mileage;
         this.fuelType = fuelType;
-        this.manufacturer = manufacturer;
         this.warrantyInfo = warrantyInfo;
         this.vin = vin;
         this.licensePlate = licensePlate;
-        this.cdlRequired = cdlRequired;
-        this.isVan = isVan;
-        this.isTruck = isTruck;
-        this.isCar = isCar;
-        this.hasRamp = hasRamp;
         this.hasWarranty = hasWarranty;
     }
 
@@ -129,14 +104,6 @@ public class Vehicle {
         this.fuelType = fuelType;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
     public String getWarrantyInfo() {
         return warrantyInfo;
     }
@@ -159,46 +126,6 @@ public class Vehicle {
 
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
-    }
-
-    public boolean isCdlRequired() {
-        return cdlRequired;
-    }
-
-    public void setCdlRequired(boolean cdlRequired) {
-        this.cdlRequired = cdlRequired;
-    }
-
-    public boolean isVan() {
-        return isVan;
-    }
-
-    public void setVan(boolean van) {
-        isVan = van;
-    }
-
-    public boolean isTruck() {
-        return isTruck;
-    }
-
-    public void setTruck(boolean truck) {
-        isTruck = truck;
-    }
-
-    public boolean isCar() {
-        return isCar;
-    }
-
-    public void setCar(boolean car) {
-        isCar = car;
-    }
-
-    public boolean isHasRamp() {
-        return hasRamp;
-    }
-
-    public void setHasRamp(boolean hasRamp) {
-        this.hasRamp = hasRamp;
     }
 
     public boolean isHasWarranty() {
