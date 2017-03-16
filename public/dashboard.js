@@ -32,7 +32,7 @@ function capitalizeEachWord(str) {
 function inventoryDash(Event) {
     event.preventDefault();
 
-    var row = row;
+    var row = $('#myContainer');
     row.empty();
 
     var rightDiv = $('#myButtons');
@@ -145,8 +145,10 @@ function inventoryDash(Event) {
 function wineView(Event) {
     event.preventDefault();
 
-    var row = row;
-    row.empty();
+    var row = $('#myContainer');
+    if (row != null) {
+        row.empty();
+    }
 
     var wineHeader = document.createElement('h1');
     wineHeader.setAttribute('id', 'wineHeader');
@@ -256,7 +258,7 @@ function createLiquorView() {
 }
 
 function productViewCreation(beer, liquor, wine, sizes) {
-  var row = row;
+  var row = $('#myContainer');
   row.empty();
 
   var myForm = document.createElement('form');
@@ -629,7 +631,7 @@ function createLiquor(event) {
 function inventoryDeletion(event) {
     event.preventDefault();
 
-    var row = row;
+    var row = $('#myContainer');
     row.empty();
 
     var myForm = document.createElement('form');
@@ -1205,32 +1207,34 @@ function acctsSearch(event) {
 function accountData(data) {
     console.log(data);
     var myCont = $('#myContainer');
+    var myTable = $('#accountResults');
+    if (myTable != null) {
+        myTable.empty();
+    }
     var theData = data.account;
+    var myLabels = ['Name', 'Address', 'City', 'State', 'Owner', 'ABC License', 'Zipcode', 'Phone Number', 'Account Number', 'Sales Rep', 'Pastdue'];
     var labels = [];
+    var theTable = document.createElement('table');
+    theTable.setAttribute('class', 'table table-fixed-header table-bordered table-inverse table-hover table-responsive overflow-y:hidden');
+    theTable.setAttribute('id', 'accountResults');
+    var headerRow = document.createElement('tr');
+    headerRow.setAttribute('id', 'acctHeaders');
+    for (var i = 0; i < myLabels.length; i++) {
+        var headerCol = document.createElement('th');
+        headerCol.innerHTML = myLabels[i];
+        theTable.appendChild(headerCol);
+    }
     for (var i = 0; i < theData.length; i++) {
         var zeData = theData[i];
         var zeId = theData[i].id;
-        console.log(zeId);
         var repData = theData[i].salesRep;
-        console.log(repData);
         var rep = repData.lastName;
-        console.log(rep);
-        var theTable = document.createElement('table');
-        theTable.setAttribute('class', 'table table-fixed-header table-bordered table-inverse table-hover table-responsive overflow-y:hidden');
-        theTable.setAttribute('id', 'accountResults');
-        var headerRow = document.createElement('tr');
-        headerRow.setAttribute('id', 'acctHeaders');
         var row = document.createElement('tr');
-        console.log(theData.id);
         row.setAttribute('ondblclick', 'inputOrders(this)');
         for (var k in theData[i]) {
             if (k != "abcExpiration" && k != "abcIssueDate" && k != "balance" && k != "businessLicense" && k != "buyer" && k != "classBWholeSaler" && k != "onPremise" && k != "receiver" && k != "specialEvent" && k != "supplier" && k != "id") {
                 labels.push(k);
-                var header = document.createElement('th');
-                header.innerHTML = k;
-                headerRow.appendChild(header);
             }
-            theTable.appendChild(headerRow);
         }
         for (var j = 0; j < labels.length; j++) {
             var key = labels[j];
@@ -1265,11 +1269,12 @@ function inputOrders(t) {
     success: function(data) {
         $('#accountResults').empty();
         var div = document.createElement('div');
-        div.setAttribute('class', 'col-md-6');
+        div.setAttribute('class', 'col-md-4');
 
         var input = document.createElement('input');
         input.setAttribute('type', 'text');
         input.setAttribute('name', 'input');
+        input.setAttribute('id', 'theAccountName');
         input.setAttribute('readonly', true);
         input.setAttribute('class', 'form-control');
         input.setAttribute('value', data.accountNumber);
@@ -1282,11 +1287,12 @@ function inputOrders(t) {
         div.append(input);
 
         var div1 = document.createElement('div');
-        div1.setAttribute('class', 'col-md-6');
+        div1.setAttribute('class', 'col-md-4');
 
         var input1 = document.createElement('input');
         input1.setAttribute('type', 'text');
         input1.setAttribute('name', 'input1');
+        input1.setAttribute('id', 'theAccountNumber');
         input1.setAttribute('readonly', true);
         input1.setAttribute('class', 'form-control');
         input1.setAttribute('value', data.name);
@@ -1298,10 +1304,27 @@ function inputOrders(t) {
         div1.append(label1);
         div1.append(input1);
 
+        var div2 = document.createElement('div');
+        div2.setAttribute('class', 'col-md-4');
+
+        input2 = document.createElement('input');
+        input2.setAttribute('type', 'date');
+        input2.setAttribute('id', 'deliveryDate');
+        input2.setAttribute('class', 'form-control');
+        input2.setAttribute('name', 'orderDeliveryDate');
+
+        var label2 = document.createElement('label');
+        label2.setAttribute('for', 'orderDeliveryDate');
+        label2.innerHTML = 'Delivery Date';
+
+        div2.appendChild(label2);
+        div2.appendChild(input2);
+
         var row = $('#myContainer');
 
         row.append(div);
         row.append(div1);
+        row.append(div2);
         orderData();
         }
     });
@@ -1634,7 +1657,8 @@ function addItem() {
     tableForm.append(addItemBtn);
 
     // $('#myContainer').append(theTable);
-    $('#myContainer').append(tableForm);
+    //$('#myContainer').append(tableForm);
+    $('#itemDiv').append(tableForm);
     // $('#myContainer').append(addItemBtn);
 }
 
@@ -1711,23 +1735,33 @@ function itemRow() {
     row.appendChild(col6);
 
     table.append(row);
+
+    $('#itemForm').reset;
+    $('#theItem').remove();
+    $('#itemRow').remove();
 }
 
 function addOrder(event) {
     event.preventDefault();
 
     var data = [];
+    var name = $('#theAccountName').val();
+    var num = $('#theAccountNumber').val();
+    var account = [name, num];
+    var date = [Date.now()];
+    var delDate = [$('#deliveryDate').val()];
+    console.log(delDate);
 
     var rows = document.getElementsByTagName('tr');
     for (var i = 0; i < rows.length; i++) {
         var cells = rows[i].children;
-        var output = {};
-        output.itemCode = cells[0].innerHTML;
-        output.name = cells[1].innerHTML;
-        output.quantity = cells[2].innerHTML;
-        output.caseSize = cells[3].innerHTML;
-        output.price = cells[4].innerHTML;
-        output.amount = cells[5].innerHTML;
+        var output = [];
+        output.push(cells[0].innerHTML);
+        output.push(cells[1].innerHTML);
+        output.push(cells[2].innerHTML);
+        output.push(cells[3].innerHTML);
+        output.push(cells[4].innerHTML);
+        output.push(cells[5].innerHTML);
         data.push(output);
     }
     $.ajax({
@@ -1735,7 +1769,10 @@ function addOrder(event) {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
-            'items': data
+            'items': data,
+            'account' : account,
+            'date' : date,
+            'delDate' : delDate
         }),
         success: function(data) {
             console.log(data);
@@ -1746,4 +1783,490 @@ function addOrder(event) {
 
 function deleteRow(t) {
     t.parentNode.parentNode.remove();
+}
+
+function fleetView(event) {
+    event.preventDefault();
+
+    var header = $('#headerDiv');
+    header.empty();
+
+    var zeHeader = document.createElement('h1');
+    zeHeader.setAttribute('id', 'myHeader');
+    zeHeader.innerHTML = 'Vehicle Search';
+
+    header.append(zeHeader);
+
+    var row = $('#myContainer');
+    if (row != null) {
+        row.empty();
+    }
+
+    $('#myHeader').innerHTML = "Fleet Management";
+
+
+    var div1 = document.createElement('div');
+    div1.setAttribute('class', 'col-md-4');
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-4');
+
+    var div3 = document.createElement('div');
+    div3.setAttribute('class', 'col-md-4');
+
+    var fleetForm = document.createElement('form');
+    fleetForm.setAttribute('id', 'fleetForm');
+    fleetForm.setAttribute('class', 'form-inline');
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('name', 'fleetMake');
+    input.setAttribute('placeholder', 'Search Vehicles');
+    input.setAttribute('id', 'vehicleMake');
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'fleetMake');
+    label.innerHTML = "Search vehicles by make";
+
+    var btn = document.createElement('button');
+    btn.setAttribute('class', 'btn btn-primary');
+    btn.setAttribute('id', 'vehicleBtn');
+    btn.setAttribute('type', 'submit');
+    btn.setAttribute('onclick', 'searchVehicleMakes(event)');
+    btn.innerHTML = "Submit";
+
+    div1.appendChild(label);
+    div2.appendChild(input);
+    div3.appendChild(btn);
+
+    fleetForm.appendChild(div1);
+    fleetForm.appendChild(div2);
+    fleetForm.appendChild(div3);
+
+    row.append(fleetForm);
+}
+
+function searchVehicleMakes() {
+    event.preventDefault();
+
+    var table = $('#accountResults');
+    if (table != null) {
+        table.empty();
+    }
+
+    var f = $('#fleetForm');
+    var make = f.find('[name=fleetMake]').val();
+
+    var url = 'https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformakeyear/make/' + make + '/vehicleType/truck?format=json'
+
+    $.get(url, function(data) {
+        console.log(data);
+        var theData = data.Results;
+        console.log(theData);
+
+        var myLabels = ['Make', 'Model', 'Vehicle Type'];
+
+        var theTable = document.createElement('table');
+        theTable.setAttribute('class', 'table table-bordered table-striped');
+        theTable.setAttribute('id', 'accountResults');
+
+        var headerRow = document.createElement('tr');
+        headerRow.setAttribute('id', 'acctHeaders');
+
+        for (var i = 0; i < myLabels.length; i++) {
+            var headerCol = document.createElement('th');
+            headerCol.innerHTML = myLabels[i];
+            theTable.appendChild(headerCol);
+        }
+        var body = document.createElement('tbody');
+
+        for (var l = 0; l < theData.length; l++) {
+            var tableRow = document.createElement('tr');
+            tableRow.setAttribute('ondblclick', 'vehicleInfo(event, this)');
+
+            var col = document.createElement('td');
+            col.innerHTML = theData[l].Make_Name;
+
+            var col2 = document.createElement('td');
+            col2.innerHTML = theData[l].Model_Name;
+
+            var col3 = document.createElement('td');
+            col3.innerHTML = theData[l].VehicleTypeName;
+
+            tableRow.appendChild(col);
+            tableRow.appendChild(col2);
+            tableRow.appendChild(col3);
+
+            body.appendChild(tableRow);
+        }
+        theTable.appendChild(body);
+        $('#myContainer').append(theTable);
+    });
+}
+
+function vehicleInfo(event, t) {
+    event.preventDefault();
+    var row = t;
+    var cols = row.children;
+    console.log(cols);
+
+    var make = cols[0].innerHTML;
+    var model = cols[1].innerHTML;
+    var type = cols[2].innerHTML;
+
+    console.log(make);
+    console.log(model);
+    console.log(type);
+
+    var row = $('#myContainer');
+    if (row != null) {
+        row.empty();
+    }
+
+    var vehicleForm = document.createElement('form');
+    vehicleForm.setAttribute('id', 'vehicleForm');
+
+    var div = document.createElement('div');
+    div.setAttribute('class', 'col-md-4');
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'make');
+    label.innerHTML = 'Vehicle Make';
+
+    var input = document.createElement('input');
+    input.setAttribute('readonly', 'true');
+    input.setAttribute('name', 'make');
+    input.setAttribute('class', 'form-control');
+    input.setAttribute('value', make);
+
+    div.appendChild(label);
+    div.appendChild(input);
+    vehicleForm.appendChild(div);
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-4');
+
+    var label2 = document.createElement('label');
+    label2.setAttribute('for', 'model');
+    label2.innerHTML = 'Vehicle Model';
+
+    var input2 = document.createElement('input');
+    input2.setAttribute('readonly', 'true');
+    input2.setAttribute('class', 'form-control');
+    input2.setAttribute('name', 'model');
+    input2.setAttribute('value', model);
+
+    div2.appendChild(label2);
+    div2.appendChild(input2);
+    vehicleForm.appendChild(div2);
+
+    var div3 = document.createElement('div');
+    div3.setAttribute('class', 'col-md-4');
+
+    var label3 = document.createElement('label');
+    label3.setAttribute('for', 'type');
+    label3.innerHTML = 'Vehicle Type';
+
+    var input3 = document.createElement('input');
+    input3.setAttribute('readonly', 'true');
+    input3.setAttribute('class', 'form-control');
+    input3.setAttribute('name', 'type');
+    input3.setAttribute('value', type);
+
+    div3.appendChild(label3);
+    div3.appendChild(input3);
+    vehicleForm.appendChild(div3);
+
+    var div4 = document.createElement('div');
+    div4.setAttribute('class', 'col-md-4');
+
+    var label4 = document.createElement('label');
+    label4.setAttribute('for', 'year');
+    label4.innerHTML = 'Vehicle Year';
+
+    var input4 = document.createElement('input');
+    input4.setAttribute('name', 'year');
+    input4.setAttribute('class', 'form-control');
+    input4.setAttribute('type', 'number');
+
+    div4.appendChild(label4);
+    div4.appendChild(input4);
+    vehicleForm.appendChild(div4);
+
+    var div5 = document.createElement('div');
+    div5.setAttribute('class', 'col-md-4');
+
+    var label5 = document.createElement('label');
+    label5.setAttribute('for', 'mileage');
+    label5.innerHTML = 'Vehicle Mileage';
+
+    var input5 = document.createElement('input');
+    input5.setAttribute('name', 'mileage');
+    input5.setAttribute('class', 'form-control');
+    input5.setAttribute('type', 'number');
+
+    div5.appendChild(label5);
+    div5.appendChild(input5);
+    vehicleForm.appendChild(div5);
+
+    var div6 = document.createElement('div');
+    div6.setAttribute('class', 'col-md-4');
+
+    var input6 = document.createElement('input');
+    input6.setAttribute('type', 'text');
+    input6.setAttribute('class', 'form-control');
+    input6.setAttribute('name', 'vin');
+
+    var label6 = document.createElement('label');
+    label6.setAttribute('for', 'vin');
+    label6.innerHTML = 'Vehicle Vin';
+
+    div6.appendChild(label6);
+    div6.appendChild(input6);
+    vehicleForm.appendChild(div6);
+
+    var div7 = document.createElement('div');
+    div7.setAttribute('class', 'col-md-4');
+
+    var input7 = document.createElement('input');
+    input7.setAttribute('type', 'text');
+    input7.setAttribute('class', 'form-control');
+    input7.setAttribute('name', 'plate');
+
+    var label7 = document.createElement('label');
+    label7.setAttribute('for', 'plate');
+    label7.innerHTML = 'Vehicle License Plate';
+
+    div7.appendChild(label7);
+    div7.appendChild(input7);
+    vehicleForm.appendChild(div7);
+
+    var div8 = document.createElement('div');
+    div8.setAttribute('class', 'col-md-4');
+
+    var input8 = document.createElement('select');
+    input8.setAttribute('class', 'form-control');
+    input8.setAttribute('id', 'fuelType');
+    input8.setAttribute('name', 'fueltype');
+
+    var option = document.createElement('option');
+    option.innerHTML = 'Gasoline';
+
+    var option2 = document.createElement('option');
+    option2.innerHTML = 'Diesel';
+
+    var option3 = document.createElement('option');
+    option3.innerHTML = 'Electric';
+
+    var option4 = document.createElement('option');
+    option4.innerHTML = 'Bio-Diesel';
+
+    input8.appendChild(option);
+    input8.appendChild(option2);
+    input8.appendChild(option3);
+    input8.appendChild(option4);
+
+    var label8 = document.createElement('label');
+    label8.setAttribute('for', 'fueltype');
+    label8.innerHTML = 'Vehicle Fuel Type';
+
+    div8.appendChild(label8);
+    div8.appendChild(input8);
+    vehicleForm.appendChild(div8);
+
+    var div10 = document.createElement('div');
+    div10.setAttribute('class', 'col-md-4');
+
+    var input10 = document.createElement('input');
+    input10.setAttribute('type', 'text');
+    input10.setAttribute('class', 'form-control');
+    input10.setAttribute('name', 'warrantyInfo');
+    input10.setAttribute('id', 'warInformation');
+
+    var label10 = document.createElement('label');
+    label10.setAttribute('for', 'warrantyInfo');
+    label10.setAttribute('id', 'warLabel');
+    label10.innerHTML = 'Vehicle Warranty Info';
+
+    div10.appendChild(label10);
+    div10.appendChild(input10);
+    vehicleForm.appendChild(div10);
+
+    var div11 = document.createElement('div');
+    div11.setAttribute('class', 'col-md-4');
+
+    var vehicleBtn = document.createElement('button');
+    vehicleBtn.setAttribute('class', 'btn btn-primary');
+    vehicleBtn.setAttribute('id', 'vehicleBtn');
+    vehicleBtn.setAttribute('onclick', 'addTruck(event)');
+    vehicleBtn.innerHTML = 'Submit';
+
+    div11.appendChild(vehicleBtn);
+    vehicleForm.appendChild(div11);
+
+    row.append(vehicleForm);
+}
+
+function addTruck(event) {
+    event.preventDefault();
+    var f = $('#vehicleForm');
+    var make = f.find('[name=make]').val();
+    var model = f.find('[name=model]').val();
+    var type = f.find('[name=type]').val();
+    var year = f.find('[name=year]').val();
+    var mileage = f.find('[name=mileage]').val();
+    var vin = f.find('[name=vin]').val();
+    var plate = f.find('[name=plate]').val();
+    var fueltype = f.find('[name=fueltype]').val();
+    var warInfo = f.find('[name=warrantyInfo]').val();
+
+    $.ajax({
+        url: '/create-truck',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            'make' : make,
+            'model' : model,
+            'type' : type,
+            'year' : year,
+            'mileage' : mileage,
+            'vin' : vin,
+            'plate' : plate,
+            'fueltype' : fueltype,
+            'warInfo' : warInfo
+        }),
+        success: function(data) {
+            document.getElementById('vehicleForm').remove();
+            fleetView(event);
+        }
+    });
+}
+
+function fleetDash(event) {
+    event.preventDefault();
+
+    var header = $('#headerDiv');
+    header.empty();
+
+    var zeHeader = document.createElement('h1');
+    zeHeader.setAttribute('id', 'myHeader');
+    zeHeader.innerHTML = 'Fleet Dashboard';
+
+    header.append(zeHeader);
+
+    var row = $('#myContainer');
+    if (row != null) {
+        row.empty();
+    }
+
+    var div = document.createElement('div');
+    div.setAttribute('class', 'col-md-4');
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-4');
+
+    var div3 = document.createElement('div');
+    div3.setAttribute('class', 'col-md-4');
+
+    var label = document.createElement('label');
+    label.setAttribute('for', 'fleet');
+    label.innerHTML = 'Fleet List';
+
+    var img = document.createElement('img');
+    img.setAttribute('src', 'images/fleet.png');
+    img.setAttribute('name', 'fleet');
+    img.setAttribute('onclick', 'getFleetInfo(event)');
+    img.setAttribute('id', 'fleetPic');
+
+    div.appendChild(label);
+    div.appendChild(img);
+
+    var label2 = document.createElement('label');
+    label2.setAttribute('for', 'gps');
+    label2.innerHTML = 'Routing and Logistics';
+
+    var img2 = document.createElement('img');
+    img2.setAttribute('src', 'images/gps.png');
+    img2.setAttribute('name', 'gps');
+    img2.setAttribute('id', 'gpsPic');
+
+    div2.appendChild(label2);
+    div2.appendChild(img2);
+
+    var label3 = document.createElement('label');
+    label3.setAttribute('for', 'addTruck');
+    label3.innerHTML = 'Add Truck To Fleet';
+
+    var img3 = document.createElement('img');
+    img3.setAttribute('src', 'images/truck.jpeg');
+    img3.setAttribute('name', 'addTruck');
+    img3.setAttribute('onclick', 'fleetView(event)');
+    img3.setAttribute('id', 'theTruck');
+
+    div3.appendChild(label3);
+    div3.appendChild(img3);
+
+    row.append(div);
+    row.append(div2);
+    row.append(div3);
+}
+
+function getFleetInfo(event) {
+    event.preventDefault();
+    var header = $('#headerDiv');
+    header.empty();
+
+    var zeHeader = document.createElement('h1');
+    zeHeader.setAttribute('id', 'myHeader');
+    zeHeader.innerHTML = 'Fleet Dashboard';
+
+    header.append(zeHeader);
+
+    var row = $('#myContainer');
+    if (row != null) {
+        row.empty();
+    }
+
+    var table = document.createElement('table');
+    table.setAttribute('class', 'table table-bordered table-striped');
+    table.setAttribute('id', 'accountResults');
+
+    var headerRow = document.createElement('tr');
+    headerRow.setAttribute('id', 'acctHeaders');
+
+    table.appendChild(headerRow);
+
+    var tBody = document.createElement('tbody');
+
+    $.get('/all-fleet-info', function(data) {
+        console.log(data);
+        var labels = [];
+        var theLabels = ['ID', 'Make', 'Model', 'Year', 'Mileage', 'Fuel Type', 'Warranty Info', 'VIN', 'License Plate', 'Currently Has A Warranty'];
+
+        for (var k in data[0]) {
+            labels.push(k);
+        }
+
+        for (var j = 0; j < theLabels.length; j++) {
+            var th = document.createElement('th');
+            th.innerHTML = theLabels[j];
+            headerRow.appendChild(th);
+        }
+        console.log(data.length);
+        for (var i = 0; i < data.length; i++) {
+            var theRow = document.createElement('tr');
+            var zeData = data[i];
+            console.log(zeData);
+            for (var g = 0; g < labels.length; g++) {
+                var key = labels[g];
+                var col = document.createElement('td');
+                col.innerHTML = zeData[key];
+                theRow.appendChild(col);
+            }
+            tBody.appendChild(theRow);
+        }
+        table.appendChild(tBody);
+        row.append(table);
+    });
 }

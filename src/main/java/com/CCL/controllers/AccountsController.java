@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -52,15 +52,29 @@ public class AccountsController {
 
     @RequestMapping(path = "/add-order", method = RequestMethod.POST)
     public Order addOrder(HttpSession session, @RequestBody HashMap<String, ArrayList> json) {
-        for (String key : json.keySet()) {
-            System.out.println(key);
-        }
         System.out.println(json.get("items"));
-        ArrayList stuff = new ArrayList();
+        ArrayList stuff = json.get("items");
+        System.out.println(stuff);
+        ArrayList orderDate = json.get("date");
+        System.out.println(orderDate);
+        ArrayList deliveryDate = json.get("delDate");
+        System.out.println(deliveryDate);
+        ArrayList account = json.get("account");
+        System.out.println(account);
+
         for (int i = 0; i < stuff.size(); i++) {
-            System.out.println(stuff.get(i));
+
         }
         return null;
+//        for (String key : json.keySet()) {
+//            System.out.println(key);
+//        }
+//        System.out.println(json.get("items"));
+//        ArrayList stuff = new ArrayList();
+//        for (int i = 0; i < stuff.size(); i++) {
+//            System.out.println(stuff.get(i));
+//        }
+//        return null;
     }
 
 

@@ -293,3 +293,30 @@ th {
     height: 35px;
     margin-left: 89%;
 }
+
+#fleetPic {
+    width: 400px;
+    height: 300px;
+    margin-left: 7%;
+}
+
+#gpsPic {
+    width: 400px;
+    height: 300px;
+    margin-left: 8%;
+}
+
+#theTruck {
+    width: 400px;
+    height: 300px;
+    margin-left: 10%;
+}
+
+#vehicleBtn {
+    margin-top: 5%;
+    height: 40px;
+}
+
+#fuelType {
+    height: 35px;
+}
