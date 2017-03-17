@@ -46,10 +46,13 @@ public class User {
     @Column(nullable = false)
     private boolean isValid;
 
+    @Column(nullable = false)
+    private boolean isOnline;
+
     public User() {
     }
 
-    public User(String userName, String password, String email, boolean isAdmin, boolean isSalesRep, boolean isDriver, boolean isWarehouseWorker, boolean isValid) {
+    public User(String userName, String password, String email, boolean isAdmin, boolean isSalesRep, boolean isDriver, boolean isWarehouseWorker, boolean isValid, boolean isOnline) {
         this.userName = userName;
         this.password = password;
         this.email = email;
@@ -58,6 +61,7 @@ public class User {
         this.isDriver = isDriver;
         this.isWarehouseWorker = isWarehouseWorker;
         this.isValid = isValid;
+        this.isOnline = isOnline;
     }
 
     public int getId() {
@@ -100,12 +104,44 @@ public class User {
         isAdmin = admin;
     }
 
+    public boolean isSalesRep() {
+        return isSalesRep;
+    }
+
+    public void setSalesRep(boolean salesRep) {
+        isSalesRep = salesRep;
+    }
+
+    public boolean isDriver() {
+        return isDriver;
+    }
+
+    public void setDriver(boolean driver) {
+        isDriver = driver;
+    }
+
+    public boolean isWarehouseWorker() {
+        return isWarehouseWorker;
+    }
+
+    public void setWarehouseWorker(boolean warehouseWorker) {
+        isWarehouseWorker = warehouseWorker;
+    }
+
     public boolean isValid() {
         return isValid;
     }
 
     public void setValid(boolean valid) {
         isValid = valid;
+    }
+
+    public boolean isOnline() {
+        return isOnline;
+    }
+
+    public void setOnline(boolean online) {
+        isOnline = online;
     }
 
     public static boolean userValidation(User user, User userFromDB, HttpSession session) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
@@ -143,7 +179,7 @@ public class User {
         }
         else {
             User userForDB = new User(user.getUserName(), PasswordStorage.createHash(user.getPassword()), user.getEmail(),
-                    false, false, false, false, false);
+                    false, false, false, false, false, true);
             return userForDB;
         }
     }

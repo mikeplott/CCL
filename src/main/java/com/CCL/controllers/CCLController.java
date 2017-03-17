@@ -104,7 +104,7 @@ public class CCLController {
             boolean valid = Boolean.parseBoolean(columns[13]);
 
             if (users.count() == 0) {
-                User user = new User(name, pass, email, admin, rep, driver, warehouse, valid);
+                User user = new User(name, pass, email, admin, rep, driver, warehouse, valid, false);
                 user.setPassword(PasswordStorage.createHash(user.getPassword()));
                 users.save(user);
             }
@@ -435,53 +435,53 @@ public class CCLController {
             }
         }
 
-        if (accounts.count() == 0) {
-            File accountData = new File("accountlist.csv");
-            Scanner scanner = new Scanner(accountData);
-            while (scanner.hasNext()) {
-                String line = scanner.nextLine();
-                String[] columns = line.split(",");
-                String name = columns[0];
-                String address = columns[1];
-                String city = columns[2];
-                String state = columns[3];
-                String owner = columns[4];
-                String receiver = columns[5];
-                String buyer = columns[6];
-                String abcLiscense = columns[7];
-                String businessLicense = columns[8];
-                String type = columns[9];
-                boolean isOnPremise = false;
-                boolean isClassB = false;
-                boolean isSupplier = false;
-                if (type.equals("On Premise")) {
-                    isOnPremise = true;
-                }
-                else if (type.equals("Off Premise")) {
-                    isClassB = true;
-                }
-                else if (type.equals("Supplier")) {
-                    isSupplier = true;
-                }
-                else {
-                    isOnPremise = false;
-                    isClassB = false;
-                    isSupplier = false;
-                }
-                String zipCode = columns[12];
-                String phoneNum = columns[13];
-                String accountNum = columns[14];
-
-                int randId = (int) (Math.random() * (100 - 1)) + 1;
-                SalesRep rep = salesReps.findOne(randId);
-
-                Account account = new Account(name, address, city, state, owner, receiver, buyer, abcLiscense,
-                        businessLicense, isOnPremise, isClassB, isSupplier, false, false, null, null, zipCode,
-                        phoneNum, accountNum, 0.0, rep);
-
-                accounts.save(account);
-            }
-        }
+//        if (accounts.count() == 0) {
+//            File accountData = new File("accountlist.csv");
+//            Scanner scanner = new Scanner(accountData);
+//            while (scanner.hasNext()) {
+//                String line = scanner.nextLine();
+//                String[] columns = line.split(",");
+//                String name = columns[0];
+//                String address = columns[1];
+//                String city = columns[2];
+//                String state = columns[3];
+//                String owner = columns[4];
+//                String receiver = columns[5];
+//                String buyer = columns[6];
+//                String abcLiscense = columns[7];
+//                String businessLicense = columns[8];
+//                String type = columns[9];
+//                boolean isOnPremise = false;
+//                boolean isClassB = false;
+//                boolean isSupplier = false;
+//                if (type.equals("On Premise")) {
+//                    isOnPremise = true;
+//                }
+//                else if (type.equals("Off Premise")) {
+//                    isClassB = true;
+//                }
+//                else if (type.equals("Supplier")) {
+//                    isSupplier = true;
+//                }
+//                else {
+//                    isOnPremise = false;
+//                    isClassB = false;
+//                    isSupplier = false;
+//                }
+//                String zipCode = columns[12];
+//                String phoneNum = columns[13];
+//                String accountNum = columns[14];
+//
+//                int randId = (int) (Math.random() * (100 - 1)) + 1;
+//                SalesRep rep = salesReps.findOne(randId);
+//
+//                Account account = new Account(name, address, city, state, owner, receiver, buyer, abcLiscense,
+//                        businessLicense, isOnPremise, isClassB, isSupplier, false, false, null, null, zipCode,
+//                        phoneNum, accountNum, 0.0, rep);
+//
+//                accounts.save(account);
+//            }
+//        }
     }
 
     @PreDestroy
@@ -493,7 +493,9 @@ public class CCLController {
     public ResponseEntity<User> userLogin(HttpSession session, @RequestBody User user) throws PasswordStorage.CannotPerformOperationException, PasswordStorage.InvalidHashException {
         User userFromDB = users.findByUserName(user.getUserName());
         if (User.userValidation(user, userFromDB, session)) {
-            return new ResponseEntity<User>(user, HttpStatus.OK);
+            userFromDB.setOnline(!userFromDB.isOnline());
+            users.save(userFromDB);
+            return new ResponseEntity<User>(userFromDB, HttpStatus.OK);
         }
         else {
             return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
