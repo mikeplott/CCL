@@ -88,6 +88,19 @@ label {
     height: 35px;
 }
 
+#option4 {
+  cursor: pointer;
+}
+
+#option5 {
+  cursor: pointer;
+}
+
+#option6 {
+  cursor: pointer;
+}
+
+
 #myHeader {
     width: 100%;
     margin: 0;
@@ -102,17 +115,17 @@ label {
     border-style: solid;
     border-right-width: 30px;
     border-left-width: 30px;
-    border-top-width: 54px;
+    border-top-width: 64px;
     border-bottom-width: 0;
+    padding-bottom: 20px;
 }
 
 #myContainer {
     padding-bottom: 10px;
-    padding-top: 40px;
+    padding-top: 0px;
     border-style: solid;
     border-right-width: 30px;
     border-left-width: 30px;
-    border-top-width: 0;
 }
 
 .createGroup {
@@ -324,11 +337,24 @@ th {
 .treeView{
    -moz-user-select:none;
    position:relative;
+   border-style: solid;
+   border-right-width: 30px;
+   border-left-width: 30px;
+   border-top-width: 0px;
+   border-bottom: 50px;
+   margin-bottom: 0;
+   padding-bottom: 20px;
  }
 
  .treeView ul{
    margin:0 0 0 -1.5em;
-   padding:0 0 0 1.5em;
+   padding:0 0 0 1.7em;
+   border-right-width: 30px;
+   border-left-width: 30px;
+   border-top-width: 0px;
+   padding-bottom: 0px;
+   border-bottom: 0px;
+   /*padding-left: 1.7em;*/
  }
 
  .treeView ul ul{
@@ -337,20 +363,25 @@ th {
 
  .treeView li.lastChild > ul{
    background-image:none;
+   border-right-width: 30px;
+   border-left-width: 30px;
+   border-top-width: 0px;
+   padding-bottom: 0px;
+   border-bottom: 0px;
  }
 
  .treeView li{
-   margin:0;
-   padding:0;
    background:url('http://code.stephenmorley.org/javascript/collapsible-lists/list-item-root.png') no-repeat top left;
    list-style-position:inside;
    list-style-image:url('http://code.stephenmorley.org/javascript/collapsible-lists/button.png');
    cursor:auto;
+   padding-left: 2em;
  }
 
  .treeView li.collapsibleListOpen{
    list-style-image:url('http://code.stephenmorley.org/javascript/collapsible-lists/button-open.png');
    cursor:pointer;
+
  }
 
  .treeView li.collapsibleListClosed{
@@ -360,7 +391,7 @@ th {
 
  .treeView li li{
    background-image:url('http://code.stephenmorley.org/javascript/collapsible-lists/list-item.png');
-   padding-left:1.5em;
+   padding-left:1.51em;
  }
 
  .treeView li.lastChild{
@@ -373,4 +404,22 @@ th {
 
  .treeView li.collapsibleListOpen.lastChild{
    background-image:url('http://code.stephenmorley.org/javascript/collapsible-lists/list-item-last-open.png');
+ }
+
+li {
+   padding: 0px;
+ }
+
+ #users {
+   padding-left: 4.0em;
+ }
+
+ #offline {
+   padding-left: 15px;
+   color: red;
+ }
+
+ #circle {
+   padding-left: 15px;
+   color: green;
  }

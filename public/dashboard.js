@@ -1,3 +1,34 @@
+$(document).ready(function() {
+	$.get('/online-users', function(data) {
+    var users = [];
+		users = data;
+		console.log(users);
+    var theList = document.getElementById('onlineUsers');
+		for (var i = 0; i < users.length; i++) {
+			if (users[i].online == true) {
+				var ul = document.createElement('ul');
+				ul.setAttribute('id', 'users');
+				ul.innerHTML = users[i].userName;
+				var div = document.createElement('i');
+				div.setAttribute('class', 'fa fa-check-circle');
+				div.setAttribute('id', 'circle');
+				ul.append(div);
+				theList.append(ul);
+			}
+			if (users[i].online == false) {
+				var ul = document.createElement('ul');
+				ul.setAttribute('id', 'users');
+				ul.innerHTML = users[i].userName;
+				var div = document.createElement('i');
+				div.setAttribute('class', 'fa fa-times-circle');
+				div.setAttribute('id', 'offline');
+				ul.append(div);
+				theList.append(ul);
+			}
+			}
+		})
+	});
+
 $( document ).ready( function() {
 collapsibleListGo('.collapsibleList');
 // global var used to disable click event
@@ -67,119 +98,6 @@ function capitalizeEachWord(str) {
     return str.replace(/\w\S*/g, function(txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
-}
-
-function inventoryDash(Event) {
-    event.preventDefault();
-
-    var row = $('#myContainer');
-    row.empty();
-
-    var rightDiv = $('#myButtons');
-
-    if (rightDiv != null) {
-        rightDiv.remove();
-    }
-
-    var myHeader = document.getElementById('myHeader');
-    myHeader.innerHTML = "Inventory Search";
-
-    var div = document.createElement('div');
-    div.setAttribute('class', 'row');
-
-    var div1 = document.createElement('div');
-    div1.setAttribute('class', 'col-md-4');
-
-    var div2 = document.createElement('div');
-    div2.setAttribute('class', 'col-md-4');
-
-    var div3 = document.createElement('div');
-    div3.setAttribute('class', 'col-md-4');
-
-
-    var searchForm = document.createElement('form');
-    searchForm.setAttribute('id', 'invSearch');
-
-    var searchBar = document.createElement('input');
-    searchBar.setAttribute('type', 'text');
-    searchBar.setAttribute('class', 'form-control');
-    searchBar.setAttribute('placeholder', 'Search...');
-    searchBar.setAttribute('name', 'invBar');
-    searchBar.setAttribute('id', 'invInput');
-
-    var searchLabel = document.createElement('label');
-    searchLabel.setAttribute('for', 'invInput');
-    searchLabel.setAttribute('id', 'searchLabel');
-    searchLabel.innerHTML = "Product lookup";
-
-    var searchBtn = document.createElement('button');
-    searchBtn.setAttribute('class', 'btn btn-primary');
-    searchBtn.setAttribute('id', 'mainSearchBtn');
-    searchBtn.setAttribute('type', 'submit');
-    searchBtn.setAttribute('onclick', 'productSearch(event)');
-    searchBtn.innerHTML = "Search";
-
-    div1.appendChild(searchLabel);
-    div2.appendChild(searchBar);
-    div3.appendChild(searchBtn);
-
-    div.appendChild(div1);
-    div.appendChild(div2);
-    div.appendChild(div3);
-
-    searchForm.append(div);
-
-    row.append(searchForm);
-
-    var createLabel = document.createElement('label');
-    createLabel.setAttribute('class', 'btn btn-primary selector');
-    createLabel.innerHTML = "Inventory Creation";
-
-    var createBtn = document.createElement('input');
-    createBtn.setAttribute('type', 'radio');
-    createBtn.setAttribute('name', 'createBtn');
-    createBtn.setAttribute('id', 'option4');
-    createBtn.setAttribute('autocomplete', 'off');
-    createBtn.setAttribute('onclick', 'wineView()');
-
-    var searchTitle = document.createElement('label');
-    searchTitle.setAttribute('class', 'btn btn-primary selector');
-    searchTitle.innerHTML = "Inventory Search";
-
-    var searchBtn = document.createElement('input');
-    searchBtn.setAttribute('type', 'radio');
-    searchBtn.setAttribute('name', 'searchBtn');
-    searchBtn.setAttribute('id', 'option5');
-    searchBtn.setAttribute('autocomplete', 'off');
-    searchBtn.setAttribute('onclick', 'inventoryDash(event)');
-
-    var deleteBtn = document.createElement('input');
-    deleteBtn.setAttribute('type', 'radio');
-    deleteBtn.setAttribute('name', 'deleteBtn');
-    deleteBtn.setAttribute('id', 'option6');
-    deleteBtn.setAttribute('autocomplete', 'off');
-    deleteBtn.setAttribute('onclick', 'inventoryDeletion(event)');
-
-    var deleteLabel = document.createElement('label');
-    deleteLabel.setAttribute('class', 'btn btn-primary selector');
-    deleteLabel.innerHTML = "Inventory Deletion";
-
-    var zeContainer = $('#zeNav');
-
-    var newDiv = document.createElement('div');
-    newDiv.setAttribute('class', 'col-md-6 btn-group');
-    newDiv.setAttribute('data-toggle', 'buttons');
-    newDiv.setAttribute('id', 'myButtons');
-
-    searchTitle.append(searchBtn);
-    createLabel.append(createBtn);
-    deleteLabel.append(deleteBtn);
-
-    newDiv.append(createLabel);
-    newDiv.append(searchTitle);
-    newDiv.append(deleteLabel);
-
-    zeContainer.append(newDiv);
 }
 
 function wineView(Event) {
@@ -265,6 +183,120 @@ function wineView(Event) {
     document.getElementById('myHeader').innerHTML = "Inventory Management";
 
     createWineView();
+}
+
+function inventoryDash(Event) {
+    event.preventDefault();
+
+    var row = $('#myContainer');
+    row.empty();
+
+    var rightDiv = $('#myButtons');
+
+    if (rightDiv != null) {
+        rightDiv.remove();
+    }
+
+    var myHeader = document.getElementById('myHeader');
+    myHeader.innerHTML = "Inventory Search";
+
+    var div = document.createElement('div');
+    div.setAttribute('class', 'row');
+
+    var div1 = document.createElement('div');
+    div1.setAttribute('class', 'col-md-4');
+
+    var div2 = document.createElement('div');
+    div2.setAttribute('class', 'col-md-4');
+
+    var div3 = document.createElement('div');
+    div3.setAttribute('class', 'col-md-4');
+
+
+    var searchForm = document.createElement('form');
+    searchForm.setAttribute('id', 'invSearch');
+
+    var searchBar = document.createElement('input');
+    searchBar.setAttribute('type', 'text');
+    searchBar.setAttribute('class', 'form-control');
+    searchBar.setAttribute('placeholder', 'Search...');
+    searchBar.setAttribute('name', 'invBar');
+    searchBar.setAttribute('id', 'invInput');
+
+    var searchLabel = document.createElement('label');
+    searchLabel.setAttribute('for', 'invInput');
+    searchLabel.setAttribute('id', 'searchLabel');
+    searchLabel.innerHTML = "Product lookup";
+
+    var searchBtn = document.createElement('button');
+    searchBtn.setAttribute('class', 'btn btn-primary');
+    searchBtn.setAttribute('id', 'mainSearchBtn');
+    searchBtn.setAttribute('type', 'submit');
+    searchBtn.setAttribute('onclick', 'productSearch(event)');
+    searchBtn.innerHTML = "Search";
+
+    div1.appendChild(searchLabel);
+    div2.appendChild(searchBar);
+    div3.appendChild(searchBtn);
+
+    div.appendChild(div1);
+    div.appendChild(div2);
+    div.appendChild(div3);
+
+    searchForm.append(div);
+
+    row.append(searchForm);
+
+    var createLabel = document.createElement('label');
+    createLabel.setAttribute('class', 'btn btn-primary selector');
+    createLabel.innerHTML = "Inventory Creation";
+
+    var createBtn = document.createElement('input');
+    createBtn.setAttribute('type', 'radio');
+    createBtn.setAttribute('name', 'createBtn');
+    createBtn.setAttribute('id', 'option4');
+    // createBtn.setAttribute('autocomplete', 'off');
+    createBtn.setAttribute('onclick', 'wineView(Event)');
+
+    var searchTitle = document.createElement('label');
+    searchTitle.setAttribute('class', 'btn btn-primary selector');
+    searchTitle.innerHTML = "Inventory Search";
+
+    var searchBtn = document.createElement('input');
+    searchBtn.setAttribute('type', 'radio');
+    searchBtn.setAttribute('name', 'searchBtn');
+    searchBtn.setAttribute('id', 'option5');
+    // searchBtn.setAttribute('autocomplete', 'off');
+    searchBtn.setAttribute('onclick', "inventoryDash(Event)");
+		// searchBtn.setAttribute('checked', 'true');
+
+    var deleteBtn = document.createElement('input');
+    deleteBtn.setAttribute('type', 'radio');
+    deleteBtn.setAttribute('name', 'deleteBtn');
+    deleteBtn.setAttribute('id', 'option6');
+    // deleteBtn.setAttribute('autocomplete', 'off');
+    deleteBtn.setAttribute('onclick', 'inventoryDeletion(Event)');
+
+    var deleteLabel = document.createElement('label');
+    deleteLabel.setAttribute('class', 'btn btn-primary selector');
+    deleteLabel.innerHTML = "Inventory Deletion";
+
+    var zeContainer = $('#zeNav');
+
+    var newDiv = document.createElement('div');
+    newDiv.setAttribute('class', 'col-md-6 btn-group');
+    newDiv.setAttribute('data-toggle', 'buttons');
+    newDiv.setAttribute('id', 'myButtons');
+
+    searchTitle.append(searchBtn);
+    createLabel.append(createBtn);
+    deleteLabel.append(deleteBtn);
+
+    newDiv.append(createLabel);
+    newDiv.append(searchTitle);
+    newDiv.append(deleteLabel);
+
+    zeContainer.append(newDiv);
 }
 
 function createWineView() {
@@ -503,7 +535,7 @@ function productViewCreation(beer, liquor, wine, sizes) {
     row.append(myForm);
   }
 
-function createWine(event) {
+function createWine(Event) {
     event.preventDefault();
 
     var f = $('#theWineForm');
@@ -558,7 +590,7 @@ function createWine(event) {
     });
 }
 
-function createBeer(event) {
+function createBeer(Event) {
     event.preventDefault();
 
     var f = $('#theWineForm');
@@ -617,7 +649,7 @@ function createBeer(event) {
     });
 }
 
-function createLiquor(event) {
+function createLiquor(Event) {
     event.preventDefault();
 
     var f = $('#theWineForm');
@@ -668,7 +700,7 @@ function createLiquor(event) {
     });
 }
 
-function inventoryDeletion(event) {
+function inventoryDeletion(Event) {
     event.preventDefault();
 
     var row = $('#myContainer');
@@ -771,7 +803,7 @@ function inventoryDeletion(event) {
     row.append(myForm);
 }
 
-function productSearch(event) {
+function productSearch(Event) {
     event.preventDefault();
     $('#tableRow').remove();
     var f = $('#invSearch');
@@ -1177,7 +1209,7 @@ function updateProduct(data) {
 
 }
 
-function orderEntry(event) {
+function orderEntry(Event) {
     event.preventDefault();
 
     var row = $('#myContainer');
@@ -1225,7 +1257,7 @@ function orderEntry(event) {
     row.append(acctForm);
 }
 
-function acctsSearch(event) {
+function acctsSearch(Event) {
     event.preventDefault();
 
     var f = $('#acctForm');
@@ -1420,7 +1452,7 @@ function orderData() {
     row.append(div);
 }
 
-function itemSearch(event) {
+function itemSearch(Event) {
     event.preventDefault();
     var f = $('#itemForm');
     var item = f.find('[name=itemInfo]').val();
@@ -1781,7 +1813,7 @@ function itemRow() {
     $('#itemRow').remove();
 }
 
-function addOrder(event) {
+function addOrder(Event) {
     event.preventDefault();
 
     var data = [];
@@ -1825,7 +1857,7 @@ function deleteRow(t) {
     t.parentNode.parentNode.remove();
 }
 
-function fleetView(event) {
+function fleetView(Event) {
     event.preventDefault();
 
     var header = $('#headerDiv');
@@ -1945,7 +1977,7 @@ function searchVehicleMakes() {
     });
 }
 
-function vehicleInfo(event, t) {
+function vehicleInfo(Event, t) {
     event.preventDefault();
     var row = t;
     var cols = row.children;
@@ -2148,7 +2180,7 @@ function vehicleInfo(event, t) {
     row.append(vehicleForm);
 }
 
-function addTruck(event) {
+function addTruck(Event) {
     event.preventDefault();
     var f = $('#vehicleForm');
     var make = f.find('[name=make]').val();
@@ -2183,7 +2215,7 @@ function addTruck(event) {
     });
 }
 
-function fleetDash(event) {
+function fleetDash(Event) {
     event.preventDefault();
 
     var header = $('#headerDiv');
@@ -2252,7 +2284,7 @@ function fleetDash(event) {
     row.append(div3);
 }
 
-function getFleetInfo(event) {
+function getFleetInfo(Event) {
     event.preventDefault();
     var header = $('#headerDiv');
     header.empty();

@@ -2,6 +2,8 @@ package com.CCL.entities.api_access;
 
 import com.CCL.controllers.CCLController;
 import com.CCL.utlities.PasswordStorage;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -25,6 +27,7 @@ public class User {
     @Column(nullable = false)
     private String userName;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false)
     private String password;
 

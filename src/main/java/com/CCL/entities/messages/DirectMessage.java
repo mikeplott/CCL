@@ -23,17 +23,13 @@ public class DirectMessage {
     @Column(nullable = false)
     private String text;
 
-    @Column(nullable = false)
-    private Date timeStamp;
-
     public DirectMessage() {
     }
 
-    public DirectMessage(String sender, String receipient, String text, Date timeStamp) {
+    public DirectMessage(String sender, String receipient, String text) {
         this.sender = sender;
         this.receipient = receipient;
         this.text = text;
-        this.timeStamp = timeStamp;
     }
 
     public int getId() {
@@ -66,13 +62,5 @@ public class DirectMessage {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public Date getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(Date timeStamp) {
-        this.timeStamp = timeStamp;
     }
 }

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
+
     <!-- <link rel="stylesheet" href="font-awesome.min.css" /> -->
 
     <link rel="stylesheet" href="dashboard.css" />
@@ -35,22 +36,18 @@
                             <h1 id="myHeader">Dashboard</h1>
                           </div>
                     </div>
-                    <ul class="treeView">
+                    <ul class="treeView" id="listNav">
                       <li>
-                        Collapsible lists
+                        User Network
                         <ul class="collapsibleList">
                           <li>
-                            Actions
+                            Messaging
                             <ul>
-                              <li>
-                                Creation
-                                <ul>
-                                  <li>apply()</li>
-                                  <li class="lastChild">applyTo(node)</li>
-                                </ul>
+                              <li id="onlineUsers">
+                                Users Online
                               </li>
                               <li class="lastChild">
-                                Toggling
+                                Unread Messages
                                 <ul>
                                   <li>Expanding/opening</li>
                                   <li class="lastChild">Collapsing/closing</li>
@@ -99,7 +96,5 @@
 <script src="jquery-3.1.1.js"></script>
 <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
 <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Dynatable/0.3.1/jquery.dynatable.min.js"></script>
-<script src="jquery.tabletojson.min.js"></script>
 <script src="dashboard.js"></script>
 </html>
